@@ -1,6 +1,9 @@
 ## Description
 <!-- Provide a brief description of the changes proposed in this PR. What problem does it solve? -->
 
+## What you checked, and how
+<!-- Describe the tests you ran (automated or manual), edge cases you considered, or how you verified it works locally. -->
+
 ## Type of Change
 <!-- Check the options that apply to your pull request -->
 - [ ] Bug fix (`fix`)
