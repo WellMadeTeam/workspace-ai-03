@@ -2,4 +2,4 @@
 
 Infinite whiteboard space with realtime update for multiple users.
 
-https://http.cat/random-link
+https://http.cat/200
