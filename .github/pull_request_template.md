@@ -1,8 +1,9 @@
-## Description
-<!-- Provide a brief description of the changes proposed in this PR. What problem does it solve? -->
+## What changed and why
+<!-- Describe the core changes you made and the reasoning behind them. -->
 
 ## What you checked, and how
-<!-- Describe the tests you ran (automated or manual), edge cases you considered, or how you verified it works locally. -->
+<!-- Explain how you tested or verified your changes (e.g., local testing, automated tests, visual checks). -->
+
 
 ## Type of Change
 <!-- Check the options that apply to your pull request -->
@@ -12,12 +13,11 @@
 - [ ] Maintenance / Chore (`chore`)
 - [ ] Documentation (`docs`)
 
-## Checklist
-<!-- Review these items before requesting a review -->
-- [ ] My PR title follows the Conventional Commits standard (e.g., `feat: description` or `fix: description`).
-- [ ] I have performed a self-review of my own code.
-- [ ] I have updated the documentation accordingly.
+## For the reviewer
+<!-- Explain what the reviewer should focus on. Mention whether the linked requirements or acceptance criteria are satisfied. -->
 
 ## Reviewers
 <!-- Mention (@mention) the person or team responsible for reviewing -->
 - Reviewer(s): @
+
+
