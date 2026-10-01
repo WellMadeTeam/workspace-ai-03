@@ -1,2 +1,2 @@
 # Problem space
-When working in a team and using LLMs for brainstorming, sharing the query and the results is hard; especially for reviewing and posting the results as context in another query.
+We solve the problem of teams who brainstorm with LLMs but lose context when sharing queries and results — they aim for seamless collaborative visual thinking where everything stays shared and evolves together.
