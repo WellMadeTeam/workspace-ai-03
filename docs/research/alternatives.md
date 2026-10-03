@@ -3,7 +3,7 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 ## ALT-01: Miro
 
-**Kind:** SaaS, cloud-hosted collaborative whiteboard platform
+**Kind:** Direct competitor, SaaS, cloud-hosted collaborative whiteboard platform
 
 **Link:** https://miro.com
 
@@ -37,7 +37,7 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 ## ALT-02: Illumi
 
-**Kind:** SaaS, AI-native collaborative whiteboard
+**Kind:** Adjacent substitute, SaaS, AI-native collaborative whiteboard
 
 **Link:** https://www.illumi.one/
 
@@ -67,3 +67,36 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 - Poor structural data portability: While you can export the final generated brief or report, the valuable spatial map of how your team arrived at those conclusions (the connected prompts, sources, and dead-ends) is trapped in the platform.
 - Niche collaboration tools: Because it is highly optimized for text, cards, and AI processing ("knowledge work"), it lacks the free-form drawing, standard diagramming, and facilitation features of a pure whiteboard like Miro.
+
+## ALT-03: AFFiNE
+
+**Kind:** Open-source, self-hosted, collaborative workspace.
+
+**Link:** https://github.com/toeverything/AFFiNE
+
+**Version looked at:** 2026-10-01
+
+**Depth of evaluation:** set up and ran locally, created and shared workspaces, tested canvas, used AI features with local models, and tested data import/export options.
+
+**Problem it solves:** Provides a real-time collaborative workspace with edgeless canvas, which supports any building block, enhanced by multimodal AI.
+
+**Observations by property**
+
+| Property | Observation |
+| --- | --- |
+| Shareability | "Multiplayer" real-time sharing of the board that does not require Internet connection. Members of workspace may interact with elements and see changes in real time, but not the AI queries of each other. Guests have read-only mode only. |
+| Privacy | User may choose between cloud-hosted or self-hosted options. In case of no trust to third-party, user may self-host own instance with full control over data by following published instruction. User is able to integrate with own API keys from providers or use self-hosted models. |
+| Data portability | Canvas may be exported only in text format (HTML, Markdown, Snapshot). Text nodes may be exported as image, Markdown; if HTML format is required, user needs to convert node into linked document before it will be available. The vector and spatial data may be exported in Snapshot format. |
+| Version history | Continuous auto-save. User may browse the history of workspace state up to 30 days in Figma-like timeline. |
+| Variety of collaboration tools | Basic toolset (drawing, text notes, sticky notes, links) with enhanced templates (e.g. 5W2H, SMART, SWOT for brainstorming, etc.) |
+| Ease of reusing query and previous results as context | Manual with high friction. User must select blocks that will be used as context, and they will be converted to PNG regardless of content (even if it contains only text). User cannot reference previous sessions, only copy-paste from the session history. |
+
+**Strengths**
+
+- High level of data control: user is able to self-host the whole platform in 10 minutes by the instruction from the official documentation. Moreover, custom self-hosted models may be used.
+- Visual thinking is accompanied by Documentation storage: user is able to create Notion-like documentation for his project and link the specific documents to the workspace. The documents are customizable, allowing user to add custom properties or integrate the MCP server to integrate LLM with self-hosted documentation.
+
+**Weaknesses**
+
+- High-friction reusage of queries and previous results: user may send existing blocks in PNG format via the interface; or copy-paste it manually.
+- Not stable application: errors may occur during occasional usage or during initial configuration. Some errors will require time to investigate and find solution for.

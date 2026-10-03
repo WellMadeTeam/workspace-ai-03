@@ -80,3 +80,6 @@
 
 27) **URL:** https://github.com/danielrosehill/Prompt-Library  
   **Why relevant:** Prompt Library demonstrates a Git-based workspace that stores prompts alongside example outputs and notes, making both instructions and results reviewable by collaborators.
+
+28) **URL:** https://github.com/aniketkadale/AFFiNE-Pro
+  **Why relevant:** AFFiNE is an open-source, local-host alternative to Notion, Miro and Airtable that merges documentation, canvas and tables in a single place with real-time collaboration.
