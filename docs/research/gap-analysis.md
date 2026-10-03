@@ -34,7 +34,7 @@ This issue is consistent across all major alternatives.
 
 **What closing it looks like:** Allowing user to export the spatial data in reproducible format.
 
-**Buildable by us in this course:** yes.
+**Buildable by us in this course:** yes, but it requires careful implementation of export logic for the whiteboard state in convenient format and verification of export correctness
 
 **Confidence:** medium.
 Most of the alternatives have their spatial and vector data locked in. This feature allows to preserve the relationships between cards while other platforms do not.
