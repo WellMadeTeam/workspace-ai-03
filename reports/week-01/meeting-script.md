@@ -33,7 +33,7 @@ Our problem-space sentence: We solve the problem of teams who brainstorm with LL
 
 ## Roles
 
-Daniil asks, Anton takes notes, Danil and Kamil observe and record what we did not ask.
+danmaninc asks, AntonChulakov takes notes, hrrrsss and Kamil116 observe and record what we did not ask.
 
 ## Key improvements
 
