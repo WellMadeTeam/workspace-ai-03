@@ -34,6 +34,8 @@ body:
       label: Traces to
       description: |
         List of its origins: the `GAP-nn` it closes, the `DEC-nnn` of a decision, or an action point it carries out.
+      placeholder: |
+        - [`GAP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/gap-analysis.md#gap-xx)
       value: |
         - [`GAP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/gap-analysis.md#gap-xx)
     validations:
@@ -43,6 +45,8 @@ body:
     attributes:
       label: Rests on
       description: Specify when it rests on an assumption
+      placeholder: |
+        - [`ASM-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/assumptions.md#asm-xx)
       value: |
         - [`ASM-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/assumptions.md#asm-xx)
     validations:
@@ -55,6 +59,8 @@ body:
         An acceptance criterion is the check that tells a reviewer whether a story was delivered.
         1. Every story except a Won't Have story carries at least two acceptance criteria, and each one must be observable and pass/fail.
         2. Every acceptance criterion carries a stable ID `AC-01`, `AC-02`, and so on, numbered within its story and written at the start of the criterion.
+      placeholder: |
+        - [ ] AC-01: ...
       value: |
         - [ ] AC-01: ...
     validations:
