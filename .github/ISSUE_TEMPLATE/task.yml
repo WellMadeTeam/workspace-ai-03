@@ -1,6 +1,5 @@
 name: Task
 description: A task issue holds one unit of work, such as building part of a story, documentation, a report, or a workflow, and one pull request closes it.
-title: "[Bug]: "
 labels: ["task"]
 projects: ["workspace-ai-03/1"]
 type: task
@@ -22,7 +21,7 @@ body:
     attributes:
       label: Story
       description: A bullet list with one item for each story issue that task works toward, because one task may serve several stories.
-      placeholder: - \#42 (AC-01, AC-02)
+      placeholder: - _#42 (AC-01, AC-02)
     validations:
       required: false
   - type: textarea
