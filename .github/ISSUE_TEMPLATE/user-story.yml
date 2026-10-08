@@ -32,7 +32,8 @@ body:
     id: traces-to
     attributes:
       label: Traces to
-      description: List of its origins: the `GAP-nn` it closes, the `DEC-nnn` of a decision, or an action point it carries out.
+      description: |
+        List of its origins: the `GAP-nn` it closes, the `DEC-nnn` of a decision, or an action point it carries out.
       value: |
         - [`GAP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/gap-analysis.md#gap-xx)
     validations:
