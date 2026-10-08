@@ -2,7 +2,7 @@ name: Task
 description: A task issue holds one unit of work, such as building part of a story, documentation, a report, or a workflow, and one pull request closes it.
 labels: ["task"]
 projects: ["workspace-ai-03/1"]
-type: task
+type: Task
 body:
   - type: markdown
     attributes:
