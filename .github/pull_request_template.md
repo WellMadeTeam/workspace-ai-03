@@ -4,20 +4,13 @@
 ## What you checked, and how
 <!-- Explain how you tested or verified your changes (e.g., local testing, automated tests, visual checks). -->
 
-
 ## Type of Change
-<!-- Check the options that apply to your pull request -->
-- [ ] Bug fix (`fix`)
-- [ ] New feature (`feat`)
-- [ ] Refactoring (`refactor`)
-- [ ] Maintenance / Chore (`chore`)
-- [ ] Documentation (`docs`)
+<!-- Leave options that apply to your pull request -->
+- Bug fix (`fix`)
+- New feature (`feat`)
+- Refactoring (`refactor`)
+- Maintenance / Chore (`chore`)
+- Documentation (`docs`)
 
 ## For the reviewer
 <!-- Explain what the reviewer should focus on. Mention whether the linked requirements or acceptance criteria are satisfied. -->
-
-## Reviewers
-<!-- Mention (@mention) the person or team responsible for reviewing -->
-- Reviewer(s): @
-
-
