@@ -21,7 +21,8 @@ body:
     attributes:
       label: Story
       description: A bullet list with one item for each story issue that task works toward, because one task may serve several stories.
-      placeholder: - 42 (AC-01, AC-02)
+      placeholder: |
+        - #42 (AC-01, AC-02)
     validations:
       required: false
   - type: textarea
@@ -29,6 +30,7 @@ body:
     attributes:
       label: Acceptance Criteria
       description: A task's acceptance criteria are the checks that tell the reviewer whether the task is done. They may be narrower or more technical than the criteria of the story it works toward, because they check one unit of work rather than the whole need.
-      value: - [ ] AC-01: ...
+      value: |
+        - [ ] AC-01: ...
     validations:
       required: true
