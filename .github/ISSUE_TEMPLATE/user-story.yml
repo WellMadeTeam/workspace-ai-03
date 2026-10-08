@@ -1,0 +1,67 @@
+name: User story
+description: A user story is a small, checkable statement of one thing a user needs.
+title: "US-nn: "
+labels: ["user-story", "moscow:*"]
+projects: ["workspace-ai-03/1"]
+type: "User story"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A user story is a small, checkable statement of one thing a user needs.
+  - type: textarea
+    id: story
+    attributes:
+      label: Story
+      description: Every story is a statement of a user's need, not a description of a solution. A story states the problem precisely and leaves the solution open.
+      placeholder: As a coach who sells sessions online, I want a client to pay when they book, so that an unpaid slot does not block a paying one for the rest of the week.
+    validations:
+      required: true
+  - type: textarea
+    id: value-proposition
+    attributes:
+      label: Value proposition 
+      description: The value proposition the story supports.
+      placeholder: |
+        [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
+      value: |
+        [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
+    validations:
+      required: true
+  - type: textarea
+    id: traces-to
+    attributes:
+      label: Traces to
+      description: |
+        List of its origins: the `GAP-nn` it closes, the `DEC-nnn` of a decision, or an action point it carries out.
+      placeholder: |
+        - [`GAP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/gap-analysis.md#gap-xx)
+      value: |
+        - [`GAP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/gap-analysis.md#gap-xx)
+    validations:
+      required: false
+  - type: textarea
+    id: rests-on
+    attributes:
+      label: Rests on
+      description: Specify when it rests on an assumption
+      placeholder: |
+        - [`ASM-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/assumptions.md#asm-xx)
+      value: |
+        - [`ASM-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/assumptions.md#asm-xx)
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: |
+        An acceptance criterion is the check that tells a reviewer whether a story was delivered.
+        1. Every story except a Won't Have story carries at least two acceptance criteria, and each one must be observable and pass/fail.
+        2. Every acceptance criterion carries a stable ID `AC-01`, `AC-02`, and so on, numbered within its story and written at the start of the criterion.
+      placeholder: |
+        - [ ] AC-01: ...
+      value: |
+        - [ ] AC-01: ...
+    validations:
+      required: false
