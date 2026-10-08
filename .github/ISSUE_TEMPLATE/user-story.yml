@@ -22,8 +22,10 @@ body:
     attributes:
       label: Value proposition 
       description: The value proposition the story supports.
-      placeholder: [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
-      value: [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
+      placeholder: |
+        [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
+      value: |
+        [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
     validations:
       required: true
   - type: textarea
