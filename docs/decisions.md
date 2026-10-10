@@ -8,7 +8,7 @@ The project is considered as exploratory
 - **Date:** 2026-10-03
 - **Made by:** Customer
 - **Source:** [the kickoff meeting](../reports/week-01/meeting-report.md)
-- **Why:** the customer wants to validate the core idea first, whether a shared board for LLM queries and results is worth building, so the team may change direction if it finds something that works better.
+- **Why:** the customer wants to validate the core idea first, whether a shared board for LLM queries and results is worth building, so the team may change direction if it finds something that works better for organizing teamwork and bringing LLMs or image generation to the table.
 
 ## DEC-002
 
@@ -28,7 +28,7 @@ Hard limit of 10 simultaneous connections
 - **Date:** 2026-10-03
 - **Made by:** Customer
 - **Source:** [the kickoff meeting](../reports/week-01/meeting-report.md)
-- **Why:** a brainstorming team is 5 to 7 people, 10 at most, and a bigger group is a different kind of session, so the product does not need to scale beyond that; the number is arbitrary and can be revisited.
+- **Why:** a brainstorming team is 7 to 10 people, a team of more than 10 people is something other than a brainstorming team.
 
 ## DEC-004
 
@@ -38,7 +38,7 @@ No complex access controls, stick to the simple sharing
 - **Date:** 2026-10-03
 - **Made by:** Customer
 - **Source:** [the kickoff meeting](../reports/week-01/meeting-report.md)
-- **Why:** access levels are a very deep problem that could take the whole course on its own, so everyone invited gets the same rights and everyone else is not invited, which is enough to validate the core idea.
+- **Why:** access levels are a very deep problem that could take the whole time of project, so everyone invited gets the same rights and everyone else is not invited, which is sufficient to validate the core idea.
 
 ## DEC-005
 
@@ -48,7 +48,7 @@ Allow users to share specific sessions and connect them to create a new context
 - **Date:** 2026-10-03
 - **Made by:** Customer
 - **Source:** [the kickoff meeting](../reports/week-01/meeting-report.md)
-- **Why:** using the whole board as context would give surprising answers while several people work in parallel, so the context is tied to a widget and the user decides what it contains by connecting widgets with lines.
+- **Why:** using the whole board as context would give surprising answers while several people work in parallel, so the context is tied to a widget and the user may extend it by connecting widgets with lines.
 
 ## DEC-006
 
