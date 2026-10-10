@@ -58,7 +58,7 @@ Support diagrams, images if possible, and highlighting
 - **Date:** 2026-10-03
 - **Made by:** Customer
 - **Source:** [the kickoff meeting](../reports/week-01/meeting-report.md)
-- **Why:** diagrams and images that an LLM produces are hard to share across a team today, and simple highlighting is enough to draw attention to a part of them, so the team starts with text, then one or two diagram formats as a proof of concept, then images if time allows, without full drawing tools.
+- **Why:** diagrams and images that an LLM produces are hard to share across a team today, and simple highlighting is enough to draw attention to a part of them, so the team starts with text, then images if time allows, then basic drawing tools for the purposes of highlighting.
 
 ## DEC-007
 
