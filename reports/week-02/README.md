@@ -38,7 +38,12 @@ TBD.
 
 ## Minimum Usable Product Candidate
 
-TBD.
+Core task: a team member sends an LLM query on a shared board, and every teammate on the board sees the query and the answer.
+
+- [`US-01`: See the same board as my teammates](https://github.com/WellMadeTeam/workspace-ai-03/issues/37)
+- [`US-04`: Ask an LLM where the whole team sees it](https://github.com/WellMadeTeam/workspace-ai-03/issues/40)
+
+Customer's verdict: [`DEC-012`](../../docs/decisions.md#dec-012).
 
 ## Contribution
 
