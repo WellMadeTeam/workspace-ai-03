@@ -42,7 +42,7 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
 
 ### Constraints & User Stories
 6. _(closed)_ Given the 7-week timeline, should we prioritize verifying the core hypothesis over building a fully featured product? *
-7. _(open)_ Which of the proposed user stories are absolutely critical for the Minimum Usable Product (MUP)? *
+7. _(closed)_ Which of the proposed user stories are absolutely critical for the Minimum Usable Product (MUP)? *
 8. _(closed)_ Can we defer granular access levels, account creation, and complex data export to a later phase?
 
 ### MUP Scope
@@ -50,7 +50,7 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
 10. _(closed)_ Is a simple, unauthenticated shared link sufficient for the MUP, eliminating the need for a formal invitation system?
 
 ### Prototype & UX
-11. _(open)_ When viewing a detailed LLM conversation, would a dedicated side panel be more effective than expanding the block itself?
+11. _(closed)_ When viewing a detailed LLM conversation, would a dedicated side panel be more effective than expanding the block itself?
 12. _(closed)_ Should the side panel display metadata about connected blocks (e.g., number of inputs/outputs) to help trace context?
 
 ## Roles
