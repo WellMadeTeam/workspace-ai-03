@@ -10,7 +10,7 @@ A team of up to 10 people can put LLM queries and responses on a common board an
 
 ## Stakeholders
 
-- **Team member** who brainstorms with LLMs: the primary user, who needs to see and reuse the queries and results of colleagues.
+- **Team member** who brainstorms with LLMs: software developers and software architects
 - **Customer**: decides the scope, and brings the product up on his own computer to check the work.
 - **Development team**: builds and documents the product, including how to self-host it.
 
@@ -86,7 +86,7 @@ Provide full drawing tools.
 
 ## Context
 
-![System context diagram](dosc/architecture/context.svg)
+![System context diagram](docs/architecture/context.svg)
 
 The actors are the team members and the customer. The external system is an LLM service provider
 
