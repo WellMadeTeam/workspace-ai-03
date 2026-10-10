@@ -1,4 +1,4 @@
-# Kickoff meeting script
+# Week 02 meeting script
 
 ## Context
 
