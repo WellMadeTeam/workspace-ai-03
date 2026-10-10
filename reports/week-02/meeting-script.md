@@ -55,7 +55,7 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
 
 ## Roles
 
-Daniil Nikulin moderates and asks questions, Anton Chulakov takes notes, Danil Gusev observes and records what we did not ask.
+danmaninc moderates and asks questions, AntonChulakov takes notes, hrrrsss observes and records what we did not ask.
 
 ## Key improvements
 
