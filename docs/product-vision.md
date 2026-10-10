@@ -6,7 +6,7 @@ Workspace for AI collaboration
 
 A team of up to 10 people can put LLM queries and responses on a common board and use the selected results as a context for a new query without sending them via messengers
 
-**Supports:** [VP-01](docs/research/value-proposition.md#vp-01).
+**Supports:** [VP-01](research/value-proposition.md#vp-01).
 
 ## Stakeholders
 
@@ -31,7 +31,7 @@ The customer can bring the product up on his own computer.
 - **Status:** Active
 - **Source:** Customer-given
 - **What it costs:** a simple deployment configuration and written self-hosting instructions.
-- **Decision:** [`DEC-002`](docs/decisions.md#dec-002)
+- **Decision:** [`DEC-002`](decisions.md#dec-002)
 
 ### CON-03
 
@@ -40,7 +40,7 @@ At most 10 simultaneous connections.
 - **Status:** Active
 - **Source:** Customer-given
 - **What it costs:** the product does not serve larger groups, and no effort goes into scaling.
-- **Decision:** [`DEC-003`](docs/decisions.md#dec-003)
+- **Decision:** [`DEC-003`](decisions.md#dec-003)
 
 ### CON-04
 
@@ -66,7 +66,7 @@ Manage complex access levels and permissions.
 
 - **Status:** Active
 - **Handled by:** Nobody
-- **Why:** [`DEC-004`](docs/decisions.md#dec-004): everyone invited has the same rights.
+- **Why:** [`DEC-004`](decisions.md#dec-004): everyone invited has the same rights.
 
 ### BND-02
 
@@ -74,7 +74,7 @@ Export the board to other formats.
 
 - **Status:** Active
 - **Handled by:** The user, by hand
-- **Why:** [`DEC-007`](docs/decisions.md#dec-007): export is nice to have, not the focus.
+- **Why:** [`DEC-007`](decisions.md#dec-007): export is nice to have, not the focus.
 
 ### BND-03
 
@@ -82,11 +82,11 @@ Provide full drawing tools.
 
 - **Status:** Active
 - **Handled by:** Nobody
-- **Why:** [`DEC-006`](docs/decisions.md#dec-006): simple highlighting is enough.
+- **Why:** [`DEC-006`](decisions.md#dec-006): simple highlighting is enough.
 
 ## Context
 
-![System context diagram](docs/architecture/context.svg)
+![System context diagram](architecture/context.svg)
 
 The actors are the team members and the customer. The external system is an LLM service provider
 
