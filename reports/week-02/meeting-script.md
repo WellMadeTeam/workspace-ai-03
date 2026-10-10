@@ -1,4 +1,4 @@
-# Kickoff meeting script
+# Week 02 meeting script
 
 ## Context
 
@@ -55,7 +55,7 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
 
 ## Roles
 
-danmaninc moderates and asks questions, AntonChulakov takes notes, hrrrsss observes and records what we did not ask.
+danmaninc moderates and asks questions, AntonChulakov takes notes, hrrrsss and Kamil116 observe and record what we did not ask.
 
 ## Key improvements
 
