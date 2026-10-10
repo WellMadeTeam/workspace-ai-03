@@ -15,7 +15,12 @@ Our problem-space sentence: We solve the problem of teams who brainstorm with LL
 
 ## Findings
 
-TBD.
+1. The goal is not to solve the aggregation problem but to verify whether a shared LLM whiteboard solves it.
+2. The main stakeholders are software developers and software architects.
+3. Diagrams rendering from code and AI-generated images are should-have features now.
+4. Account creation, granular access and whiteboard access have the lower priority than skills and reference documents among could-have features.
+5. The MUP is narrowed to a shared board with LLM query widgets without invitations and approved by the customer.
+6. The proposed prototype of the AI context reusage flow is approved by the customer.
 
 ## Coverage
 
@@ -60,7 +65,7 @@ Customer's verdict: [`DEC-012`](../../docs/decisions.md#dec-012).
 
 ## Deviations
 
-None.
+Assignment's artifacts are submitted after hard deadline.
 
 ## Privacy
 
