@@ -13,23 +13,23 @@ Our problem-space sentence: We solve the problem of teams who brainstorm with LL
 
 **End users**
 
-3. _(open)_ Which specific types of artifacts did you use or your team used during the brainstorm?
-4. _(open)_ Did you share the brainstorming session with external users (out of team, extranet), or you did it only privately (inside the team, intranet)? If you shared with extranet, in which format did you do it?
+1. _(open)_ Which specific types of artifacts did you use or your team used during the brainstorm?
+2. _(open)_ Did you share the brainstorming session with external users (out of team, extranet), or you did it only privately (inside the team, intranet)? If you shared with extranet, in which format did you do it?
 
 **Current workflow**
 
-5. _(open)_ How you did the brainstorming with LLMs last time, step-by-step?
-6. _(open)_ Have you demonstrated your AI sessions artifacts (query or/and results) to other members of your team? If yes, what you shared and how did you do it?
+1. _(open)_ How you did the brainstorming with LLMs last time, step-by-step?
+2. _(open)_ Have you demonstrated your AI sessions artifacts (query or/and results) to other members of your team? If yes, what you shared and how did you do it?
 
 **Pain points and constraints**
 
-7. _(open)_ What is the most annoying part of the brainstorming when you did it in existing solutions?
-8. _(open)_ Did you reuse for new sessions the whole context of the project or specific sessions?
+1. _(open)_ What is the most annoying part of the brainstorming when you did it in existing solutions?
+2. _(open)_ Did you reuse for new sessions the whole context of the project or specific sessions?
 
 **Scope**
 
-9. _(open)_ Is a hosted deployment acceptable to you, or it should have ability to be self-hosted?
-10. _(open)_ Is the brainstorming space for visual thinking is acceptable to you, or it should also have the ability to store the notes and reuse them in upcoming brainstorms?
+1. _(open)_ Is a hosted deployment acceptable to you, or it should have ability to be self-hosted?
+2. _(open)_ Is the brainstorming space for visual thinking is acceptable to you, or it should also have the ability to store the notes and reuse them in upcoming brainstorms?
 
 ## Roles
 

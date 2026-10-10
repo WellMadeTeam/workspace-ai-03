@@ -1,11 +1,12 @@
 # Problem space
+
 We solve the problem of teams who brainstorm with LLMs but lose context when sharing queries and results — they aim for seamless collaborative visual thinking where everything stays shared and evolves together.
 
 ## ALT-01: Miro
 
 **Kind:** Direct competitor, SaaS, cloud-hosted collaborative whiteboard platform
 
-**Link:** https://miro.com
+**Link:** <https://miro.com>
 
 **Version looked at:** 2026-10-01
 
@@ -39,7 +40,7 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 **Kind:** Adjacent substitute, SaaS, AI-native collaborative whiteboard
 
-**Link:** https://www.illumi.one/
+**Link:** <https://www.illumi.one/>
 
 **Version looked at:** 2026-10-01
 
@@ -72,7 +73,7 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 **Kind:** Open-source, self-hosted, collaborative workspace.
 
-**Link:** https://github.com/toeverything/AFFiNE
+**Link:** <https://github.com/toeverything/AFFiNE>
 
 **Version looked at:** 2026-10-01
 
