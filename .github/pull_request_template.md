@@ -1,4 +1,4 @@
-# Pull Request Template
+# Pull Request
 
 ## What changed and why
 <!-- Describe the core changes you made and the reasoning behind them. -->
