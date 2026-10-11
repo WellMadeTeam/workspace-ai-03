@@ -5,5 +5,5 @@
     "MD029": false
   },
   "gitignore": true,
-  "ignores": []
+  "ignores": ["backlog/**"] // task tracker's directory
 }

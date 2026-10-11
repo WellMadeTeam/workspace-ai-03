@@ -1,4 +1,8 @@
-## GAP-01: High friction for AI context reuse in visual thinking tools
+# Gap Analysis
+
+## GAP-01
+
+High friction for AI context reuse in visual thinking tools
 
 **Who needs it and what they cannot do:** teams who brainstorm with LLMs but lose context when sharing queries and results.
 
@@ -12,7 +16,9 @@ It is implementation of displaying logic of the queries and reusage technique fo
 **Confidence:** high.
 This issue is consistent across all three alternatives, and it is one of the essential reasons why this project exists.
 
-## GAP-02: Dependency on vendor-hosted cloud
+## GAP-02
+
+Dependency on vendor-hosted cloud
 
 **Who needs it and what they cannot do:** teams who brainstorm with LLMs but cannot trust the third party to hold their data
 
@@ -26,7 +32,9 @@ It requires creating a robust and simple deployment configuration and producing 
 **Confidence:** medium.
 This issue is consistent across all major alternatives.
 
-## GAP-03: Poor data portability for spatial relationships
+## GAP-03
+
+Poor data portability for spatial relationships
 
 **Who needs it and what they cannot do:** teams who brainstorm with LLMs but need the data for further integrations with their workflow tools
 
