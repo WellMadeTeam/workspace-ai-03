@@ -67,7 +67,7 @@ Customer's verdict: [`DEC-012`](../../docs/decisions.md#dec-012).
 
 - Assignment's artifacts are submitted after hard deadline.
 - Markdown errors are fixed after adding the Markdown check rather than before it. Despite this deviation, the runs on branch `main` [were successful](https://github.com/WellMadeTeam/workspace-ai-03/actions/workflows/markdown.yml).
-- In the recording of the meeting, the audio from `AntonChulakov` member is absent due to techincal reasons. Despite this deviation, all sentences from the `AntonChulakov` are present in the meeting transcript. 
+- In the recording of the meeting, the audio from `AntonChulakov` member is absent due to techincal reasons. Despite this deviation, all sentences from the `AntonChulakov` are present in the meeting transcript.
 
 ## Privacy
 
