@@ -93,4 +93,4 @@ The actors are the team members and the customer. The external system is an LLM 
 ## Where The Detail Lives
 
 - [User stories](https://github.com/WellMadeTeam/workspace-ai-03/issues?q=label%3Auser-story)
-- [Week 2 report]
+- [Week 2 report](../reports/week-02/README.md)
