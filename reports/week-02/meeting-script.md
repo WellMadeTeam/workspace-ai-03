@@ -21,7 +21,7 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
    Show: User stories list.
    Questions 6–8.
 4. Minimum Usable Product (MUP) scope definition (10 min).
-   Show: nothing.
+   Show: Preliminary list of user stories for MUP ([`US-01`](https://github.com/WellMadeTeam/workspace-ai-03/issues/37), [`US-02`](https://github.com/WellMadeTeam/workspace-ai-03/issues/38), [`US-03`](https://github.com/WellMadeTeam/workspace-ai-03/issues/39), [`US-04`](https://github.com/WellMadeTeam/workspace-ai-03/issues/40), [`US-05`](https://github.com/WellMadeTeam/workspace-ai-03/issues/41), [`US-06`](https://github.com/WellMadeTeam/workspace-ai-03/issues/42), [`US-07`](https://github.com/WellMadeTeam/workspace-ai-03/issues/43)).
    Questions 9–10.
 5. Prototype demonstration and feedback (10 min).
    Show: Prototype screen share.
