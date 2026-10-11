@@ -2,17 +2,16 @@
 
 We solve the problem of teams who brainstorm with LLMs but lose context when sharing queries and results — they aim for seamless collaborative visual thinking where everything stays shared and evolves together.
 
-## ALT-01: Miro
+## ALT-01
 
-**Kind:** Direct competitor, SaaS, cloud-hosted collaborative whiteboard platform
+Miro
 
-**Link:** <https://miro.com>
-
-**Version looked at:** 2026-10-01
-
-**Depth of evaluation:** Tested the web client, created and shared boards, used Miro Assist (AI features), and tested data export options.
-
-**Problem it solves:** Provides an infinite digital canvas for distributed teams to brainstorm, diagram, and collaborate visually in real-time.
+- **Status:** Active
+- **Kind:** Direct competitor, SaaS, cloud-hosted collaborative whiteboard platform
+- **Link:** <https://miro.com>
+- **Version looked at:** 2026-10-01
+- **Depth of evaluation:** Tested the web client, created and shared boards, used Miro Assist (AI features), and tested data export options.
+- **Problem it solves:** Provides an infinite digital canvas for distributed teams to brainstorm, diagram, and collaborate visually in real-time.
 
 ### ALT-01 Observations by property
 
@@ -36,17 +35,16 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 - Poor structural data portability: Exports are limited to flat formats (CSV/PDF). Editable spatial and vector data remain locked in Miro, preventing full migration to competitor platforms.
 - High friction for AI context reuse: The AI does not preserve conversational context. Chaining queries requires manually re-selecting previous canvas outputs for each new prompt.
 
-## ALT-02: Illumi
+## ALT-02
 
-**Kind:** Adjacent substitute, SaaS, AI-native collaborative whiteboard
+Illumi
 
-**Link:** <https://www.illumi.one/>
-
-**Version looked at:** 2026-10-01
-
-**Depth of evaluation:** tested the web client, created and shared boards, used AI features, and tested data import/export options.
-
-**Problem it solves:** Turns messy multi-source inputs and group thinking into structured, publish-ready deliverables by connecting AI reasoning directly to a visual spatial canvas.
+- **Status:** Active
+- **Kind:** Adjacent substitute, SaaS, AI-native collaborative whiteboard
+- **Link:** <https://www.illumi.one/>
+- **Version looked at:** 2026-10-01
+- **Depth of evaluation:** tested the web client, created and shared boards, used AI features, and tested data import/export options.
+- **Problem it solves:** Turns messy multi-source inputs and group thinking into structured, publish-ready deliverables by connecting AI reasoning directly to a visual spatial canvas.
 
 ### ALT-02 Observations by property
 
@@ -66,20 +64,19 @@ We solve the problem of teams who brainstorm with LLMs but lose context when sha
 
 ### ALT-02 Weaknesses
 
-- Poor structural data portability: While you can export the final generated brief or report, the valuable spatial map of how your team arrived at those conclusions (the connected prompts, sources, and dead-ends) is trapped in the platform.
-- Niche collaboration tools: Because it is highly optimized for text, cards, and AI processing ("knowledge work"), it lacks the free-form drawing, standard diagramming, and facilitation features of a pure whiteboard like Miro.
+- Poor structural data portability: While you can export the final generated brief or report, the valuable spatial map of how your team arrived at those conclusions (the connected prompts, sources, and dead-ends) is trapped in the platform.- Niche collaboration tools: Because it is highly optimized for text, cards, and AI processing ("knowledge work"), it lacks the free-form drawing, standard diagramming, and facilitation features of a pure whiteboard like Miro.
 
-## ALT-03: AFFiNE
+## ALT-03
 
-**Kind:** Open-source, self-hosted, collaborative workspace.
+AFFiNE
 
-**Link:** <https://github.com/toeverything/AFFiNE>
+- **Status:** Active
+- **Kind:** Open-source, self-hosted, collaborative workspace.
+- **Link:** <https://github.com/toeverything/AFFiNE>
 
-**Version looked at:** 2026-10-01
-
-**Depth of evaluation:** set up and ran locally, created and shared workspaces, tested canvas, used AI features with local models, and tested data import/export options.
-
-**Problem it solves:** Provides a real-time collaborative workspace with edgeless canvas, which supports any building block, enhanced by multimodal AI.
+- **Version looked at:** 2026-10-01
+- **Depth of evaluation:** set up and ran locally, created and shared workspaces, tested canvas, used AI features with local models, and tested data import/export options.
+- **Problem it solves:** Provides a real-time collaborative workspace with edgeless canvas, which supports any building block, enhanced by multimodal AI.
 
 ### ALT-03 Observations by property
 
