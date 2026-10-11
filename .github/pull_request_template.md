@@ -18,4 +18,5 @@
 <!-- Explain what the reviewer should focus on. Mention whether the linked requirements or acceptance criteria are satisfied. -->
 
 ## Closing issues
+
 Closes #...
