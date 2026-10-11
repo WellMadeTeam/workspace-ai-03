@@ -1,10 +1,12 @@
-# Workspace for AI Collaboration (workspace-ai-03) 
-**by WellMadeTeam**
+# Workspace for AI Collaboration (workspace-ai-03)
+
+## **by WellMadeTeam**
 
 ### Project description
+
 An infinite, real-time whiteboard where teams can draw, write, and query LLMs together, so sharing prompts and results is no longer a copy-paste chore.
 
-## Links
+### Links
 
 - [Current week's report (Week 1)](reports/week-01/README.md)
 - [Project documentation](docs/)
