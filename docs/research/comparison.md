@@ -1,4 +1,4 @@
-## Comparison
+# Comparison
 
 | Property | ALT-01: Miro | ALT-02: Illumi | ALT-03: AFFiNE |
 | --- | --- | --- | --- |
