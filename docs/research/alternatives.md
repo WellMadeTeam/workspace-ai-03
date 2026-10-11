@@ -64,7 +64,8 @@ Illumi
 
 ### ALT-02 Weaknesses
 
-- Poor structural data portability: While you can export the final generated brief or report, the valuable spatial map of how your team arrived at those conclusions (the connected prompts, sources, and dead-ends) is trapped in the platform.- Niche collaboration tools: Because it is highly optimized for text, cards, and AI processing ("knowledge work"), it lacks the free-form drawing, standard diagramming, and facilitation features of a pure whiteboard like Miro.
+- Poor structural data portability: While you can export the final generated brief or report, the valuable spatial map of how your team arrived at those conclusions (the connected prompts, sources, and dead-ends) is trapped in the platform.
+- Niche collaboration tools: Because it is highly optimized for text, cards, and AI processing ("knowledge work"), it lacks the free-form drawing, standard diagramming, and facilitation features of a pure whiteboard like Miro.
 
 ## ALT-03
 
@@ -73,7 +74,6 @@ AFFiNE
 - **Status:** Active
 - **Kind:** Open-source, self-hosted, collaborative workspace.
 - **Link:** <https://github.com/toeverything/AFFiNE>
-
 - **Version looked at:** 2026-10-01
 - **Depth of evaluation:** set up and ran locally, created and shared workspaces, tested canvas, used AI features with local models, and tested data import/export options.
 - **Problem it solves:** Provides a real-time collaborative workspace with edgeless canvas, which supports any building block, enhanced by multimodal AI.
