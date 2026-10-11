@@ -32,24 +32,29 @@ Target: verify that the proposed whiteboard with interconnected LLM blocks solve
 ## Questions
 
 ### Permission
+
 1. _(closed)_ Do we have your permission to record this meeting?
 2. _(closed)_ Do we have your permission to publish a summary of this meeting?
 3. _(closed)_ Do we have your permission to publish the full transcript of this meeting in a public repository?
 
 ### Product Vision & Target Audience
+
 4. _(open)_ How do your teams currently share and build upon LLM queries and results during brainstorming?
 5. _(closed)_ Is the primary target audience for this tool software developers and architects, rather than the general public?
 
 ### Constraints & User Stories
+
 6. _(closed)_ Given the 7-week timeline, should we prioritize verifying the core hypothesis over building a fully featured product? *
 7. _(closed)_ Which of the proposed user stories are absolutely critical for the Minimum Usable Product (MUP)? *
 8. _(closed)_ Can we defer granular access levels, account creation, and complex data export to a later phase?
 
 ### MUP Scope
+
 9. _(open)_ What is the absolute simplest way for a team to share a board and see LLM responses simultaneously for the MUP?
 10. _(closed)_ Is a simple, unauthenticated shared link sufficient for the MUP, eliminating the need for a formal invitation system?
 
 ### Prototype & UX
+
 11. _(closed)_ When viewing a detailed LLM conversation, would a dedicated side panel be more effective than expanding the block itself?
 12. _(closed)_ Should the side panel display metadata about connected blocks (e.g., number of inputs/outputs) to help trace context?
 

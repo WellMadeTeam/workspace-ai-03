@@ -1,0 +1,9 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD029": false
+  },
+  "gitignore": true,
+  "ignores": ["backlog/**"] // task tracker's directory
+}
