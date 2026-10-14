@@ -5,6 +5,7 @@ from fastapi import Depends, FastAPI, HTTPException, Query, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+from ai_service import generate_reply
 
 from database import Base, engine, get_db
 from models import Board, Message, Widget
@@ -45,6 +46,11 @@ class MessageListResponse(BaseModel):
     items: list[MessageResponse]
 
 
+class MessageCreateResponse(BaseModel):
+    user_message: MessageResponse
+    ai_message: MessageResponse
+
+
 @app.post("/boards", response_model=BoardResponse, status_code=status.HTTP_201_CREATED)
 def create_board(
     board_data: BoardCreate,
@@ -58,9 +64,10 @@ def create_board(
 
     return BoardResponse(id=board.id)
 
+
 @app.post(
     "/messages",
-    response_model=MessageResponse,
+    response_model=MessageCreateResponse,
     status_code=status.HTTP_201_CREATED,
 )
 def create_message(
@@ -75,17 +82,78 @@ def create_message(
             detail="Widget not found",
         )
 
-    message = Message(
+    if widget.widget_type != "ai":
+        raise HTTPException(
+            status_code=400,
+            detail="Messages with AI are only supported for AI widgets",
+        )
+
+    user_message = Message(
         widget_id=message_data.widget_id,
         role="user",
         content=message_data.content,
     )
 
-    db.add(message)
+    db.add(user_message)
     db.commit()
-    db.refresh(message)
+    db.refresh(user_message)
 
-    return message
+    statement = (
+        select(Message)
+        .where(Message.widget_id == message_data.widget_id)
+        .order_by(Message.created_at.asc(), Message.id.asc())
+    )
+
+    history = db.scalars(statement).all()
+
+    ai_messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant in Workspace "
+                "for AI Collaboration. Be clear and concise."
+            ),
+        }
+    ]
+
+    for message in history:
+        ai_role = (
+            "assistant"
+            if message.role == "ai"
+            else "user"
+        )
+
+        ai_messages.append({
+            "role": ai_role,
+            "content": message.content,
+        })
+
+    try:
+        answer = generate_reply(ai_messages)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                "AI provider request failed. "
+                "The user message was saved."
+            ),
+        ) from exc
+
+    ai_message = Message(
+        widget_id=message_data.widget_id,
+        role="ai",
+        content=answer,
+    )
+
+    db.add(ai_message)
+    db.commit()
+    db.refresh(ai_message)
+
+    return {
+        "user_message": user_message,
+        "ai_message": ai_message,
+    }
+
 
 @app.get(
     "/messages",
