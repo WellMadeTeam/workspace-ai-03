@@ -64,3 +64,13 @@ export const createWidget = (widget: {
         method: "POST",
         body: JSON.stringify(widget),
     });
+
+export type WidgetUpdate = Partial<Pick<Widget, "content" | "x" | "y">> & {
+    title?: string;
+};
+
+export const updateWidget = (widgetId: string, update: WidgetUpdate) =>
+    request<Widget>(`/widgets/${encodeURIComponent(widgetId)}`, {
+        method: "PUT",
+        body: JSON.stringify(update),
+    });
