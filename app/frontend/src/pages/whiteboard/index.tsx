@@ -14,8 +14,9 @@ import {
     type NodeTypes,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import { MessagesPanel } from "./messages-panel.tsx";
 import { WhiteboardToolbar } from "./toolbar.tsx";
-import type { WidgetNode } from "./types.ts";
+import type { AiWidgetNode, WidgetNode } from "./types.ts";
 import { WidgetNodeView } from "./widget-node.tsx";
 
 const nodeTypes: NodeTypes = { widget: WidgetNodeView };
@@ -31,14 +32,18 @@ const initialNodes: WidgetNode[] = [
         id: "2",
         type: "widget",
         position: { x: 0, y: 120 },
-        data: { widget_type: "ai", label: "Prompt" },
+        data: { widget_type: "ai", label: "Prompt", messages: [] },
     },
 ];
 
 const initialEdges: Edge[] = [{ id: "1-2", source: "1", target: "2" }];
 
+const isAiNode = (node: WidgetNode): node is AiWidgetNode =>
+    node.data.widget_type === "ai";
+
 export function WhiteboardPage() {
     const [nodes, , onNodesChange] = useNodesState(initialNodes);
+    const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
     const onConnect = useCallback(
@@ -64,6 +69,12 @@ export function WhiteboardPage() {
                 <Panel position="bottom-center">
                     <WhiteboardToolbar />
                 </Panel>
+                {selectedAiNode && (
+                    <Panel position="top-right">
+                        {/* Keyed so the draft resets when another AI block is selected. */}
+                        <MessagesPanel key={selectedAiNode.id} node={selectedAiNode} />
+                    </Panel>
+                )}
             </ReactFlow>
         </div>
     );

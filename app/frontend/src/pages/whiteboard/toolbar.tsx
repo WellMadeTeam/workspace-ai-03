@@ -11,7 +11,7 @@ const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
 const createWidgetData = (widgetType: WidgetType): WidgetNodeData =>
     widgetType === "text"
         ? { widget_type: "text", content: "" }
-        : { widget_type: "ai", label: widgets.ai.label };
+        : { widget_type: "ai", label: widgets.ai.label, messages: [] };
 
 export function WhiteboardToolbar() {
     const { addNodes, screenToFlowPosition } = useReactFlow<WidgetNode>();
