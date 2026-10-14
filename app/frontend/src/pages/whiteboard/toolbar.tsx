@@ -1,34 +1,36 @@
 import { Button, Surface, Toolbar, Tooltip } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { Sparkles, Type, type LucideIcon } from "lucide-react";
-import type { WidgetNode, WidgetNodeData, WidgetType } from "./types.ts";
+import { createWidget } from "./api.ts";
+import type { WidgetNode, WidgetType } from "./types.ts";
 
 const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
     text: { label: "Text", icon: Type },
     ai: { label: "AI", icon: Sparkles },
 };
 
-const createWidgetData = (widgetType: WidgetType): WidgetNodeData =>
-    widgetType === "text"
-        ? { widget_type: "text", content: "" }
-        : { widget_type: "ai", label: widgets.ai.label };
+type WhiteboardToolbarProps = {
+    boardId: string;
+    onWidgetCreated: () => void;
+};
 
-export function WhiteboardToolbar() {
-    const { addNodes, screenToFlowPosition } = useReactFlow<WidgetNode>();
+export function WhiteboardToolbar({ boardId, onWidgetCreated }: WhiteboardToolbarProps) {
+    const { screenToFlowPosition } = useReactFlow<WidgetNode>();
 
-    const addWidget = (widgetType: WidgetType) => {
+    const addWidget = async (widgetType: WidgetType) => {
         // Place the new block in the center of the visible canvas.
         const position = screenToFlowPosition({
             x: window.innerWidth / 2,
             y: window.innerHeight / 2,
         });
 
-        addNodes({
-            id: crypto.randomUUID(),
-            type: "widget",
-            position,
-            data: createWidgetData(widgetType),
+        await createWidget({
+            board_id: boardId,
+            widget_type: widgetType,
+            title: widgets[widgetType].label,
+            ...position,
         });
+        onWidgetCreated();
     };
 
     return (

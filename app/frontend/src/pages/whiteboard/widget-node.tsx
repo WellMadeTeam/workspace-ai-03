@@ -1,9 +1,4 @@
-import {
-    Handle,
-    Position,
-    useReactFlow,
-    type NodeProps,
-} from "@xyflow/react";
+import { useReactFlow, type NodeProps } from "@xyflow/react";
 import type { WidgetNode } from "./types.ts";
 
 export function WidgetNodeView({ id, data, selected }: NodeProps<WidgetNode>) {
@@ -15,7 +10,6 @@ export function WidgetNodeView({ id, data, selected }: NodeProps<WidgetNode>) {
                 selected ? "ring-2 ring-purple-500" : ""
             }`}
         >
-            <Handle type="target" position={Position.Top} />
             {data.widget_type === "text" ? (
                 // "nodrag" lets the user select text and place the caret
                 // instead of dragging the node around.
@@ -31,7 +25,6 @@ export function WidgetNodeView({ id, data, selected }: NodeProps<WidgetNode>) {
             ) : (
                 <div className="text-center">{data.label}</div>
             )}
-            <Handle type="source" position={Position.Bottom} />
         </div>
     );
 }
