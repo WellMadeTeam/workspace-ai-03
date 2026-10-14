@@ -5,18 +5,34 @@ import {
     BackgroundVariant,
     Controls,
     MiniMap,
+    Panel,
     ReactFlow,
     useEdgesState,
     useNodesState,
     type Connection,
     type Edge,
-    type Node,
+    type NodeTypes,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import { WhiteboardToolbar } from "./toolbar.tsx";
+import type { WidgetNode } from "./types.ts";
+import { WidgetNodeView } from "./widget-node.tsx";
 
-const initialNodes: Node[] = [
-    { id: "1", position: { x: 0, y: 0 }, data: { label: "Idea" } },
-    { id: "2", position: { x: 0, y: 120 }, data: { label: "Prompt" } },
+const nodeTypes: NodeTypes = { widget: WidgetNodeView };
+
+const initialNodes: WidgetNode[] = [
+    {
+        id: "1",
+        type: "widget",
+        position: { x: 0, y: 0 },
+        data: { widget_type: "text", content: "Idea" },
+    },
+    {
+        id: "2",
+        type: "widget",
+        position: { x: 0, y: 120 },
+        data: { widget_type: "ai", label: "Prompt" },
+    },
 ];
 
 const initialEdges: Edge[] = [{ id: "1-2", source: "1", target: "2" }];
@@ -35,6 +51,7 @@ export function WhiteboardPage() {
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
+                nodeTypes={nodeTypes}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
@@ -44,6 +61,9 @@ export function WhiteboardPage() {
                 <Background variant={BackgroundVariant.Dots} gap={16} size={1} />
                 <Controls />
                 <MiniMap />
+                <Panel position="bottom-center">
+                    <WhiteboardToolbar />
+                </Panel>
             </ReactFlow>
         </div>
     );
