@@ -2,7 +2,7 @@ from typing import Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from sqlalchemy import delete, or_, select
 from sqlalchemy.orm import Session
 
@@ -21,6 +21,20 @@ class WidgetCreate(BaseModel):
     widget_type: WidgetType
     x: float
     y: float
+
+
+class WidgetUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    content: str | None = None
+    x: float | None = None
+    y: float | None = None
+
+    @field_validator("x", "y")
+    @classmethod
+    def position_not_null(cls, value: float | None) -> float:
+        if value is None:
+            raise ValueError("Position cannot be null")
+        return value
 
 
 class WidgetResponse(BaseModel):
@@ -67,6 +81,26 @@ def create_widget(
     widget = Widget(**widget_data.model_dump())
 
     db.add(widget)
+    db.commit()
+    db.refresh(widget)
+
+    return widget
+
+
+@router.put("/{widget_id}", response_model=WidgetResponse)
+def update_widget(
+    widget_id: UUID,
+    widget_data: WidgetUpdate,
+    db: Session = Depends(get_db),
+):
+    widget = db.get(Widget, widget_id)
+    if widget is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Widget not found")
+
+    # Only apply fields the client sent, so position, title and content can be updated independently.
+    for field, value in widget_data.model_dump(exclude_unset=True).items():
+        setattr(widget, field, value)
+
     db.commit()
     db.refresh(widget)
 
