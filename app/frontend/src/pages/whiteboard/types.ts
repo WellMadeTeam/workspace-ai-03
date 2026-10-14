@@ -2,9 +2,16 @@ import type { Node } from "@xyflow/react";
 
 export type WidgetType = "text" | "ai";
 
-export type WidgetNodeData = {
-    label: string;
-    widget_type: WidgetType;
+export type TextWidgetData = {
+    widget_type: "text";
+    content: string;
 };
 
-export type WidgetNode = Node<WidgetNodeData>;
+export type AiWidgetData = {
+    widget_type: "ai";
+    label: string;
+};
+
+export type WidgetNodeData = TextWidgetData | AiWidgetData;
+
+export type WidgetNode = Node<WidgetNodeData, "widget">;

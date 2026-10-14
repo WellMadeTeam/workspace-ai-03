@@ -1,12 +1,17 @@
 import { Button, Surface, Toolbar, Tooltip } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { Sparkles, Type, type LucideIcon } from "lucide-react";
-import type { WidgetNode, WidgetType } from "./types.ts";
+import type { WidgetNode, WidgetNodeData, WidgetType } from "./types.ts";
 
 const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
     text: { label: "Text", icon: Type },
     ai: { label: "AI", icon: Sparkles },
 };
+
+const createWidgetData = (widgetType: WidgetType): WidgetNodeData =>
+    widgetType === "text"
+        ? { widget_type: "text", content: "" }
+        : { widget_type: "ai", label: widgets.ai.label };
 
 export function WhiteboardToolbar() {
     const { addNodes, screenToFlowPosition } = useReactFlow<WidgetNode>();
@@ -20,8 +25,9 @@ export function WhiteboardToolbar() {
 
         addNodes({
             id: crypto.randomUUID(),
+            type: "widget",
             position,
-            data: { label: widgets[widgetType].label, widget_type: widgetType },
+            data: createWidgetData(widgetType),
         });
     };
 

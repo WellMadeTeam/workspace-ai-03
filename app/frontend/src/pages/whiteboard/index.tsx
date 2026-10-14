@@ -11,21 +11,27 @@ import {
     useNodesState,
     type Connection,
     type Edge,
+    type NodeTypes,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { WhiteboardToolbar } from "./toolbar.tsx";
 import type { WidgetNode } from "./types.ts";
+import { WidgetNodeView } from "./widget-node.tsx";
+
+const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
 const initialNodes: WidgetNode[] = [
     {
         id: "1",
+        type: "widget",
         position: { x: 0, y: 0 },
-        data: { label: "Idea", widget_type: "text" },
+        data: { widget_type: "text", content: "Idea" },
     },
     {
         id: "2",
+        type: "widget",
         position: { x: 0, y: 120 },
-        data: { label: "Prompt", widget_type: "ai" },
+        data: { widget_type: "ai", label: "Prompt" },
     },
 ];
 
@@ -45,6 +51,7 @@ export function WhiteboardPage() {
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
+                nodeTypes={nodeTypes}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
