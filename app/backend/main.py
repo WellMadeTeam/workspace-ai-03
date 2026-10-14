@@ -8,11 +8,14 @@ from sqlalchemy.orm import Session
 
 from database import Base, engine, get_db
 from models import Board, Message, Widget
+from widgets import router as widgets_router
 
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Workspace for AI Collaboration")
+
+app.include_router(widgets_router)
 
 
 class BoardCreate(BaseModel):
