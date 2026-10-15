@@ -1,4 +1,4 @@
-import type { WidgetType } from "./types.ts";
+import type { Message, WidgetType } from "./types.ts";
 
 // Requests go through the Vite dev server proxy (see vite.config.ts),
 // so the backend does not need CORS.
@@ -73,4 +73,19 @@ export const updateWidget = (widgetId: string, update: WidgetUpdate) =>
     request<Widget>(`/widgets/${encodeURIComponent(widgetId)}`, {
         method: "PUT",
         body: JSON.stringify(update),
+    });
+
+export const listMessages = async (widgetId: string, signal?: AbortSignal) => {
+    const { items } = await request<{ items: Message[] }>(
+        `/messages?widgetId=${encodeURIComponent(widgetId)}`,
+        { signal },
+    );
+
+    return items;
+};
+
+export const createMessage = (message: { widget_id: string; content: string }) =>
+    request<{ user_message: Message; ai_message: Message }>("/messages", {
+        method: "POST",
+        body: JSON.stringify(message),
     });

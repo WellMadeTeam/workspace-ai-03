@@ -15,7 +15,7 @@ const POLL_INTERVAL_MS = 1000;
 const toNodeData = (widget: Widget): WidgetNodeData =>
     widget.widget_type === "text"
         ? { widget_type: "text", content: widget.content ?? "" }
-        : { widget_type: "ai", label: widget.title ?? "AI", messages: [] };
+        : { widget_type: "ai", label: widget.title ?? "AI" };
 
 const toNode = (widget: Widget): WidgetNode => ({
     id: widget.id,

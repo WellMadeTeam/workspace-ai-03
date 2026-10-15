@@ -31,7 +31,6 @@ export function WhiteboardToolbar({
             board_id: boardId,
             widget_type: widgetType,
             title: widgets[widgetType].label,
-            ...(widgetType === "ai" ? { messages: [] } : {}),
             ...position,
         });
         onWidgetCreated();
