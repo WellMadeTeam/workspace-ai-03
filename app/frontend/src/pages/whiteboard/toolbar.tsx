@@ -14,7 +14,10 @@ type WhiteboardToolbarProps = {
     onWidgetCreated: () => void;
 };
 
-export function WhiteboardToolbar({ boardId, onWidgetCreated }: WhiteboardToolbarProps) {
+export function WhiteboardToolbar({
+    boardId,
+    onWidgetCreated,
+}: WhiteboardToolbarProps) {
     const { screenToFlowPosition } = useReactFlow<WidgetNode>();
 
     const addWidget = async (widgetType: WidgetType) => {
@@ -28,6 +31,7 @@ export function WhiteboardToolbar({ boardId, onWidgetCreated }: WhiteboardToolba
             board_id: boardId,
             widget_type: widgetType,
             title: widgets[widgetType].label,
+            ...(widgetType === "ai" ? { messages: [] } : {}),
             ...position,
         });
         onWidgetCreated();

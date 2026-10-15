@@ -4,7 +4,6 @@ import {
     Background,
     BackgroundVariant,
     Controls,
-    MiniMap,
     Panel,
     ReactFlow,
     type NodeTypes,
@@ -14,22 +13,46 @@ import "@xyflow/react/dist/style.css";
 import { Surface } from "@heroui/react";
 import { createBoard } from "./api.ts";
 import { SaveWidgetContext } from "./save-widget-context.ts";
-import { WhiteboardToolbar } from "./toolbar.tsx";
-import type { WidgetNode } from "./types.ts";
 import { useBoardWidgets } from "./use-board-widgets.ts";
+import { MessagesPanel } from "./messages-panel.tsx";
+import { WhiteboardToolbar } from "./toolbar.tsx";
+import type { AiWidgetNode, WidgetNode } from "./types.ts";
 import { WidgetNodeView } from "./widget-node.tsx";
 
 const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
 const BOARD_PARAM = "board";
+const initialNodes: WidgetNode[] = [
+    {
+        id: "1",
+        type: "widget",
+        position: { x: 0, y: 0 },
+        data: { widget_type: "text", content: "Idea" },
+    },
+    {
+        id: "2",
+        type: "widget",
+        position: { x: 0, y: 120 },
+        data: { widget_type: "ai", label: "Prompt", messages: [] },
+    },
+];
+
+const isAiNode = (node: WidgetNode): node is AiWidgetNode =>
+    node.data.widget_type === "ai";
 
 export function WhiteboardPage() {
     const [searchParams, setSearchParams] = useSearchParams();
     const boardId = searchParams.get(BOARD_PARAM);
-    const { nodes, onNodesChange, error, refresh, saveWidget } = useBoardWidgets(boardId);
+    const { nodes, onNodesChange, error, refresh, saveWidget } =
+        useBoardWidgets(boardId, initialNodes);
+    const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
 
     // Save the final position of every dragged node (several when a selection is dragged).
-    const onNodeDragStop: OnNodeDrag<WidgetNode> = (_event, _node, draggedNodes) => {
+    const onNodeDragStop: OnNodeDrag<WidgetNode> = (
+        _event,
+        _node,
+        draggedNodes,
+    ) => {
         for (const { id, position } of draggedNodes) {
             saveWidget(id, { x: position.x, y: position.y });
         }
@@ -70,10 +93,16 @@ export function WhiteboardPage() {
                     nodesConnectable={false}
                     colorMode="system"
                     fitView
+                    proOptions={{
+                        hideAttribution: true,
+                    }}
                 >
-                    <Background variant={BackgroundVariant.Dots} gap={16} size={1} />
+                    <Background
+                        variant={BackgroundVariant.Dots}
+                        gap={16}
+                        size={1}
+                    />
                     <Controls />
-                    <MiniMap />
                     {error && (
                         <Panel position="top-center">
                             <Surface className="rounded-xl px-4 py-2 text-sm text-danger shadow-lg">
@@ -83,7 +112,19 @@ export function WhiteboardPage() {
                     )}
                     {boardId && (
                         <Panel position="bottom-center">
-                            <WhiteboardToolbar boardId={boardId} onWidgetCreated={refresh} />
+                            <WhiteboardToolbar
+                                boardId={boardId}
+                                onWidgetCreated={refresh}
+                            />
+                        </Panel>
+                    )}
+                    {selectedAiNode && (
+                        <Panel position="top-right">
+                            {/* Keyed so the draft resets when another AI block is selected. */}
+                            <MessagesPanel
+                                key={selectedAiNode.id}
+                                node={selectedAiNode}
+                            />
                         </Panel>
                     )}
                 </ReactFlow>
