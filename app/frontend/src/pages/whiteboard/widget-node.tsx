@@ -13,8 +13,8 @@ export function WidgetNodeView({ id, data, selected }: NodeProps<WidgetNode>) {
     return (
         <div
             className={`w-48 rounded-md [border:var(--xy-node-border-default)] bg-(--xy-node-background-color-default) p-2 text-xs text-(--xy-node-color-default) ${
-                selected ? "ring-2 ring-purple-500" : ""
-            }`}
+                data.widget_type === "ai" ? "border-blue-500!" : ""
+            } ${selected ? "ring-2 ring-purple-500" : ""}`}
         >
             {data.widget_type === "text" ? (
                 // "nodrag" lets the user select text and place the caret
