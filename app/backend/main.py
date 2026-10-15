@@ -174,7 +174,7 @@ def get_messages(
     statement = (
         select(Message)
         .where(Message.widget_id == widget_id)
-        .order_by(Message.created_at.asc(), Message.id.asc())
+        .order_by(Message.created_at.asc())
     )
 
     messages = db.scalars(statement).all()
