@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from sqlalchemy import create_engine
@@ -6,7 +7,11 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 BASE_DIR = Path(__file__).resolve().parent
 
-DATABASE_URL = f"sqlite:///{BASE_DIR / 'workspace.db'}"
+# Docker keeps the database in a volume, so the location can be overridden.
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    f"sqlite:///{BASE_DIR / 'workspace.db'}",
+)
 
 engine = create_engine(
     DATABASE_URL,
