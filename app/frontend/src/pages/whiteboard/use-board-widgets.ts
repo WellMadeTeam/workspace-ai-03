@@ -15,7 +15,7 @@ const POLL_INTERVAL_MS = 1000;
 const toNodeData = (widget: Widget): WidgetNodeData =>
     widget.widget_type === "text"
         ? { widget_type: "text", content: widget.content ?? "" }
-        : { widget_type: "ai", label: widget.title ?? "AI" };
+        : { widget_type: "ai", label: widget.title ?? "AI", messages: [] };
 
 const toNode = (widget: Widget): WidgetNode => ({
     id: widget.id,
@@ -47,8 +47,12 @@ const mergeNode = (node: WidgetNode, widget: Widget): WidgetNode => {
  * Keeps the board's nodes in sync with the widgets stored on the server,
  * polling every 5 seconds, and saves local edits back to the server.
  */
-export function useBoardWidgets(boardId: string | null) {
-    const [nodes, setNodes, onNodesChange] = useNodesState<WidgetNode>([]);
+export function useBoardWidgets(
+    boardId: string | null,
+    initialState: WidgetNode[] = [],
+) {
+    const [nodes, setNodes, onNodesChange] =
+        useNodesState<WidgetNode>(initialState);
     const [error, setError] = useState<string | null>(null);
     // Only the most recently started request may update the nodes, so a slow
     // poll cannot remove a widget that a newer request already returned.
