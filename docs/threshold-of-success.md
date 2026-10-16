@@ -23,8 +23,11 @@ A team of at least 3 people outside the development team completes one brainstor
 
 ## Failure And Success Statements
 
+
 | Goal              | Success statement                                                                                                                             | Failure statement                                                                                                                     |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | [TOS-01](#tos-01) | A team member puts a query and its response on the shared board, and another member sends a new query with selected responses as its context. | A team member could not put a query and its response on the shared board and send a new query with selected responses as its context. |
 | [TOS-02](#tos-02) | 10 people work on one board at once with no lost changes and no dropped connections.                                                          | With 10 people on one board at once, changes were lost, showed up late, or connections dropped.                                       |
-| [TOS-03](#tos-03) | A team outside ours runs a brainstorming session on the board and reuses LLM results without a messenger.                                     | No team outside ours ever brainstormed on the board, so we never learned whether it replaces passing LLM results through messengers.  |
+| [TOS-03](#tos-03) | A team outside ours runs a brainstorming session on the board and reports whether it uses a messenger while reusing LLM results.              | No team outside ours ever brainstormed on the board, so we never learned whether it replaces passing LLM results through messengers.  |
+
+
