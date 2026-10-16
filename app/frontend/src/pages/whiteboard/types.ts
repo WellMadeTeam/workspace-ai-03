@@ -18,7 +18,6 @@ export type TextWidgetData = {
 export type AiWidgetData = {
     widget_type: "ai";
     label: string;
-    messages: Message[];
 };
 
 export type WidgetNodeData = TextWidgetData | AiWidgetData;

@@ -33,7 +33,7 @@ const initialNodes: WidgetNode[] = [
         id: "2",
         type: "widget",
         position: { x: 0, y: 120 },
-        data: { widget_type: "ai", label: "Prompt", messages: [] },
+        data: { widget_type: "ai", label: "Prompt" },
     },
 ];
 

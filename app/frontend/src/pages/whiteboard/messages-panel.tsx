@@ -2,31 +2,32 @@ import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 
 import { Button, CloseButton, ScrollShadow, Surface, TextArea } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { MessageSquare, SendHorizontal } from "lucide-react";
-import type { AiWidgetNode, Message, WidgetNode } from "./types.ts";
+import type { AiWidgetNode, WidgetNode } from "./types.ts";
+import { useWidgetMessages } from "./use-widget-messages.ts";
 
 type MessagesPanelProps = {
     node: AiWidgetNode;
 };
 
 export function MessagesPanel({ node }: MessagesPanelProps) {
-    const { updateNode, updateNodeData } = useReactFlow<WidgetNode>();
+    const { updateNode } = useReactFlow<WidgetNode>();
     const [draft, setDraft] = useState("");
     const listEndRef = useRef<HTMLDivElement>(null);
-    const { label, messages } = node.data;
+    const { label } = node.data;
+    const { messages, isSending, error, send: sendMessage } = useWidgetMessages(node.id);
 
     // Keep the newest message in view.
     useEffect(() => {
         listEndRef.current?.scrollIntoView({ block: "end" });
-    }, [messages.length]);
+    }, [messages.length, isSending]);
 
     const close = () => updateNode(node.id, { selected: false });
 
     const send = () => {
         const content = draft.trim();
-        if (!content) return;
+        if (!content || isSending) return;
 
-        const message: Message = { id: crypto.randomUUID(), role: "user", content };
-        updateNodeData(node.id, { messages: [...messages, message] });
+        void sendMessage(content);
         setDraft("");
     };
 
@@ -79,8 +80,19 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                         ))}
                     </ul>
                 )}
+                {isSending && (
+                    <p className="mt-2 text-sm opacity-60" role="status">
+                        AI is thinking…
+                    </p>
+                )}
                 <div ref={listEndRef} />
             </ScrollShadow>
+
+            {error && (
+                <p className="px-4 pb-2 text-sm text-danger" role="alert">
+                    {error}
+                </p>
+            )}
 
             <form className="flex items-end gap-2 border-t border-(--border) p-3" onSubmit={onSubmit}>
                 <TextArea
@@ -92,7 +104,7 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                     onChange={(event) => setDraft(event.target.value)}
                     onKeyDown={onKeyDown}
                 />
-                <Button type="submit" isIconOnly aria-label="Send message" isDisabled={!draft.trim()}>
+                <Button type="submit" isIconOnly aria-label="Send message" isDisabled={!draft.trim() || isSending}>
                     <SendHorizontal className="size-4" />
                 </Button>
             </form>
