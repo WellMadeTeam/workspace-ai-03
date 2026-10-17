@@ -104,6 +104,6 @@ Provisional: the final release is published with the evidence of whether the sha
 
 ## Progress Monitoring
 
-- **Review:** the team's weekly review, TBD (day and time), before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
+- **Review:** the team's weekly review, Tuesday at 19:30, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
 - **Checked by:** the accountable member of each scheduled issue reports its state, and the team walks the sprint backlog against the sprint's goal.
-- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/TBD) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
+- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/1/views/3) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
