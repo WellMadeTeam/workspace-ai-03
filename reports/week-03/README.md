@@ -29,10 +29,10 @@ No candidate story moved out of the candidate this week.
 
 ## Customer meeting outcome
 
-| Story                                                                                                         | Shown                                              | Verdict                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`US-01`: See the same board as my teammates](https://github.com/WellMadeTeam/workspace-ai-03/issues/37)      | `AC-01` shown working; `AC-02` not implemented yet | `AC-01` satisfied; `AC-02` refined by the customer in [`DEC-017`](../../docs/decisions.md#dec-017) and scheduled into [`SPRINT-04`](../../docs/project-plan.md#sprint-04). The story stays open until `AC-02` is shown. |
-| [`US-04`: Ask an LLM where the whole team sees it](https://github.com/WellMadeTeam/workspace-ai-03/issues/40) | `AC-01` shown working; `AC-02` not implemented yet | `AC-01` satisfied; `AC-02` refined by the customer in [`DEC-018`](../../docs/decisions.md#dec-018) and scheduled into [`SPRINT-04`](../../docs/project-plan.md#sprint-04). The story stays open until `AC-02` is shown. |
+| Story                                                                                                         | Shown                                    | Verdict                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`US-01`: See the same board as my teammates](https://github.com/WellMadeTeam/workspace-ai-03/issues/37)      | `AC-01` working; `AC-02` not implemented | Rejected on `AC-02`, per [`DEC-020`](../../docs/decisions.md#dec-020); `AC-02` is refined by [`DEC-017`](../../docs/decisions.md#dec-017), and the rework is scheduled into [`SPRINT-04`](../../docs/project-plan.md#sprint-04). |
+| [`US-04`: Ask an LLM where the whole team sees it](https://github.com/WellMadeTeam/workspace-ai-03/issues/40) | `AC-01` working; `AC-02` not implemented | Rejected on `AC-02`, per [`DEC-021`](../../docs/decisions.md#dec-021); `AC-02` is refined by [`DEC-018`](../../docs/decisions.md#dec-018), and the rework is scheduled into [`SPRINT-04`](../../docs/project-plan.md#sprint-04). |
 
 ## Coverage
 
@@ -81,7 +81,7 @@ The candidate is unchanged this week, and it is the scope of [`MLS-03`](../../do
 
 ## Deviations
 
-- The customer's verdicts on `US-01` and `US-04` are not recorded as separate `DEC-nnn` entries. The meeting showed `AC-01` of each story as satisfied and refined `AC-02` of each in [`DEC-017`](../../docs/decisions.md#dec-017) and [`DEC-018`](../../docs/decisions.md#dec-018); both stories stay open until their `AC-02` is shown in Week 4.
+- The verdicts on `US-01` and `US-04`, [`DEC-020`](../../docs/decisions.md#dec-020) and [`DEC-021`](../../docs/decisions.md#dec-021), were stated by the team at the meeting and not contested by the customer, rather than given by the customer explicitly. The transcript shows the customer agreeing that the team iterates on the working slice, and the verdicts are confirmed with the customer in Week 4, as an action point in [`reports/week-03/meeting-report.md`](meeting-report.md#action-points) records.
 - The Week 2 action point to send the customer a UI design draft in Telegram was carried out at the meeting instead: the customer gave feedback on the live slice, as recorded in [`## Previous action points`](meeting-report.md#previous-action-points).
 
 ## Privacy

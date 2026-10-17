@@ -39,6 +39,8 @@ None.
 - [DEC-017: Keep the 10-connection hard limit and display a clear message when reached](../../docs/decisions.md#dec-017)
 - [DEC-018: Display meaningful LLM error messages to all users on the shared board](../../docs/decisions.md#dec-018)
 - [DEC-019: Prioritize diagram rendering and automatic block titling over user authentication](../../docs/decisions.md#dec-019)
+- [DEC-020: `US-01` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04](../../docs/decisions.md#dec-020)
+- [DEC-021: `US-04` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04](../../docs/decisions.md#dec-021)
 
 ## Action points
 
@@ -48,6 +50,7 @@ None.
 | Update the acceptance criteria for LLM failures to specify a meaningful error message visible to all users      | danmaninc | End of Week 3 |
 | Add a user story for automatic block titling/summarization using the LLM                                        | Kamil116  | End of Week 4 |
 | Prepare a specific brainstorming task to run with the customer in the next session to validate the tool's value | hrrrsss   | End of Week 4 |
+| Confirm the verdicts on `US-01` and `US-04` in DEC-020 and DEC-021 with the customer                            | danmaninc | End of Week 4 |
 
 ## Open questions
 
