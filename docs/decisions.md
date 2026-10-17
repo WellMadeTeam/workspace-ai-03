@@ -152,7 +152,7 @@ The team decides UI layout details; the customer reviews concepts, not buttons
 
 ## DEC-016
 
-Build the product with React, Vite and React Flow on the frontend and Python with FastAPI on the backend
+Build the product with React, Vite and React Flow on the frontend and Python with FastAPI on the backend with SQLite database
 
 - **Status:** Active
 - **Date:** 2026-10-14
