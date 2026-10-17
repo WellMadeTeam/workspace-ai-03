@@ -45,7 +45,7 @@ const mergeNode = (node: WidgetNode, widget: Widget): WidgetNode => {
 
 /**
  * Keeps the board's nodes in sync with the widgets stored on the server,
- * polling every 5 seconds, and saves local edits back to the server.
+ * polling every second, and saves local edits back to the server.
  */
 export function useBoardWidgets(
     boardId: string | null,
