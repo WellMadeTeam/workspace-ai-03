@@ -149,3 +149,43 @@ The team decides UI layout details; the customer reviews concepts, not buttons
 - **Made by:** Customer
 - **Source:** [the Week 2 meeting](../reports/week-02/meeting-report.md)
 - **Why:** the customer cares about concepts and ideas; buttons can be added, removed or rearranged at any time, and quick design feedback can go through Telegram without waiting for a meeting.
+
+## DEC-016
+
+Build the product with React, Vite and React Flow on the frontend and Python with FastAPI on the backend with SQLite database, also used Docker
+
+- **Status:** Active
+- **Date:** 2026-10-14
+- **Made by:** Team
+- **Source:** team discussion
+- **Why:** React Flow provides draggable blocks connected by lines out of the box, which is exactly what choosing a context by connecting widgets needs, and a Python backend lets the team call LLM APIs directly and build the minimum usable product within the weeks left.
+
+## DEC-017
+
+Keep the 10-connection hard limit and display a clear message when reached
+
+- **Status:** Active
+- **Date:** 2026-10-15
+- **Made by:** Customer
+- **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
+- **Why:** A hard connection limit is necessary to ensure deterministic behavior and prevent the application from breaking under unexpected load.
+
+## DEC-018
+
+Display meaningful LLM error messages to all users on the shared board
+
+- **Status:** Active
+- **Date:** 2026-10-15
+- **Made by:** Customer
+- **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
+- **Why:** If the LLM fails to answer a query, the error should be visible to all users on the board with a meaningful, non-technical description.
+
+## DEC-019
+
+Prioritize diagram rendering and automatic block titling over user authentication
+
+- **Status:** Active
+- **Date:** 2026-10-15
+- **Made by:** Customer
+- **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
+- **Why:** The team should instead focus capacity on valuable, hypothesis-validating features like rendering diagrams (e.g., Mermaid) from LLM output and automatically generating short, descriptive titles for AI blocks to improve usability.

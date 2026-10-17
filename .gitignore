@@ -25,3 +25,10 @@ __pycache__/
 venv/
 
 *.log
+
+*.db
+*.sqlite
+*.sqlite3
+
+.pytest_cache/
+.ruff_cache/
