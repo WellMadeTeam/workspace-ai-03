@@ -47,6 +47,7 @@ The session is the evidence for the project goal of [`DEC-008`](decisions.md#dec
 Teammates on one board send LLM queries from widgets and all see the same queries and answers, runnable from a clean checkout.
 
 - **Due:** 2026-10-17
+- **Sprint Backlog:** [the issues scheduled into SPRINT-03](https://github.com/WellMadeTeam/workspace-ai-03/milestone/3)
 
 #### REL-03
 
@@ -55,6 +56,7 @@ Teammates on one board send LLM queries from widgets and all see the same querie
 A teammate connects existing widgets to a new query and the answer uses them as context, the side panel shows which widgets those are, members add notes of their own, a full board turns away an eleventh member, and a failed query shows its error to every member.
 
 - **Due:** 2026-10-23
+- **Sprint Backlog:** [the issues scheduled into SPRINT-04](https://github.com/WellMadeTeam/workspace-ai-03/milestone/4)
 
 #### REL-04
 
@@ -63,32 +65,31 @@ A teammate connects existing widgets to a new query and the answer uses them as 
 Provisional: members join a board by its link, highlight part of it, and see LLM diagrams rendered on it, with images from an LLM if time allows, on a product that runs in production and from the self-hosting instructions.
 
 - **Due:** 2026-10-30
+- **Sprint Backlog:** [the issues scheduled into SPRINT-05](https://github.com/WellMadeTeam/workspace-ai-03/milestone/5)
 
 #### REL-05
 
 ### SPRINT-06
 
-Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it.
-If time allows, perform the brainstorming session with outside team.
+Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
 
 - **Due:** 2026-11-06
+- **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
 
 #### REL-06
 
 ### SPRINT-07
 
-Provisional: Outside team work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, and present the feedback.
-If time allows, members keep their boards under their own accounts and export a board to a file.
-Improvements and bug fixes of the product.
+Provisional: ten clients work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, an outside team's feedback on the board is presented, the product is improved and its bugs are fixed, and, if time allows, members keep their boards under their own accounts and export a board to a file.
 
 - **Due:** 2026-11-13
+- **Sprint Backlog:** [the issues scheduled into SPRINT-07](https://github.com/WellMadeTeam/workspace-ai-03/milestone/7)
 
 #### REL-07
 
 ### SPRINT-08
 
-Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report.
-Improvements and bug fixes of the product.
+Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report, on a product that is improved and has its bugs fixed.
 
 - **Due:** 2026-11-20
 
@@ -104,6 +105,6 @@ Provisional: the final release is published with the evidence of whether the sha
 
 ## Progress Monitoring
 
-- **Review:** the team's weekly review, TBD (day and time), before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
+- **Review:** the team's weekly review, Tuesday at 19:30, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
 - **Checked by:** the accountable member of each scheduled issue reports its state, and the team walks the sprint backlog against the sprint's goal.
-- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/TBD) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
+- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/1/views/3) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
