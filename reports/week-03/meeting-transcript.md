@@ -340,7 +340,7 @@
 [00:30:19] Kamil116: No, no, it was very intensive and good work to produce this prototype.
 [00:30:25] Kamil116: MUP.
 [00:30:27] Kamil116: No.
-[00:30:27] Customer: Thank you, Chris.
+[00:30:27] Customer: Thank you, [redacted].
 [00:30:30] hrrrsss: I have one question.
 [00:30:32] Customer: Before we go to your question, it's not a MVP, it's minimum usable product, so it's MVP, V stands for value, so And the value here for us is what we discussed, is, like, can we.
 [00:30:32] Customer: Validate the the hypothesis.
