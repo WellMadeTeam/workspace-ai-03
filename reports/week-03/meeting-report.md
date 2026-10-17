@@ -36,9 +36,9 @@ None.
 
 ## Decisions
 
-- [DEC-016: Keep the 10-connection hard limit and display a clear message when reached](../../docs/decisions.md#dec-016)
-- [DEC-017: Display meaningful LLM error messages to all users on the shared board](../../docs/decisions.md#dec-017)
-- [DEC-018: Prioritize diagram rendering and automatic block titling over user authentication](../../docs/decisions.md#dec-018)
+- [DEC-017: Keep the 10-connection hard limit and display a clear message when reached](../../docs/decisions.md#dec-017)
+- [DEC-018: Display meaningful LLM error messages to all users on the shared board](../../docs/decisions.md#dec-018)
+- [DEC-019: Prioritize diagram rendering and automatic block titling over user authentication](../../docs/decisions.md#dec-019)
 
 ## Action points
 
