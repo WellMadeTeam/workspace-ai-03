@@ -2,20 +2,20 @@
 
 | ID                  | Status | Impact | Likelihood | Risk                                                                                                                                                                                                                                                          |
 | ------------------- | ------ | ------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [RISK-01](#risk-01) | Open   | High   | High       | The board saves each widget by overwriting it through REST and pushes no changes to other clients, so 10 clients editing one board may lose updates or see them late, which would fail the TOS-02 test at the Week 7 deadline.                                |
+| [RISK-01](#risk-01) | Open   | High   | High       | Every client polls the board once a second and saves its edits through REST, where the last write to a field wins, so 10 clients editing one board may lose concurrent edits or see changes late, which would fail the TOS-02 test at the Week 7 deadline.    |
 | [RISK-02](#risk-02) | Open   | High   | Medium     | The outside session needs at least 3 people who owe the project nothing to agree on a date and spend a full session on the board, so no session may happen by Week 8, which would leave TOS-03 without its measure and the project goal without its evidence. |
 | [RISK-03](#risk-03) | Open   | High   | Medium     | The product sends every query through one Groq free-tier key, so a team querying with large selected contexts at once may hit its rate limits, which would show errors instead of responses in the customer demo or the outside session.                      |
 | [RISK-04](#risk-04) | Open   | High   | Low        | The customer brings the product up on his own computer, so a setup step that works only on ours may fail there, which would delay the customer's acceptance of the core flow past the Week 5 deadline of TOS-01.                                              |
 
 ## RISK-01
 
-The board saves each widget by overwriting it through REST and pushes no changes to other clients, so 10 clients editing one board may lose updates or see them late, which would fail the TOS-02 test at the Week 7 deadline.
+Every client polls the board once a second and saves its edits through REST, where the last write to a field wins, so 10 clients editing one board may lose concurrent edits or see changes late, which would fail the TOS-02 test at the Week 7 deadline.
 
 - **Status:** Open
 - **Impact:** High
   - [TOS-02](threshold-of-success.md#tos-02) requires 0 lost updates and every change visible within 2 s, so either failure leaves that part of the threshold unmet.
 - **Likelihood:** High
-  - Today a widget update replaces the whole widget and other clients see it only after they load the board again, and the team has not built real-time sync before.
+  - Two members editing the same widget at once already overwrite each other's change, 10 clients polling every second for 30 minutes have never been load-tested, and the team has not built real-time sync before.
 - **Trigger:** by the end of [SPRINT-06](project-plan.md#sprint-06), a run of 10 clients on one board shows a lost update or a change that takes longer than 2 s to reach the others.
 - **Window:** [SPRINT-06](project-plan.md#sprint-06) and [SPRINT-07](project-plan.md#sprint-07), up to [MLS-07](project-plan.md#mls-07) on 2026-11-13.
 - **Mitigation:** write the 10-client test script at the start of [SPRINT-06](project-plan.md#sprint-06), before the sync itself, and run it on every sync change, so a failure shows up while there is still a sprint left to fix it.
@@ -33,7 +33,7 @@ The outside session needs at least 3 people who owe the project nothing to agree
 - **Trigger:** by the end of [SPRINT-06](project-plan.md#sprint-06), no outside team of at least 3 people has agreed to a session date.
 - **Window:** [SPRINT-06](project-plan.md#sprint-06) to [SPRINT-08](project-plan.md#sprint-08), up to [MLS-08](project-plan.md#mls-08) on 2026-11-20.
 - **Mitigation:** in Week 5, ask several candidate teams, such as fellow students, developers the members know from work or other projects, and the customer's contacts; fix the session date with one of them by Week 6, keep a second team as a reserve, and run the trial session of [SPRINT-06](project-plan.md#sprint-06) early if a team is free.
-- **Contingency:** run a shorter remote session with the reserve team in [SPRINT-08](project-plan.md#sprint-08), so the session still happens before the Week 8 deadline.
+- **Contingency:** run a shorter remote session in [SPRINT-08](project-plan.md#sprint-08) with at least 3 developers the members invite one by one for a single fixed slot, so the session still happens before the Week 8 deadline without an agreed team.
 
 ## RISK-03
 
