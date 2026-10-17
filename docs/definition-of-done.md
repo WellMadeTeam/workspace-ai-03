@@ -1,7 +1,7 @@
 # Definition of done
 
 This file is the single source for what done means for a story, a task, and a pull request in this repository.
-How a change gets in is in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+How a change gets in is in [`CONTRIBUTING.md`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/CONTRIBUTING.md).
 The team edits this file when its workflow changes, so that the lists below always describe how the team actually works.
 
 ## Story
@@ -27,7 +27,7 @@ The team does not use an in-repository task tracker, so no other Definition of D
 - The accountable reviewer ticks every task acceptance criterion before approving.
 - The approval comes from a member other than the author, per [Review And Approval](https://github.com/inno-itpd/itpd/blob/main/requirements/pull-requests-requirements.md#review-and-approval).
 - The repository checks are green: the link check ([`lychee.yml`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/workflows/lychee.yml)) and the Markdown check ([`markdown.yml`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/workflows/markdown.yml)).
-- A user-visible change updates the `[Unreleased]` section of [`CHANGELOG.md`](../CHANGELOG.md), per [The Changelog](https://github.com/inno-itpd/itpd/blob/main/requirements/releases-requirements.md#the-changelog).
+- A user-visible change updates the `[Unreleased]` section of [`CHANGELOG.md`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/CHANGELOG.md), per [The Changelog](https://github.com/inno-itpd/itpd/blob/main/requirements/releases-requirements.md#the-changelog).
 - The acceptance criteria this pull request claims pass on its branch, and on `main` after it merges.
 - No secret, recording, or private-only material is committed, per [Sensitive Information Reference](https://github.com/inno-itpd/itpd/blob/main/requirements/visibility-requirements.md#sensitive-information-reference).
 - Implementation notes in the pull request description record the decisions made and how the change was checked, under the "What changed and why" and "What you checked and how" headings of the [pull request template](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/pull_request_template.md).

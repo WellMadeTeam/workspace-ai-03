@@ -9,7 +9,7 @@ The customer accepts the core flow, where a team member puts a query and its res
 
 ## TOS-02
 
-Per `CON-03`, 10 simultaneous clients edit one board for 30 minutes with no update lost and each change visible to the other clients within 2 s, by the end of Week 7.
+Per [`CON-03`](product-vision.md#con-03), 10 simultaneous clients edit one board for 30 minutes with no update lost and each change visible to the other clients within 2 s, by the end of Week 7.
 
 - **Status:** Open
 - **Measure:** a repeatable test, a script or a recorded session, of 10 clients on one board for 30 minutes showing 0 lost updates and every change visible to the other clients within 2 s, with its results linked from the Week 7 report, by the end of Week 7.
