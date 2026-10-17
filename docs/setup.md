@@ -13,7 +13,7 @@ This page takes a clean checkout to a running product. Follow it from top to bot
 
 ```bash
 git clone https://github.com/WellMadeTeam/workspace-ai-03.git
-cd workspace-ai-03
+cd workspace-ai-03/app
 ```
 
 Nothing else needs installing: Docker builds the backend and the frontend.
