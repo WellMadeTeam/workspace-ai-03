@@ -8,7 +8,7 @@ An infinite, real-time whiteboard where teams can draw, write, and query LLMs to
 
 ### Links
 
-- [Current week's report (Week 1)](reports/week-01/README.md)
+- [Weekly reports](reports/)
 - [Project documentation](docs/)
 - [Setup and run instructions](docs/setup.md)
 

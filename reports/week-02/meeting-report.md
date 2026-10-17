@@ -14,10 +14,10 @@
 
 ## Previous action points
 
-| Action | Outcome | Decision |
-| ------ | ------- | -------- |
-| [`reports/week-01/meeting-report.md`](../week-01/meeting-report.md#action-points): "Research possible visualizations of the prompts in the board" | Carried out: each LLM query lives in its own widget, its chat opens in a side panel, and widgets are connected by lines to pass context, see [the prototype](prototypes.md#ai-context-reuse-flow), task [#24](https://github.com/WellMadeTeam/workspace-ai-03/issues/24). The customer accepted the flow at this meeting. | [`DEC-013`](../../docs/decisions.md#dec-013), [`DEC-014`](../../docs/decisions.md#dec-014) |
-| [`reports/week-01/meeting-report.md`](../week-01/meeting-report.md#action-points): "Transcribe and fixate the decisions made by the Customer in team's workspace" | Carried out, late: the [kickoff transcript](../week-01/meeting-transcript.md) came in [PR #12](https://github.com/WellMadeTeam/workspace-ai-03/pull/12), and the kickoff decisions became `DEC-001` to `DEC-007` in [the decisions log](../../docs/decisions.md), task [#18](https://github.com/WellMadeTeam/workspace-ai-03/issues/18). | None |
+| Action                                                                                                                                                            | Outcome                                                                                                                                                                                                                                                                                                                                  | Decision                                                                                   |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [`reports/week-01/meeting-report.md`](../week-01/meeting-report.md#action-points): "Research possible visualizations of the prompts in the board"                 | Carried out: each LLM query lives in its own widget, its chat opens in a side panel, and widgets are connected by lines to pass context, see [the prototype](prototypes.md#ai-context-reuse-flow), task [#24](https://github.com/WellMadeTeam/workspace-ai-03/issues/24). The customer accepted the flow at this meeting.                | [`DEC-013`](../../docs/decisions.md#dec-013), [`DEC-014`](../../docs/decisions.md#dec-014) |
+| [`reports/week-01/meeting-report.md`](../week-01/meeting-report.md#action-points): "Transcribe and fixate the decisions made by the Customer in team's workspace" | Carried out, late: the [kickoff transcript](../week-01/meeting-transcript.md) came in [PR #12](https://github.com/WellMadeTeam/workspace-ai-03/pull/12), and the kickoff decisions became `DEC-001` to `DEC-007` in [the decisions log](../../docs/decisions.md), task [#18](https://github.com/WellMadeTeam/workspace-ai-03/issues/18). | None                                                                                       |
 
 ## Previous open questions
 
@@ -44,14 +44,14 @@ None.
 
 ## Action points
 
-| Action | Owner | Due |
-| ------ | ----- | --- |
-| Rewrite the goal and the stakeholders in the product vision per `DEC-008` and `DEC-009` | hrrrsss | End of Week 2 |
-| Re-prioritize the stories and the minimum usable product candidate per `DEC-010` to `DEC-012` | Kamil116 | End of Week 2 |
-| Add a story for viewing the widgets connected as context, per `DEC-014` | Kamil116 | End of Week 2 |
-| Rework the prototype so the side panel takes the full right side and lists connected widgets | danmaninc | End of Week 3 |
-| Send the customer a UI design draft in Telegram for quick feedback | AntonChulakov | End of Week 3 |
-| Propose a session that runs the same task in Telegram and on the board, to measure how far the board helps | danmaninc | End of Week 3 |
+| Action                                                                                                     | Owner         | Due           |
+|------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| Rewrite the goal and the stakeholders in the product vision per `DEC-008` and `DEC-009`                    | hrrrsss       | End of Week 2 |
+| Re-prioritize the stories and the minimum usable product candidate per `DEC-010` to `DEC-012`              | Kamil116      | End of Week 2 |
+| Add a story for viewing the widgets connected as context, per `DEC-014`                                    | Kamil116      | End of Week 2 |
+| Rework the prototype so the side panel takes the full right side and lists connected widgets               | danmaninc     | End of Week 3 |
+| Send the customer a UI design draft in Telegram for quick feedback                                         | AntonChulakov | End of Week 3 |
+| Propose a session that runs the same task in Telegram and on the board, to measure how far the board helps | danmaninc     | End of Week 3 |
 
 ## Open questions
 
@@ -59,10 +59,10 @@ None.
 
 ## Disagreements
 
-| Your position | Customer's position | What you changed |
-| ------------- | ------------------- | ---------------- |
-| The goal is to solve the aggregation problem | Seven weeks only allow verifying whether the idea solves it and how well | Goal reworded per [`DEC-008`](../../docs/decisions.md#dec-008) |
-| Stakeholders are any teams that brainstorm with LLMs | If a persona is needed, it is developers and architects, for whom copy-paste breaks down on diagrams | Persona narrowed per [`DEC-009`](../../docs/decisions.md#dec-009) |
-| The minimum usable product holds seven must-have stories, invitations and joining by link among them | It only needs a shared board with query widgets and shared responses | Candidate reduced per [`DEC-012`](../../docs/decisions.md#dec-012) |
-| AI-generated images are a could-have | They are a should-have right after diagram rendering, since they also draw diagrams | Priority raised per [`DEC-010`](../../docs/decisions.md#dec-010) |
-| A list of user stories is how we show scope to the customer | Customers think in features; stories are the team's analysis tool | From Week 3 we present features and keep stories for tracking |
+| Your position                                                                                        | Customer's position                                                                                  | What you changed                                                   |
+|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| The goal is to solve the aggregation problem                                                         | Seven weeks only allow verifying whether the idea solves it and how well                             | Goal reworded per [`DEC-008`](../../docs/decisions.md#dec-008)     |
+| Stakeholders are any teams that brainstorm with LLMs                                                 | If a persona is needed, it is developers and architects, for whom copy-paste breaks down on diagrams | Persona narrowed per [`DEC-009`](../../docs/decisions.md#dec-009)  |
+| The minimum usable product holds seven must-have stories, invitations and joining by link among them | It only needs a shared board with query widgets and shared responses                                 | Candidate reduced per [`DEC-012`](../../docs/decisions.md#dec-012) |
+| AI-generated images are a could-have                                                                 | They are a should-have right after diagram rendering, since they also draw diagrams                  | Priority raised per [`DEC-010`](../../docs/decisions.md#dec-010)   |
+| A list of user stories is how we show scope to the customer                                          | Customers think in features; stories are the team's analysis tool                                    | From Week 3 we present features and keep stories for tracking      |
