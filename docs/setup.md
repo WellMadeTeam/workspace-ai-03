@@ -52,13 +52,34 @@ To stop the product, press Ctrl+C, or run `docker compose down` in another termi
 
 ## Complete the core task
 
-1. Open the board in two browser windows, as two teammates.
-2. In the first window, create a AI widget and type a query to the language model.
-3. Wait for the response: it appears in the widget.
-4. In the second window, check that the same widget with the same query and response is visible.
+1. Open `http://localhost` in a browser. A new board is created, and its id appears in the address bar, such as `http://localhost/?board=<id>`.
+2. Copy that whole address and open it in a second browser window, as a second teammate. Opening `http://localhost` again without the `?board=` part creates another, empty board.
+3. In the first window, add an AI block with the **AI** button of the toolbar at the bottom.
+4. Click the AI block to open its messages panel on the right, type a query to the language model, and send it.
+5. Wait for the response: it appears in the messages panel under the query.
+6. In the second window, check that the same AI block appears within a few seconds, then click it and check that its panel shows the same query and response.
 
 ## Checks and tests
 
 The product has no automated tests yet.
 
-Every pull request runs a link check that fails on broken links in the Markdown files. Its results show on the pull request page, and its workflow is in `.github/workflows/`.
+Every pull request and every push to `main` runs two checks, whose workflows are in `.github/workflows/`, and their results show on the pull request page:
+
+- The link check (`lychee.yml`) fails on broken links in the Markdown files.
+- The Markdown check (`markdown.yml`) runs `markdownlint-cli2` with the rules in `.markdownlint-cli2.jsonc`.
+
+To run the same checks locally, from the repository root, with Node.js and [lychee](https://lychee.cli.rs/) installed:
+
+```bash
+npx markdownlint-cli2 "**/*.md"
+lychee --no-progress './**/*.md'
+```
+
+To lint, type-check, and build the frontend locally, from the repository root, with Node.js 22 or later:
+
+```bash
+cd app/frontend
+npm ci
+npm run lint
+npm run build
+```
