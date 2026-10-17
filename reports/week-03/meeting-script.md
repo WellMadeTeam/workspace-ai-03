@@ -50,6 +50,7 @@ Target: demonstrate the preliminary MUP prototype, validate the core user storie
 9. _(closed)_ What specific brainstorming task should we prepare for the upcoming validation session to prove the tool's value?
 
 ### Carried Out Questions
+
 10. _(open)_ How do your teams currently share and build upon LLM queries and results during brainstorming?
 11. _(closed)_ What is the absolute simplest way for a team to share a board and see LLM responses simultaneously for the MUP?
 
