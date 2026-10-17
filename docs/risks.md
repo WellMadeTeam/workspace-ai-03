@@ -46,8 +46,8 @@ The product sends every query through one Groq free-tier key, so a team querying
   - The free tier limits requests and tokens per minute for the whole key, and a query whose context is several selected responses sends many tokens at once.
 - **Trigger:** a query on the deployed product returns a rate-limit error from Groq, in a rehearsal or in the backend logs.
 - **Window:** from [SPRINT-04](project-plan.md#sprint-04), when context queries arrive, up to [MLS-08](project-plan.md#mls-08) on 2026-11-20.
-- **Mitigation:** rehearse the demo and the session with several members querying at once with selected contexts, and show a rate-limit error to every member as a failed query instead of a silent failure.
-- **Contingency:** run the demo and the session on a paid Groq key, or on another provider's key, set through `backend/.env` without code changes.
+- **Mitigation:** rehearse the demo and the session with several members querying at once with selected contexts, show a rate-limit error to every member as a failed query instead of a silent failure.
+- **Contingency:** move the backend to the chosen backup provider: replace the Groq client in `app/backend/ai_service.py` with an OpenAI-compatible client pointed at that provider's endpoint, and set its key in `app/backend/.env` and its placeholder in `app/backend/.env.example`.
 
 ## RISK-04
 
