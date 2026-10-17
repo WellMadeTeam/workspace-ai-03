@@ -15,28 +15,30 @@ This is the MUP the customer accepted in [`DEC-012`](decisions.md#dec-012); invi
 
 - **Due:** 2026-10-30
 - **Sprints:** [SPRINT-04](#sprint-04), [SPRINT-05](#sprint-05)
-- **Advances:** [TOS-02](threshold-of-success.md#tos-02)
+- **Advances:** [TOS-01](threshold-of-success.md#tos-01)
 
-A teammate connects earlier answers to a new query as its context and sees which widgets that context came from, on a deployed product the customer can also self-host.
-This is the shared-context idea of [`DEC-005`](decisions.md#dec-005) and [`DEC-014`](decisions.md#dec-014), the part of the product that tests whether a shared board beats sending answers through messengers.
+A teammate who joined the board by its link sends a new query with responses selected from the board as its context, on a deployed product the customer can also self-host.
+This completes the core flow of [`DEC-005`](decisions.md#dec-005), the part of the product that tests whether a shared board beats sending answers through messengers; around it, the side panel shows which widgets a query's context came from, per [`DEC-014`](decisions.md#dec-014), members add notes of their own, a full board turns away an eleventh member, per [`DEC-003`](decisions.md#dec-003), and a failed query shows its error to every member.
+Once the core flow works, members highlight part of the board and see the diagrams an LLM writes as code rendered as pictures, per [`DEC-006`](decisions.md#dec-006) and [`DEC-010`](decisions.md#dec-010); images from an LLM join this increment only if time allows.
 
 ### MLS-07
 
 - **Due:** 2026-11-13
 - **Sprints:** [SPRINT-06](#sprint-06), [SPRINT-07](#sprint-07)
+- **Advances:** [TOS-02](threshold-of-success.md#tos-02)
+
+Ten clients work on one board at once, per [`CON-03`](product-vision.md#con-03), with no update lost and every change visible to the others, shown by a repeatable test.
+The increment also extends the core flow: the LLM takes the team's reference documents into account, and images from an LLM reach the board if they did not fit into the previous increment.
+Accounts and export, per [`DEC-011`](decisions.md#dec-011) and [`DEC-007`](decisions.md#dec-007), come last and are the first to drop if time runs out, because they are not part of the threshold.
+
+### MLS-08
+
+- **Due:** 2026-11-20
+- **Sprints:** [SPRINT-08](#sprint-08)
 - **Advances:** [TOS-03](threshold-of-success.md#tos-03)
 
-Architects share LLM-generated diagrams on the board, rendered from code, and AI-generated images if time allows.
-The order follows [`DEC-010`](decisions.md#dec-010); the increment ends in a usability test with real developers or architects.
-
-### MLS-09
-
-- **Due:** 2026-11-27
-- **Sprints:** [SPRINT-08](#sprint-08), [SPRINT-09](#sprint-09)
-- **Advances:** [TOS-04](threshold-of-success.md#tos-04)
-
-The team states, with evidence from real use, whether and how well a shared LLM board solves the aggregation problem.
-This is the project goal set in [`DEC-008`](decisions.md#dec-008); notes and highlighting land here only if they serve that answer.
+A team outside ours runs a brainstorming session on the board and reuses its responses as context for new queries.
+The session is the evidence for the project goal of [`DEC-008`](decisions.md#dec-008): whether, and how well, a shared board replaces passing LLM results through messengers.
 
 ## Sprints
 
@@ -50,7 +52,7 @@ Teammates on one board send LLM queries from widgets and all see the same querie
 
 ### SPRINT-04
 
-A teammate connects existing widgets to a new query and the answer uses them as context.
+A teammate connects existing widgets to a new query and the answer uses them as context, the side panel shows which widgets those are, members add notes of their own, a full board turns away an eleventh member, and a failed query shows its error to every member.
 
 - **Due:** 2026-10-23
 
@@ -58,7 +60,7 @@ A teammate connects existing widgets to a new query and the answer uses them as 
 
 ### SPRINT-05
 
-Provisional: the side panel shows a query's connected context, and the product runs in production and from the self-hosting instructions.
+Provisional: members join a board by its link, highlight part of it, and see LLM diagrams rendered on it, with images from an LLM if time allows, on a product that runs in production and from the self-hosting instructions.
 
 - **Due:** 2026-10-30
 
@@ -66,7 +68,8 @@ Provisional: the side panel shows a query's connected context, and the product r
 
 ### SPRINT-06
 
-Provisional: a diagram an LLM returns as code renders on the board, and the product reports how teams use it.
+Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it.
+If time allows, perform the brainstorming session with outside team.
 
 - **Due:** 2026-11-06
 
@@ -74,7 +77,9 @@ Provisional: a diagram an LLM returns as code renders on the board, and the prod
 
 ### SPRINT-07
 
-Provisional: architects can share diagrams, and images if time allows, and the usability test is ready to run.
+Provisional: Outside team work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, and present the feedback.
+If time allows, members keep their boards under their own accounts and export a board to a file.
+Improvements and bug fixes of the product.
 
 - **Due:** 2026-11-13
 
@@ -82,7 +87,8 @@ Provisional: architects can share diagrams, and images if time allows, and the u
 
 ### SPRINT-08
 
-Provisional: usability findings are fixed, and the release process is reproducible from the repository.
+Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report.
+Improvements and bug fixes of the product.
 
 - **Due:** 2026-11-20
 
@@ -98,6 +104,6 @@ Provisional: the final release is published with the evidence of whether the sha
 
 ## Progress Monitoring
 
-- **Review:** the team's weekly review, <day> at <time>, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
+- **Review:** the team's weekly review, TBD (day and time), before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
 - **Checked by:** the accountable member of each scheduled issue reports its state, and the team walks the sprint backlog against the sprint's goal.
-- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/<number>) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
+- **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/TBD) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
