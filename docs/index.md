@@ -6,7 +6,7 @@ A shared whiteboard where a team asks a language model together and keeps every 
 
 - Everyone on the team opens the same board and sees the same widgets.
 - A widget holds one query to the language model and its response.
-- Widgets are connected with lines: a new query is answered using only the widgets connected to it, so the team chooses the context.
+- The widgets are connected by lines: the response to a new request is generated using the widgets associated with it or a separate request.
 - Selecting a widget opens its full conversation in a side panel.
 
 The project is exploratory: its goal is to verify whether, and to what degree, a shared board solves the problem of teams losing context when they share LLM queries and results.
