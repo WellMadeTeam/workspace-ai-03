@@ -8,6 +8,8 @@ A team of up to 10 people can put LLM queries and responses on a common board an
 
 **Supports:** [VP-01](research/value-proposition.md#vp-01).
 
+**Threshold:** [the threshold of success](threshold-of-success.md).
+
 ## Stakeholders
 
 - **Team member** who brainstorms with LLMs: software developers and software architects
