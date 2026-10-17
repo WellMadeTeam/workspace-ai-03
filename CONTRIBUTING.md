@@ -19,16 +19,12 @@ It holds every open issue of the repository, and the issues and their milestones
 
 The team uses these views:
 
-- **Team items**: a table with the `Responsible`, `Accountable`, `Assignees`, and `Milestone` columns, grouped by `Milestone`.
-  The team uses it to plan a sprint and to check that each issue has its two members and its sprint.
-- **Backlog**: a board grouped by `Status`, over the task issues (`label:task`).
-  The team uses it during the week to see what is waiting, in progress, and done.
-- **Assignment 3**: a board grouped by `Status`, over the issues in the `Assignment 3` milestone.
-  The team uses it in the weekly review to see what is left before the submission.
-- **My items**: a table of the issues assigned to the viewer.
+- **Team items**: a table over every issue, grouped by `Milestone`, so each sprint's issues sit under their sprint, with the `Status`, `Responsible`, and `Accountable` columns, and sliced by `Assignees`, so a member can pick a name to see only their issues.
+  The team uses it to plan a sprint and, at the weekly review, to check that each issue has its sprint, its two members, and its state.
+- **Backlog**: a board over the task issues (`label:task`), with one column per `Status`.
+  The team uses it during the week to see which tasks are waiting, in progress, in review, and done.
+- **My items**: a table of the issues assigned to the viewer, sliced by `Status`.
   Each member uses it to see their own work.
-- **Roadmap**: a timeline of the issues.
-  The team uses it to see how the sprints line up across the course.
 
 ## How a change gets in
 

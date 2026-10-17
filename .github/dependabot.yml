@@ -5,13 +5,20 @@ updates:
     directory: /
     schedule:
       interval: weekly
-      
+
   - package-ecosystem: pip
-    directory: /backend
+    directory: /app/backend
     schedule:
       interval: weekly
 
   - package-ecosystem: npm
-    directory: /frontend
+    directory: /app/frontend
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: docker
+    directories:
+      - /app/backend
+      - /app/frontend
     schedule:
       interval: weekly

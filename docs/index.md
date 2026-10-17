@@ -27,4 +27,10 @@ The project is exploratory: its goal is to verify whether, and to what degree, a
 
 ## Project
 
+- [Threshold of success](threshold-of-success.md): the goals that must all be achieved for the project to count as a success.
+- [Project plan](project-plan.md): the milestones, the sprints and their releases, and how progress is monitored.
+- [Risks](risks.md): what could take the plan away, and the fallback for each.
+- [Definition of done](definition-of-done.md): what done means for a story, a task, and a pull request.
+- [Contributing guide](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/CONTRIBUTING.md) and [changelog](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/CHANGELOG.md)
+- [GitHub project](https://github.com/orgs/WellMadeTeam/projects/1) and [sprint milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones)
 - [Source code and issues](https://github.com/WellMadeTeam/workspace-ai-03)
