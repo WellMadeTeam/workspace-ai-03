@@ -1,0 +1,21 @@
+site_name: Workspace for AI Collaboration
+site_description: A shared whiteboard where a team asks a language model together and keeps every question and answer in one place.
+site_url: https://wellmadeteam.github.io/workspace-ai-03/
+repo_url: https://github.com/WellMadeTeam/workspace-ai-03
+
+docs_dir: docs
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Setup and run: setup.md
+  - Product vision: product-vision.md
+  - Decisions: decisions.md
+  - Assumptions: assumptions.md
+  - Research:
+      - Alternatives: research/alternatives.md
+      - Comparison: research/comparison.md
+      - Gap analysis: research/gap-analysis.md
+      - Value proposition: research/value-proposition.md

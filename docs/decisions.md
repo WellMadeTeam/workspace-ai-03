@@ -150,6 +150,16 @@ The team decides UI layout details; the customer reviews concepts, not buttons
 - **Source:** [the Week 2 meeting](../reports/week-02/meeting-report.md)
 - **Why:** the customer cares about concepts and ideas; buttons can be added, removed or rearranged at any time, and quick design feedback can go through Telegram without waiting for a meeting.
 
+## DEC-016
+
+Build the product with React, Vite and React Flow on the frontend and Python with FastAPI on the backend with SQLite database, also used Docker
+
+- **Status:** Active
+- **Date:** 2026-10-14
+- **Made by:** Team
+- **Source:** team discussion
+- **Why:** React Flow provides draggable blocks connected by lines out of the box, which is exactly what choosing a context by connecting widgets needs, and a Python backend lets the team call LLM APIs directly and build the minimum usable product within the weeks left.
+
 ## DEC-017
 
 Keep the 10-connection hard limit and display a clear message when reached

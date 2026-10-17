@@ -14,6 +14,11 @@
 - Maintenance / Chore (`chore`)
 - Documentation (`docs`)
 
+## Changelog
+<!-- Leave the one that applies -->
+- User-visible: the `[Unreleased]` section of `CHANGELOG.md` is updated.
+- Not user-visible.
+
 ## For the reviewer
 <!-- Explain what the reviewer should focus on. Mention whether the linked requirements or acceptance criteria are satisfied. -->
 
