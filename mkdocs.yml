@@ -14,6 +14,10 @@ nav:
   - Product vision: product-vision.md
   - Decisions: decisions.md
   - Assumptions: assumptions.md
+  - Threshold of success: threshold-of-success.md
+  - Project plan: project-plan.md
+  - Risks: risks.md
+  - Definition of done: definition-of-done.md
   - Research:
       - Alternatives: research/alternatives.md
       - Comparison: research/comparison.md
