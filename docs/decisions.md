@@ -189,3 +189,23 @@ Prioritize diagram rendering and automatic block titling over user authenticatio
 - **Made by:** Customer
 - **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
 - **Why:** The team should instead focus capacity on valuable, hypothesis-validating features like rendering diagrams (e.g., Mermaid) from LLM output and automatically generating short, descriptive titles for AI blocks to improve usability.
+
+## DEC-020
+
+`US-01` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04
+
+- **Status:** Active
+- **Date:** 2026-10-15
+- **Made by:** Team, not contested
+- **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
+- **Why:** `AC-01` was shown working, but an 11th member is not yet turned away with a "board is full" message, as [DEC-017](#dec-017) refines `AC-02`; the customer agreed that the team iterates on the working slice.
+
+## DEC-021
+
+`US-04` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04
+
+- **Status:** Active
+- **Date:** 2026-10-15
+- **Made by:** Team, not contested
+- **Source:** [the Week 3 meeting](../reports/week-03/meeting-report.md)
+- **Why:** `AC-01` was shown working, but a failed LLM query does not yet show a meaningful error to every member, as [DEC-018](#dec-018) refines `AC-02`; the customer agreed that the team iterates on the working slice.
