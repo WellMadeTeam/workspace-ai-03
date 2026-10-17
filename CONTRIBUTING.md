@@ -49,7 +49,8 @@ A pull request:
 - Updates the `[Unreleased]` section of [`CHANGELOG.md`](CHANGELOG.md) when the change is user-visible, per [Keep a Changelog](https://keepachangelog.com/).
 - Passes the link check and the Markdown check.
 
-Merge with **Squash and merge**, so each pull request lands on `main` as one commit titled with the pull request title and its number, for example `feat: add AI block messages view (#85)`.
+Merge with **Create a merge commit**, the only merge method the repository allows.
+The merge commit is titled with the pull request title and its number, for example `feat: add AI block messages view (#85)`, and the branch's own commits stay in the history.
 
 ### Review
 
@@ -76,7 +77,7 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 - `scope` is optional and names the area changed, such as `frontend`, `backend`, or `docs`.
 - The description is lowercase, in the imperative mood, without a trailing period, for example `fix: remove unnecessary secondary sorting by id`.
 
-A pull request title uses the same format, because it becomes the squashed commit's message on `main`.
+A pull request title uses the same format, because it becomes the merge commit's message on `main`.
 
 ## Releases
 
