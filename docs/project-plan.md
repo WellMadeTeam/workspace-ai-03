@@ -69,8 +69,7 @@ Provisional: members join a board by its link, highlight part of it, and see LLM
 
 ### SPRINT-06
 
-Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it.
-If time allows, perform the brainstorming session with outside team.
+Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
 
 - **Due:** 2026-11-06
 
@@ -78,9 +77,7 @@ If time allows, perform the brainstorming session with outside team.
 
 ### SPRINT-07
 
-Provisional: Outside team work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, and present the feedback.
-If time allows, members keep their boards under their own accounts and export a board to a file.
-Improvements and bug fixes of the product.
+Provisional: an outside team works on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, its feedback is presented, the product is improved and its bugs are fixed, and, if time allows, members keep their boards under their own accounts and export a board to a file.
 
 - **Due:** 2026-11-13
 
@@ -88,8 +85,7 @@ Improvements and bug fixes of the product.
 
 ### SPRINT-08
 
-Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report.
-Improvements and bug fixes of the product.
+Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report, on a product that is improved and has its bugs fixed.
 
 - **Due:** 2026-11-20
 
