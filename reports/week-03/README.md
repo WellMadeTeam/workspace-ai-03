@@ -14,7 +14,7 @@ Our problem-space sentence: We solve the problem of teams who brainstorm with LL
 4. Defined done for a story, a task, and a pull request, wrote the contributing guide, and set up the public GitHub project with the `Responsible` and `Accountable` issue fields.
 5. Built the minimum usable product candidate into one working slice on `main` through task issues and one pull request per task.
 6. Published `docs/` as a documentation site and wrote the setup page.
-7. Carried out the Week 2 action points, and showed the working slice to the customer against the acceptance criteria of its stories.
+7. Carried out the Week 2 action points, or recorded why not, and showed the working slice to the customer against the acceptance criteria of its stories.
 8. Cut the first release, [`REL-03`](../../docs/project-plan.md#rel-03), tagged [`v0.1.0`](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.1.0).
 
 No candidate story moved out of the candidate this week.
@@ -77,7 +77,7 @@ The candidate is unchanged this week, and it is the scope of [`MLS-03`](../../do
 
 ## Repository evidence
 
-[Merged pull request #93](https://github.com/WellMadeTeam/workspace-ai-03/pull/93) that closed [task issue #74](https://github.com/WellMadeTeam/workspace-ai-03/issues/74), the latest green [link check run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/39041668558) and [Markdown check run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/39041668595) on `main`.
+[Merged pull request #93](https://github.com/WellMadeTeam/workspace-ai-03/pull/93) that closed [task issue #74](https://github.com/WellMadeTeam/workspace-ai-03/issues/74), the latest green [link check run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/39051979333) and [Markdown check run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/39051979476) on `main`.
 
 ## Deviations
 
@@ -85,7 +85,11 @@ The candidate is unchanged this week, and it is the scope of [`MLS-03`](../../do
 - The Week 2 action point to send the customer a UI design draft in Telegram was carried out at the meeting instead: the customer gave feedback on the live slice, as recorded in [`## Previous action points`](meeting-report.md#previous-action-points).
 - [Pull request #93](https://github.com/WellMadeTeam/workspace-ai-03/pull/93), which connects the AI block's messages to the API, and [pull request #94](https://github.com/WellMadeTeam/workspace-ai-03/pull/94), which dockerizes the application, merged on 2026-10-16, the day after the meeting, so the slice was not fully merged into `main` when it was shown. Both are in [`v0.1.0`](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.1.0), which was cut after them.
 - `CHANGELOG.md` was created on 2026-10-17, when the release was cut, rather than kept current through the week; its `0.1.0` entries were compiled from the merged pull requests.
-- The agenda of [`reports/week-03/meeting-script.md`](meeting-script.md) runs the demonstration and the acceptance criteria as two shared parts rather than one part per story with its verdict question, and its second permission question asks about publishing a summary rather than about sharing the transcript privately. The script is preparation and is not rewritten after the meeting; the verdicts are recorded in [`DEC-020`](../../docs/decisions.md#dec-020) and [`DEC-021`](../../docs/decisions.md#dec-021).
+- The agenda of [`reports/week-03/meeting-script.md`](meeting-script.md) runs the demonstration and the acceptance criteria as two shared parts rather than one part per story with its verdict question, and its second permission question asks about publishing a summary rather than about sharing the transcript privately; questions 10 and 11, on the Week 2 topics, belong to no agenda part. The script was committed to the repository on 2026-10-17, two days after the meeting, rather than before it, and it was not changed to match what happened at the meeting; the verdicts are recorded in [`DEC-020`](../../docs/decisions.md#dec-020) and [`DEC-021`](../../docs/decisions.md#dec-021).
+- AntonChulakov did not attend the Week 3 meeting, so `## Metadata` of [`reports/week-03/meeting-report.md`](meeting-report.md#metadata) and the transcript list three of the four members.
+- Two of the meeting's action points, updating the acceptance criteria for the connection limit and for LLM failures, were due at the end of Week 3 rather than in Week 4; both were carried out in Week 3 as the criteria of the rework tasks [#113](https://github.com/WellMadeTeam/workspace-ai-03/issues/113) and [#114](https://github.com/WellMadeTeam/workspace-ai-03/issues/114), and the other three action points are due in Week 4.
+- On most Week 3 task issues, the acceptance criteria were ticked after the pull request was approved and merged, not before the approval: the boxes of the tasks closed by pull requests #65 to #92 were ticked on 2026-10-16, and those of #67, #74, and #95 to #101 on 2026-10-17. Task [#110](https://github.com/WellMadeTeam/workspace-ai-03/issues/110), closed by [pull request #111](https://github.com/WellMadeTeam/workspace-ai-03/pull/111), was opened without the task form from the acceptance criteria list of another task, so it has no `AC-nn` criteria.
+- Three commits made after `CONTRIBUTING.md` set the commit format do not follow it: `90b3de8` "Fix formatting issue in decisions.md", `a4c8789` "Update setup.md", and `410d94d` "Update index.md".
 
 ## Privacy
 
