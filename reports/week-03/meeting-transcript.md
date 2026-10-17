@@ -1,4 +1,4 @@
-# W3 meeting transcript
+# Week 3 meeting transcript
 
 - **Date:** 2026-10-15
 - **Participants:** Customer, danmaninc, hrrrsss, Kamil116
