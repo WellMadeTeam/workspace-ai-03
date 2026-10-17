@@ -47,6 +47,7 @@ The session is the evidence for the project goal of [`DEC-008`](decisions.md#dec
 Teammates on one board send LLM queries from widgets and all see the same queries and answers, runnable from a clean checkout.
 
 - **Due:** 2026-10-17
+- **Sprint Backlog:** [the issues scheduled into SPRINT-03](https://github.com/WellMadeTeam/workspace-ai-03/milestone/3)
 
 #### REL-03
 
