@@ -53,7 +53,7 @@ To stop the product, press Ctrl+C, or run `docker compose down` in another termi
 ## Complete the core task
 
 1. Open the board in two browser windows, as two teammates.
-2. In the first window, create a widget and type a query to the language model.
+2. In the first window, create a AI widget and type a query to the language model.
 3. Wait for the response: it appears in the widget.
 4. In the second window, check that the same widget with the same query and response is visible.
 
