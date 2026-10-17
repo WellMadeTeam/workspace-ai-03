@@ -51,6 +51,8 @@ Teammates on one board send LLM queries from widgets and all see the same querie
 
 #### REL-03
 
+Released as [v0.1.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.1.0) on 2026-10-17.
+
 ### SPRINT-04
 
 A teammate connects existing widgets to a new query and the answer uses them as context, the side panel shows which widgets those are, members add notes of their own, a full board turns away an eleventh member, and a failed query shows its error to every member.
