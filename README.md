@@ -10,5 +10,6 @@ An infinite, real-time whiteboard where teams can draw, write, and query LLMs to
 
 - [Current week's report (Week 1)](reports/week-01/README.md)
 - [Project documentation](docs/)
+- [Setup and run instructions](docs/setup.md)
 
 > **Work in progress.** This project is being developed for the ITPD course and changes weekly.
