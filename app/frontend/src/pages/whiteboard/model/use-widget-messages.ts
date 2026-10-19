@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createMessage, listMessages } from "./api.ts";
-import type { Message } from "./types.ts";
+import { useCallback, useState } from "react";
+import { usePolling } from "@/shared/lib";
+import { createMessage, listMessages, type Message } from "../api/message";
 
 const MESSAGES_POLL_INTERVAL_MS = 2000;
 
@@ -16,29 +16,22 @@ export function useWidgetMessages(widgetId: string) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [pending, setPending] = useState<PendingMessage | null>(null);
     const [error, setError] = useState<string | null>(null);
-    // Only the most recently started request may update the messages, so a
-    // slow poll cannot replace a newer list.
-    const latestRequest = useRef(0);
 
-    const refresh = useCallback(
-        async (signal?: AbortSignal) => {
-            const requestId = ++latestRequest.current;
-
-            try {
-                const items = await listMessages(widgetId, signal);
-                if (requestId !== latestRequest.current) return;
-
-                setMessages(items);
-                setError(null);
-            } catch {
-                if (signal?.aborted || requestId !== latestRequest.current)
-                    return;
-
-                setError("Could not load messages. Retrying…");
-            }
-        },
-        [widgetId],
-    );
+    const refresh = usePolling({
+        load: useCallback(
+            (signal?: AbortSignal) => listMessages(widgetId, signal),
+            [widgetId],
+        ),
+        onData: useCallback((items: Message[]) => {
+            setMessages(items);
+            setError(null);
+        }, []),
+        onError: useCallback(
+            () => setError("Could not load messages. Retrying…"),
+            [],
+        ),
+        intervalMs: MESSAGES_POLL_INTERVAL_MS,
+    });
 
     const send = useCallback(
         async (content: string) => {
@@ -61,20 +54,6 @@ export function useWidgetMessages(widgetId: string) {
         },
         [messages.length, refresh, widgetId],
     );
-
-    useEffect(() => {
-        const controller = new AbortController();
-        void refresh(controller.signal);
-        const interval = setInterval(
-            () => void refresh(controller.signal),
-            MESSAGES_POLL_INTERVAL_MS,
-        );
-
-        return () => {
-            clearInterval(interval);
-            controller.abort();
-        };
-    }, [refresh]);
 
     const visibleMessages =
         pending && messages.length <= pending.baseCount
