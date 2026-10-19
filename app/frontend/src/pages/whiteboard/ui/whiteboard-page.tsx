@@ -19,25 +19,10 @@ import { WidgetToolbar } from "./widget-toolbar";
 
 const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
-const initialNodes: WidgetNode[] = [
-    {
-        id: "1",
-        type: "widget",
-        position: { x: 0, y: 0 },
-        data: { widget_type: "text", content: "Idea" },
-    },
-    {
-        id: "2",
-        type: "widget",
-        position: { x: 0, y: 120 },
-        data: { widget_type: "ai", label: "Prompt" },
-    },
-];
-
 export function WhiteboardPage() {
     const boardId = useBoardId();
     const { nodes, onNodesChange, error, refresh, saveWidget } =
-        useBoardWidgets(boardId, initialNodes);
+        useBoardWidgets(boardId);
     const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
 
     // Save the final position of every dragged node (several when a selection is dragged).
