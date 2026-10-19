@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { WidgetUpdate } from "./api/widget.ts";
+import type { WidgetUpdate } from "../api/widget";
 
 export type SaveWidget = (widgetId: string, update: WidgetUpdate, delayMs?: number) => void;
 

@@ -20,13 +20,15 @@ export const listWidgets = async (boardId: string, signal?: AbortSignal) => {
     return items;
 };
 
-export const createWidget = (widget: {
+export type NewWidget = {
     board_id: string;
     widget_type: WidgetType;
     title: string;
     x: number;
     y: number;
-}) =>
+};
+
+export const createWidget = (widget: NewWidget) =>
     request<Widget>("/widgets", {
         method: "POST",
         body: JSON.stringify(widget),

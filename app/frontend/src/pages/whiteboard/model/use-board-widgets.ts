@@ -7,42 +7,11 @@ import {
     updateWidget,
     type Widget,
     type WidgetUpdate,
-} from "./api/widget.ts";
-import type { SaveWidget } from "./save-widget-context.ts";
-import type { WidgetNode, WidgetNodeData } from "./types.ts";
+} from "../api/widget";
+import type { SaveWidget } from "./save-widget";
+import { mergeNode, toNode, type WidgetNode } from "./widget-node";
 
 const POLL_INTERVAL_MS = 1000;
-
-const toNodeData = (widget: Widget): WidgetNodeData =>
-    widget.widget_type === "text"
-        ? { widget_type: "text", content: widget.content ?? "" }
-        : { widget_type: "ai", label: widget.title ?? "AI" };
-
-const toNode = (widget: Widget): WidgetNode => ({
-    id: widget.id,
-    type: "widget",
-    position: { x: widget.x, y: widget.y },
-    data: toNodeData(widget),
-});
-
-const isSameData = (a: WidgetNodeData, b: WidgetNodeData) =>
-    a.widget_type === "text" && b.widget_type === "text"
-        ? a.content === b.content
-        : a.widget_type === "ai" &&
-          b.widget_type === "ai" &&
-          a.label === b.label;
-
-// Applies the server state to a node already on the canvas, keeping the
-// node object (and its local flags like selection) when nothing changed.
-const mergeNode = (node: WidgetNode, widget: Widget): WidgetNode => {
-    const data = toNodeData(widget);
-    const samePosition =
-        node.position.x === widget.x && node.position.y === widget.y;
-
-    if (samePosition && isSameData(node.data, data)) return node;
-
-    return { ...node, position: { x: widget.x, y: widget.y }, data };
-};
 
 /**
  * Keeps the board's nodes in sync with the widgets stored on the server,

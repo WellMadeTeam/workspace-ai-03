@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router";
 import {
     Background,
     BackgroundVariant,
@@ -10,18 +8,17 @@ import {
     type OnNodeDrag,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { Surface } from "@heroui/react";
-import { createBoard } from "./api/board.ts";
-import { SaveWidgetContext } from "./save-widget-context.ts";
-import { useBoardWidgets } from "./use-board-widgets.ts";
-import { MessagesPanel } from "./messages-panel.tsx";
-import { WhiteboardToolbar } from "./toolbar.tsx";
-import type { AiWidgetNode, WidgetNode } from "./types.ts";
-import { WidgetNodeView } from "./widget-node.tsx";
+import { SaveWidgetContext } from "../model/save-widget";
+import { useBoardId } from "../model/use-board-id";
+import { useBoardWidgets } from "../model/use-board-widgets";
+import { isAiNode, type WidgetNode } from "../model/widget-node";
+import { BoardError } from "./board-error";
+import { MessagesPanel } from "./messages-panel";
+import { WidgetNodeView } from "./widget-node";
+import { WidgetToolbar } from "./widget-toolbar";
 
 const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
-const BOARD_PARAM = "board";
 const initialNodes: WidgetNode[] = [
     {
         id: "1",
@@ -37,12 +34,8 @@ const initialNodes: WidgetNode[] = [
     },
 ];
 
-const isAiNode = (node: WidgetNode): node is AiWidgetNode =>
-    node.data.widget_type === "ai";
-
 export function WhiteboardPage() {
-    const [searchParams, setSearchParams] = useSearchParams();
-    const boardId = searchParams.get(BOARD_PARAM);
+    const boardId = useBoardId();
     const { nodes, onNodesChange, error, refresh, saveWidget } =
         useBoardWidgets(boardId, initialNodes);
     const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
@@ -57,30 +50,6 @@ export function WhiteboardPage() {
             saveWidget(id, { x: position.x, y: position.y });
         }
     };
-
-    // The ref survives StrictMode's double effect run, so only one board is created.
-    const isCreatingBoard = useRef(false);
-
-    // On the first visit without a board in the URL, create one and remember
-    // its id in the query parameters. An existing id is never replaced.
-    useEffect(() => {
-        if (boardId || isCreatingBoard.current) return;
-        isCreatingBoard.current = true;
-
-        createBoard("Untitled board")
-            .then(({ id }) =>
-                setSearchParams(
-                    (params) => {
-                        params.set(BOARD_PARAM, id);
-                        return params;
-                    },
-                    { replace: true },
-                ),
-            )
-            .finally(() => {
-                isCreatingBoard.current = false;
-            });
-    }, [boardId, setSearchParams]);
 
     return (
         <SaveWidgetContext value={saveWidget}>
@@ -105,14 +74,12 @@ export function WhiteboardPage() {
                     <Controls />
                     {error && (
                         <Panel position="top-center">
-                            <Surface className="rounded-xl px-4 py-2 text-sm text-danger shadow-lg">
-                                {error}
-                            </Surface>
+                            <BoardError message={error} />
                         </Panel>
                     )}
                     {boardId && (
                         <Panel position="bottom-center">
-                            <WhiteboardToolbar
+                            <WidgetToolbar
                                 boardId={boardId}
                                 onWidgetCreated={refresh}
                             />

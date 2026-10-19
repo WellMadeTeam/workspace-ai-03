@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { usePolling } from "@/shared/lib";
-import { createMessage, listMessages, type Message } from "./api/message.ts";
+import { createMessage, listMessages, type Message } from "../api/message";
 
 const MESSAGES_POLL_INTERVAL_MS = 2000;
 
