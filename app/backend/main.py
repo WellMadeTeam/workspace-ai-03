@@ -9,6 +9,7 @@ from ai_service import generate_reply
 
 from database import Base, engine, get_db
 from models import Board, Message, Widget
+from realtime import router as realtime_router
 from widgets import router as widgets_router
 
 
@@ -17,6 +18,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Workspace for AI Collaboration")
 
 app.include_router(widgets_router)
+app.include_router(realtime_router)
 
 
 class BoardCreate(BaseModel):
