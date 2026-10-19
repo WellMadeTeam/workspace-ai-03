@@ -1,7 +1,7 @@
 import { Button, Surface, Toolbar, Tooltip } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { Sparkles, Type, type LucideIcon } from "lucide-react";
-import { createWidget, type WidgetType } from "../api/widget";
+import type { NewWidget, WidgetType } from "../api/widget";
 import type { WidgetNode } from "../model/widget-node";
 
 const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
@@ -10,30 +10,24 @@ const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
 };
 
 type WidgetToolbarProps = {
-    boardId: string;
-    onWidgetCreated: () => void;
+    onAddWidget: (widget: Omit<NewWidget, "board_id">) => void;
 };
 
-export function WidgetToolbar({
-    boardId,
-    onWidgetCreated,
-}: WidgetToolbarProps) {
+export function WidgetToolbar({ onAddWidget }: WidgetToolbarProps) {
     const { screenToFlowPosition } = useReactFlow<WidgetNode>();
 
-    const addWidget = async (widgetType: WidgetType) => {
+    const addWidget = (widgetType: WidgetType) => {
         // Place the new block in the center of the visible canvas.
         const position = screenToFlowPosition({
             x: window.innerWidth / 2,
             y: window.innerHeight / 2,
         });
 
-        await createWidget({
-            board_id: boardId,
+        onAddWidget({
             widget_type: widgetType,
             title: widgets[widgetType].label,
             ...position,
         });
-        onWidgetCreated();
     };
 
     return (

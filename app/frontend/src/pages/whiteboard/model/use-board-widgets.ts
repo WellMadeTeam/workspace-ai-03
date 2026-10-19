@@ -3,8 +3,10 @@ import { useNodesState } from "@xyflow/react";
 import { ApiError } from "@/shared/api";
 import { usePolling } from "@/shared/lib";
 import {
+    createWidget,
     listWidgets,
     updateWidget,
+    type NewWidget,
     type Widget,
     type WidgetUpdate,
 } from "../api/widget";
@@ -103,5 +105,19 @@ export function useBoardWidgets(boardId: string | null) {
         [refresh],
     );
 
-    return { nodes, onNodesChange, error, refresh, saveWidget };
+    const addWidget = useCallback(
+        async (widget: Omit<NewWidget, "board_id">) => {
+            if (!boardId) return;
+
+            try {
+                await createWidget({ board_id: boardId, ...widget });
+                void refresh();
+            } catch {
+                setError("Could not add the block.");
+            }
+        },
+        [boardId, refresh],
+    );
+
+    return { nodes, onNodesChange, error, addWidget, saveWidget };
 }

@@ -21,7 +21,7 @@ const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
 export function WhiteboardPage() {
     const boardId = useBoardId();
-    const { nodes, onNodesChange, error, refresh, saveWidget } =
+    const { nodes, onNodesChange, error, addWidget, saveWidget } =
         useBoardWidgets(boardId);
     const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
 
@@ -64,10 +64,7 @@ export function WhiteboardPage() {
                     )}
                     {boardId && (
                         <Panel position="bottom-center">
-                            <WidgetToolbar
-                                boardId={boardId}
-                                onWidgetCreated={refresh}
-                            />
+                            <WidgetToolbar onAddWidget={addWidget} />
                         </Panel>
                     )}
                     {selectedAiNode && (
