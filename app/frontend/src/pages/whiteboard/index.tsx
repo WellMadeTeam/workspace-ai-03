@@ -11,7 +11,7 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { Surface } from "@heroui/react";
-import { createBoard } from "./api.ts";
+import { createBoard } from "./api/board.ts";
 import { SaveWidgetContext } from "./save-widget-context.ts";
 import { useBoardWidgets } from "./use-board-widgets.ts";
 import { MessagesPanel } from "./messages-panel.tsx";

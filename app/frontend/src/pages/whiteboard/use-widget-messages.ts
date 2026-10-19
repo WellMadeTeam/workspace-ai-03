@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createMessage, listMessages } from "./api.ts";
-import type { Message } from "./types.ts";
+import { createMessage, listMessages, type Message } from "./api/message.ts";
 
 const MESSAGES_POLL_INTERVAL_MS = 2000;
 

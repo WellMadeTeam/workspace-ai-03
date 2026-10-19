@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNodesState } from "@xyflow/react";
+import { ApiError } from "@/shared/api";
 import {
-    ApiError,
     listWidgets,
     updateWidget,
     type Widget,
     type WidgetUpdate,
-} from "./api.ts";
+} from "./api/widget.ts";
 import type { SaveWidget } from "./save-widget-context.ts";
 import type { WidgetNode, WidgetNodeData } from "./types.ts";
 

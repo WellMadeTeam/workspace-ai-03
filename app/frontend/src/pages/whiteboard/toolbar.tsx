@@ -1,8 +1,8 @@
 import { Button, Surface, Toolbar, Tooltip } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { Sparkles, Type, type LucideIcon } from "lucide-react";
-import { createWidget } from "./api.ts";
-import type { WidgetNode, WidgetType } from "./types.ts";
+import { createWidget, type WidgetType } from "./api/widget.ts";
+import type { WidgetNode } from "./types.ts";
 
 const widgets: Record<WidgetType, { label: string; icon: LucideIcon }> = {
     text: { label: "Text", icon: Type },
