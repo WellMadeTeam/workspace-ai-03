@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useNodesState } from "@xyflow/react";
 import { ApiError } from "@/shared/api";
+import { usePolling } from "@/shared/lib";
 import {
     listWidgets,
     updateWidget,
@@ -54,24 +55,21 @@ export function useBoardWidgets(
     const [nodes, setNodes, onNodesChange] =
         useNodesState<WidgetNode>(initialState);
     const [error, setError] = useState<string | null>(null);
-    // Only the most recently started request may update the nodes, so a slow
-    // poll cannot remove a widget that a newer request already returned.
-    const latestRequest = useRef(0);
     // Widgets with unsaved local changes; polling must not overwrite them.
     const unsavedWidgets = useRef(new Set<string>());
     const pendingUpdates = useRef(new Map<string, WidgetUpdate>());
     const saveTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
 
-    const refresh = useCallback(
-        async (signal?: AbortSignal) => {
-            if (!boardId) return;
-
-            const requestId = ++latestRequest.current;
-
-            try {
-                const widgets = await listWidgets(boardId, signal);
-                if (requestId !== latestRequest.current) return;
-
+    const refresh = usePolling({
+        load: useMemo(
+            () =>
+                boardId
+                    ? (signal?: AbortSignal) => listWidgets(boardId, signal)
+                    : null,
+            [boardId],
+        ),
+        onData: useCallback(
+            (widgets: Widget[]) => {
                 setNodes((current) => {
                     const currentById = new Map(
                         current.map((node) => [node.id, node]),
@@ -89,19 +87,20 @@ export function useBoardWidgets(
                     });
                 });
                 setError(null);
-            } catch (err) {
-                if (signal?.aborted || requestId !== latestRequest.current)
-                    return;
-
+            },
+            [setNodes],
+        ),
+        onError: useCallback(
+            (err: unknown) =>
                 setError(
                     err instanceof ApiError && err.status === 404
                         ? "Board not found."
                         : "Could not load the board. Retrying…",
-                );
-            }
-        },
-        [boardId, setNodes],
-    );
+                ),
+            [],
+        ),
+        intervalMs: POLL_INTERVAL_MS,
+    });
 
     // Updates are merged per widget and sent after `delayMs`, so typing does
     // not send a request for every keystroke.
@@ -138,22 +137,6 @@ export function useBoardWidgets(
         },
         [refresh],
     );
-
-    useEffect(() => {
-        if (!boardId) return;
-
-        const controller = new AbortController();
-        void refresh(controller.signal);
-        const interval = setInterval(
-            () => void refresh(controller.signal),
-            POLL_INTERVAL_MS,
-        );
-
-        return () => {
-            clearInterval(interval);
-            controller.abort();
-        };
-    }, [boardId, refresh]);
 
     return { nodes, onNodesChange, error, refresh, saveWidget };
 }
