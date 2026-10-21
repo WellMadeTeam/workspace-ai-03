@@ -25,14 +25,21 @@ export function MessageComposer({ isSending, onSend }: MessageComposerProps) {
 
     // Enter sends, Shift+Enter inserts a new line.
     const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey &&
+            !event.nativeEvent.isComposing
+        ) {
             event.preventDefault();
             send();
         }
     };
 
     return (
-        <form className="flex items-end gap-2 border-t border-(--border) p-3" onSubmit={onSubmit}>
+        <form
+            className="flex items-end gap-2 border-t border-(--border) p-3"
+            onSubmit={onSubmit}
+        >
             <TextArea
                 aria-label="New message"
                 placeholder="Type a message…"
@@ -42,7 +49,12 @@ export function MessageComposer({ isSending, onSend }: MessageComposerProps) {
                 onChange={(event) => setDraft(event.target.value)}
                 onKeyDown={onKeyDown}
             />
-            <Button type="submit" isIconOnly aria-label="Send message" isDisabled={!draft.trim() || isSending}>
+            <Button
+                type="submit"
+                isIconOnly
+                aria-label="Send message"
+                isDisabled={!draft.trim() || isSending}
+            >
                 <SendHorizontal className="size-4" />
             </Button>
         </form>
