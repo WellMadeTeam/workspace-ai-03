@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Fixed
+
+- Stop showing placeholder "Idea" and "Prompt" blocks on the whiteboard.
+- Show an error message when adding a block to the whiteboard fails.
+
 ## [0.1.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.1.0) - 2026-10-17
 
 ### Added
