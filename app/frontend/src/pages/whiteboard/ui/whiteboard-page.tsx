@@ -21,8 +21,14 @@ const nodeTypes: NodeTypes = { widget: WidgetNodeView };
 
 export function WhiteboardPage() {
     const boardId = useBoardId();
-    const { nodes, onNodesChange, error, addWidget, saveWidget } =
-        useBoardWidgets(boardId);
+    const {
+        nodes,
+        onNodesChange,
+        error,
+        addWidget,
+        saveWidget,
+        removeWidgets,
+    } = useBoardWidgets(boardId);
     const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
 
     // Save the final position of every dragged node (several when a selection is dragged).
@@ -36,6 +42,10 @@ export function WhiteboardPage() {
         }
     };
 
+    // Called for the Delete button and the Backspace shortcut alike.
+    const onNodesDelete = (deletedNodes: WidgetNode[]) =>
+        void removeWidgets(deletedNodes.map((node) => node.id));
+
     return (
         <SaveWidgetContext value={saveWidget}>
             <div className="h-screen w-screen">
@@ -44,6 +54,7 @@ export function WhiteboardPage() {
                     nodeTypes={nodeTypes}
                     onNodesChange={onNodesChange}
                     onNodeDragStop={onNodeDragStop}
+                    onNodesDelete={onNodesDelete}
                     nodesConnectable={false}
                     colorMode="system"
                     fitView
