@@ -15,6 +15,8 @@ export default defineConfig({
             "/api": {
                 target: "http://localhost:8000",
                 rewrite: (path) => path.replace(/^\/api/, ""),
+                // Also forwards the board WebSockets under /api/ws.
+                ws: true,
             },
         },
     },

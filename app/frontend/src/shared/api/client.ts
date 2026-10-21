@@ -1,6 +1,6 @@
 // Requests go through the Vite dev server proxy (see vite.config.ts),
 // so the backend does not need CORS.
-const API_URL = "/api";
+export const API_URL = "/api";
 
 export class ApiError extends Error {
     readonly status: number;
