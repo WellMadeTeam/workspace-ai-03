@@ -56,7 +56,10 @@ export function BoardGate({
         <section className="flex h-screen w-screen items-center justify-center p-4">
             <Surface className="flex w-full max-w-sm flex-col items-center gap-4 rounded-2xl p-8 text-center shadow-lg">
                 {state === "loading" ? (
-                    <div role="status" className="flex flex-col items-center gap-4">
+                    <div
+                        role="status"
+                        className="flex flex-col items-center gap-4"
+                    >
                         <Spinner size="lg" />
                         <p className="text-sm text-muted">Loading the board…</p>
                     </div>
@@ -114,7 +117,9 @@ function BoardGateError({
                         isDisabled={isCreatingBoard}
                         onPress={onCreateBoard}
                     >
-                        {isCreatingBoard && <Spinner size="sm" color="current" />}
+                        {isCreatingBoard && (
+                            <Spinner size="sm" color="current" />
+                        )}
                         Create new board
                     </Button>
                 )}

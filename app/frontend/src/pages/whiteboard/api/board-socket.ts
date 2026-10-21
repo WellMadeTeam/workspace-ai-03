@@ -28,7 +28,10 @@ type ServerFrame<Type extends string, Data> = {
 
 // Only the events the client handles so far; see reports/week-04/websockets.md.
 export type BoardSocketEvent =
-    | ServerFrame<"connection.ready", { seq: number; you: Member; members: Member[] }>
+    | ServerFrame<
+          "connection.ready",
+          { seq: number; you: Member; members: Member[] }
+      >
     | ServerFrame<"member.joined", Member>
     | ServerFrame<"member.left", { client_id: string }>
     | ServerFrame<"ping", { nonce: string }>;

@@ -53,7 +53,10 @@ export function useBoardConnection(boardId: string | null) {
         const connect = () => {
             const current = openBoardSocket(boardId, CLIENT_ID);
             socket = current;
-            connectTimer = setTimeout(() => current.close(), CONNECT_TIMEOUT_MS);
+            connectTimer = setTimeout(
+                () => current.close(),
+                CONNECT_TIMEOUT_MS,
+            );
 
             current.onmessage = (message) => {
                 const event = JSON.parse(message.data) as BoardSocketEvent;
