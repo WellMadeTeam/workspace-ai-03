@@ -2,7 +2,9 @@
   "config": {
     "default": true,
     "MD013": false,
-    "MD029": false
+    "MD029": false,
+    // Keep a Changelog repeats "Added", "Fixed", etc. in every release.
+    "MD024": { "siblings_only": true }
   },
   "gitignore": true,
   "ignores": ["backlog/**"] // task tracker's directory
