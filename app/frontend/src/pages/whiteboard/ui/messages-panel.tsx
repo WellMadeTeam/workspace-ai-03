@@ -25,7 +25,9 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
         >
             <header className="flex items-center gap-2 border-b border-(--border) px-4 py-3">
                 <MessageSquare className="size-4" />
-                <h2 className="flex-1 truncate text-sm font-semibold">{label}</h2>
+                <h2 className="flex-1 truncate text-sm font-semibold">
+                    {label}
+                </h2>
                 <CloseButton aria-label="Close messages" onPress={close} />
             </header>
 
@@ -37,7 +39,10 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                 </p>
             )}
 
-            <MessageComposer isSending={isSending} onSend={(content) => void send(content)} />
+            <MessageComposer
+                isSending={isSending}
+                onSend={(content) => void send(content)}
+            />
         </Surface>
     );
 }
