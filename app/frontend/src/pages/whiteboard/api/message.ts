@@ -1,6 +1,7 @@
 import { request } from "@/shared/api";
 
-export type MessageRole = "user" | "ai";
+// "system" messages come from the application, e.g. when the AI fails to answer.
+export type MessageRole = "user" | "ai" | "system";
 
 export type Message = {
     id: string;
@@ -21,7 +22,8 @@ export const createMessage = (message: {
     widget_id: string;
     content: string;
 }) =>
-    request<{ user_message: Message; ai_message: Message }>("/messages", {
+    // `reply` is the AI answer, or a "system" message if the AI failed to answer.
+    request<{ user_message: Message; reply: Message }>("/messages", {
         method: "POST",
         body: JSON.stringify(message),
     });
