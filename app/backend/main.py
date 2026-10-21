@@ -1,3 +1,4 @@
+import logging
 from typing import Literal
 from uuid import UUID
 
@@ -13,6 +14,14 @@ from widgets import router as widgets_router
 
 
 Base.metadata.create_all(bind=engine)
+
+logger = logging.getLogger(__name__)
+
+# Shown to every member of the board when the LLM fails to answer. It must not
+# expose technical details, those go to the server log.
+AI_FAILURE_MESSAGE = (
+    "The AI couldn't answer this query. Please try again in a moment."
+)
 
 app = FastAPI(title="Workspace for AI Collaboration")
 
@@ -38,7 +47,9 @@ class MessageResponse(BaseModel):
 
     id: UUID
     widget_id: UUID
-    role: Literal["user", "ai"]
+    # "system" messages come from the application, not the AI, and are never
+    # sent to the LLM.
+    role: Literal["user", "ai", "system"]
     content: str
 
 
@@ -48,7 +59,8 @@ class MessageListResponse(BaseModel):
 
 class MessageCreateResponse(BaseModel):
     user_message: MessageResponse
-    ai_message: MessageResponse
+    # The AI answer, or a "system" message if the LLM failed to answer.
+    reply: MessageResponse
 
 
 @app.post("/boards", response_model=BoardResponse, status_code=status.HTTP_201_CREATED)
@@ -117,6 +129,9 @@ def create_message(
     ]
 
     for message in history:
+        if message.role == "system":
+            continue
+
         ai_role = (
             "assistant"
             if message.role == "ai"
@@ -128,30 +143,28 @@ def create_message(
             "content": message.content,
         })
 
+    # The failure is saved as a message, so every member of the board sees it.
     try:
-        answer = generate_reply(ai_messages)
-    except Exception as exc:
-        raise HTTPException(
-            status_code=502,
-            detail=(
-                "AI provider request failed. "
-                "The user message was saved."
-            ),
-        ) from exc
+        reply = Message(
+            widget_id=message_data.widget_id,
+            role="ai",
+            content=generate_reply(ai_messages),
+        )
+    except Exception:
+        logger.exception("The LLM failed to answer a query")
+        reply = Message(
+            widget_id=message_data.widget_id,
+            role="system",
+            content=AI_FAILURE_MESSAGE,
+        )
 
-    ai_message = Message(
-        widget_id=message_data.widget_id,
-        role="ai",
-        content=answer,
-    )
-
-    db.add(ai_message)
+    db.add(reply)
     db.commit()
-    db.refresh(ai_message)
+    db.refresh(reply)
 
     return {
         "user_message": user_message,
-        "ai_message": ai_message,
+        "reply": reply,
     }
 
 
