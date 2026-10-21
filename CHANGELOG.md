@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- Delete a text or AI block from the whiteboard with the «Delete» button above the selected block or the Backspace key; it disappears for every member of the board.
+
 ### Fixed
 
 - Stop showing placeholder "Idea" and "Prompt" blocks on the whiteboard.
