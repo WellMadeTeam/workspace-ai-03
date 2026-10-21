@@ -53,3 +53,6 @@ https://www.producthunt.com/products/type-com
 # Product Hunt most likely has protection from bots, the server forbids runner from fetching the website.
 # Verified manually in a browser on 2026-10-03.
 https://www.producthunt.com/products/vokal-2
+
+# TeamAI returns 403 during CI for unknown reasons.
+https://platform.teamai.com
