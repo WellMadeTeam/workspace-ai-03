@@ -11,8 +11,9 @@ export const toEdge = (connection: Connection): ConnectionEdge => ({
 });
 
 /**
- * Mirrors the server's rules, so the member cannot draw a connection the
- * server would reject: no loops, no duplicates and no AI to text connections.
+ * A connection gives the source's content to the target's AI as context, so
+ * it may only end on an AI block. Also mirrors the server's rules: no loops
+ * and no duplicates.
  */
 export const canConnect = (
     nodes: WidgetNode[],
@@ -22,14 +23,9 @@ export const canConnect = (
 ) => {
     if (source === target) return false;
 
-    const sourceNode = nodes.find((node) => node.id === source);
     const targetNode = nodes.find((node) => node.id === target);
-    if (!sourceNode || !targetNode) return false;
-    if (
-        sourceNode.data.widget_type === "ai" &&
-        targetNode.data.widget_type === "text"
-    )
-        return false;
+    if (!targetNode || !nodes.some((node) => node.id === source)) return false;
+    if (targetNode.data.widget_type !== "ai") return false;
 
     return !edges.some(
         (edge) => edge.source === source && edge.target === target,

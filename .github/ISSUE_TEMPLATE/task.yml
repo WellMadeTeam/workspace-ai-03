@@ -1,6 +1,5 @@
 name: Task
 description: A task issue holds one unit of work, such as building part of a story, documentation, a report, or a workflow, and one pull request closes it.
-labels: ["task"]
 projects: ["workspace-ai-03/1"]
 type: Task
 body:
@@ -26,11 +25,22 @@ body:
     validations:
       required: false
   - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: |
+        The functional requirements and architectural decision records the task works on, one per line, each linked on `main`. A task that serves no requirement says so in one line.
+      placeholder: |
+        - [`FR-xxx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/functional-requirements/fr/FR-xxx.md)
+        - [`ADR-xxx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/architecture/adr/ADR-xxx.md)
+        - None: repository upkeep.
+    validations:
+      required: true
+  - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance Criteria
       description: A task's acceptance criteria are the checks that tell the reviewer whether the task is done. They may be narrower or more technical than the criteria of the story it works toward, because they check one unit of work rather than the whole need.
-      value: |
-        - [ ] AC-01: ...
+      value: "- [ ] AC-01: "
     validations:
       required: true

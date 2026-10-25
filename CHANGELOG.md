@@ -12,7 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Show a loading screen until the board is joined, and an error screen when the board is not found or the server cannot be reached.
 - Reconnect to the board automatically after the connection drops, with a "Reconnecting…" notice in the meantime.
 - Delete the selected text or AI blocks from the whiteboard with «Delete» in the right-click menu or the Backspace key; they disappear for every member of the board.
-- Connect whiteboard blocks with arrows by dragging from a block's edge onto another block; every member of the board sees the connections, and they are deleted like blocks.
+- Connect a text block to an AI block, or one AI block to another, by dragging an arrow from a block's edge onto the other block; every member of the board sees the connections, and they are deleted like blocks.
+- Use the content of the connected blocks as context for an AI block's replies, and reuse the same block as context for several AI blocks.
 - Show how many connected blocks an AI answer used under the answer; hover it to see their titles, and click a title to select that block and center the board on it.
 
 ### Changed
