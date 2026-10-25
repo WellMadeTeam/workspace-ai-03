@@ -1,72 +1,20 @@
-from typing import Literal
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, HTTPException, Query, status
-from pydantic import BaseModel, ConfigDict, Field
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from ai_service import generate_reply
 
-from database import Base, engine, get_db
-from models import Board, Message, Widget
-from widgets import router as widgets_router
-
-
-Base.metadata.create_all(bind=engine)
-
-app = FastAPI(title="Workspace for AI Collaboration")
-
-app.include_router(widgets_router)
+from app.backend.src.database import get_db
+from app.backend.src.schemas.message import MessageCreate, MessageCreateResponse, MessageListResponse
+from app.backend.src.services.ai_service import generate_reply
+from app.backend.src.models import Message, Widget
 
 
-class BoardCreate(BaseModel):
-    title: str = Field(min_length=1, max_length=200)
+message_router = APIRouter(prefix="/messages", tags=["messages"])
 
 
-class BoardResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-
-class MessageCreate(BaseModel):
-    widget_id: UUID
-    content: str = Field(min_length=1)
-
-
-class MessageResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-    widget_id: UUID
-    role: Literal["user", "ai"]
-    content: str
-
-
-class MessageListResponse(BaseModel):
-    items: list[MessageResponse]
-
-
-class MessageCreateResponse(BaseModel):
-    user_message: MessageResponse
-    ai_message: MessageResponse
-
-
-@app.post("/boards", response_model=BoardResponse, status_code=status.HTTP_201_CREATED)
-def create_board(
-    board_data: BoardCreate,
-    db: Session = Depends(get_db),
-):
-    board = Board(title=board_data.title)
-
-    db.add(board)
-    db.commit()
-    db.refresh(board)
-
-    return BoardResponse(id=board.id)
-
-
-@app.post(
-    "/messages",
+@message_router.post(
+    "",
     response_model=MessageCreateResponse,
     status_code=status.HTTP_201_CREATED,
 )
@@ -155,8 +103,8 @@ def create_message(
     }
 
 
-@app.get(
-    "/messages",
+@message_router.get(
+    "",
     response_model=MessageListResponse,
 )
 def get_messages(

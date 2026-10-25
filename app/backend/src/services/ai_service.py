@@ -1,15 +1,9 @@
-
-import os
-from pathlib import Path
-
-from dotenv import load_dotenv
 from groq import Groq
 
+from app.backend.src.config import GROQ_API_KEY
 
-ENV_FILE = Path(__file__).resolve().parent / ".env"
-load_dotenv(ENV_FILE)
 
-api_key = os.getenv("GROQ_API_KEY")
+api_key = GROQ_API_KEY
 
 if not api_key:
     raise RuntimeError(
