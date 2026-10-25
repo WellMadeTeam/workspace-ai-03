@@ -26,7 +26,7 @@ RESPONSE_FORMAT = {
             "type": "object",
             "properties": {
                 "response": {"type": "string"},
-                "citations": {
+                "references": {
                     "type": "array",
                     "items": {
                         "type": "object",
@@ -38,7 +38,7 @@ RESPONSE_FORMAT = {
                     },
                 },
             },
-            "required": ["response", "citations"],
+            "required": ["response", "references"],
             "additionalProperties": False,
         },
     },
@@ -64,6 +64,6 @@ def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     if not answer:
         raise RuntimeError("The AI returned an empty response")
 
-    citations = [citation["id"] for citation in reply["citations"]]
+    references = [reference["id"] for reference in reply["references"]]
 
-    return answer, citations
+    return answer, references

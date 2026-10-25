@@ -90,12 +90,12 @@ def create_message(
 
     # The failure is saved as a message, so every member of the board sees it.
     try:
-        answer, citations = generate_reply(ai_messages)
+        answer, references = generate_reply(ai_messages)
 
         # Keep only ids of widgets that were actually given to the AI.
         context_ids = {str(widget.id) for widget in documents}
         references = list(dict.fromkeys(
-            citation for citation in citations if citation in context_ids
+            reference for reference in references if reference in context_ids
         ))
 
         reply = Message(

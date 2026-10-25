@@ -57,6 +57,6 @@ def build_system_prompt(documents: list[Widget]) -> str:
         "Context from the widgets connected to this one:\n"
         f"{context}\n\n"
         "If you use context from a connected widget, add its id "
-        "to the citations array."
+        "to the references array."
     )
 
