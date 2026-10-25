@@ -33,6 +33,7 @@ Run these from the repository root before you push; CI runs the first two on eve
 
 - Commit messages and pull request titles follow Conventional Commits: `<type>(<optional scope>): <short description>`, where the type is one of `feat`, `fix`, `refactor`, `docs`, `chore`, and the description is lowercase, imperative, and without a trailing period.
 - Branch names are `<issue-number>-<short-description>`, lowercase and hyphenated, such as `73-ai-block-messages-view`, with one task per branch.
+  A branch name carries no member's nickname or username prefix: when a tool proposes one, such as `danmaninc/148-glossary-agents`, drop the prefix and push the branch as `148-glossary-agents`.
 - A pull request fills in `.github/pull_request_template.md` and closes exactly one task issue with `Closes #<issue-number>`.
 - TypeScript is formatted by `oxfmt` with four-space indentation and an 80-character line, and Python follows the existing style of `app/backend/src/`.
 - Markdown puts one sentence on each line.
