@@ -1,0 +1,155 @@
+import { useCallback, useMemo, useRef, useState } from "react";
+import { useEdgesState } from "@xyflow/react";
+import { ApiError } from "@/shared/api";
+import { usePolling } from "@/shared/lib";
+import {
+    createConnection,
+    deleteConnection,
+    listWidgetConnections,
+    type Connection,
+    type NewConnection,
+} from "../api/connection";
+import { toEdge, type ConnectionEdge } from "./connection-edge";
+
+const POLL_INTERVAL_MS = 2000;
+
+const isNotFound = (err: unknown) =>
+    err instanceof ApiError && err.status === 404;
+
+/**
+ * Keeps the board's edges in sync with the connections between `widgetIds`
+ * stored on the server, polling every 2 seconds, and saves new connections
+ * and deletions back to the server.
+ */
+export function useBoardConnections(widgetIds: string[]) {
+    const [edges, setEdges, onEdgesChange] = useEdgesState<ConnectionEdge>([]);
+    const [error, setError] = useState<string | null>(null);
+    // Connections removed locally whose deletion the server has not confirmed
+    // yet; polls must not bring them back.
+    const deletingConnections = useRef(new Set<string>());
+
+    // A string key, so the polling restarts only when blocks are added or
+    // removed, not on every change of the nodes.
+    const widgetIdsKey = [...widgetIds].sort().join(",");
+
+    const load = useMemo(() => {
+        const ids = widgetIdsKey ? widgetIdsKey.split(",") : [];
+        if (ids.length === 0) return null;
+
+        // The server lists connections per widget, by their source.
+        return async (signal?: AbortSignal) => {
+            const results = await Promise.allSettled(
+                ids.map((id) => listWidgetConnections(id, signal)),
+            );
+            const connections: Connection[] = [];
+            for (const result of results) {
+                if (result.status === "fulfilled") {
+                    connections.push(...result.value);
+                } else if (!isNotFound(result.reason)) {
+                    // A widget deleted meanwhile has no connections; any
+                    // other failure fails the whole poll.
+                    throw result.reason;
+                }
+            }
+
+            const known = new Set(ids);
+            return connections.filter(
+                (connection) =>
+                    known.has(connection.source_widget_id) &&
+                    known.has(connection.target_widget_id),
+            );
+        };
+    }, [widgetIdsKey]);
+
+    const refresh = usePolling({
+        load,
+        onData: useCallback(
+            (connections: Connection[]) => {
+                setEdges((current) => {
+                    const currentById = new Map(
+                        current.map((edge) => [edge.id, edge]),
+                    );
+
+                    // Connections never change their ends, so an edge already
+                    // on the canvas is kept with its local flags like selection.
+                    return connections
+                        .filter(
+                            (connection) =>
+                                !deletingConnections.current.has(connection.id),
+                        )
+                        .map(
+                            (connection) =>
+                                currentById.get(connection.id) ??
+                                toEdge(connection),
+                        );
+                });
+                setError(null);
+            },
+            [setEdges],
+        ),
+        onError: useCallback(
+            () => setError("Could not load the connections. Retrying…"),
+            [],
+        ),
+        intervalMs: POLL_INTERVAL_MS,
+    });
+
+    const addConnection = useCallback(
+        async (connection: NewConnection) => {
+            try {
+                await createConnection(connection);
+            } catch (err) {
+                // 409: someone else has just made the same connection.
+                if (!(err instanceof ApiError && err.status === 409)) {
+                    setError("Could not connect the blocks.");
+                }
+            } finally {
+                void refresh();
+            }
+        },
+        [refresh],
+    );
+
+    // Expects the edges to be already removed from the canvas (React Flow does
+    // it before calling onDelete). On failure the next poll restores them.
+    const removeConnections = useCallback(
+        async (connectionIds: string[]) => {
+            if (connectionIds.length === 0) return;
+
+            for (const connectionId of connectionIds) {
+                deletingConnections.current.add(connectionId);
+            }
+
+            const results = await Promise.allSettled(
+                connectionIds.map((connectionId) =>
+                    deleteConnection(connectionId),
+                ),
+            );
+            // A connection someone else already deleted is gone either way.
+            if (
+                results.some(
+                    (result) =>
+                        result.status === "rejected" &&
+                        !isNotFound(result.reason),
+                )
+            ) {
+                setError("Could not delete the connection.");
+            }
+
+            for (const connectionId of connectionIds) {
+                deletingConnections.current.delete(connectionId);
+            }
+            // Also discards polls started before the deletion finished.
+            void refresh();
+        },
+        [refresh],
+    );
+
+    return {
+        edges,
+        onEdgesChange,
+        error,
+        addConnection,
+        removeConnections,
+    };
+}
