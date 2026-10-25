@@ -2,6 +2,10 @@ import { useEffect, useRef } from "react";
 import { ScrollShadow } from "@heroui/react";
 import { CircleAlert } from "lucide-react";
 import type { Message } from "../api/message";
+import { MessageReferences } from "./message-references";
+
+const bubbleClassName =
+    "whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm";
 
 type MessageListProps = {
     messages: Message[];
@@ -44,19 +48,30 @@ export function MessageList({ messages, isSending }: MessageListProps) {
                                     {message.content}
                                 </p>
                             </li>
+                        ) : message.role === "user" ? (
+                            <li
+                                key={message.id}
+                                className={`${bubbleClassName} max-w-[85%] self-end bg-purple-500 text-white`}
+                            >
+                                <span className="sr-only">You: </span>
+                                {message.content}
+                            </li>
                         ) : (
                             <li
                                 key={message.id}
-                                className={`max-w-[85%] whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm ${
-                                    message.role === "user"
-                                        ? "self-end bg-purple-500 text-white"
-                                        : "self-start bg-(--surface-secondary)"
-                                }`}
+                                className="flex max-w-[85%] flex-col items-start gap-0.5 self-start"
                             >
-                                <span className="sr-only">
-                                    {message.role === "user" ? "You: " : "AI: "}
-                                </span>
-                                {message.content}
+                                <p
+                                    className={`${bubbleClassName} max-w-full bg-(--surface-secondary)`}
+                                >
+                                    <span className="sr-only">AI: </span>
+                                    {message.content}
+                                </p>
+                                {message.references.length > 0 && (
+                                    <MessageReferences
+                                        references={message.references}
+                                    />
+                                )}
                             </li>
                         ),
                     )}

@@ -51,3 +51,15 @@ export const mergeNode = (node: WidgetNode, widget: Widget): WidgetNode => {
 
     return { ...node, position: { x: widget.x, y: widget.y }, data };
 };
+
+// A text block has no title, so it is named by the first line of its text.
+export const getNodeTitle = (data: WidgetNodeData) => {
+    if (data.widget_type === "ai") return data.label;
+
+    const firstLine = data.content
+        .split("\n")
+        .map((line) => line.trim())
+        .find(Boolean);
+
+    return firstLine ?? "Empty text block";
+};
