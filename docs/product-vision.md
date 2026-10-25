@@ -72,11 +72,11 @@ Manage complex access levels and permissions.
 
 ### BND-02
 
-Export the board to other formats.
+Export the board to formats other than PDF.
 
 - **Status:** Active
 - **Handled by:** The user, by hand
-- **Why:** [`DEC-007`](decisions.md#dec-007): export is nice to have, not the focus.
+- **Why:** [`DEC-007`](decisions.md#dec-007): export is nice to have, not the focus, so at most one common format, PDF, comes in [`US-13`](https://github.com/WellMadeTeam/workspace-ai-03/issues/49), and only if time remains.
 
 ### BND-03
 
