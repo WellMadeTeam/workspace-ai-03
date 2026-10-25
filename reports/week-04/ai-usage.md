@@ -49,6 +49,8 @@ Claude Code in the terminal; a background Claude Code agent for one research que
   - dropping a connection anywhere on a block, with a preview arrow drawn where the connection will be and a dashed outline around the target block
   - black arrows, and a purple border on the handle under the pointer
 - Claude Code: committing the work in logical groups, opening #166 as a draft from the template, merging `136-fix-references` and later `main` after #156 and #172 merged, switching the frontend to `GET /connections?boardId=`, adding `has_context` and `references` to the message type, and updating the pull request description.
+- Claude Code: implementing #150: reading Part 12 and the retrospective and sprint requirements from the course repository through `gh`, reading the `Story Points` of the `SPRINT-04` stories through the GraphQL API, and drafting `**Actual Velocity:**` and `reports/week-04/sprint-retrospective.md` from the review's decisions, the milestone's issues, and the pull requests and commits of the sprint, including the Groq `documents` and `citation_options` incident.
+- Claude Code: renaming the branch to `150-close-the-sprint` and opening #173 from the template.
 
 ## What we did with the output
 
@@ -75,6 +77,8 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The agent pointed out that the frontend sent one request per block on every poll; we asked it to comment on #156, and the endpoint came in #172, after which the frontend loads a board's connections in one request.
 - The agent limited connections to end on an AI block, to match the changelog entries of #156, since a connection into a text block gives no context to any AI.
 - Claude in Chrome was not connected, so the drag and delete interactions were not checked in a browser by the agent; it checked the types, lint, formatting, and build, and the connections API with `curl` against a local backend.
+- For #150 the agent first counted `US-05` and `US-06` as not finished; we corrected it, since both are finished but not yet accepted, and the actual velocity stays `15` because a story closes only on the customer's acceptance.
+- `**Actual Velocity:** 15` was checked by hand against the `Story Points` of the three accepted stories.
 
 ## What was not used
 
