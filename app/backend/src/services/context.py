@@ -6,10 +6,10 @@ from sqlalchemy.orm import Session
 from app.backend.src.models import Connection, Widget
 
 
-def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[str]:
+def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[dict]:
     visited = set()
     queue = [ai_widget_id]
-    context_parts = []
+    documents = []
 
     while queue:
         current_id = queue.pop(0)
@@ -26,14 +26,15 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[str]:
             if not source:
                 continue
 
-            if source.widget_type == "text" and source.content:
-                context_parts.append(
-                    f"[{source.title or 'Text Block'}]: {source.content}"
-                )
-            elif source.widget_type == "ai" and source.content:
-                context_parts.append(
-                    f"[{source.title or 'AI Block'}]: {source.content}"
-                )
-                queue.append(source.id)
+            if source.content:
+                documents.append({
+                    "id": str(source.id),
+                    "source": {
+                        "text": source.content,
+                        "type": "text",
+                    },
+                })
+                if source.widget_type == "ai":
+                    queue.append(source.id)
 
-    return context_parts
+    return documents

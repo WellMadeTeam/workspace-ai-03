@@ -74,12 +74,12 @@ def create_message(
             "content": message.content,
         })
 
-    context = get_context_for_ai(db, message_data.widget_id)
+    documents = get_context_for_ai(db, message_data.widget_id)
 
-    has_context = len(context) > 0
+    has_context = len(documents) > 0
 
     try:
-        answer = generate_reply(ai_messages, context=context)
+        answer, references = generate_reply(ai_messages, documents=documents)
     except Exception as exc:
         raise HTTPException(
             status_code=502,
@@ -102,7 +102,8 @@ def create_message(
     return {
         "user_message": user_message,
         "ai_message": ai_message,
-        "has_context": has_context
+        "has_context": has_context,
+        "references": references,
     }
 
 
