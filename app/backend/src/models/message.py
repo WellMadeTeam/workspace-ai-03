@@ -3,6 +3,8 @@ from datetime import datetime, timezone
 from uuid import UUID
 
 from sqlalchemy import (
+    JSON,
+    Boolean,
     DateTime,
     ForeignKey,
     Index,
@@ -38,6 +40,20 @@ class Message(Base):
 
     content: Mapped[str] = mapped_column(
         Text,
+        nullable=False,
+    )
+
+    # Which connected widgets were passed to the AI for this reply (AI messages only).
+    has_context: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False,
+    )
+
+    # Ids of the connected widgets the AI cited in this reply.
+    references: Mapped[list[str]] = mapped_column(
+        JSON,
+        default=list,
         nullable=False,
     )
 

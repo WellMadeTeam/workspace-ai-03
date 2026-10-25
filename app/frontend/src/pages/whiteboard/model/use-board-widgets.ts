@@ -18,11 +18,14 @@ const POLL_INTERVAL_MS = 1000;
 
 /**
  * Keeps the board's nodes in sync with the widgets stored on the server,
- * polling every second, and saves local edits and deletions back to the server.
+ * polling every second, and saves local edits and deletions back to the
+ * server. A `null` board pauses polling.
  */
 export function useBoardWidgets(boardId: string | null) {
     const [nodes, setNodes, onNodesChange] = useNodesState<WidgetNode>([]);
     const [error, setError] = useState<string | null>(null);
+    // The board whose widgets were loaded at least once.
+    const [loadedBoardId, setLoadedBoardId] = useState<string | null>(null);
     // Widgets with unsaved local changes; polling must not overwrite them.
     const unsavedWidgets = useRef(new Set<string>());
     const pendingUpdates = useRef(new Map<string, WidgetUpdate>());
@@ -61,9 +64,10 @@ export function useBoardWidgets(boardId: string | null) {
                             return mergeNode(node, widget);
                         });
                 });
+                setLoadedBoardId(boardId);
                 setError(null);
             },
-            [setNodes],
+            [boardId, setNodes],
         ),
         onError: useCallback(
             (err: unknown) =>
@@ -171,10 +175,13 @@ export function useBoardWidgets(boardId: string | null) {
         [refresh],
     );
 
+    const isLoaded = boardId !== null && loadedBoardId === boardId;
+
     return {
         nodes,
         onNodesChange,
         error,
+        isLoaded,
         addWidget,
         saveWidget,
         removeWidgets,
