@@ -1,0 +1,99 @@
+/* Straight connection arrows between blocks and the handles to draw them. */
+
+.react-flow {
+    --connection-stroke: #000000;
+    --connection-stroke-hover: #525252;
+    --connection-stroke-selected: #a855f7;
+    --connection-stroke-invalid: #ef4444;
+    --handle-border: #64748b;
+}
+
+/* Black would be invisible on the dark board, so the arrows turn white. */
+.react-flow.dark {
+    --connection-stroke: #ffffff;
+    --connection-stroke-hover: #d4d4d4;
+    --handle-border: #94a3b8;
+}
+
+.react-flow .react-flow__edge .connection-arrow .react-flow__edge-path,
+.connection-arrow__line {
+    fill: none;
+    stroke: var(--connection-stroke);
+    stroke-width: 1.75;
+    stroke-linecap: round;
+}
+
+.connection-arrow__head {
+    fill: var(--connection-stroke);
+    stroke: var(--connection-stroke);
+    stroke-width: 1;
+    stroke-linejoin: round;
+}
+
+.react-flow__edge:hover .connection-arrow {
+    --connection-stroke: var(--connection-stroke-hover);
+}
+
+.react-flow__edge .connection-arrow.selected {
+    --connection-stroke: var(--connection-stroke-selected);
+}
+
+.connection-arrow.invalid {
+    --connection-stroke: var(--connection-stroke-invalid);
+}
+
+.connection-arrow.invalid .connection-arrow__line {
+    stroke-dasharray: 6 4;
+}
+
+/* Hidden until the pointer is on (or near) the block, or a drag starts from it. */
+.react-flow__handle.widget-handle {
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid var(--handle-border);
+    background-color: var(--xy-node-background-color-default);
+    opacity: 0;
+    transition:
+        opacity 150ms,
+        border-color 150ms;
+}
+
+/* A larger invisible area around the handle that reacts to the pointer. */
+.react-flow__handle.widget-handle::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 9999px;
+}
+
+.react-flow__node:hover .react-flow__handle.widget-handle,
+.react-flow__handle.widget-handle.connectingfrom {
+    opacity: 1;
+}
+
+.react-flow__handle.widget-handle:hover,
+.react-flow__handle.widget-handle.connectingfrom,
+.react-flow__handle.widget-handle.connectingto {
+    border-color: var(--connection-stroke-selected);
+}
+
+.react-flow__handle.block-drop-target {
+    inset: 0;
+    width: auto;
+    height: auto;
+    transform: none;
+    border: none;
+    border-radius: 0.375rem;
+    background: transparent;
+    pointer-events: none;
+}
+
+.react-flow__handle.block-drop-target.is-connecting {
+    pointer-events: all;
+}
+
+/* Also kept while the cursor is on one of the block's handles. */
+.react-flow__handle.block-drop-target.is-drop-target {
+    outline: 2px dashed var(--connection-stroke-selected);
+    outline-offset: 4px;
+}
