@@ -41,6 +41,8 @@ export function useWidgetMessages(widgetId: string) {
                 id: crypto.randomUUID(),
                 role: "user",
                 content,
+                has_context: false,
+                references: [],
                 baseCount: messages.length,
             });
 

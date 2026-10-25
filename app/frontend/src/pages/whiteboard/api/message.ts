@@ -7,6 +7,10 @@ export type Message = {
     id: string;
     role: MessageRole;
     content: string;
+    // Whether connected blocks were given to the AI as context for the answer.
+    has_context: boolean;
+    // Ids of the connected blocks the answer cites.
+    references: string[];
 };
 
 export const listMessages = async (widgetId: string, signal?: AbortSignal) => {
