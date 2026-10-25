@@ -4,7 +4,7 @@ This document records the architecture of Workspace for AI collaboration, and [t
 
 ## Container View
 
-The product runs as the containers below.
+The product runs as the containers below, and [`ADR-001`](adr/ADR-001.md) decides that split and the stack it runs on.
 
 ![Container view](container.svg)
 
@@ -24,3 +24,11 @@ An arrow is one exchange, pointing from the container that sends the request, an
 The `gateway` is the `nginx` service in [`app/docker-compose.yml`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/app/docker-compose.yml); the other containers keep their service names, and the `database` is the SQLite file in its `backend-data` volume.
 
 The image is [`container.svg`](./container.svg), rendered with [Mermaid](https://mermaid.js.org/) from its source [`container.mmd`](./container.mmd).
+
+## Architectural Decisions
+
+| ADR                       | Status   | Addresses                                                                                                                                                                                                                                           | Decision                                                |
+| ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [ADR-001](adr/ADR-001.md) | Accepted | [FR-005](../functional-requirements/fr/FR-005.md), [QR-01](../quality-requirements/qr/QR-01.md), [QR-04](../quality-requirements/qr/QR-04.md)                                                                                                       | A frontend, a gateway, a backend, and a SQLite database |
+| [ADR-002](adr/ADR-002.md) | Accepted | [FR-003](../functional-requirements/fr/FR-003.md), [FR-004](../functional-requirements/fr/FR-004.md), [QR-01](../quality-requirements/qr/QR-01.md)                                                                                                  | One WebSocket per member and board                      |
+| [ADR-003](adr/ADR-003.md) | Accepted | [FR-005](../functional-requirements/fr/FR-005.md), [FR-006](../functional-requirements/fr/FR-006.md), [FR-007](../functional-requirements/fr/FR-007.md), [QR-02](../quality-requirements/qr/QR-02.md), [QR-03](../quality-requirements/qr/QR-03.md) | The backend calls the LLM while the query request waits |
