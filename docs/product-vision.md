@@ -96,3 +96,4 @@ The actors are the team members and the customer. The external system is an LLM 
 
 - [User stories](https://github.com/WellMadeTeam/workspace-ai-03/issues?q=label%3Auser-story)
 - [The minimum usable product, `MLS-03`](project-plan.md#mls-03)
+- [The architecture](architecture/README.md)
