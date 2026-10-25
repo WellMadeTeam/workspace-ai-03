@@ -50,9 +50,11 @@ class Message(Base):
         nullable=False,
     )
 
-    references: Mapped[list[dict] | None] = mapped_column(
+    # Ids of the connected widgets the AI cited in this reply.
+    references: Mapped[list[str]] = mapped_column(
         JSON,
-        nullable=True,
+        default=list,
+        nullable=False,
     )
 
     # Set in Python because SQLite's now() has a one-second resolution, and a

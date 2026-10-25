@@ -19,7 +19,7 @@ class MessageResponse(BaseModel):
     role: Literal["user", "ai", "system"]
     content: str
     has_context: bool = False
-    references: list[dict] | None = None
+    references: list[UUID] = []
 
 
 class MessageListResponse(BaseModel):

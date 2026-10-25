@@ -1,3 +1,5 @@
+import json
+
 from groq import Groq
 
 from app.backend.src.config import GROQ_API_KEY
@@ -13,28 +15,55 @@ if not api_key:
 client = Groq(api_key=api_key)
 
 
-def generate_reply(
-    messages: list[dict[str, str]],
-    documents: list[dict] | None = None,
-) -> tuple[str, list[dict] | None]:
+# The model replies with this JSON in message.content: the answer itself and the
+# ids of the connected widgets it used.
+RESPONSE_FORMAT = {
+    "type": "json_schema",
+    "json_schema": {
+        "name": "ai_reply",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "properties": {
+                "response": {"type": "string"},
+                "citations": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {"type": "string"},
+                        },
+                        "required": ["id"],
+                        "additionalProperties": False,
+                    },
+                },
+            },
+            "required": ["response", "citations"],
+            "additionalProperties": False,
+        },
+    },
+}
+
+
+def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     completion = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=messages,
         max_completion_tokens=512,
-        documents=documents,
-        citation_options="enabled" if documents else "disabled",
+        response_format=RESPONSE_FORMAT,
     )
 
-    answer = completion.choices[0].message.content
-    annotations = getattr(completion.choices[0].message, "annotations", None)
+    content = completion.choices[0].message.content
+
+    if not content:
+        raise RuntimeError("The AI returned an empty response")
+
+    reply = json.loads(content)
+    answer = reply["response"]
 
     if not answer:
         raise RuntimeError("The AI returned an empty response")
 
-    # SDK objects are converted to plain dicts so they can be stored as JSON.
-    references = [
-        annotation.model_dump() if hasattr(annotation, "model_dump") else dict(annotation)
-        for annotation in annotations
-    ] if annotations else None
+    citations = [citation["id"] for citation in reply["citations"]]
 
-    return answer, references
+    return answer, citations
