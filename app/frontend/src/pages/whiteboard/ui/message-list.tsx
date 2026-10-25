@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { ScrollShadow } from "@heroui/react";
+import { CircleAlert } from "lucide-react";
 import type { Message } from "../api/message";
 
 type MessageListProps = {
@@ -23,21 +24,42 @@ export function MessageList({ messages, isSending }: MessageListProps) {
                 </p>
             ) : (
                 <ul className="flex flex-col gap-2" aria-label="Messages">
-                    {messages.map((message) => (
-                        <li
-                            key={message.id}
-                            className={`max-w-[85%] whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm ${
-                                message.role === "user"
-                                    ? "self-end bg-purple-500 text-white"
-                                    : "self-start bg-(--surface-secondary)"
-                            }`}
-                        >
-                            <span className="sr-only">
-                                {message.role === "user" ? "You: " : "AI: "}
-                            </span>
-                            {message.content}
-                        </li>
-                    ))}
+                    {messages.map((message) =>
+                        message.role === "system" ? (
+                            // Not a chat bubble, so it does not read as an AI answer.
+                            <li
+                                key={message.id}
+                                className="flex items-start gap-2 self-stretch rounded-lg border border-danger/40 px-3 py-2 text-xs text-danger"
+                            >
+                                <CircleAlert
+                                    className="mt-px size-4 shrink-0"
+                                    aria-hidden
+                                />
+                                <p className="break-words">
+                                    <span className="font-semibold">
+                                        System
+                                    </span>
+                                    <span aria-hidden> · </span>
+                                    <span className="sr-only">: </span>
+                                    {message.content}
+                                </p>
+                            </li>
+                        ) : (
+                            <li
+                                key={message.id}
+                                className={`max-w-[85%] whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm ${
+                                    message.role === "user"
+                                        ? "self-end bg-purple-500 text-white"
+                                        : "self-start bg-(--surface-secondary)"
+                                }`}
+                            >
+                                <span className="sr-only">
+                                    {message.role === "user" ? "You: " : "AI: "}
+                                </span>
+                                {message.content}
+                            </li>
+                        ),
+                    )}
                 </ul>
             )}
             {isSending && (

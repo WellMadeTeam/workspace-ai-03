@@ -17,16 +17,17 @@ export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
     const { updateNodeData } = useReactFlow<WidgetNode>();
     const saveWidget = use(SaveWidgetContext);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
-    // The text becomes editable only after a click, so pressing on the block
-    // and moving the mouse drags it instead of focusing the field.
+    // The text becomes editable only after a double click, like the AI block's
+    // title. A single click (or Shift/Cmd/Ctrl-click) only selects the block,
+    // so several blocks can be selected and a right click opens the context
+    // menu, and pressing on the block and moving the mouse drags it.
     const [isEditing, setIsEditing] = useState(false);
 
     useFocusOnEdit(textAreaRef, isEditing);
 
     return (
         <div
-            // React Flow does not fire a click after a drag.
-            onClick={() => setIsEditing(true)}
+            onDoubleClick={() => setIsEditing(true)}
             className={`w-48 rounded-md [border:var(--xy-node-border-default)] bg-(--xy-node-background-color-default) p-2 text-xs text-(--xy-node-color-default) ${
                 selected ? "ring-2 ring-purple-500" : ""
             }`}

@@ -39,10 +39,7 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                 </p>
             )}
 
-            <MessageComposer
-                isSending={isSending}
-                onSend={(content) => void send(content)}
-            />
+            <MessageComposer isSending={isSending} onSend={send} />
         </Surface>
     );
 }
