@@ -33,6 +33,8 @@ export function useWidgetMessages(widgetId: string) {
         intervalMs: MESSAGES_POLL_INTERVAL_MS,
     });
 
+    // Resolves to false when the query got no AI answer, so the composer can
+    // give the text back to the member.
     const send = useCallback(
         async (content: string) => {
             setPending({
@@ -43,10 +45,16 @@ export function useWidgetMessages(widgetId: string) {
             });
 
             try {
-                await createMessage({ widget_id: widgetId, content });
+                const { reply } = await createMessage({
+                    widget_id: widgetId,
+                    content,
+                });
+                // The server saves the failure as a system message, so every
+                // member sees it in the list.
+                return reply.role === "ai";
             } catch {
-                // The server keeps the user message even if the AI reply fails.
-                setError("Could not get a reply. Try again.");
+                setError("Could not send the message. Try again.");
+                return false;
             } finally {
                 setPending(null);
                 void refresh();
