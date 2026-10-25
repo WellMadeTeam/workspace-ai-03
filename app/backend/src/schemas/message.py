@@ -18,6 +18,8 @@ class MessageResponse(BaseModel):
     # sent to the LLM.
     role: Literal["user", "ai", "system"]
     content: str
+    has_context: bool = False
+    references: list[UUID] = []
 
 
 class MessageListResponse(BaseModel):
@@ -28,5 +30,3 @@ class MessageCreateResponse(BaseModel):
     user_message: MessageResponse
     # The AI answer, or a "system" message if the LLM failed to answer.
     reply: MessageResponse
-    has_context: bool
-    references: list[dict] | None = None
