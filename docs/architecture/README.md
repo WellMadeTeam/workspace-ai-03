@@ -1,6 +1,6 @@
 # Architecture
 
-This document records the architecture of the shared LLM whiteboard, and [the product vision](../product-vision.md) is the scope it serves.
+This document records the architecture of Workspace for AI collaboration, and [the product vision](../product-vision.md) is the scope it serves.
 
 ## Drivers
 
@@ -17,12 +17,12 @@ The product runs as the containers below, and [`ADR-001`](adr/ADR-001.md) decide
 
 ### Container Responsibilities
 
-| Container  | Responsibilities                                                                                                                                                           |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `frontend` | Renders the board, its blocks, and an AI block's messages panel; polls the backend for the board's blocks and messages; holds a block's unsaved edits until they are sent  |
-| `gateway`  | Exposes the product on one public port; routes `/api` requests to the backend and every other request to the frontend; owns the routing rules and the AI reply timeout     |
-| `backend`  | Serves the board, block, and message API; sends an AI block's conversation to the LLM service provider and stores the reply; owns the boards, the blocks, and the messages |
-| `database` | Stores the boards, the blocks, their connections, and the messages; keeps them in a volume, so they survive a restart                                                      |
+| Container  | Responsibilities                                                                                                                                                                                          |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `frontend` | Renders the board, its blocks, and an AI block's messages panel; polls the backend for the board's blocks and messages; holds a block's unsaved edits until they are sent                                 |
+| `gateway`  | Exposes the product on one public port; routes `/api` requests to the backend and every other request to the frontend; owns the routing rules and the AI reply timeout                                    |
+| `backend`  | Serves the board, block, connection, and message API; sends an AI block's conversation to the LLM service provider and stores the reply; owns the boards, the blocks, their connections, and the messages |
+| `database` | Stores the boards, the blocks, their connections, and the messages; keeps them in a volume, so they survive a restart                                                                                     |
 
 ## Diagrams And Legends
 
