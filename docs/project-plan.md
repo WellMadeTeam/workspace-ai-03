@@ -57,7 +57,7 @@ Released as [v0.1.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/ta
 
 A teammate connects existing widgets to a new query and the answer uses them as context, the side panel shows which widgets those are, members add notes of their own, a full board turns away an eleventh member, and a failed query shows its error to every member.
 
-- **Due:** 2026-10-24
+- **Due:** 2026-10-25
 - **Sprint Backlog:** [the issues scheduled into SPRINT-04](https://github.com/WellMadeTeam/workspace-ai-03/milestone/4)
 - **Planned Velocity:** 26
 
