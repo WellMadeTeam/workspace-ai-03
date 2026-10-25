@@ -16,6 +16,8 @@ class MessageResponse(BaseModel):
     widget_id: UUID
     role: Literal["user", "ai"]
     content: str
+    has_context: bool = False
+    references: list[dict] | None = None
 
 
 class MessageListResponse(BaseModel):
@@ -25,5 +27,3 @@ class MessageListResponse(BaseModel):
 class MessageCreateResponse(BaseModel):
     user_message: MessageResponse
     ai_message: MessageResponse
-    has_context: bool
-    references: list[dict] | None = None

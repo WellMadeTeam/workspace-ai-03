@@ -8,6 +8,7 @@ from app.backend.src.models import Connection, Widget
 
 def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[dict]:
     visited = set()
+    added = set()
     queue = [ai_widget_id]
     documents = []
 
@@ -26,7 +27,9 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[dict]:
             if not source:
                 continue
 
-            if source.content:
+            # A widget reached by several paths is sent to the AI only once.
+            if source.content and source.id not in added:
+                added.add(source.id)
                 documents.append({
                     "id": str(source.id),
                     "source": {
@@ -34,7 +37,8 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[dict]:
                         "type": "text",
                     },
                 })
-                if source.widget_type == "ai":
-                    queue.append(source.id)
+
+            if source.widget_type == "ai":
+                queue.append(source.id)
 
     return documents

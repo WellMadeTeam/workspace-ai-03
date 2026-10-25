@@ -31,4 +31,10 @@ def generate_reply(
     if not answer:
         raise RuntimeError("The AI returned an empty response")
 
-    return answer, annotations
+    # SDK objects are converted to plain dicts so they can be stored as JSON.
+    references = [
+        annotation.model_dump() if hasattr(annotation, "model_dump") else dict(annotation)
+        for annotation in annotations
+    ] if annotations else None
+
+    return answer, references

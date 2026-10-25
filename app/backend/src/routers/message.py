@@ -57,8 +57,11 @@ def create_message(
 
     ai_messages = [
         {
-            "role": "user",
-            "content": message_data.content,
+            "role": "system",
+            "content": (
+                "You are a helpful assistant in Workspace "
+                "for AI Collaboration. Be clear and concise."
+            ),
         }
     ]
 
@@ -76,8 +79,6 @@ def create_message(
 
     documents = get_context_for_ai(db, message_data.widget_id)
 
-    has_context = len(documents) > 0
-
     try:
         answer, references = generate_reply(ai_messages, documents=documents)
     except Exception as exc:
@@ -93,6 +94,8 @@ def create_message(
         widget_id=message_data.widget_id,
         role="ai",
         content=answer,
+        has_context=len(documents) > 0,
+        references=references,
     )
 
     db.add(ai_message)
@@ -102,8 +105,6 @@ def create_message(
     return {
         "user_message": user_message,
         "ai_message": ai_message,
-        "has_context": has_context,
-        "references": references,
     }
 
 
@@ -126,7 +127,7 @@ def get_messages(
     statement = (
         select(Message)
         .where(Message.widget_id == widget_id)
-        .order_by(Message.created_at.asc())
+        .order_by(Message.created_at.asc(), Message.id.asc())
     )
 
     messages = db.scalars(statement).all()
