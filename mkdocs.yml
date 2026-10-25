@@ -12,6 +12,7 @@ nav:
   - Home: index.md
   - Setup and run: setup.md
   - Product vision: product-vision.md
+  - Quality requirements: quality-requirements/README.md
   - Decisions: decisions.md
   - Assumptions: assumptions.md
   - Threshold of success: threshold-of-success.md
