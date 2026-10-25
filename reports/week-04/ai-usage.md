@@ -49,6 +49,10 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - From the agent's undo options we chose soft delete and moved it into its own task, #153, so that #135 stays small; the agent's note that the type check fails was already out of date, because the failing `tabIndex` prop had been removed and the checks passed.
 - Claude Code could not add #153 to the project, because the token lacked the `project` scope; the project's own rule added it to the backlog.
 - Each change was committed by us after Claude Code reported which checks passed and what it had not verified.
+- Every reply and review was read and approved by me before Claude Code posted it.
+- In the review of #127 we dropped a point about the error message, because it was outside a refactor, and added a suggestion to use a formatter.
+- We kept the gateway → frontend arrow and only reworded its label, instead of removing it as one option suggested, because it is a separate request (`nginx.conf` proxies `/` to `frontend`).
+- We raised QR-04's business importance to High instead of waiting for the customer.
 
 ## What was not used
 
