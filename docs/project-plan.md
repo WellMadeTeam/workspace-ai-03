@@ -60,6 +60,7 @@ A teammate connects existing widgets to a new query and the answer uses them as 
 - **Due:** 2026-10-25
 - **Sprint Backlog:** [the issues scheduled into SPRINT-04](https://github.com/WellMadeTeam/workspace-ai-03/milestone/4)
 - **Planned Velocity:** 26
+- **Actual Velocity:** 15; `US-05` and `US-06` are finished but not yet accepted by the customer, so they moved to `SPRINT-05`.
 
 #### REL-04
 
