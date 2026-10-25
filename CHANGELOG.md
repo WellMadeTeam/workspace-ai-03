@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.2.0) - 2026-10-25
+
 ### Added
 
 - Limit each board to 10 members at a time, and show a "board is full" screen with options to try again or create a new board when the limit is reached.
