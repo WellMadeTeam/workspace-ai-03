@@ -28,6 +28,10 @@ Claude Code in the terminal; a background Claude Code agent for one research que
   - creating #153 from the task template, linked to story #39 (AC-02), and setting its issue type to Task
   - cherry-picking the markdownlint configuration commit of #128 onto the branch of #135, so that the changelog's repeated section headings pass the lint
 - Claude Code: writing the changelog entries for the deletion and for the double click.
+- Claude Code: sorting the issues assigned to me by what Assignment 4 requires and by effort.
+- Claude Code: drafting Parts 2–6 from the code and the course rules: the container view and its Mermaid source (#159), the quality requirements (#160), the functional requirements (#161), the ADRs and their index (#163), and the drivers (#164).
+- Claude Code: fixing these pull requests after the review and drafting the replies to each comment.
+- Claude Code: reviewing #127, #128 and #156; for #128, running the backend from the branch with a script that opens 11 WebSockets to check the member limit.
 
 ## What we did with the output
 
