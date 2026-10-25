@@ -5,10 +5,10 @@ import asyncio
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from starlette.concurrency import run_in_threadpool
 
-from realtime.hub import BoardFullError, hub
-from realtime.utils.connection import ping_periodically, receive_frames
-from realtime.utils.handshake import board_exists, origin_allowed, parse_uuid
-from realtime.utils.protocol import CloseCode
+from app.backend.src.realtime.hub import BoardFullError, hub
+from app.backend.src.realtime.utils.connection import ping_periodically, receive_frames
+from app.backend.src.realtime.utils.handshake import board_exists, origin_allowed, parse_uuid
+from app.backend.src.realtime.utils.protocol import CloseCode
 
 
 router = APIRouter(tags=["realtime"])

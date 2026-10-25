@@ -4,6 +4,7 @@ import { ApiError } from "@/shared/api";
 import { usePolling } from "@/shared/lib";
 import {
     createWidget,
+    deleteWidget,
     listWidgets,
     updateWidget,
     type NewWidget,
@@ -17,8 +18,8 @@ const POLL_INTERVAL_MS = 1000;
 
 /**
  * Keeps the board's nodes in sync with the widgets stored on the server,
- * polling every second, and saves local edits back to the server. A `null`
- * board pauses polling.
+ * polling every second, and saves local edits and deletions back to the
+ * server. A `null` board pauses polling.
  */
 export function useBoardWidgets(boardId: string | null) {
     const [nodes, setNodes, onNodesChange] = useNodesState<WidgetNode>([]);
@@ -29,6 +30,9 @@ export function useBoardWidgets(boardId: string | null) {
     const unsavedWidgets = useRef(new Set<string>());
     const pendingUpdates = useRef(new Map<string, WidgetUpdate>());
     const saveTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
+    // Widgets removed locally whose deletion the server has not confirmed yet;
+    // polls must not bring them back.
+    const deletingWidgets = useRef(new Set<string>());
 
     const refresh = usePolling({
         load: useMemo(
@@ -45,16 +49,20 @@ export function useBoardWidgets(boardId: string | null) {
                         current.map((node) => [node.id, node]),
                     );
 
-                    return widgets.map((widget) => {
-                        const node = currentById.get(widget.id);
-                        if (!node) return toNode(widget);
-                        if (
-                            node.dragging ||
-                            unsavedWidgets.current.has(widget.id)
+                    return widgets
+                        .filter(
+                            (widget) => !deletingWidgets.current.has(widget.id),
                         )
-                            return node;
-                        return mergeNode(node, widget);
-                    });
+                        .map((widget) => {
+                            const node = currentById.get(widget.id);
+                            if (!node) return toNode(widget);
+                            if (
+                                node.dragging ||
+                                unsavedWidgets.current.has(widget.id)
+                            )
+                                return node;
+                            return mergeNode(node, widget);
+                        });
                 });
                 setLoadedBoardId(boardId);
                 setError(null);
@@ -92,8 +100,13 @@ export function useBoardWidgets(boardId: string | null) {
 
                 try {
                     await updateWidget(widgetId, pendingUpdate);
-                } catch {
-                    setError("Could not save changes.");
+                } catch (err) {
+                    // 404: the block was deleted (by us or another member)
+                    // while the save was in flight; the refresh below
+                    // removes it from the canvas.
+                    if (!(err instanceof ApiError && err.status === 404)) {
+                        setError("Could not save changes.");
+                    }
                 } finally {
                     // Newer edits may have been scheduled while this request ran.
                     if (!saveTimers.current.has(widgetId)) {
@@ -123,7 +136,54 @@ export function useBoardWidgets(boardId: string | null) {
         [boardId, refresh],
     );
 
+    // Expects the nodes to be already removed from the canvas (React Flow does
+    // it before calling onNodesDelete). On failure the next poll restores them.
+    const removeWidgets = useCallback(
+        async (widgetIds: string[]) => {
+            for (const widgetId of widgetIds) {
+                deletingWidgets.current.add(widgetId);
+                // Drop unsent edits, the server would reject them with 404.
+                clearTimeout(saveTimers.current.get(widgetId));
+                saveTimers.current.delete(widgetId);
+                pendingUpdates.current.delete(widgetId);
+                unsavedWidgets.current.delete(widgetId);
+            }
+
+            const results = await Promise.allSettled(
+                widgetIds.map((widgetId) => deleteWidget(widgetId)),
+            );
+            // A widget someone else already deleted is gone either way.
+            if (
+                results.some(
+                    (result) =>
+                        result.status === "rejected" &&
+                        !(
+                            result.reason instanceof ApiError &&
+                            result.reason.status === 404
+                        ),
+                )
+            ) {
+                setError("Could not delete the block.");
+            }
+
+            for (const widgetId of widgetIds) {
+                deletingWidgets.current.delete(widgetId);
+            }
+            // Also discards polls started before the deletion finished.
+            void refresh();
+        },
+        [refresh],
+    );
+
     const isLoaded = boardId !== null && loadedBoardId === boardId;
 
-    return { nodes, onNodesChange, error, isLoaded, addWidget, saveWidget };
+    return {
+        nodes,
+        onNodesChange,
+        error,
+        isLoaded,
+        addWidget,
+        saveWidget,
+        removeWidgets,
+    };
 }

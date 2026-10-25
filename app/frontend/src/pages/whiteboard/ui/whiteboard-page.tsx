@@ -10,9 +10,11 @@ import {
 import "@xyflow/react/dist/style.css";
 import { SaveWidgetContext } from "../model/save-widget";
 import { useBoardConnection } from "../model/use-board-connection";
+import { useBoardContextMenu } from "../model/use-board-context-menu";
 import { useBoardId } from "../model/use-board-id";
 import { useBoardWidgets } from "../model/use-board-widgets";
 import { isAiNode, type WidgetNode } from "../model/widget-node";
+import { BoardContextMenu } from "./board-context-menu";
 import { BoardError } from "./board-error";
 import { BoardGate, type BoardGateState } from "./board-gate";
 import { MessagesPanel } from "./messages-panel";
@@ -29,8 +31,16 @@ export function WhiteboardPage() {
     // the open board up to date while the socket reconnects.
     const isMember =
         connection.status === "live" || connection.status === "reconnecting";
-    const { nodes, onNodesChange, error, isLoaded, addWidget, saveWidget } =
-        useBoardWidgets(isMember ? boardId : null);
+    const {
+        nodes,
+        onNodesChange,
+        error,
+        isLoaded,
+        addWidget,
+        saveWidget,
+        removeWidgets,
+    } = useBoardWidgets(isMember ? boardId : null);
+    const contextMenu = useBoardContextMenu(nodes, onNodesChange);
     const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
 
     // Save the final position of every dragged node (several when a selection is dragged).
@@ -68,6 +78,10 @@ export function WhiteboardPage() {
         error ??
         (connection.status === "reconnecting" ? "Reconnecting…" : null);
 
+    // Called for the context menu's Delete and the Backspace shortcut alike.
+    const onNodesDelete = (deletedNodes: WidgetNode[]) =>
+        void removeWidgets(deletedNodes.map((node) => node.id));
+
     return (
         <SaveWidgetContext value={saveWidget}>
             <div className="h-screen w-screen">
@@ -76,6 +90,11 @@ export function WhiteboardPage() {
                     nodeTypes={nodeTypes}
                     onNodesChange={onNodesChange}
                     onNodeDragStop={onNodeDragStop}
+                    onNodesDelete={onNodesDelete}
+                    onNodeContextMenu={contextMenu.onNodeContextMenu}
+                    onSelectionContextMenu={contextMenu.onSelectionContextMenu}
+                    onPaneContextMenu={contextMenu.close}
+                    onMoveStart={contextMenu.close}
                     nodesConnectable={false}
                     colorMode="system"
                     fitView
@@ -106,6 +125,10 @@ export function WhiteboardPage() {
                             />
                         </Panel>
                     )}
+                    <BoardContextMenu
+                        position={contextMenu.position}
+                        onClose={contextMenu.close}
+                    />
                 </ReactFlow>
             </div>
         </SaveWidgetContext>

@@ -1,74 +1,29 @@
-from typing import Literal
+import logging
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, HTTPException, Query, status
-from pydantic import BaseModel, ConfigDict, Field
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from ai_service import generate_reply
 
-from database import Base, engine, get_db
-from models import Board, Message, Widget
-from realtime import router as realtime_router
-from widgets import router as widgets_router
-
-
-Base.metadata.create_all(bind=engine)
-
-app = FastAPI(title="Workspace for AI Collaboration")
-
-app.include_router(widgets_router)
-app.include_router(realtime_router)
+from app.backend.src.database import get_db
+from app.backend.src.schemas.message import MessageCreate, MessageCreateResponse, MessageListResponse
+from app.backend.src.services.ai_service import generate_reply
+from app.backend.src.models import Message, Widget
 
 
-class BoardCreate(BaseModel):
-    title: str = Field(min_length=1, max_length=200)
+logger = logging.getLogger(__name__)
+
+message_router = APIRouter(prefix="/messages", tags=["messages"])
+
+# Shown to every member of the board when the LLM fails to answer. It must not
+# expose technical details, those go to the server log.
+AI_FAILURE_MESSAGE = (
+    "The AI couldn't answer this query. Please try again in a moment."
+)
 
 
-class BoardResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-
-class MessageCreate(BaseModel):
-    widget_id: UUID
-    content: str = Field(min_length=1)
-
-
-class MessageResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-    widget_id: UUID
-    role: Literal["user", "ai"]
-    content: str
-
-
-class MessageListResponse(BaseModel):
-    items: list[MessageResponse]
-
-
-class MessageCreateResponse(BaseModel):
-    user_message: MessageResponse
-    ai_message: MessageResponse
-
-
-@app.post("/boards", response_model=BoardResponse, status_code=status.HTTP_201_CREATED)
-def create_board(
-    board_data: BoardCreate,
-    db: Session = Depends(get_db),
-):
-    board = Board(title=board_data.title)
-
-    db.add(board)
-    db.commit()
-    db.refresh(board)
-
-    return BoardResponse(id=board.id)
-
-
-@app.post(
-    "/messages",
+@message_router.post(
+    "",
     response_model=MessageCreateResponse,
     status_code=status.HTTP_201_CREATED,
 )
@@ -119,6 +74,9 @@ def create_message(
     ]
 
     for message in history:
+        if message.role == "system":
+            continue
+
         ai_role = (
             "assistant"
             if message.role == "ai"
@@ -130,35 +88,33 @@ def create_message(
             "content": message.content,
         })
 
+    # The failure is saved as a message, so every member of the board sees it.
     try:
-        answer = generate_reply(ai_messages)
-    except Exception as exc:
-        raise HTTPException(
-            status_code=502,
-            detail=(
-                "AI provider request failed. "
-                "The user message was saved."
-            ),
-        ) from exc
+        reply = Message(
+            widget_id=message_data.widget_id,
+            role="ai",
+            content=generate_reply(ai_messages),
+        )
+    except Exception:
+        logger.exception("The LLM failed to answer a query")
+        reply = Message(
+            widget_id=message_data.widget_id,
+            role="system",
+            content=AI_FAILURE_MESSAGE,
+        )
 
-    ai_message = Message(
-        widget_id=message_data.widget_id,
-        role="ai",
-        content=answer,
-    )
-
-    db.add(ai_message)
+    db.add(reply)
     db.commit()
-    db.refresh(ai_message)
+    db.refresh(reply)
 
     return {
         "user_message": user_message,
-        "ai_message": ai_message,
+        "reply": reply,
     }
 
 
-@app.get(
-    "/messages",
+@message_router.get(
+    "",
     response_model=MessageListResponse,
 )
 def get_messages(

@@ -5,8 +5,8 @@ from uuid import UUID
 
 from fastapi import WebSocket
 
-from realtime.member import Member
-from realtime.utils.protocol import CloseCode, build_frame
+from app.backend.src.realtime.member import Member
+from app.backend.src.realtime.utils.protocol import CloseCode, build_frame
 
 
 MAX_MEMBERS_PER_BOARD = 10

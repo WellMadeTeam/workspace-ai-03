@@ -1,55 +1,15 @@
-from typing import Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
-from pydantic import BaseModel, ConfigDict, Field, field_validator
 from sqlalchemy import delete, or_, select
 from sqlalchemy.orm import Session
 
-from database import get_db
-from models import Board, Connection, Message, Widget
+from app.backend.src.database import get_db
+from app.backend.src.models import Board, Connection, Message, Widget
+from app.backend.src.schemas.widget import WidgetCreate, WidgetListResponse, WidgetResponse, WidgetUpdate
 
 
-router = APIRouter(prefix="/widgets", tags=["widgets"])
-
-WidgetType = Literal["text", "ai"]
-
-
-class WidgetCreate(BaseModel):
-    title: str = Field(min_length=1, max_length=200)
-    board_id: UUID
-    widget_type: WidgetType
-    x: float
-    y: float
-
-
-class WidgetUpdate(BaseModel):
-    title: str | None = Field(default=None, min_length=1, max_length=200)
-    content: str | None = None
-    x: float | None = None
-    y: float | None = None
-
-    @field_validator("x", "y")
-    @classmethod
-    def position_not_null(cls, value: float | None) -> float:
-        if value is None:
-            raise ValueError("Position cannot be null")
-        return value
-
-
-class WidgetResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-    widget_type: WidgetType
-    title: str | None
-    content: str | None
-    x: float
-    y: float
-
-
-class WidgetListResponse(BaseModel):
-    items: list[WidgetResponse]
+widget_router = APIRouter(prefix="/widgets", tags=["widgets"])
 
 
 def ensure_board_exists(db: Session, board_id: UUID) -> None:
@@ -57,7 +17,7 @@ def ensure_board_exists(db: Session, board_id: UUID) -> None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Board not found")
 
 
-@router.get("", response_model=WidgetListResponse)
+@widget_router.get("", response_model=WidgetListResponse)
 def list_widgets(
     board_id: UUID = Query(alias="boardId"),
     db: Session = Depends(get_db),
@@ -71,7 +31,7 @@ def list_widgets(
     return WidgetListResponse(items=widgets)
 
 
-@router.post("", response_model=WidgetResponse, status_code=status.HTTP_201_CREATED)
+@widget_router.post("", response_model=WidgetResponse, status_code=status.HTTP_201_CREATED)
 def create_widget(
     widget_data: WidgetCreate,
     db: Session = Depends(get_db),
@@ -87,7 +47,7 @@ def create_widget(
     return widget
 
 
-@router.put("/{widget_id}", response_model=WidgetResponse)
+@widget_router.put("/{widget_id}", response_model=WidgetResponse)
 def update_widget(
     widget_id: UUID,
     widget_data: WidgetUpdate,
@@ -107,7 +67,7 @@ def update_widget(
     return widget
 
 
-@router.delete("/{widget_id}", status_code=status.HTTP_204_NO_CONTENT)
+@widget_router.delete("/{widget_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_widget(
     widget_id: UUID,
     db: Session = Depends(get_db),

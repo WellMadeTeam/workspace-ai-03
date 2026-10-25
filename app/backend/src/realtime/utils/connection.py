@@ -6,9 +6,9 @@ from uuid import uuid4
 
 from fastapi import WebSocket
 
-from realtime.hub import hub
-from realtime.member import Member
-from realtime.utils.protocol import CloseCode
+from app.backend.src.realtime.hub import hub
+from app.backend.src.realtime.member import Member
+from app.backend.src.realtime.utils.protocol import CloseCode
 
 
 PING_INTERVAL_S = 25

@@ -6,7 +6,7 @@ from uuid import UUID
 
 from fastapi import WebSocket
 
-from realtime.utils.protocol import CloseCode
+from app.backend.src.realtime.utils.protocol import CloseCode
 
 
 SEND_QUEUE_SIZE = 256

@@ -43,3 +43,8 @@ export const updateWidget = (widgetId: string, update: WidgetUpdate) =>
         method: "PUT",
         body: JSON.stringify(update),
     });
+
+export const deleteWidget = (widgetId: string) =>
+    request<void>(`/widgets/${encodeURIComponent(widgetId)}`, {
+        method: "DELETE",
+    });

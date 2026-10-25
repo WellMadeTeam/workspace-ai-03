@@ -11,12 +11,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Limit each board to 10 members at a time, and show a "board is full" screen with options to try again or create a new board when the limit is reached.
 - Show a loading screen until the board is joined, and an error screen when the board is not found or the server cannot be reached.
 - Reconnect to the board automatically after the connection drops, with a "Reconnecting…" notice in the meantime.
+- Delete the selected text or AI blocks from the whiteboard with «Delete» in the right-click menu or the Backspace key; they disappear for every member of the board.
+
+### Changed
+
+- Start editing a text block with a double click instead of a single click, so a click only selects it.
 
 ### Fixed
 
 - Stop showing placeholder "Idea" and "Prompt" blocks on the whiteboard.
 - Show an error message when adding a block to the whiteboard fails.
 - Follow the browser's light or dark theme everywhere in the interface, not only on the board canvas.
+- Show every member of the board a system message in the AI block when the AI fails to answer a query, keep the query in the conversation, and put its text back into the sender's message field.
 
 ## [0.1.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.1.0) - 2026-10-17
 

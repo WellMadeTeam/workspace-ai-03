@@ -6,8 +6,8 @@ from uuid import UUID
 
 from fastapi import WebSocket
 
-from database import SessionLocal
-from models import Board
+from app.backend.src.database import SessionLocal
+from app.backend.src.models import Board
 
 
 # Comma-separated origins allowed to open a socket; when unset, the Origin

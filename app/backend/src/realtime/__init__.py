@@ -11,6 +11,6 @@ The hub lives in this process's memory, so the backend must run as one process.
 - utils/protocol.py: close codes and the event envelope
 """
 
-from realtime.router import router
+from app.backend.src.realtime.router import router
 
 __all__ = ["router"]
