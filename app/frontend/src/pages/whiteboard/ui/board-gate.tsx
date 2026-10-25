@@ -31,7 +31,7 @@ const errors: Record<
     },
     full: {
         icon: Users,
-        title: `Maximum of ${BOARD_MEMBER_LIMIT} members reached The board is full`,
+        title: `Maximum of ${BOARD_MEMBER_LIMIT} members reached`,
         description: "Someone has to leave before you can join.",
         canRetry: true,
         canCreateBoard: true,

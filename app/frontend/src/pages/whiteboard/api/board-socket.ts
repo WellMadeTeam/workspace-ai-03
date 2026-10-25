@@ -1,6 +1,6 @@
 import { socketUrl } from "@/shared/api";
 
-// Matches CloseCode in app/backend/realtime/utils/protocol.py.
+// Matches CloseCode in app/backend/src/realtime/utils/protocol.py.
 export const BoardCloseCode = {
     BAD_REQUEST: 4400,
     ORIGIN_REJECTED: 4403,
