@@ -194,9 +194,9 @@ Prioritize diagram rendering and automatic block titling over user authenticatio
 
 `US-01` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04
 
-- **Status:** Active
+- **Status:** Superseded by [DEC-022](#dec-022)
 - **Date:** 2026-10-15
-- **Made by:** Team, not contested
+- **Made by:** Team
 - **Source:** [the Week 3 meeting](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-03/meeting-report.md)
 - **Why:** `AC-01` was shown working, but an 11th member is not yet turned away with a "board is full" message, as [DEC-017](#dec-017) refines `AC-02`; the customer agreed that the team iterates on the working slice.
 
@@ -204,8 +204,68 @@ Prioritize diagram rendering and automatic block titling over user authenticatio
 
 `US-04` is rejected because `AC-02` is not met, and its rework is scheduled into SPRINT-04
 
-- **Status:** Active
+- **Status:** Superseded by [DEC-023](#dec-023)
 - **Date:** 2026-10-15
-- **Made by:** Team, not contested
+- **Made by:** Team
 - **Source:** [the Week 3 meeting](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-03/meeting-report.md)
 - **Why:** `AC-01` was shown working, but a failed LLM query does not yet show a meaningful error to every member, as [DEC-018](#dec-018) refines `AC-02`; the customer agreed that the team iterates on the working slice.
+
+## DEC-022
+
+Accept `US-01` now that the "board is full" criterion is met
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Customer
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** the customer saw that a member who opens a board that already has 10 members is told the board is full, and that changes made by one member are seen by the other, so both criteria of `US-01` are met; this replaces the rejection in [DEC-020](#dec-020).
+
+## DEC-023
+
+Accept `US-04` now that the LLM error is visible to all members
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Customer
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** the customer saw the "AI cannot answer this query right now" error appear for every member on the board when the LLM was unavailable, and the query and the answer reach both members, so the criteria of `US-04` are met; this replaces the rejection in [DEC-021](#dec-021).
+
+## DEC-024
+
+Accept the story for adding notes of my own to the board
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Customer
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** a note added by one member appears for every member, and a note deleted by its author disappears for every member, which is what the story asks for; the customer said the story can be closed.
+
+## DEC-025
+
+Open text blocks in the side panel like AI blocks, with Markdown support later
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Customer
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** AI blocks open a side panel while text blocks are typed into inside the block, which is inconsistent and does not scale to long documents such as a skill; the same panel lets the text be edited, renamed and later connected to an AI block as context.
+
+## DEC-026
+
+Focus the next sprint on sharing diagrams and highlighting a part of the board
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Team
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** the necessary features are in place, so the team moves on to supplementary ones, in line with [DEC-006](#dec-006) and [DEC-019](#dec-019); the customer agreed and noted that rendering large diagrams may be a big feature.
+
+## DEC-027
+
+Draft the architecture decisions in Week 4 and mark them as proposed
+
+- **Status:** Active
+- **Date:** 2026-10-22
+- **Made by:** Team
+- **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
+- **Why:** the architecture assignment was published the night before the meeting and the drafts are not ready, so the team drafts the decisions and compares them with the drivers this week and settles them with the customer at the next meeting; the customer agreed and expects a simple architecture for this product.

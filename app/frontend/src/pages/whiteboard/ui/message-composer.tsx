@@ -4,7 +4,8 @@ import { SendHorizontal } from "lucide-react";
 
 type MessageComposerProps = {
     isSending: boolean;
-    onSend: (content: string) => void;
+    /** Resolves to false when the query failed, to put its text back. */
+    onSend: (content: string) => Promise<boolean>;
 };
 
 export function MessageComposer({ isSending, onSend }: MessageComposerProps) {
@@ -14,8 +15,11 @@ export function MessageComposer({ isSending, onSend }: MessageComposerProps) {
         const content = draft.trim();
         if (!content || isSending) return;
 
-        onSend(content);
         setDraft("");
+        void onSend(content).then((isSent) => {
+            // Keep anything the member started typing while waiting.
+            if (!isSent) setDraft((current) => current || content);
+        });
     };
 
     const onSubmit = (event: FormEvent) => {

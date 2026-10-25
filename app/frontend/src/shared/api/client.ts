@@ -1,6 +1,6 @@
 // Requests go through the Vite dev server proxy (see vite.config.ts),
 // so the backend does not need CORS.
-const API_URL = "/api";
+export const API_URL = "/api";
 
 export class ApiError extends Error {
     readonly status: number;
@@ -23,6 +23,9 @@ export async function request<T>(path: string, init?: RequestInit): Promise<T> {
             `${init?.method ?? "GET"} ${path} failed with ${response.status}`,
         );
     }
+
+    // 204 No Content has no body to parse.
+    if (response.status === 204) return undefined as T;
 
     return response.json() as Promise<T>;
 }

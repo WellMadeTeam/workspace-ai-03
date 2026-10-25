@@ -9,8 +9,8 @@ type PollingOptions<T> = {
 };
 
 /**
- * Calls `load` right away and then every `intervalMs`. Returns `refresh` to
- * load again outside the schedule.
+ * Calls `load` right away and then `intervalMs` after each call finishes.
+ * Returns `refresh` to load again outside the schedule.
  */
 export function usePolling<T>({
     load,
@@ -47,14 +47,21 @@ export function usePolling<T>({
         if (!load) return;
 
         const controller = new AbortController();
-        void refresh(controller.signal);
-        const interval = setInterval(
-            () => void refresh(controller.signal),
-            intervalMs,
-        );
+        let timer: ReturnType<typeof setTimeout> | undefined;
+
+        // The next poll waits for the previous one: on a connection slower
+        // than `intervalMs`, a fixed interval would start a newer request
+        // before each response arrived, and every response would be discarded.
+        const poll = async () => {
+            await refresh(controller.signal);
+            if (!controller.signal.aborted) {
+                timer = setTimeout(() => void poll(), intervalMs);
+            }
+        };
+        void poll();
 
         return () => {
-            clearInterval(interval);
+            clearTimeout(timer);
             controller.abort();
         };
     }, [load, refresh, intervalMs]);
