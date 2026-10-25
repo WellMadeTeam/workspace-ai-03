@@ -13,7 +13,22 @@ if not api_key:
 client = Groq(api_key=api_key)
 
 
-def generate_reply(messages: list[dict[str, str]]) -> str:
+def generate_reply(
+    messages: list[dict[str, str]],
+    context: list[str] | None = None,
+) -> str:
+    if context:
+        context_text = "\n".join(context)
+        system_message = {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant in Workspace for AI Collaboration. "
+                "Be clear and concise.\n\n"
+                "Context from connected widgets:\n"
+                f"{context_text}"
+            ),
+        }
+        messages = [system_message] + messages
 
     completion = client.chat.completions.create(
         model="openai/gpt-oss-20b",

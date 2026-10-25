@@ -8,6 +8,7 @@ from app.backend.src.database import get_db
 from app.backend.src.schemas.message import MessageCreate, MessageCreateResponse, MessageListResponse
 from app.backend.src.services.ai_service import generate_reply
 from app.backend.src.models import Message, Widget
+from app.backend.src.services.context import get_context_for_ai
 
 
 message_router = APIRouter(prefix="/messages", tags=["messages"])
@@ -56,11 +57,8 @@ def create_message(
 
     ai_messages = [
         {
-            "role": "system",
-            "content": (
-                "You are a helpful assistant in Workspace "
-                "for AI Collaboration. Be clear and concise."
-            ),
+            "role": "user",
+            "content": message_data.content,
         }
     ]
 
@@ -76,8 +74,10 @@ def create_message(
             "content": message.content,
         })
 
+    context = get_context_for_ai(db, message_data.widget_id)
+
     try:
-        answer = generate_reply(ai_messages)
+        answer = generate_reply(ai_messages, context=context)
     except Exception as exc:
         raise HTTPException(
             status_code=502,
