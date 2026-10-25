@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- Delete the selected text or AI blocks from the whiteboard with «Delete» in the right-click menu or the Backspace key; they disappear for every member of the board.
+
+### Changed
+
+- Start editing a text block with a double click instead of a single click, so a click only selects it.
+
 ### Fixed
 
 - Stop showing placeholder "Idea" and "Prompt" blocks on the whiteboard.
