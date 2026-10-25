@@ -18,7 +18,7 @@ Claude Code in the terminal; a background Claude Code agent for one research que
   - removing a block from the canvas right away and keeping polls that started earlier from bringing it back
   - dropping edits still waiting to be saved for a deleted block
   - treating a block another member already deleted as gone rather than as an error
-- Claude Code: proposing a plan, and then moving the Delete button from above the block into a context menu opened with the right mouse button. 
+- Claude Code: proposing a plan, and then moving the Delete button from above the block into a context menu opened with the right mouse button.
 - Claude Code: making a text block editable on a double click instead of a single click, so a click only selects it: several blocks can be selected, and a right click does not start editing.
 
 - Claude Code: GitHub housekeeping through `gh`:
@@ -26,6 +26,8 @@ Claude Code in the terminal; a background Claude Code agent for one research que
   - cherry-picking the markdownlint configuration commit of #128 onto the branch of #135, so that the changelog's repeated section headings pass the lint
 
 - Claude Code: writing the changelog entries for the deletion and for the double click.
+- Claude Code: implementing #148: reading Part 8 and the glossary and agent-instructions requirements from the course repository through `gh`, then drafting `docs/glossary.md` with 13 terms taken from the vision, the decisions, the code, and the functional requirements of #161, and the root `AGENTS.md` with the layout, checks, conventions, and off-limits files.
+- Claude Code: linking the glossary from `mkdocs.yml` and `docs/index.md`, running the Markdown check, checking the relative links and anchors with a script, and opening the pull request from the template.
 
 ## What we did with the output
 
@@ -40,6 +42,8 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - Backspace stays the delete key, as React Flow's default; adding the Delete key was offered and not taken.
 
 - The text block's single click was replaced with a double click at our request, so that selecting several blocks and opening the context menu do not start editing.
+- For #148 we asked to keep the pull request description short; the first pull request, #168, came from a branch with a nickname prefix, so it was closed and reopened as #169 from `148-glossary-agents`, and at our request `AGENTS.md` now tells an agent to drop such a prefix.
+- The glossary links only artifacts already on `main`; the `FR-nnn` and `ADR-nnn` links wait until those pull requests merge.
 
 ## What was not used
 
@@ -49,4 +53,3 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The Delete button on a selected connection and the single-selection rule, built on the branch of #134, were replaced by the context menu.
 - A delayed delete and recreating a block from a snapshot were rejected as ways to undo: the first keeps the block visible to other members and loses the deletion if the tab closes, and the second cannot bring back the block's id, messages or connections.
 - No generated text was submitted unchecked.
-
