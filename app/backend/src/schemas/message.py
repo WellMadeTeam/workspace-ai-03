@@ -14,7 +14,9 @@ class MessageResponse(BaseModel):
 
     id: UUID
     widget_id: UUID
-    role: Literal["user", "ai"]
+    # "system" messages come from the application, not the AI, and are never
+    # sent to the LLM.
+    role: Literal["user", "ai", "system"]
     content: str
 
 
@@ -24,6 +26,7 @@ class MessageListResponse(BaseModel):
 
 class MessageCreateResponse(BaseModel):
     user_message: MessageResponse
-    ai_message: MessageResponse
+    # The AI answer, or a "system" message if the LLM failed to answer.
+    reply: MessageResponse
     has_context: bool
     references: list[dict] | None = None
