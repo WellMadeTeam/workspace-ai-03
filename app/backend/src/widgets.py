@@ -6,8 +6,8 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from sqlalchemy import delete, or_, select
 from sqlalchemy.orm import Session
 
-from database import get_db
-from models import Board, Connection, Message, Widget
+from app.backend.src.database import get_db
+from app.backend.src.models import Board, Connection, Message, Widget
 
 
 router = APIRouter(prefix="/widgets", tags=["widgets"])

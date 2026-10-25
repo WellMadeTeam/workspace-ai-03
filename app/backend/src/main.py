@@ -5,11 +5,11 @@ from fastapi import Depends, FastAPI, HTTPException, Query, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from ai_service import generate_reply
+from app.backend.src.ai_service import generate_reply
 
-from database import Base, engine, get_db
-from models import Board, Message, Widget
-from widgets import router as widgets_router
+from app.backend.src.database import Base, engine, get_db
+from app.backend.src.models import Board, Message, Widget
+from app.backend.src.widgets import router as widgets_router
 
 
 Base.metadata.create_all(bind=engine)
