@@ -26,7 +26,7 @@ type ServerFrame<Type extends string, Data> = {
     data: Data;
 };
 
-// Only the events the client handles so far; see reports/week-04/websockets.md.
+// Only the events the client handles so far.
 export type BoardSocketEvent =
     | ServerFrame<
           "connection.ready",
