@@ -66,3 +66,5 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 ## What was not verified by AI
 
 - Claude Code did not try the context menu or the double click in a browser: where the menu opens, closing it, and deleting several blocks at once still need a manual check.
+- The UI of #128 (the "board is full" screen and reconnecting) was not opened in a browser, only the backend was checked.
+- The new reading of US-06 (the context of a reply), BND-02 (PDF only) and FR-010 still need the customer's confirmation in Part 10.
