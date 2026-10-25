@@ -1,6 +1,7 @@
 import { Dropdown, Kbd } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { Trash2 } from "lucide-react";
+import type { ConnectionEdge } from "../model/connection-edge";
 import type { ContextMenuPosition } from "../model/use-board-context-menu";
 import type { WidgetNode } from "../model/widget-node";
 
@@ -9,16 +10,20 @@ type BoardContextMenuProps = {
     onClose: () => void;
 };
 
-/** Actions for the selected blocks, opened with a right click. */
+/** Actions for the selected blocks and connections, opened with a right click. */
 export function BoardContextMenu({ position, onClose }: BoardContextMenuProps) {
-    const { getNodes, deleteElements } = useReactFlow<WidgetNode>();
+    const { getNodes, getEdges, deleteElements } = useReactFlow<
+        WidgetNode,
+        ConnectionEdge
+    >();
 
     if (!position) return null;
 
-    // Goes through onNodesDelete, like the Backspace shortcut.
+    // Goes through onDelete, like the Backspace shortcut.
     const deleteSelection = () =>
         void deleteElements({
             nodes: getNodes().filter((node) => node.selected),
+            edges: getEdges().filter((edge) => edge.selected),
         });
 
     return (
