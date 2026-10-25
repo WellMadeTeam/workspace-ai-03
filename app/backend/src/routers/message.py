@@ -76,6 +76,8 @@ def create_message(
 
     context = get_context_for_ai(db, message_data.widget_id)
 
+    has_context = len(context) > 0
+
     try:
         answer = generate_reply(ai_messages, context=context)
     except Exception as exc:
@@ -100,6 +102,7 @@ def create_message(
     return {
         "user_message": user_message,
         "ai_message": ai_message,
+        "has_context": has_context
     }
 
 

@@ -25,3 +25,4 @@ class MessageListResponse(BaseModel):
 class MessageCreateResponse(BaseModel):
     user_message: MessageResponse
     ai_message: MessageResponse
+    has_context: bool
