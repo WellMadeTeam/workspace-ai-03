@@ -64,6 +64,8 @@ A teammate connects existing widgets to a new query and the answer uses them as 
 
 #### REL-04
 
+Released as [v0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.2.0) on 2026-10-25.
+
 ### SPRINT-05
 
 Provisional: members join a board by its link, highlight part of it, and see LLM diagrams rendered on it, with images from an LLM if time allows, on a product that runs in production and from the self-hosting instructions.
