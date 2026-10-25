@@ -52,6 +52,11 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - Claude Code: implementing #150: reading Part 12 and the retrospective and sprint requirements from the course repository through `gh`, reading the `Story Points` of the `SPRINT-04` stories through the GraphQL API, and drafting `**Actual Velocity:**` and `reports/week-04/sprint-retrospective.md` from the review's decisions, the milestone's issues, and the pull requests and commits of the sprint, including the Groq `documents` and `citation_options` incident.
 - Claude Code: renaming the branch to `150-close-the-sprint` and opening #173 from the template.
 
+- Claude Code: implementing #146: reading Part 7 and the user-story, task-issue, and issue-tracking requirements from the course repository through `gh`, checking every issue's type, `MoSCoW` value, criteria, and labels through the GraphQL API, and proposing a plan before any change.
+- Claude Code: adding `### Specified by` to every story except `US-12` and `### Requirements` to every open task through `gh`, mapped from the functional requirements' `**Traces to:**` and the `Addresses` column of the ADR index.
+- Claude Code: adding the `Specified by`, `Requirements`, and `Priority reason` fields to the issue forms, removing the retired labels from them, filtering the story issue links in the vision and the Week 4 meeting script and report by the `User story` type, and opening #171 from the template.
+- Claude Code: finding that the failed link check of #171 was a `503` from GitHub on a link the pull request did not change, and rerunning the job.
+
 ## What we did with the output
 
 - The proposal also included moving the `SPRINT-04` milestone's due date from `2026-10-25` to `2026-10-24`; we rejected it and kept the milestone's deadline as it is.
@@ -80,6 +85,10 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - For #150 the agent first counted `US-05` and `US-06` as not finished; we corrected it, since both are finished but not yet accepted, and the actual velocity stays `15` because a story closes only on the customer's acceptance.
 - `**Actual Velocity:** 15` was checked by hand against the `Story Points` of the three accepted stories.
 
+- For #146 the agent found that the types, the `MoSCoW` values, and the checkbox criteria were already in place, so the pass added only the two lists, the form fields, and the retirement of the labels.
+- At our request `ADR-001` is named only in `US-04`, matching the ADR index, rather than in every story, and the issues were edited before the pull request merged.
+- The agent's deletion of the retired labels was blocked by its permission settings, so the labels are deleted by hand.
+
 ## What was not used
 
 - The proposed change of the `SPRINT-04` milestone's due date was not applied.
@@ -91,4 +100,6 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - React Flow's built-in arrowheads and the arrow ends fixed to the handles, and then to the nearest sides of the blocks, were replaced with custom arrows whose ends slide along the borders.
 - The per-block polling of connections was replaced with one request per board once #172 added the endpoint.
 - The agent's resolution of the message router and schema conflicts on `134-connections-feature` was replaced with the one from `136-fix-references`.
+- Changing the label links of the Week 2 and Week 3 reports to the `User story` type was offered and not taken, because those reports record their own week.
+- Making the link check accept a `503` was suggested and not applied; the failed job was rerun instead.
 - No generated text was submitted unchecked.
