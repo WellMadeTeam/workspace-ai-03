@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Added
 
 - Delete the selected text or AI blocks from the whiteboard with «Delete» in the right-click menu or the Backspace key; they disappear for every member of the board.
+- Connect whiteboard blocks with arrows by dragging from a block's edge onto another block; every member of the board sees the connections, and they are deleted like blocks.
 
 ### Changed
 
