@@ -6,10 +6,9 @@ export type Connection = {
     target_widget_id: string;
 };
 
-/** Lists the connections that start at the widget. */
-export const listWidgetConnections = (widgetId: string, signal?: AbortSignal) =>
+export const listConnections = (boardId: string, signal?: AbortSignal) =>
     request<Connection[]>(
-        `/connections/${encodeURIComponent(widgetId)}/connections`,
+        `/connections?boardId=${encodeURIComponent(boardId)}`,
         { signal },
     );
 

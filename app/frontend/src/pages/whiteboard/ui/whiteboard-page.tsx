@@ -59,7 +59,10 @@ export function WhiteboardPage() {
         error: connectionsError,
         addConnection,
         removeConnections,
-    } = useBoardConnections(nodes.map((node) => node.id));
+    } = useBoardConnections(
+        isMember ? boardId : null,
+        nodes.map((node) => node.id),
+    );
     const error = widgetsError ?? connectionsError;
     const contextMenu = useBoardContextMenu(
         nodes,

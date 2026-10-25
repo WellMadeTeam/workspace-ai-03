@@ -5,7 +5,7 @@ import { usePolling } from "@/shared/lib";
 import {
     createConnection,
     deleteConnection,
-    listWidgetConnections,
+    listConnections,
     type Connection,
     type NewConnection,
 } from "../api/connection";
@@ -17,52 +17,29 @@ const isNotFound = (err: unknown) =>
     err instanceof ApiError && err.status === 404;
 
 /**
- * Keeps the board's edges in sync with the connections between `widgetIds`
- * stored on the server, polling every 2 seconds, and saves new connections
- * and deletions back to the server.
+ * Keeps the board's edges in sync with the connections stored on the server,
+ * polling every 2 seconds, and saves new connections and deletions back to
+ * the server. Only connections between `widgetIds` are shown, so a block
+ * deleted locally takes its arrows with it before the server confirms.
  */
-export function useBoardConnections(widgetIds: string[]) {
+export function useBoardConnections(
+    boardId: string | null,
+    widgetIds: string[],
+) {
     const [edges, setEdges, onEdgesChange] = useEdgesState<ConnectionEdge>([]);
     const [error, setError] = useState<string | null>(null);
     // Connections removed locally whose deletion the server has not confirmed
     // yet; polls must not bring them back.
     const deletingConnections = useRef(new Set<string>());
 
-    // A string key, so the polling restarts only when blocks are added or
-    // removed, not on every change of the nodes.
-    const widgetIdsKey = [...widgetIds].sort().join(",");
-
-    const load = useMemo(() => {
-        const ids = widgetIdsKey ? widgetIdsKey.split(",") : [];
-        if (ids.length === 0) return null;
-
-        // The server lists connections per widget, by their source.
-        return async (signal?: AbortSignal) => {
-            const results = await Promise.allSettled(
-                ids.map((id) => listWidgetConnections(id, signal)),
-            );
-            const connections: Connection[] = [];
-            for (const result of results) {
-                if (result.status === "fulfilled") {
-                    connections.push(...result.value);
-                } else if (!isNotFound(result.reason)) {
-                    // A widget deleted meanwhile has no connections; any
-                    // other failure fails the whole poll.
-                    throw result.reason;
-                }
-            }
-
-            const known = new Set(ids);
-            return connections.filter(
-                (connection) =>
-                    known.has(connection.source_widget_id) &&
-                    known.has(connection.target_widget_id),
-            );
-        };
-    }, [widgetIdsKey]);
-
     const refresh = usePolling({
-        load,
+        load: useMemo(
+            () =>
+                boardId
+                    ? (signal?: AbortSignal) => listConnections(boardId, signal)
+                    : null,
+            [boardId],
+        ),
         onData: useCallback(
             (connections: Connection[]) => {
                 setEdges((current) => {
@@ -145,8 +122,16 @@ export function useBoardConnections(widgetIds: string[]) {
         [refresh],
     );
 
+    const widgetIdsKey = widgetIds.join(",");
+    const visibleEdges = useMemo(() => {
+        const known = new Set(widgetIdsKey.split(","));
+        return edges.filter(
+            (edge) => known.has(edge.source) && known.has(edge.target),
+        );
+    }, [edges, widgetIdsKey]);
+
     return {
-        edges,
+        edges: visibleEdges,
         onEdgesChange,
         error,
         addConnection,
