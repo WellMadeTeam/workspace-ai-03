@@ -1,6 +1,6 @@
 graph LR
     Frontend["frontend (React)"] -->|"JSON over HTTP, /api/*"| Gateway["gateway (nginx)"]
-    Gateway -->|"HTTP, static app files"| Frontend
+    Gateway -->|"HTTP, requests for the app files"| Frontend
     Gateway -->|"JSON over HTTP, /api prefix removed"| Backend["backend (Python, FastAPI)"]
     Backend -->|"SQL"| Database[("database (SQLite)")]
     Backend -->|"HTTPS, chat completion"| LLM["LLM service provider (Groq API)"]
