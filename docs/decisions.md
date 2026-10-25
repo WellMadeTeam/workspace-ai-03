@@ -269,4 +269,3 @@ Draft the architecture decisions in Week 4 and mark them as proposed
 - **Made by:** Team
 - **Source:** [the Week 4 meeting](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-04/meeting-report.md)
 - **Why:** the architecture assignment was published the night before the meeting and the drafts are not ready, so the team drafts the decisions and compares them with the drivers this week and settles them with the customer at the next meeting; the customer agreed and expects a simple architecture for this product.
-
