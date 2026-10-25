@@ -11,7 +11,7 @@ This is the index of the functional requirements, in `FR-nnn` order. Each requir
 | [FR-005](fr/FR-005.md) | Answer A Query In An AI Block               | `frontend`, `gateway`, `backend` | Active |
 | [FR-006](fr/FR-006.md) | Show A Failed Query's Error To Every Member | `frontend`, `backend`            | Active |
 | [FR-007](fr/FR-007.md) | Use Connected Blocks As A Query's Context   | `frontend`, `backend`            | Active |
-| [FR-008](fr/FR-008.md) | Show The Blocks A Query Used                | `frontend`                       | Active |
+| [FR-008](fr/FR-008.md) | Show The Blocks A Reply Used                | `frontend`, `backend`            | Active |
 | [FR-009](fr/FR-009.md) | Add A Text Note                             | `frontend`, `backend`            | Active |
 | [FR-010](fr/FR-010.md) | Delete A Block                              | `frontend`, `backend`            | Active |
 | [FR-011](fr/FR-011.md) | Highlight A Block                           | `frontend`, `backend`            | Active |
