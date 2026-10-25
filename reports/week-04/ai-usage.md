@@ -28,6 +28,14 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - Claude Code: writing the changelog entries for the deletion and for the double click.
 - Claude Code: implementing #148: reading Part 8 and the glossary and agent-instructions requirements from the course repository through `gh`, then drafting `docs/glossary.md` with 13 terms taken from the vision, the decisions, the code, and the functional requirements of #161, and the root `AGENTS.md` with the layout, checks, conventions, and off-limits files.
 - Claude Code: linking the glossary from `mkdocs.yml` and `docs/index.md`, running the Markdown check, checking the relative links and anchors with a script, and opening the pull request from the template.
+- Claude Code: fixing the review of #156 (#136) on the branch `136-fix-references`, from the review comments read through `gh`:
+  - restoring the system prompt, which the pull request had replaced with a second copy of the query
+  - removing the `workspace-ai-03` submodule committed by mistake
+  - rejecting connections from a block to itself and between blocks of different boards
+  - storing `has_context` and `references` with the AI message, so `GET /messages` returns them
+  - replacing `GET /connections/{id}/connections` with `GET /connections?boardId=` and `?widgetId=`, and sending a block reached by two paths to the LLM only once
+- Claude Code: passing the connected blocks' content in the system prompt as `<doc id="...">` tags, and asking the LLM for a structured output, `{response, references}`, whose ids are saved in each message's `references`.
+- Claude Code: merging `main` into `136-context-reusage` and `136-fix-references` to resolve the conflicts with #158, and opening #172 from the template, with a review requested from the author of #156.
 
 ## What we did with the output
 
@@ -44,6 +52,8 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The text block's single click was replaced with a double click at our request, so that selecting several blocks and opening the context menu do not start editing.
 - For #148 we asked to keep the pull request description short; the first pull request, #168, came from a branch with a nickname prefix, so it was closed and reopened as #169 from `148-glossary-agents`, and at our request `AGENTS.md` now tells an agent to drop such a prefix.
 - The glossary links only artifacts already on `main`; the `FR-nnn` and `ADR-nnn` links wait until those pull requests merge.
+- The first version of the context used Groq's `documents` and `citation_options` fields; we replaced it with the context in the system prompt and a structured output, because the model does not support those fields, and we gave the agent the draft of the `response_format` schema.
+- At our request, the schema's `citations` field was renamed to `references`, to match the message field.
 
 ## What was not used
 
@@ -52,4 +62,5 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The Delete button above the selected block, from the first version of #133, was replaced by the context menu.
 - The Delete button on a selected connection and the single-selection rule, built on the branch of #134, were replaced by the context menu.
 - A delayed delete and recreating a block from a snapshot were rejected as ways to undo: the first keeps the block visible to other members and loses the deletion if the tab closes, and the second cannot bring back the block's id, messages or connections.
+- Groq's `documents` and `citation_options` fields and the citations they returned were removed.
 - No generated text was submitted unchecked.
