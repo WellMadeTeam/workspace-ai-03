@@ -37,6 +37,19 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - Claude Code: passing the connected blocks' content in the system prompt as `<doc id="...">` tags, and asking the LLM for a structured output, `{response, references}`, whose ids are saved in each message's `references`.
 - Claude Code: merging `main` into `136-context-reusage` and `136-fix-references` to resolve the conflicts with #158, and opening #172 from the template, with a review requested from the author of #156.
 
+- Claude Code: implementing the frontend of #134 on the branch `134-connections-feature`, based on `136-context-reusage` with `main` merged in for the deletion of #135:
+  - an API client for the connections endpoints and a hook that polls the board's connections and saves new ones and deletions
+  - straight one-sided arrows between blocks, created by dragging from a handle onto another block, with the backend's rules checked before a connection is sent
+  - deleting connections like blocks, from the context menu or with Backspace, without a separate request for the connections of a deleted block
+- Claude Code: leaving a comment on #156 that asks for an endpoint listing all connections of a board, since the first version of the frontend sent one request per block on every poll.
+- Claude Code: finding the cause of a `500` on `GET /messages`, where the database held `system` messages from #158 that the branch's schema rejected, and merging `main` into the branch with the conflicts in the message router and schema resolved.
+- Claude Code: reworking the connections at our request:
+  - handles on all four sides, shown only when the pointer is on the block or a connection is dragged
+  - arrow ends that slide along the blocks' borders instead of sticking to a handle, with the handles kept as hints
+  - dropping a connection anywhere on a block, with a preview arrow drawn where the connection will be and a dashed outline around the target block
+  - black arrows, and a purple border on the handle under the pointer
+- Claude Code: committing the work in logical groups, opening #166 as a draft from the template, merging `136-fix-references` and later `main` after #156 and #172 merged, switching the frontend to `GET /connections?boardId=`, adding `has_context` and `references` to the message type, and updating the pull request description.
+
 ## What we did with the output
 
 - The proposal also included moving the `SPRINT-04` milestone's due date from `2026-10-25` to `2026-10-24`; we rejected it and kept the milestone's deadline as it is.
@@ -55,6 +68,14 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The first version of the context used Groq's `documents` and `citation_options` fields; we replaced it with the context in the system prompt and a structured output, because the model does not support those fields, and we gave the agent the draft of the `response_format` schema.
 - At our request, the schema's `citations` field was renamed to `references`, to match the message field.
 
+- For #134 we asked for straight, one-sided arrows instead of curves, and for connections to be deleted the same way as blocks.
+- The preview arrow first pointed at the handle closest to the cursor, while the saved arrow joined the nearest sides of the blocks; at our request the preview now shows exactly where the arrow will be.
+- The arrows and handles were made larger at our request and then reduced, because the first version was too large.
+- At our request, the handle under the pointer has a purple border instead of a purple fill, and the arrows are black; the agent made them white in dark mode, where black would not be visible.
+- The agent pointed out that the frontend sent one request per block on every poll; we asked it to comment on #156, and the endpoint came in #172, after which the frontend loads a board's connections in one request.
+- The agent limited connections to end on an AI block, to match the changelog entries of #156, since a connection into a text block gives no context to any AI.
+- Claude in Chrome was not connected, so the drag and delete interactions were not checked in a browser by the agent; it checked the types, lint, formatting, and build, and the connections API with `curl` against a local backend.
+
 ## What was not used
 
 - The proposed change of the `SPRINT-04` milestone's due date was not applied.
@@ -63,4 +84,7 @@ Claude Code in the terminal; a background Claude Code agent for one research que
 - The Delete button on a selected connection and the single-selection rule, built on the branch of #134, were replaced by the context menu.
 - A delayed delete and recreating a block from a snapshot were rejected as ways to undo: the first keeps the block visible to other members and loses the deletion if the tab closes, and the second cannot bring back the block's id, messages or connections.
 - Groq's `documents` and `citation_options` fields and the citations they returned were removed.
+- React Flow's built-in arrowheads and the arrow ends fixed to the handles, and then to the nearest sides of the blocks, were replaced with custom arrows whose ends slide along the borders.
+- The per-block polling of connections was replaced with one request per board once #172 added the endpoint.
+- The agent's resolution of the message router and schema conflicts on `134-connections-feature` was replaced with the one from `136-fix-references`.
 - No generated text was submitted unchecked.
