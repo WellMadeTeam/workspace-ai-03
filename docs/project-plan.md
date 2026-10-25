@@ -13,7 +13,7 @@ This is the MUP the customer accepted in [`DEC-012`](decisions.md#dec-012); invi
 
 ### MLS-05
 
-- **Due:** 2026-10-30
+- **Due:** 2026-10-31
 - **Sprints:** [SPRINT-04](#sprint-04), [SPRINT-05](#sprint-05)
 - **Advances:** [TOS-01](threshold-of-success.md#tos-01)
 
@@ -23,7 +23,7 @@ Once the core flow works, members highlight part of the board and see the diagra
 
 ### MLS-07
 
-- **Due:** 2026-11-13
+- **Due:** 2026-11-14
 - **Sprints:** [SPRINT-06](#sprint-06), [SPRINT-07](#sprint-07)
 - **Advances:** [TOS-02](threshold-of-success.md#tos-02)
 
@@ -33,7 +33,7 @@ Accounts and export, per [`DEC-011`](decisions.md#dec-011) and [`DEC-007`](decis
 
 ### MLS-08
 
-- **Due:** 2026-11-20
+- **Due:** 2026-11-21
 - **Sprints:** [SPRINT-08](#sprint-08)
 - **Advances:** [TOS-03](threshold-of-success.md#tos-03)
 
@@ -57,8 +57,9 @@ Released as [v0.1.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/ta
 
 A teammate connects existing widgets to a new query and the answer uses them as context, the side panel shows which widgets those are, members add notes of their own, a full board turns away an eleventh member, and a failed query shows its error to every member.
 
-- **Due:** 2026-10-23
+- **Due:** 2026-10-25
 - **Sprint Backlog:** [the issues scheduled into SPRINT-04](https://github.com/WellMadeTeam/workspace-ai-03/milestone/4)
+- **Planned Velocity:** 26
 
 #### REL-04
 
@@ -66,7 +67,7 @@ A teammate connects existing widgets to a new query and the answer uses them as 
 
 Provisional: members join a board by its link, highlight part of it, and see LLM diagrams rendered on it, with images from an LLM if time allows, on a product that runs in production and from the self-hosting instructions.
 
-- **Due:** 2026-10-30
+- **Due:** 2026-10-31
 - **Sprint Backlog:** [the issues scheduled into SPRINT-05](https://github.com/WellMadeTeam/workspace-ai-03/milestone/5)
 
 #### REL-05
@@ -75,7 +76,7 @@ Provisional: members join a board by its link, highlight part of it, and see LLM
 
 Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
 
-- **Due:** 2026-11-06
+- **Due:** 2026-11-07
 - **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
 
 #### REL-06
@@ -84,7 +85,7 @@ Provisional: real-time sync keeps every update for several clients on one board,
 
 Provisional: ten clients work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, an outside team's feedback on the board is presented, the product is improved and its bugs are fixed, and, if time allows, members keep their boards under their own accounts and export a board to a file.
 
-- **Due:** 2026-11-13
+- **Due:** 2026-11-14
 - **Sprint Backlog:** [the issues scheduled into SPRINT-07](https://github.com/WellMadeTeam/workspace-ai-03/milestone/7)
 
 #### REL-07
@@ -93,7 +94,7 @@ Provisional: ten clients work on one board with no lost updates and every change
 
 Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report, on a product that is improved and has its bugs fixed.
 
-- **Due:** 2026-11-20
+- **Due:** 2026-11-21
 
 #### REL-08
 
@@ -101,7 +102,7 @@ Provisional: a team outside ours completes a brainstorming session on the board,
 
 Provisional: the final release is published with the evidence of whether the shared board solves the aggregation problem.
 
-- **Due:** 2026-11-27
+- **Due:** 2026-11-28
 
 #### REL-09
 

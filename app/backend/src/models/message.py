@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import UUID
 
 from sqlalchemy import (
@@ -55,8 +55,11 @@ class Message(Base):
         nullable=True,
     )
 
+    # Set in Python because SQLite's now() has a one-second resolution, and a
+    # failed query and its system message are often saved within one second.
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
         server_default=func.now(),
         nullable=False,
     )
