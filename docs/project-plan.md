@@ -19,7 +19,7 @@ This is the MUP the customer accepted in [`DEC-012`](decisions.md#dec-012); invi
 
 A teammate who joined the board by its link sends a new query with responses selected from the board as its context, on a deployed product the customer can also self-host.
 This completes the core flow of [`DEC-005`](decisions.md#dec-005), the part of the product that tests whether a shared board beats sending answers through messengers; around it, the side panel shows which widgets a query's context came from, per [`DEC-014`](decisions.md#dec-014), members add notes of their own, a full board turns away an eleventh member, per [`DEC-003`](decisions.md#dec-003), and a failed query shows its error to every member.
-Once the core flow works, members highlight part of the board and see the diagrams an LLM writes as code rendered as pictures, per [`DEC-006`](decisions.md#dec-006) and [`DEC-010`](decisions.md#dec-010); images from an LLM join this increment only if time allows.
+Once the core flow works, members highlight part of the board and see the diagrams an LLM writes as code rendered as pictures, per [`DEC-006`](decisions.md#dec-006) and [`DEC-010`](decisions.md#dec-010), and a text block opens in the side panel like an AI block, per [`DEC-025`](decisions.md#dec-025); images from an LLM join this increment only if time allows.
 
 ### MLS-07
 
@@ -28,7 +28,7 @@ Once the core flow works, members highlight part of the board and see the diagra
 - **Advances:** [TOS-02](threshold-of-success.md#tos-02)
 
 Ten clients work on one board at once, per [`CON-03`](product-vision.md#con-03), with no update lost and every change visible to the others, shown by a repeatable test.
-The increment also extends the core flow: the LLM takes the team's reference documents into account, and images from an LLM reach the board if they did not fit into the previous increment.
+The increment also extends the core flow: the LLM takes the team's reference documents into account, images from an LLM reach the board if they did not fit into the previous increment, and a block deleted by mistake no longer takes the team's work with it.
 Accounts and export, per [`DEC-011`](decisions.md#dec-011) and [`DEC-007`](decisions.md#dec-007), come last and are the first to drop if time runs out, because they are not part of the threshold.
 
 ### MLS-08
@@ -68,16 +68,17 @@ Released as [v0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/ta
 
 ### SPRINT-05
 
-Provisional: members join a board by its link, highlight part of it, and see LLM diagrams rendered on it, with images from an LLM if time allows, on a product that runs in production and from the self-hosting instructions.
+Members join a board by its link, highlight part of it, see LLM diagrams rendered on it, and work with a long text block in the side panel like an AI block, the customer accepts reusing earlier answers as context and seeing the context a query used, and the product runs in staging and production on the university VM.
 
 - **Due:** 2026-10-31
 - **Sprint Backlog:** [the issues scheduled into SPRINT-05](https://github.com/WellMadeTeam/workspace-ai-03/milestone/5)
+- **Planned Velocity:** 26
 
 #### REL-05
 
 ### SPRINT-06
 
-Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
+Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, a block deleted by mistake no longer takes the team's work with it, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
 
 - **Due:** 2026-11-07
 - **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
