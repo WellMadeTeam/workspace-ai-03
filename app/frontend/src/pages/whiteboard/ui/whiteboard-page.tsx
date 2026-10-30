@@ -21,13 +21,14 @@ import { useBoardConnections } from "../model/use-board-connections";
 import { useBoardContextMenu } from "../model/use-board-context-menu";
 import { useBoardId } from "../model/use-board-id";
 import { useBoardWidgets } from "../model/use-board-widgets";
-import { isAiNode, type WidgetNode } from "../model/widget-node";
+import { isAiNode, isTextNode, type WidgetNode } from "../model/widget-node";
 import { BoardContextMenu } from "./board-context-menu";
 import { BoardError } from "./board-error";
 import { BoardGate, type BoardGateState } from "./board-gate";
 import { ConnectionEdgeView } from "./connection-edge";
 import { ConnectionPreview } from "./connection-preview";
 import { MessagesPanel } from "./messages-panel";
+import { TextPanel } from "./text-panel";
 import { WidgetNodeView } from "./widget-node";
 import { WidgetToolbar } from "./widget-toolbar";
 
@@ -70,7 +71,11 @@ export function WhiteboardPage() {
         onNodesChange,
         onEdgesChange,
     );
-    const selectedAiNode = nodes.filter(isAiNode).find((node) => node.selected);
+    const selectedNode = nodes.find((node) => node.selected);
+    const selectedAiNode =
+        selectedNode && isAiNode(selectedNode) ? selectedNode : undefined;
+    const selectedTextNode =
+        selectedNode && isTextNode(selectedNode) ? selectedNode : undefined;
 
     // Save the final position of every dragged node (several when a selection is dragged).
     const onNodeDragStop: OnNodeDrag<WidgetNode> = (
@@ -186,6 +191,14 @@ export function WhiteboardPage() {
                             <MessagesPanel
                                 key={selectedAiNode.id}
                                 node={selectedAiNode}
+                            />
+                        </Panel>
+                    )}
+                    {selectedTextNode && (
+                        <Panel position="top-right">
+                            <TextPanel
+                                key={selectedTextNode.id}
+                                node={selectedTextNode}
                             />
                         </Panel>
                     )}
