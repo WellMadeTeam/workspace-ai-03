@@ -27,6 +27,7 @@ The team does not use an in-repository task tracker, so no other Definition of D
 - The accountable reviewer ticks every task acceptance criterion before approving.
 - The approval comes from a member other than the author, per [Review And Approval](https://github.com/inno-itpd/itpd/blob/main/requirements/pull-requests-requirements.md#review-and-approval).
 - The repository checks are green: the link check ([`lychee.yml`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/workflows/lychee.yml)) and the Markdown check ([`markdown.yml`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/workflows/markdown.yml)).
+- The [Actionlint workflow](../.github/workflows/actionlint.yml) and the applicable [product-code checks](../.github/workflows/product-code.yml) are green: frontend linting, formatting, type checking, build, and tests, plus backend tests.
 - A user-visible change updates the `[Unreleased]` section of [`CHANGELOG.md`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/CHANGELOG.md), per [The Changelog](https://github.com/inno-itpd/itpd/blob/main/requirements/releases-requirements.md#the-changelog).
 - The acceptance criteria this pull request claims pass on its branch, and on `main` after it merges.
 - No secret, recording, or private-only material is committed, per [Sensitive Information Reference](https://github.com/inno-itpd/itpd/blob/main/requirements/visibility-requirements.md#sensitive-information-reference).
