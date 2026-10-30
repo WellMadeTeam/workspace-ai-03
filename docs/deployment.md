@@ -36,8 +36,8 @@ The university gives the team one VM, and it hosts both deployments.
 
 | What | Value |
 | ---- | ----- |
-| Image | Recorded at the first deploy from the portal's image list |
-| Shape | Recorded at the first deploy: vCPUs, memory, and disk |
+| Image | Ubuntu Linux 24.04, 64-bit, from the portal's image list |
+| Shape | 2 vCPUs, 4 GB of memory, and 60 GB of disk |
 | Address | The IPv4 address in the Moodle submission; there is no domain name |
 | Password | In the team's password manager |
 | Network | Reachable only from the university network |
@@ -82,7 +82,7 @@ Do this once after the VM is recreated, in the SSH session.
 
    Each command prints a status code, such as `401` from the first two and `200` from the third.
    A timeout means the network blocks that site, and no deploy can succeed until it is reachable.
-2. Install Docker Engine with the Compose plugin, on a Debian or Ubuntu image, and let the user run it without `sudo`:
+2. Install Docker Engine with the Compose plugin, and let the user run it without `sudo`:
 
    ```bash
    curl -fsSL https://get.docker.com | sudo sh
