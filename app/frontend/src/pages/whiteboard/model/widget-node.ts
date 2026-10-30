@@ -31,7 +31,7 @@ const toNodeData = (widget: Widget): WidgetNodeData =>
     widget.widget_type === "text"
         ? {
               widget_type: "text",
-              label: widget.title ?? "Text",
+              label: widget.title ?? "Untitled",
               content: widget.content ?? "",
           }
         : { widget_type: "ai", label: widget.title ?? DEFAULT_AI_TITLE };
