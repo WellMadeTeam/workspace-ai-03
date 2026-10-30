@@ -4,6 +4,7 @@ import { DEFAULT_AI_TITLE } from "../config/widget-title";
 
 export type TextWidgetData = {
     widget_type: "text";
+    label: string;
     content: string;
 };
 
@@ -18,12 +19,21 @@ export type WidgetNode = Node<WidgetNodeData, "widget">;
 
 export type AiWidgetNode = Node<AiWidgetData, "widget">;
 
+export type TextWidgetNode = Node<TextWidgetData, "widget">;
+
 export const isAiNode = (node: WidgetNode): node is AiWidgetNode =>
     node.data.widget_type === "ai";
 
+export const isTextNode = (node: WidgetNode): node is TextWidgetNode =>
+    node.data.widget_type === "text";
+
 const toNodeData = (widget: Widget): WidgetNodeData =>
     widget.widget_type === "text"
-        ? { widget_type: "text", content: widget.content ?? "" }
+        ? {
+              widget_type: "text",
+              label: widget.title ?? "Untitled",
+              content: widget.content ?? "",
+          }
         : { widget_type: "ai", label: widget.title ?? DEFAULT_AI_TITLE };
 
 export const toNode = (widget: Widget): WidgetNode => ({
@@ -35,7 +45,7 @@ export const toNode = (widget: Widget): WidgetNode => ({
 
 const isSameData = (a: WidgetNodeData, b: WidgetNodeData) =>
     a.widget_type === "text" && b.widget_type === "text"
-        ? a.content === b.content
+        ? a.label === b.label && a.content === b.content
         : a.widget_type === "ai" &&
           b.widget_type === "ai" &&
           a.label === b.label;
@@ -52,14 +62,6 @@ export const mergeNode = (node: WidgetNode, widget: Widget): WidgetNode => {
     return { ...node, position: { x: widget.x, y: widget.y }, data };
 };
 
-// A text block has no title, so it is named by the first line of its text.
 export const getNodeTitle = (data: WidgetNodeData) => {
-    if (data.widget_type === "ai") return data.label;
-
-    const firstLine = data.content
-        .split("\n")
-        .map((line) => line.trim())
-        .find(Boolean);
-
-    return firstLine ?? "Empty text block";
+    return data.label;
 };

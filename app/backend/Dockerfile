@@ -19,5 +19,5 @@ USER app
 EXPOSE 8000
 
 # nginx serves the API under /api, so the docs must request /api/openapi.json.
-CMD ["uvicorn", "app.backend.src.main:app", "--host", "0.0.0.0", "--port", "8000", "--root-pa>
+CMD ["uvicorn", "app.backend.src.main:app", "--host", "0.0.0.0", "--port", "8000", "--root-path", "/api"]
 
