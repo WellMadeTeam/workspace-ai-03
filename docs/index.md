@@ -17,6 +17,7 @@ The project is exploratory: its goal is to verify whether, and to what degree, a
 - [Product vision](product-vision.md): the goal, the stakeholders, the constraints and the boundary.
 - [Decisions](decisions.md): what the team and the customer decided, and why.
 - [Assumptions](assumptions.md): what the team believes and has not verified yet.
+- [Glossary](glossary.md): the words this project uses in one way only.
 
 ## Research
 

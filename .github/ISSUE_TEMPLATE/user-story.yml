@@ -1,7 +1,6 @@
 name: User story
 description: A user story is a small, checkable statement of one thing a user needs.
 title: "US-nn: "
-labels: ["user-story", "moscow:*"]
 projects: ["workspace-ai-03/1"]
 type: "User story"
 body:
@@ -20,7 +19,7 @@ body:
   - type: textarea
     id: value-proposition
     attributes:
-      label: Value proposition 
+      label: Value proposition
       description: The value proposition the story supports.
       placeholder: |
         [`VP-xx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/research/value-proposition.md#vp-xx)
@@ -52,6 +51,17 @@ body:
     validations:
       required: false
   - type: textarea
+    id: specified-by
+    attributes:
+      label: Specified by
+      description: |
+        The functional requirements and architectural decision records that specify the story, one per line, each linked on `main`. Leave empty for a Won't Have story.
+      placeholder: |
+        - [`FR-xxx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/functional-requirements/fr/FR-xxx.md)
+        - [`ADR-xxx`](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/docs/architecture/adr/ADR-xxx.md)
+    validations:
+      required: false
+  - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance Criteria
@@ -61,7 +71,14 @@ body:
         2. Every acceptance criterion carries a stable ID `AC-01`, `AC-02`, and so on, numbered within its story and written at the start of the criterion.
       placeholder: |
         - [ ] AC-01: ...
-      value: |
-        - [ ] AC-01: ...
+      value: "- [ ] AC-01: "
     validations:
       required: false
+  - type: textarea
+    id: priority-reason
+    attributes:
+      label: Priority reason
+      description: Why the story has this MoSCoW priority and not the one above or below it, citing the `CON-nn` that drives it when one does. Set the `MoSCoW` field on the issue after it is created.
+      placeholder: "Must Have: ..."
+    validations:
+      required: true

@@ -15,7 +15,7 @@ Target: get the customer's verdict on the user stories implemented in the curren
    Show: nothing.
    Questions 1–3.
 2. Demonstration of the implemented stories (12 min).
-   Show: the prototype running from the local branch, and the [user story issues](https://github.com/WellMadeTeam/workspace-ai-03/issues?q=label%3Auser-story) of the current sprint.
+   Show: the prototype running from the local branch, and the [user story issues](https://github.com/WellMadeTeam/workspace-ai-03/issues?q=type%3A%22User%20story%22) of the current sprint.
    Questions 4–6.
 3. Verdicts on the user stories (10 min).
    Show: the acceptance criteria on each story issue.
