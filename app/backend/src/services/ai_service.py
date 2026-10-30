@@ -7,12 +7,7 @@ from app.backend.src.config import GROQ_API_KEY
 
 api_key = GROQ_API_KEY
 
-if not api_key:
-    raise RuntimeError(
-        "GROQ_API_KEY not found. Check backend/.env"
-    )
-
-client = Groq(api_key=api_key)
+client = Groq(api_key=api_key) if api_key else None
 
 
 # The model replies with this JSON in message.content: the answer itself and the
@@ -46,6 +41,9 @@ RESPONSE_FORMAT = {
 
 
 def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
+    if client is None:
+        raise RuntimeError("GROQ_API_KEY not found. Check backend/.env")
+
     completion = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=messages,
