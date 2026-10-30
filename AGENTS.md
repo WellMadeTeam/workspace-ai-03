@@ -27,7 +27,7 @@ Run these from the repository root before you push; CI runs the first two on eve
   CI does not run them yet, so run them yourself after a frontend change.
 - `mkdocs build`, with `pip install mkdocs`, builds the documentation site; `.github/workflows/docs.yml` runs it on every push to `main` and publishes the site.
 - `docker compose up --build`, run in `app/`, brings the whole product up, as `docs/setup.md` describes.
-- The product has no automated tests yet.
+- Automated tests cover the critical modules named by `QR-02`; the documented frontend and backend commands are in `docs/setup.md`.
 
 ## Conventions
 

@@ -61,7 +61,22 @@ To stop the product, press Ctrl+C, or run `docker compose down` in another termi
 
 ## Checks and tests
 
-The product has no automated tests yet.
+The automated tests do not call the LLM service provider and do not need its API key.
+
+To run the frontend test from the repository root, with Node.js 22.12 or later:
+
+```bash
+cd app/frontend
+npm ci
+npm test
+```
+
+To run the backend tests from the repository root, with Python 3.14:
+
+```bash
+python -m pip install -r app/backend/requirements.txt
+python -m unittest discover -s app/backend/tests -t .
+```
 
 Every pull request and every push to `main` runs two checks, whose workflows are in `.github/workflows/`, and their results show on the pull request page:
 
