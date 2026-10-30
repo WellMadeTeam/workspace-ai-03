@@ -27,6 +27,7 @@ class BoardHub:
         self.max_members = max_members
         self._members: dict[UUID, dict[UUID, Member]] = {}
         self._seq: dict[UUID, int] = {}
+        self._highlights: dict[UUID, dict[UUID, dict[str, str]]] = {}
 
     def members(self, board_id: UUID) -> list[Member]:
         return list(self._members.get(board_id, {}).values())
@@ -63,16 +64,20 @@ class BoardHub:
             "seq": self.seq(board_id),
             "you": member.public(),
             "members": [other.public() for other in members.values()],
-            # Filled by later stages: drag locks, editing presence, AI replies.
             "locks": [],
             "editing": [],
             "ai_replies": [],
+            # Current highlights snapshot so the joining member can restore state.
+            "highlights": {
+                str(widget_id): info
+                for widget_id, info in self._highlights.get(board_id, {}).items()
+            },
         })
+
 
         return member
 
     def leave(self, member: Member) -> None:
-        """Removes a member, unless a newer socket of the same client replaced it."""
         members = self._members.get(member.board_id, {})
         if members.get(member.client_id) is not member:
             return
@@ -80,11 +85,14 @@ class BoardHub:
         del members[member.client_id]
 
         if members:
+            # Clear highlights before member.left so other clients receive both events.
+            self._clear_highlights_for_client(member.board_id, member.client_id, member.color)
             self.publish(member.board_id, "member.left", {"client_id": str(member.client_id)}, origin=member.client_id)
         else:
-            # Nobody is left to notice a gap, so the board starts over.
             del self._members[member.board_id]
             self._seq.pop(member.board_id, None)
+            self._highlights.pop(member.board_id, None)
+
 
     def publish(
         self,
@@ -106,6 +114,43 @@ class BoardHub:
     def send(self, member: Member, event_type: str, data: dict[str, Any]) -> None:
         """Sends an unsequenced event to one member."""
         member.enqueue(build_frame(member.board_id, event_type, data, None, None))
+
+    def highlight_start(self, board_id: UUID, client_id: UUID, color: str, widget_id: UUID) -> None:
+        """Registers a widget highlight and broadcasts it to all members."""
+        highlights = self._highlights.setdefault(board_id, {})
+        highlights[widget_id] = {"client_id": str(client_id), "color": color}
+        self.publish(board_id, "highlight.start", {
+            "client_id": str(client_id),
+            "color": color,
+            "widget_id": str(widget_id),
+        }, origin=client_id)
+
+    def highlight_stop(self, board_id: UUID, client_id: UUID, color: str, widget_id: UUID) -> None:
+        """Removes a widget highlight and broadcasts it to all members."""
+        highlights = self._highlights.get(board_id, {})
+        # Only the owner of the highlight can remove it.
+        if highlights.get(widget_id, {}).get("client_id") == str(client_id):
+            del highlights[widget_id]
+        self.publish(board_id, "highlight.stop", {
+            "client_id": str(client_id),
+            "color": color,
+            "widget_id": str(widget_id),
+        }, origin=client_id)
+
+    def _clear_highlights_for_client(self, board_id: UUID, client_id: UUID, color: str) -> None:
+        """Broadcasts highlight.stop for every widget this client had highlighted."""
+        highlights = self._highlights.get(board_id, {})
+        widget_ids = [
+            wid for wid, info in highlights.items()
+            if info["client_id"] == str(client_id)
+        ]
+        for widget_id in widget_ids:
+            del highlights[widget_id]
+            self.publish(board_id, "highlight.stop", {
+                "client_id": str(client_id),
+                "color": color,
+                "widget_id": str(widget_id),
+            }, origin=client_id)
 
 
 hub = BoardHub()
