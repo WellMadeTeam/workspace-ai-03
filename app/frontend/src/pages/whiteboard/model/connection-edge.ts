@@ -23,9 +23,14 @@ export const canConnect = (
 ) => {
     if (source === target) return false;
 
+    const sourceNode = nodes.find((node) => node.id === source);
     const targetNode = nodes.find((node) => node.id === target);
-    if (!targetNode || !nodes.some((node) => node.id === source)) return false;
-    if (targetNode.data.widget_type !== "ai") return false;
+    if (!targetNode || !sourceNode) return false;
+    if (
+        sourceNode.data.widget_type === "ai" &&
+        targetNode.data.widget_type === "text"
+    )
+        return false;
 
     return !edges.some(
         (edge) => edge.source === source && edge.target === target,
