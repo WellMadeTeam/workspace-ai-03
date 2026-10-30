@@ -27,7 +27,7 @@ class BoardHub:
         self.max_members = max_members
         self._members: dict[UUID, dict[UUID, Member]] = {}
         self._seq: dict[UUID, int] = {}
-        self._highlights: dict[UUID, dict[UUID, dict[str, str]]] = {}
+        self._highlights: dict[UUID, dict[UUID, list[dict[str, str]]]] = {}
 
     def members(self, board_id: UUID) -> list[Member]:
         return list(self._members.get(board_id, {}).values())
@@ -67,13 +67,9 @@ class BoardHub:
             "locks": [],
             "editing": [],
             "ai_replies": [],
-            # Current highlights snapshot so the joining member can restore state.
-            "highlights": {
-                str(widget_id): info
-                for widget_id, info in self._highlights.get(board_id, {}).items()
-            },
         })
 
+        self.send(member, "highlight.update", {"highlights": self.highlights_snapshot(board_id)})
 
         return member
 
@@ -115,10 +111,19 @@ class BoardHub:
         """Sends an unsequenced event to one member."""
         member.enqueue(build_frame(member.board_id, event_type, data, None, None))
 
+    def highlights_snapshot(self, board_id: UUID) -> dict[str, list[dict[str, str]]]:
+        """Current highlights of the board as {widget_id: [{client_id, color}, ...]}."""
+        return {
+            str(widget_id): list(entries)
+            for widget_id, entries in self._highlights.get(board_id, {}).items()
+        }
+
     def highlight_start(self, board_id: UUID, client_id: UUID, color: str, widget_id: UUID) -> None:
         """Registers a widget highlight and broadcasts it to all members."""
         highlights = self._highlights.setdefault(board_id, {})
-        highlights[widget_id] = {"client_id": str(client_id), "color": color}
+        entries = highlights.setdefault(widget_id, [])
+        entries[:] = [entry for entry in entries if entry["client_id"] != str(client_id)]
+        entries.append({"client_id": str(client_id), "color": color})
         self.publish(board_id, "highlight.start", {
             "client_id": str(client_id),
             "color": color,
@@ -126,11 +131,13 @@ class BoardHub:
         }, origin=client_id)
 
     def highlight_stop(self, board_id: UUID, client_id: UUID, color: str, widget_id: UUID) -> None:
-        """Removes a widget highlight and broadcasts it to all members."""
+        """Removes this member's highlight from a widget and broadcasts it to all members."""
         highlights = self._highlights.get(board_id, {})
-        # Only the owner of the highlight can remove it.
-        if highlights.get(widget_id, {}).get("client_id") == str(client_id):
-            del highlights[widget_id]
+        entries = highlights.get(widget_id, [])
+        # A member removes only its own highlight, the others on this widget stay.
+        entries[:] = [entry for entry in entries if entry["client_id"] != str(client_id)]
+        if not entries:
+            highlights.pop(widget_id, None)
         self.publish(board_id, "highlight.stop", {
             "client_id": str(client_id),
             "color": color,
@@ -141,11 +148,14 @@ class BoardHub:
         """Broadcasts highlight.stop for every widget this client had highlighted."""
         highlights = self._highlights.get(board_id, {})
         widget_ids = [
-            wid for wid, info in highlights.items()
-            if info["client_id"] == str(client_id)
+            wid for wid, entries in highlights.items()
+            if any(entry["client_id"] == str(client_id) for entry in entries)
         ]
         for widget_id in widget_ids:
-            del highlights[widget_id]
+            entries = highlights[widget_id]
+            entries[:] = [entry for entry in entries if entry["client_id"] != str(client_id)]
+            if not entries:
+                del highlights[widget_id]
             self.publish(board_id, "highlight.stop", {
                 "client_id": str(client_id),
                 "color": color,

@@ -2,7 +2,7 @@
 
 import asyncio
 import json
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from fastapi import WebSocket
 
@@ -19,7 +19,6 @@ MAX_FRAME_BYTES = 4096
 
 def _parse_uuid_field(frame: dict, field: str) -> UUID | None:
     """Extracts and validates a UUID string from frame['data'][field]."""
-    from uuid import UUID
     try:
         return UUID(frame["data"][field])
     except (KeyError, TypeError, ValueError):
