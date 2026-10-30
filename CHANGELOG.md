@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- Open text blocks in a side panel to read and edit their full text and rename them.
+
 ### Fixed
 
 - Fixed backend Docker container
