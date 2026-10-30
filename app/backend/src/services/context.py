@@ -32,8 +32,7 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[Widget]:
                 added.add(source.id)
                 documents.append(source)
 
-            if source.widget_type == "ai":
-                queue.append(source.id)
+            queue.append(source.id)
 
     return documents
 
