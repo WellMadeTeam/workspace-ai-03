@@ -21,11 +21,7 @@ import { useBoardConnections } from "../model/use-board-connections";
 import { useBoardContextMenu } from "../model/use-board-context-menu";
 import { useBoardId } from "../model/use-board-id";
 import { useBoardWidgets } from "../model/use-board-widgets";
-import {
-    isAiNode,
-    isTextNode,
-    type WidgetNode,
-} from "../model/widget-node";
+import { isAiNode, isTextNode, type WidgetNode } from "../model/widget-node";
 import { BoardContextMenu } from "./board-context-menu";
 import { BoardError } from "./board-error";
 import { BoardGate, type BoardGateState } from "./board-gate";
