@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed backend Docker container
+- Allow text-to-text connections
+- Fix context build of multiple connected text blocks
+
 ## [0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.2.0) - 2026-10-25
 
 ### Added
