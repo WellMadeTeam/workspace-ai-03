@@ -1,7 +1,7 @@
 import logging
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -21,6 +21,36 @@ message_router = APIRouter(prefix="/messages", tags=["messages"])
 AI_FAILURE_MESSAGE = (
     "The AI couldn't answer this query. Please try again in a moment."
 )
+
+
+def build_history(history: list[Message]) -> list[dict[str, str]]:
+    ai_messages = []
+
+    # A user message followed by a system message is a failed query: it got
+    # no answer, and a retry sends it again as a new user message.
+    for message, next_message in zip(history, [*history[1:], None]):
+        if message.role == "system":
+            continue
+
+        if (
+            message.role == "user"
+            and next_message is not None
+            and next_message.role == "system"
+        ):
+            continue
+
+        ai_role = (
+            "assistant"
+            if message.role == "ai"
+            else "user"
+        )
+
+        ai_messages.append({
+            "role": ai_role,
+            "content": message.content,
+        })
+
+    return ai_messages
 
 
 @message_router.post(
@@ -73,20 +103,7 @@ def create_message(
         }
     ]
 
-    for message in history:
-        if message.role == "system":
-            continue
-
-        ai_role = (
-            "assistant"
-            if message.role == "ai"
-            else "user"
-        )
-
-        ai_messages.append({
-            "role": ai_role,
-            "content": message.content,
-        })
+    ai_messages.extend(build_history(history))
 
     # The failure is saved as a message, so every member of the board sees it.
     try:
@@ -148,3 +165,12 @@ def get_messages(
     messages = db.scalars(statement).all()
 
     return {"items": messages}
+
+@message_router.delete("/{message_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_message(message_id: UUID, db: Session = Depends(get_db)):
+    message = db.get(Message, message_id)
+    if message is None:
+        raise HTTPException(status_code=404, detail="Message not found")
+    db.delete(message)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
