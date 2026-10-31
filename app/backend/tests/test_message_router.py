@@ -9,7 +9,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.backend.src.database import Base, get_db
 from app.backend.src.models import Board, Widget
-from app.backend.src.routers.message import message_router
+from app.backend.src.routers.message import AI_FAILURE_MESSAGE, message_router
 
 
 class MessageRouterTests(unittest.TestCase):
@@ -84,6 +84,76 @@ class MessageRouterTests(unittest.TestCase):
             ["Question", "Stored answer"],
         )
         generate_reply.assert_called_once()
+
+    def post_query(self, content):
+        return self.client.post(
+            "/messages",
+            json={"widget_id": str(self.widget_id), "content": content},
+        )
+
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        side_effect=[RuntimeError("down"), ("Answer", [])],
+    )
+    def test_retried_query_is_sent_once(self, generate_reply):
+        with self.assertLogs("app.backend.src.routers.message", "ERROR"):
+            self.post_query("Question")
+        self.post_query("Question")
+
+        ai_messages = generate_reply.call_args.args[0]
+
+        self.assertEqual(ai_messages[0]["role"], "system")
+        self.assertEqual(
+            ai_messages[1:],
+            [{"role": "user", "content": "Question"}],
+        )
+
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        side_effect=[("Answer 1", []), ("Answer 2", [])],
+    )
+    def test_answered_query_stays_in_history(self, generate_reply):
+        self.post_query("Question 1")
+        self.post_query("Question 2")
+
+        ai_messages = generate_reply.call_args.args[0]
+
+        self.assertEqual(
+            ai_messages[1:],
+            [
+                {"role": "user", "content": "Question 1"},
+                {"role": "assistant", "content": "Answer 1"},
+                {"role": "user", "content": "Question 2"},
+            ],
+        )
+
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        side_effect=[RuntimeError("down"), ("Answer", [])],
+    )
+    def test_failed_query_is_still_listed(self, generate_reply):
+        with self.assertLogs("app.backend.src.routers.message", "ERROR"):
+            self.post_query("Question")
+        self.post_query("Question")
+
+        messages_response = self.client.get(
+            "/messages",
+            params={"widgetId": str(self.widget_id)},
+        )
+
+        self.assertEqual(messages_response.status_code, 200)
+        self.assertEqual(
+            [
+                (message["role"], message["content"])
+                for message in messages_response.json()["items"]
+            ],
+            [
+                ("user", "Question"),
+                ("system", AI_FAILURE_MESSAGE),
+                ("user", "Question"),
+                ("ai", "Answer"),
+            ],
+        )
 
 
 if __name__ == "__main__":
