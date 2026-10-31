@@ -286,7 +286,7 @@ Accept `US-06`, seeing which blocks an answer used, with its acceptance criterio
 
 - **Status:** Active
 - **Date:** 2026-10-29
-- **Made by:** Team
+- **Made by:** Customer
 - **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
 - **Why:** connecting blocks works for text blocks, but an AI block does not yet pass its conversation on; the customer agreed that the story stays open for that rework.
 
