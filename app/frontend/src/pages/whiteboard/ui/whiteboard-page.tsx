@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
     Background,
     BackgroundVariant,
@@ -19,6 +20,7 @@ import { SaveWidgetContext } from "../model/save-widget";
 import { useBoardConnection } from "../model/use-board-connection";
 import { useBoardConnections } from "../model/use-board-connections";
 import { useBoardContextMenu } from "../model/use-board-context-menu";
+import { useBoardHighlights } from "../model/use-board-highlights";
 import { useBoardId } from "../model/use-board-id";
 import { useBoardWidgets } from "../model/use-board-widgets";
 import { isAiNode, isTextNode, type WidgetNode } from "../model/widget-node";
@@ -39,7 +41,11 @@ const edgeTypes: EdgeTypes = { default: ConnectionEdgeView };
 
 export function WhiteboardPage() {
     const { boardId, isCreating, createFailed, createNewBoard } = useBoardId();
-    const { connection, retry } = useBoardConnection(boardId);
+    const highlightsState = useBoardHighlights(boardId);
+    const { connection, retry, sendHighlightCommand } = useBoardConnection(
+        boardId,
+        highlightsState.onSocketEvent,
+    );
     // Widgets are loaded only for a member of the board, so a full board
     // cannot be seen or edited through polling. After a drop, polling keeps
     // the open board up to date while the socket reconnects.
@@ -70,6 +76,20 @@ export function WhiteboardPage() {
         edges,
         onNodesChange,
         onEdgesChange,
+    );
+    const highlightedNodes = useMemo(
+        () =>
+            nodes.map((node) => {
+                const highlightColor =
+                    highlightsState.highlights[node.id]?.[0]?.color;
+                if (node.data.highlightColor === highlightColor) return node;
+
+                return {
+                    ...node,
+                    data: { ...node.data, highlightColor },
+                };
+            }),
+        [nodes, highlightsState.highlights],
     );
     const selectedNode = nodes.find((node) => node.selected);
     const selectedAiNode =
@@ -147,7 +167,7 @@ export function WhiteboardPage() {
         <SaveWidgetContext value={saveWidget}>
             <div className="h-screen w-screen">
                 <ReactFlow
-                    nodes={nodes}
+                    nodes={highlightedNodes}
                     edges={edges}
                     nodeTypes={nodeTypes}
                     edgeTypes={edgeTypes}
@@ -204,6 +224,25 @@ export function WhiteboardPage() {
                     )}
                     <BoardContextMenu
                         position={contextMenu.position}
+                        widgetId={contextMenu.widgetId}
+                        isHighlightedByMe={
+                            contextMenu.widgetId !== null &&
+                            highlightsState.isHighlightedByMe(
+                                contextMenu.widgetId,
+                            )
+                        }
+                        onHighlight={(widgetId) =>
+                            highlightsState.sendStart(
+                                widgetId,
+                                sendHighlightCommand,
+                            )
+                        }
+                        onRemoveHighlight={(widgetId) =>
+                            highlightsState.sendStop(
+                                widgetId,
+                                sendHighlightCommand,
+                            )
+                        }
                         onClose={contextMenu.close}
                     />
                 </ReactFlow>

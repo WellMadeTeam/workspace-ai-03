@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
     BoardCloseCode,
     openBoardSocket,
     sendPong,
     type BoardSocketEvent,
+    type HighlightCommand,
 } from "../api/board-socket";
 import { CLIENT_ID } from "./client-id";
 
@@ -28,8 +29,16 @@ const CONNECTING: BoardConnection = { status: "connecting" };
  * after a drop, and reports why the board cannot be joined. `retry` opens a
  * new connection after an error.
  */
-export function useBoardConnection(boardId: string | null) {
+export function useBoardConnection(
+    boardId: string | null,
+    onEvent: (event: BoardSocketEvent) => void,
+) {
     const [attempt, setAttempt] = useState(0);
+    const socketRef = useRef<WebSocket | null>(null);
+    const onEventRef = useRef(onEvent);
+    useEffect(() => {
+        onEventRef.current = onEvent;
+    }, [onEvent]);
     // Every board and retry starts as "connecting", so the state is stored
     // with the attempt it belongs to instead of being reset in the effect.
     const key = boardId && `${boardId}#${attempt}`;
@@ -53,6 +62,7 @@ export function useBoardConnection(boardId: string | null) {
         const connect = () => {
             const current = openBoardSocket(boardId, CLIENT_ID);
             socket = current;
+            socketRef.current = current;
             connectTimer = setTimeout(
                 () => current.close(),
                 CONNECT_TIMEOUT_MS,
@@ -68,11 +78,14 @@ export function useBoardConnection(boardId: string | null) {
                     report({ status: "live" });
                 } else if (event.type === "ping") {
                     sendPong(current, event.data.nonce);
+                } else {
+                    onEventRef.current(event);
                 }
             };
 
             current.onclose = (event) => {
                 clearTimeout(connectTimer);
+                if (socketRef.current === current) socketRef.current = null;
 
                 if (event.code === BoardCloseCode.BOARD_NOT_FOUND) {
                     report({ status: "error", reason: "not_found" });
@@ -124,9 +137,17 @@ export function useBoardConnection(boardId: string | null) {
         };
     }, [boardId, key]);
 
+    const sendHighlightCommand = useCallback((command: HighlightCommand) => {
+        const socket = socketRef.current;
+        if (!socket || socket.readyState !== WebSocket.OPEN) return false;
+
+        socket.send(JSON.stringify(command));
+        return true;
+    }, []);
+
     const retry = useCallback(() => setAttempt((current) => current + 1), []);
 
     const connection = state.key === key ? state.connection : CONNECTING;
 
-    return { connection, retry };
+    return { connection, retry, sendHighlightCommand };
 }
