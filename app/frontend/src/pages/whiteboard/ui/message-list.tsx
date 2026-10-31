@@ -65,13 +65,18 @@ export function MessageList({
                                     aria-hidden
                                 />
                                 <p className="break-words pr-8">
-                                    <span className="font-semibold">System</span>
+                                    <span className="font-semibold">
+                                        System
+                                    </span>
                                     <span aria-hidden> · </span>
                                     <span className="sr-only">: </span>
                                     {message.content}
                                 </p>
 
-                                {deleteButton(message.id, "absolute top-2 right-2 hover:!text-white")}
+                                {deleteButton(
+                                    message.id,
+                                    "absolute top-2 right-2 hover:!text-white",
+                                )}
                             </li>
                         ) : message.role === "user" ? (
                             <li
