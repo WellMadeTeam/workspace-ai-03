@@ -3,17 +3,24 @@ from unittest.mock import patch
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.backend.src.database import Base, get_db
 from app.backend.src.models import Board, Connection, Message, Widget
 from app.backend.src.routers.message import AI_FAILURE_MESSAGE, message_router
+from app.backend.src.services import context
+from app.backend.src.services.context import (
+    MAX_CONVERSATION_CHARS,
+    MAX_SUMMARY_INPUT_CHARS,
+    OMITTED_NOTE,
+)
 
 
 class MessageRouterTests(unittest.TestCase):
     def setUp(self):
+        context.summary_cache.clear()
         self.engine = create_engine(
             "sqlite://",
             connect_args={"check_same_thread": False},
@@ -211,6 +218,149 @@ class MessageRouterTests(unittest.TestCase):
         prompt = self.system_prompt(generate_reply)
         self.assertIn(f'<doc id="{middle_id}" type="ai conversation">', prompt)
         self.assertIn(f'<doc id="{text_id}" type="text">Text block note', prompt)
+
+    def add_long_conversation(self, widget_id):
+        # Each message is long, so the conversation is over the limit.
+        filler = "x" * (MAX_CONVERSATION_CHARS // 3)
+        self.add_messages(
+            widget_id,
+            ("user", f"Oldest {filler}"),
+            ("ai", f"Middle {filler}"),
+            ("user", f"Newest {filler}"),
+        )
+
+    @patch("app.backend.src.services.context.summarize_conversation")
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_short_conversation_is_not_summarized(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_messages(source_id, ("ai", "Short conversation"))
+        self.connect(source_id, self.widget_id)
+
+        self.ask(self.widget_id)
+
+        summarize_conversation.assert_not_called()
+        self.assertIn(
+            f'<doc id="{source_id}" type="ai conversation">AI: Short conversation',
+            self.system_prompt(generate_reply),
+        )
+
+    @patch(
+        "app.backend.src.services.context.summarize_conversation",
+        return_value="Summary with PELICAN-42",
+    )
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_long_conversation_is_sent_as_a_summary(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_long_conversation(source_id)
+        self.connect(source_id, self.widget_id)
+
+        self.ask(self.widget_id)
+
+        prompt = self.system_prompt(generate_reply)
+        self.assertIn(
+            f'<doc id="{source_id}" type="ai conversation summary">'
+            "Summary with PELICAN-42</doc>",
+            prompt,
+        )
+        self.assertNotIn("Oldest", prompt)
+        summary_input = summarize_conversation.call_args.args[0]
+        self.assertLessEqual(len(summary_input), MAX_SUMMARY_INPUT_CHARS)
+
+    @patch(
+        "app.backend.src.services.context.summarize_conversation",
+        return_value="Summary",
+    )
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_summary_is_reused_until_a_new_message(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_long_conversation(source_id)
+        self.connect(source_id, self.widget_id)
+
+        self.ask(self.widget_id)
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 1)
+
+        self.add_messages(source_id, ("ai", "New answer"))
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 2)
+
+    @patch(
+        "app.backend.src.services.context.summarize_conversation",
+        return_value="Summary",
+    )
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_summary_is_redone_after_an_earlier_message_is_deleted(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_long_conversation(source_id)
+        # Another long message keeps it over the limit after the deletion.
+        filler = "x" * (MAX_CONVERSATION_CHARS // 3)
+        self.add_messages(source_id, ("ai", f"Last {filler}"))
+        self.connect(source_id, self.widget_id)
+
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 1)
+
+        with self.session_factory() as db:
+            oldest_id = db.scalars(
+                select(Message.id).where(
+                    Message.widget_id == source_id,
+                    Message.content.startswith("Oldest"),
+                )
+            ).one()
+        response = self.client.delete(f"/messages/{oldest_id}")
+        self.assertEqual(response.status_code, 204)
+
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 2)
+        self.assertNotIn(
+            "Oldest",
+            summarize_conversation.call_args.args[0],
+        )
+
+    @patch(
+        "app.backend.src.services.context.summarize_conversation",
+        side_effect=RuntimeError("Rate limit"),
+    )
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_failed_summary_falls_back_to_recent_messages(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_long_conversation(source_id)
+        self.connect(source_id, self.widget_id)
+
+        with self.assertLogs("app.backend.src.services.context", "ERROR"):
+            response = self.ask(self.widget_id)
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json()["reply"]["content"], "Answer")
+        prompt = self.system_prompt(generate_reply)
+        self.assertIn(OMITTED_NOTE, prompt)
+        self.assertIn("User: Newest", prompt)
+        self.assertNotIn("Oldest", prompt)
 
     def post_query(self, content):
         return self.client.post(

@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 - Highlight a block from its right-click menu with the member's color; each member can highlight one block at a time.
 - Open text blocks in a side panel to read and edit their full text and rename them.
+- Summarize a long connected AI conversation before using it as context.
 
 ### Fixed
 
