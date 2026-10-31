@@ -272,6 +272,7 @@ docker compose logs --tail=100 backend
 
 A backend that exits at once with `GROQ_API_KEY not found` has no key in `app/backend/.env`.
 A query that fails while the rest of the board works points at the proxy: check it as [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider) describes.
+A board that works on `http://localhost` but not on the VM points at a browser feature that needs HTTPS, and the browser console names it.
 
 ## When The VM Is Not Available
 
@@ -286,3 +287,4 @@ Each deploy that went wrong is recorded here: what showed it, how it was recover
 | ---- | ---------- | -------------- | -------- | ------------------- |
 | 2026-10-30 | Before the first deploy | The backend container exited at once with `/bin/sh: syntax error: unterminated quoted string` | The cut-off `CMD` line of `app/backend/Dockerfile` was restored in [#214](https://github.com/WellMadeTeam/workspace-ai-03/pull/214) | `docker compose logs backend` |
 | 2026-10-31 | Before the first deploy | `curl` from the VM to the LLM service provider printed `403` | The calls to the provider go through the proxy in [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider) | The proxy check with `curl -x` |
+| 2026-10-31 | Staging | The board did not open over plain HTTP, and the browser console showed `crypto.randomUUID is not a function`, because browsers offer it only over HTTPS or on `localhost` | The frontend makes its UUIDs with `crypto.getRandomValues` since [#221](https://github.com/WellMadeTeam/workspace-ai-03/pull/221), and the fixed commit is deployed to staging again | The browser console on `$STAGING_URL` |
