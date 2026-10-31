@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Fixed backend Docker container
 - Allow text-to-text connections
 - Fix context build of multiple connected text blocks
+- Use a connected AI block's conversation as context for another AI block's replies
 
 ## [0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.2.0) - 2026-10-25
 
