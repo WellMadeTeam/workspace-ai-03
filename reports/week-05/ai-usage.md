@@ -27,6 +27,10 @@ Claude Code in the terminal.
 - Claude Code: reading the stored replies of a board where a diagram did not render, finding that the LLM escaped its line breaks twice, and restoring them in `ai_service.py` with tests.
 - Claude Code: making the side panels of AI and text blocks resizable from their former width, with keyboard support and a test, and checking the drag in headless Chrome.
 - Claude Code: planning #224 and implementing it on its branch: an image block that holds a diagram's Mermaid code, an "Add to board" button in the chat, the error on a block whose diagram cannot be rendered, the rule against AI to image connections, leaving image blocks out of the context, and tests, checked in headless Chrome with two members on one board.
+- Claude Code: reading #213, `FR-007`, `US-05` (#41), `ADR-003`, and the context code, and finding that a connected AI block was left out of the context because its conversation is stored in its messages, not in the block's content.
+- Claude Code: implementing #213 in #227: sending a connected AI block's conversation as context without the `system` messages, marking each piece of context as a text block or an AI conversation, and writing router tests for both criteria of `FR-007`.
+- Claude Code: proposing to summarize a long conversation, checking Groq's published rate limits for `openai/gpt-oss-20b`, creating #226 from the task form through `gh`, and setting its type to Task.
+- Claude Code: planning #226 and implementing it in #229, stacked on #227: summarizing a connected AI conversation longer than 6000 characters from its most recent 12000, caching the summary until the block gets a new message, sending the most recent messages with a note when the summary fails, and writing a test for each criterion.
 
 ## What we did with the output
 
@@ -46,6 +50,7 @@ Claude Code in the terminal.
 - danmaninc ran the product with the LLM service provider and reported the diagram that did not render; the agent had no API key and never called the LLM itself.
 - At our request, the side panels became resizable, with their former width as the minimum, the same for AI and text blocks.
 - For #224, we read the plan before any change, and the agent's recommended choices were taken: the block stores the Mermaid code, AI to image connections are rejected, and a diagram is placed below its AI block.
+- Changes for #213 and #226 were taken as is, as they satisfied the requirements and were checked manually by danmaninc.
 
 ## What was not used
 
@@ -57,4 +62,6 @@ Claude Code in the terminal.
 - Rendering diagrams in members' own messages was offered and not taken.
 - Zooming and panning in the modal, and downloading a diagram as a file, were offered and left for later.
 - Storing the rendered SVG in an image block was weighed for #224 and not used, because the board polls every block each second and the SVG is many times larger than the code.
+- A sentence in `FR-007` saying that an AI block's content is its conversation was offered and not written, because the glossary's context already says so.
+- Storing summaries in the database was weighed for #226 and not used, because the schema is created without migrations, so a new column would not reach the existing database.
 - No generated text was submitted unchecked.
