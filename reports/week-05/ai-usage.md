@@ -34,7 +34,6 @@ Claude Code in the terminal; Codex.
 - Claude Code: formatting meeting artifacts according to the requirements
 - Codex: implementing the frontend part of #211 and checking it with frontend and backend tests and a multi-client WebSocket smoke test.
 
-
 ## What we did with the output
 
 - We asked to merge the tests and the CI checks into one task; the agent pointed out that `AGENTS.md` keeps workflow changes in their own pull request and that a task needing two pull requests is split, so they stay #190 and #191.
