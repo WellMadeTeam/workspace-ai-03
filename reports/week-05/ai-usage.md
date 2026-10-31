@@ -31,6 +31,7 @@ Claude Code in the terminal.
 - Claude Code: implementing #213 in #227: sending a connected AI block's conversation as context without the `system` messages, marking each piece of context as a text block or an AI conversation, and writing router tests for both criteria of `FR-007`.
 - Claude Code: proposing to summarize a long conversation, checking Groq's published rate limits for `openai/gpt-oss-20b`, creating #226 from the task form through `gh`, and setting its type to Task.
 - Claude Code: planning #226 and implementing it in #229, stacked on #227: summarizing a connected AI conversation longer than 6000 characters from its most recent 12000, caching the summary until the block gets a new message, sending the most recent messages with a note when the summary fails, and writing a test for each criterion.
+- Claude Code: formatting meeting artifacts according to the requirements
 
 ## What we did with the output
 
