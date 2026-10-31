@@ -269,3 +269,103 @@ Draft the architecture decisions in Week 4 and mark them as proposed
 - **Made by:** Team
 - **Source:** [the Week 4 meeting](../reports/week-04/meeting-report.md)
 - **Why:** the architecture assignment was published the night before the meeting and the drafts are not ready, so the team drafts the decisions and compares them with the drivers this week and settles them with the customer at the next meeting; the customer agreed and expects a simple architecture for this product.
+
+## DEC-028
+
+Accept `US-06`, seeing which blocks an answer used, with its acceptance criterion reworded
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** the deployed product showed an answer linking each block it used, and a click on a link focuses that block; the old criterion spoke of all linked widgets rather than the ones used in the answer, so it was reworded, and the customer found the used-block links useful even when an answer comes from the AI's own knowledge.
+
+## DEC-029
+
+`US-05` is rejected because a connected AI block does not yet use another AI block's conversation as context, and its rework stays open
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** connecting blocks works for text blocks, but an AI block does not yet pass its conversation on; the customer agreed that the story stays open for that rework.
+
+## DEC-030
+
+Accept the story for joining a teammate's board through a shared link
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** the story was already implemented, and the customer joined the deployed board through a link sent in Telegram during the meeting.
+
+## DEC-031
+
+Add a story for clearing the context of an AI block
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** without it a user must delete every link or recreate the block to reset what the AI uses; the customer expects an AI block to be clearable as a text block is editable, and said the used-block links stay useful after clearing.
+
+## DEC-032
+
+Pass a summary of a long AI conversation as context to a connected block
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Team
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** sending the whole conversation makes little sense, so a conversation above a size threshold is summarized, and the summary is refreshed rarely to limit updates; the customer liked it and said that for an exact chunk he would copy it into a text block.
+
+## DEC-033
+
+Show a rendered diagram together with its copyable, collapsible source text in the AI block
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** a user spots a mistake in the picture, then copies the source, changes it and wants to see the updated picture, so hiding the source would be detrimental; collapsing long code keeps the picture readable.
+
+## DEC-034
+
+Put rendered diagrams on the board as images, without native diagram blocks
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** an image is enough for now, and turning diagrams into native blocks would open a variety of block types that is out of scope; the image also leads to the upcoming feature of adding images, in line with [DEC-006](#dec-006).
+
+## DEC-035
+
+Highlight a block from the right-click menu only or a toolbar button
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** member colors need extra assignment and display work, and a toolbar button invites highlighting everything; the highlight is meant to draw attention to one block, and how many blocks stay highlighted at once is left open.
+
+## DEC-036
+
+Ask for confirmation before deleting a block
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** deleting a block loses a whole conversation, and a confirmation in the right-click menu prevents an accidental click, such as meaning to highlight; this replaces hotkeys and a harder-to-reach button as the protection.
+
+## DEC-037
+
+Undoing a deletion is a nice-to-have outside the current scope
+
+- **Status:** Active
+- **Date:** 2026-10-29
+- **Made by:** Customer
+- **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
+- **Why:** an undo needs a trash bin and, if shared, synchronized history of who sees what, which is complex; once a deletion is confirmed it is gone and the block can be recreated, and the team keeps the undo as a later option rather than dropping it.
