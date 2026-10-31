@@ -28,7 +28,12 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[Widget]:
                 continue
 
             # A widget reached by several paths is sent to the AI only once.
-            if source.content and source.id not in added:
+            # An image is not context yet, but the widgets behind it still are.
+            if (
+                source.content
+                and source.widget_type != "image"
+                and source.id not in added
+            ):
                 added.add(source.id)
                 documents.append(source)
 
