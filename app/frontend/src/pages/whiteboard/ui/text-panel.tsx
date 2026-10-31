@@ -1,8 +1,9 @@
-import { CloseButton, Surface, TextArea } from "@heroui/react";
+import { CloseButton, TextArea } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { use } from "react";
 import { SaveWidgetContext } from "../model/save-widget";
 import type { TextWidgetNode, WidgetNode } from "../model/widget-node";
+import { SidePanel } from "./side-panel";
 
 const SAVE_CONTENT_DELAY_MS = 500;
 
@@ -18,11 +19,7 @@ export function TextPanel({ node }: TextPanelProps) {
     const close = () => updateNode(node.id, { selected: false });
 
     return (
-        <Surface
-            role="complementary"
-            aria-label={`${label} text`}
-            className="flex h-[calc(100vh-2rem)] w-80 max-w-[calc(100vw-2rem)] flex-col rounded-2xl shadow-lg"
-        >
+        <SidePanel label={`${label} text`}>
             <header className="flex items-center gap-2 border-b border-(--border) px-4 py-3">
                 <h2 className="flex-1 truncate text-sm font-semibold">
                     {label}
@@ -44,6 +41,6 @@ export function TextPanel({ node }: TextPanelProps) {
                     );
                 }}
             />
-        </Surface>
+        </SidePanel>
     );
 }

@@ -40,6 +40,21 @@ RESPONSE_FORMAT = {
 }
 
 
+def unescape_line_breaks(answer: str) -> str:
+    # The model sometimes escapes the line breaks in its JSON twice, so the
+    # answer holds a backslash and an "n" instead of each line break, and a
+    # Mermaid fence never starts a line. An answer that has real line breaks
+    # is left alone, as any escaped one in it is meant, such as in code.
+    if "\n" in answer or "\\n" not in answer:
+        return answer
+
+    return (
+        answer.replace("\\r\\n", "\n")
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+    )
+
+
 def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     if client is None:
         raise RuntimeError("GROQ_API_KEY not found. Check backend/.env")
@@ -47,7 +62,9 @@ def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     completion = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=messages,
-        max_completion_tokens=512,
+        # The model reasons before it answers, and a Mermaid diagram inside
+        # the JSON reply does not fit in fewer tokens.
+        max_completion_tokens=2048,
         response_format=RESPONSE_FORMAT,
     )
 
@@ -57,7 +74,7 @@ def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
         raise RuntimeError("The AI returned an empty response")
 
     reply = json.loads(content)
-    answer = reply["response"]
+    answer = unescape_line_breaks(reply["response"])
 
     if not answer:
         raise RuntimeError("The AI returned an empty response")

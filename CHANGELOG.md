@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Added
 
 - Open text blocks in a side panel to read and edit their full text and rename them.
+- Show Mermaid diagrams in AI replies as pictures, with a tab for their copyable source, a button to open a diagram over the whole board, and the error when a diagram cannot be drawn.
+- Widen the side panel of an AI or text block by dragging its left edge, or with the arrow keys on that edge; the panel keeps its width for the next block and after a reload.
 
 ### Fixed
 
