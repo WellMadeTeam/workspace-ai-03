@@ -6,11 +6,13 @@ export type TextWidgetData = {
     widget_type: "text";
     label: string;
     content: string;
+    highlightColor?: string;
 };
 
 export type AiWidgetData = {
     widget_type: "ai";
     label: string;
+    highlightColor?: string;
 };
 
 // A rendered diagram, which is not used as context yet.
@@ -19,6 +21,7 @@ export type ImageWidgetData = {
     label: string;
     // The Mermaid code, which every member renders as the same picture.
     code: string;
+    highlightColor?: string;
 };
 
 export type WidgetNodeData = TextWidgetData | AiWidgetData | ImageWidgetData;

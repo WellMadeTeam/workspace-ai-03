@@ -51,6 +51,14 @@ export function ImageWidgetNode({ id, data, selected }: ImageWidgetNodeProps) {
 
     return (
         <div
+            style={
+                data.highlightColor
+                    ? {
+                          outline: `3px solid ${data.highlightColor}`,
+                          outlineOffset: 2,
+                      }
+                    : undefined
+            }
             className={`w-80 rounded-md [border:var(--xy-node-border-default)] border-emerald-500! bg-(--xy-node-background-color-default) p-2 text-xs text-(--xy-node-color-default) ${
                 selected ? "ring-2 ring-purple-500" : ""
             }`}

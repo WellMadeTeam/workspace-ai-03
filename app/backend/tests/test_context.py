@@ -1,7 +1,9 @@
 import unittest
-from types import SimpleNamespace
 
-from app.backend.src.services.context import build_system_prompt
+from app.backend.src.services.context import (
+    ContextDocument,
+    build_system_prompt,
+)
 
 
 class BuildSystemPromptTests(unittest.TestCase):
@@ -11,12 +13,12 @@ class BuildSystemPromptTests(unittest.TestCase):
         self.assertIn("```mermaid", prompt)
 
     def test_keeps_the_diagram_rule_when_context_is_given(self):
-        widget = SimpleNamespace(id="widget-id", content="Notes")
+        document = ContextDocument(id="widget-id", kind="text", text="Notes")
 
-        prompt = build_system_prompt([widget])
+        prompt = build_system_prompt([document])
 
         self.assertIn("```mermaid", prompt)
-        self.assertIn('<doc id="widget-id">Notes</doc>', prompt)
+        self.assertIn('<doc id="widget-id" type="text">Notes</doc>', prompt)
 
 
 if __name__ == "__main__":

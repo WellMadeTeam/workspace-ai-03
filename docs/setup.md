@@ -1,6 +1,7 @@
 # Setup and run
 
 This page takes a clean checkout to a running product. Follow it from top to bottom.
+To deploy the product to staging and production on the university VM, follow [the deployment runbook](deployment.md) after this page.
 
 ## Prerequisites
 
@@ -37,6 +38,7 @@ Never commit `backend/.env`: it is ignored by git and holds your secret key.
 The database path needs no configuration. The backend stores a SQLite database in a Docker volume, so the data survives restarts.
 
 To use a port other than 80, set `HTTP_PORT` when you start the product, for example `HTTP_PORT=8080 docker compose up --build`.
+To keep the port without typing it each time, put `HTTP_PORT=8080` in `app/.env`, whose shape is in `app/.env.example`.
 
 ## Run
 

@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { CloseButton } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { MessageSquare } from "lucide-react";
@@ -8,6 +8,7 @@ import { AddDiagramContext, type AddDiagram } from "../model/add-diagram";
 import { useWidgetMessages } from "../model/use-widget-messages";
 import type { AiWidgetNode, WidgetNode } from "../model/widget-node";
 import { MessageComposer } from "./message-composer";
+import { ConfirmationDialog } from "./confirmation-dialog";
 import { MessageList } from "./message-list";
 import { SidePanel } from "./side-panel";
 
@@ -25,7 +26,8 @@ type MessagesPanelProps = {
 export function MessagesPanel({ node, onAddWidget }: MessagesPanelProps) {
     const { updateNode } = useReactFlow<WidgetNode>();
     const { label } = node.data;
-    const { messages, isSending, error, send } = useWidgetMessages(node.id);
+    const { messages, isSending, error, send, removeMessage } =
+        useWidgetMessages(node.id);
     const addedDiagramsRef = useRef(0);
     const { x, y } = node.position;
     const height = node.measured?.height ?? 0;
@@ -45,6 +47,7 @@ export function MessagesPanel({ node, onAddWidget }: MessagesPanelProps) {
         [onAddWidget, x, y, height],
     );
 
+    const [deletingMessage, setDeletingMessage] = useState<string | null>(null);
     const close = () => updateNode(node.id, { selected: false });
 
     return (
@@ -58,8 +61,24 @@ export function MessagesPanel({ node, onAddWidget }: MessagesPanelProps) {
             </header>
 
             <AddDiagramContext value={addDiagram}>
-                <MessageList messages={messages} isSending={isSending} />
+                <MessageList
+                    messages={messages}
+                    isSending={isSending}
+                    onDelete={setDeletingMessage}
+                />
             </AddDiagramContext>
+            <ConfirmationDialog
+                message={
+                    deletingMessage
+                        ? "Are you sure you want to delete this message?"
+                        : null
+                }
+                onCancel={() => setDeletingMessage(null)}
+                onConfirm={() => {
+                    if (deletingMessage) void removeMessage(deletingMessage);
+                    setDeletingMessage(null);
+                }}
+            />
 
             {error && (
                 <p className="px-4 pb-2 text-sm text-danger" role="alert">

@@ -17,6 +17,13 @@ export type Member = {
     color: string;
 };
 
+export type Highlight = Pick<Member, "client_id" | "color">;
+
+export type HighlightCommand = {
+    type: "highlight.start" | "highlight.stop";
+    data: { widget_id: string };
+};
+
 type ServerFrame<Type extends string, Data> = {
     type: Type;
     board_id: string;
@@ -34,6 +41,14 @@ export type BoardSocketEvent =
       >
     | ServerFrame<"member.joined", Member>
     | ServerFrame<"member.left", { client_id: string }>
+    | ServerFrame<
+          "highlight.update",
+          { highlights: Record<string, Highlight[]> }
+      >
+    | ServerFrame<
+          "highlight.start" | "highlight.stop",
+          Highlight & { widget_id: string }
+      >
     | ServerFrame<"ping", { nonce: string }>;
 
 export const openBoardSocket = (boardId: string, clientId: string) =>

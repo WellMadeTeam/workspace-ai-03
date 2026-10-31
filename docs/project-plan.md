@@ -110,6 +110,16 @@ Provisional: the final release is published with the evidence of whether the sha
 
 #### REL-09
 
+## Quality Requirement Testing Plan
+
+Each row is one test, in the order of [the quality requirements index](quality-requirements/README.md); the test itself is defined in its requirement's file.
+
+| QR                                        | QRT                                                     | Status       | Checked | Planned for sprint      | Evidence |
+| ----------------------------------------- | ------------------------------------------------------- | ------------ | ------- | ----------------------- | -------- |
+| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Not verified | None    | [SPRINT-05](#sprint-05) | None     |
+| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Not verified | None    | [SPRINT-05](#sprint-05) | None     |
+| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Not verified | None    | [SPRINT-05](#sprint-05) | None     |
+
 ## Progress Monitoring
 
 - **Review:** the team's weekly review, Tuesday at 19:30, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
