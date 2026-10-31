@@ -2,6 +2,8 @@ type Mermaid = typeof import("mermaid").default;
 
 export type DiagramResult = { svg: string } | { error: string };
 
+export type DiagramTheme = "default" | "dark";
+
 let mermaidPromise: Promise<Mermaid> | undefined;
 
 // Mermaid is large, so it is loaded only when the first diagram shows up.
@@ -20,11 +22,13 @@ function loadMermaid() {
 
 /**
  * Renders Mermaid code to an SVG whose element ids start with `id`, or
- * returns why it could not be rendered.
+ * returns why it could not be rendered. Without a theme, the diagram follows
+ * the app's theme.
  */
 export async function renderDiagram(
     id: string,
     code: string,
+    theme?: DiagramTheme,
 ): Promise<DiagramResult> {
     try {
         const mermaid = await loadMermaid();
@@ -36,9 +40,11 @@ export async function renderDiagram(
             // Keeps Mermaid from adding its own error picture to the page.
             suppressErrorRendering: true,
             // Read on each render, so a new diagram follows the app's theme.
-            theme: document.documentElement.classList.contains("dark")
-                ? "dark"
-                : "default",
+            theme:
+                theme ??
+                (document.documentElement.classList.contains("dark")
+                    ? "dark"
+                    : "default"),
         });
 
         const { svg } = await mermaid.render(id, code);
