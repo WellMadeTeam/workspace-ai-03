@@ -23,6 +23,36 @@ AI_FAILURE_MESSAGE = (
 )
 
 
+def build_history(history: list[Message]) -> list[dict[str, str]]:
+    ai_messages = []
+
+    # A user message followed by a system message is a failed query: it got
+    # no answer, and a retry sends it again as a new user message.
+    for message, next_message in zip(history, [*history[1:], None]):
+        if message.role == "system":
+            continue
+
+        if (
+            message.role == "user"
+            and next_message is not None
+            and next_message.role == "system"
+        ):
+            continue
+
+        ai_role = (
+            "assistant"
+            if message.role == "ai"
+            else "user"
+        )
+
+        ai_messages.append({
+            "role": ai_role,
+            "content": message.content,
+        })
+
+    return ai_messages
+
+
 @message_router.post(
     "",
     response_model=MessageCreateResponse,
@@ -73,20 +103,7 @@ def create_message(
         }
     ]
 
-    for message in history:
-        if message.role == "system":
-            continue
-
-        ai_role = (
-            "assistant"
-            if message.role == "ai"
-            else "user"
-        )
-
-        ai_messages.append({
-            "role": ai_role,
-            "content": message.content,
-        })
+    ai_messages.extend(build_history(history))
 
     # The failure is saved as a message, so every member of the board sees it.
     try:
