@@ -33,4 +33,6 @@ export const createMessage = (message: {
     });
 
 export const deleteMessage = (messageId: string) =>
-    request<void>(`/messages/${encodeURIComponent(messageId)}`, { method: "DELETE" });
+    request<void>(`/messages/${encodeURIComponent(messageId)}`, {
+        method: "DELETE",
+    });

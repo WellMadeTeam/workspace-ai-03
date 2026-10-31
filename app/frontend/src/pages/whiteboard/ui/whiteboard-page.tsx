@@ -68,20 +68,29 @@ export function WhiteboardPage() {
         isMember ? boardId : null,
         nodes.map((node) => node.id),
     );
-    const [confirmation, setConfirmation] = useState<{ action: "clear" | "delete"; ids: string[] } | null>(null);
+    const [confirmation, setConfirmation] = useState<{
+        action: "clear" | "delete";
+        ids: string[];
+    } | null>(null);
     const deletionResolver = useRef<((allowed: boolean) => void) | null>(null);
     const requestClear = (ids: string[]) => {
         if (ids.length) setConfirmation({ action: "clear", ids });
     };
-    const onBeforeDelete: OnBeforeDelete<WidgetNode, ConnectionEdge> = ({ nodes: selectedNodes }) => {
+    const onBeforeDelete: OnBeforeDelete<WidgetNode, ConnectionEdge> = ({
+        nodes: selectedNodes,
+    }) => {
         if (!selectedNodes.length) return Promise.resolve(true);
         return new Promise<boolean>((resolve) => {
             deletionResolver.current = resolve;
-            setConfirmation({ action: "delete", ids: selectedNodes.map((node) => node.id) });
+            setConfirmation({
+                action: "delete",
+                ids: selectedNodes.map((node) => node.id),
+            });
         });
     };
     const finishConfirmation = (confirmed: boolean) => {
-        if (confirmed && confirmation?.action === "clear") void clearWidgets(confirmation.ids);
+        if (confirmed && confirmation?.action === "clear")
+            void clearWidgets(confirmation.ids);
         deletionResolver.current?.(confirmed);
         deletionResolver.current = null;
         setConfirmation(null);
@@ -231,7 +240,11 @@ export function WhiteboardPage() {
                         onClear={requestClear}
                     />
                     <ConfirmationDialog
-                        message={confirmation ? `Are you sure you want to ${confirmation.action} this widget?` : null}
+                        message={
+                            confirmation
+                                ? `Are you sure you want to ${confirmation.action} this widget?`
+                                : null
+                        }
                         onConfirm={() => finishConfirmation(true)}
                         onCancel={() => finishConfirmation(false)}
                     />

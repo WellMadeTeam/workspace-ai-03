@@ -15,7 +15,8 @@ type MessagesPanelProps = {
 export function MessagesPanel({ node }: MessagesPanelProps) {
     const { updateNode } = useReactFlow<WidgetNode>();
     const { label } = node.data;
-    const { messages, isSending, error, send, removeMessage } = useWidgetMessages(node.id);
+    const { messages, isSending, error, send, removeMessage } =
+        useWidgetMessages(node.id);
 
     const [deletingMessage, setDeletingMessage] = useState<string | null>(null);
     const close = () => updateNode(node.id, { selected: false });
@@ -34,9 +35,17 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                 <CloseButton aria-label="Close messages" onPress={close} />
             </header>
 
-            <MessageList messages={messages} isSending={isSending} onDelete={setDeletingMessage} />
+            <MessageList
+                messages={messages}
+                isSending={isSending}
+                onDelete={setDeletingMessage}
+            />
             <ConfirmationDialog
-                message={deletingMessage ? "Are you sure you want to delete this message?" : null}
+                message={
+                    deletingMessage
+                        ? "Are you sure you want to delete this message?"
+                        : null
+                }
                 onCancel={() => setDeletingMessage(null)}
                 onConfirm={() => {
                     if (deletingMessage) void removeMessage(deletingMessage);

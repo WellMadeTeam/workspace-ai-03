@@ -1,6 +1,11 @@
 import { useCallback, useState } from "react";
 import { randomUUID, usePolling } from "@/shared/lib";
-import { createMessage, deleteMessage, listMessages, type Message } from "../api/message";
+import {
+    createMessage,
+    deleteMessage,
+    listMessages,
+    type Message,
+} from "../api/message";
 
 const MESSAGES_POLL_INTERVAL_MS = 2000;
 
@@ -65,15 +70,20 @@ export function useWidgetMessages(widgetId: string) {
         [messages.length, refresh, widgetId],
     );
 
-    const removeMessage = useCallback(async (id: string) => {
-        try {
-            await deleteMessage(id);
-            setMessages((current) => current.filter((message) => message.id !== id));
-            void refresh();
-        } catch {
-            setError("Could not delete the message.");
-        }
-    }, [refresh]);
+    const removeMessage = useCallback(
+        async (id: string) => {
+            try {
+                await deleteMessage(id);
+                setMessages((current) =>
+                    current.filter((message) => message.id !== id),
+                );
+                void refresh();
+            } catch {
+                setError("Could not delete the message.");
+            }
+        },
+        [refresh],
+    );
 
     const visibleMessages =
         pending && messages.length <= pending.baseCount

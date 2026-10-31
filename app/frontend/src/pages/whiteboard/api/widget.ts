@@ -50,4 +50,6 @@ export const deleteWidget = (widgetId: string) =>
     });
 
 export const clearWidget = (widgetId: string) =>
-    request<void>(`/widgets/${encodeURIComponent(widgetId)}/clear`, { method: "POST" });
+    request<void>(`/widgets/${encodeURIComponent(widgetId)}/clear`, {
+        method: "POST",
+    });

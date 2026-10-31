@@ -13,7 +13,11 @@ type MessageListProps = {
     onDelete: (id: string) => void;
 };
 
-export function MessageList({ messages, isSending, onDelete }: MessageListProps) {
+export function MessageList({
+    messages,
+    isSending,
+    onDelete,
+}: MessageListProps) {
     const listEndRef = useRef<HTMLDivElement>(null);
 
     // Keep the newest message in view.
@@ -22,8 +26,12 @@ export function MessageList({ messages, isSending, onDelete }: MessageListProps)
     }, [messages.length, isSending]);
 
     const deleteButton = (id: string) => (
-        <button type="button" aria-label="Delete message" onClick={() => onDelete(id)}
-            className="mt-1 self-end rounded p-1 opacity-70 hover:opacity-100">
+        <button
+            type="button"
+            aria-label="Delete message"
+            onClick={() => onDelete(id)}
+            className="mt-1 self-end rounded p-1 opacity-70 hover:opacity-100"
+        >
             <Trash2 className="size-3.5" />
         </button>
     );

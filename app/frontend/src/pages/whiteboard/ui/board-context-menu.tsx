@@ -12,7 +12,11 @@ type BoardContextMenuProps = {
 };
 
 /** Actions for the selected blocks and connections, opened with a right click. */
-export function BoardContextMenu({ position, onClose, onClear }: BoardContextMenuProps) {
+export function BoardContextMenu({
+    position,
+    onClose,
+    onClear,
+}: BoardContextMenuProps) {
     const { getNodes, getEdges, deleteElements } = useReactFlow<
         WidgetNode,
         ConnectionEdge
@@ -49,7 +53,11 @@ export function BoardContextMenu({ position, onClose, onClear }: BoardContextMen
                     onAction={(key) => {
                         if (key === "delete") deleteSelection();
                         if (key === "clear") {
-                            onClear(getNodes().filter((node) => node.selected).map((node) => node.id));
+                            onClear(
+                                getNodes()
+                                    .filter((node) => node.selected)
+                                    .map((node) => node.id),
+                            );
                         }
                     }}
                 >
