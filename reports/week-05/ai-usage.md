@@ -20,6 +20,13 @@ Claude Code in the terminal.
 - Claude Code: explaining what a self-signed certificate and Certbot would take for the VM, without changing any file.
 - Claude Code: writing `reports/week-05/deployment.md` from the deploy that danmaninc ran, and recording the two failures in the runbook's failed runs.
 - Claude Code: reading #165, planning how to stop a query that is sent again after a failure from reaching the LLM twice, and implementing it in #225 with a `build_history` function in `message.py` and router tests for each acceptance criterion.
+- Claude Code: reading #223, `FR-012`, `DEC-033`, and the Week 5 transcript, reviewing our proposal to decide on the frontend whether a reply holds a diagram, and planning a system prompt that asks for fenced Mermaid blocks, which the frontend alone renders.
+- Claude Code: adding `AC-03`, opening a diagram in a modal, to #223 through `gh`.
+- Claude Code: implementing #223 in #233: rendering Mermaid diagrams in AI replies with a Code tab, a copy button that also works over plain HTTP, a full-size modal, and the error for a diagram that cannot be rendered, raising the reply's token limit, and writing frontend and backend tests.
+- Claude Code: checking #233 in headless Chrome against a scratch database in light and dark mode, which found that the modal's tabs came out empty inside the chat's tabs and that the modal had no trigger, both fixed before the pull request.
+- Claude Code: reading the stored replies of a board where a diagram did not render, finding that the LLM escaped its line breaks twice, and restoring them in `ai_service.py` with tests.
+- Claude Code: making the side panels of AI and text blocks resizable from their former width, with keyboard support and a test, and checking the drag in headless Chrome.
+- Claude Code: planning #224 and implementing it on its branch: an image block that holds a diagram's Mermaid code, an "Add to board" button in the chat, the error on a block whose diagram cannot be rendered, the rule against AI to image connections, leaving image blocks out of the context, and tests, checked in headless Chrome with two members on one board.
 
 ## What we did with the output
 
@@ -34,6 +41,11 @@ Claude Code in the terminal.
 - We kept the deployment on the university VM behind the proxy rather than moving it to another server, which would have been a deviation.
 - We chose replacing `crypto.randomUUID` over a self-signed certificate, so the customer meets no certificate warning.
 - At our request, the LLM history for #165 leaves out both the `system` messages and the failed `user` queries before them, and we approved the plan before the agent changed any file.
+- We kept deciding on the frontend whether a reply holds a diagram, and the agent agreed after weighing a separate diagram field in the LLM's reply.
+- At our request, the plan for #223 added the full-size modal, and `FR-012` stays unchanged although its `AC-01` still says the picture replaces the code.
+- danmaninc ran the product with the LLM service provider and reported the diagram that did not render; the agent had no API key and never called the LLM itself.
+- At our request, the side panels became resizable, with their former width as the minimum, the same for AI and text blocks.
+- For #224, we read the plan before any change, and the agent's recommended choices were taken: the block stores the Mermaid code, AI to image connections are rejected, and a diagram is placed below its AI block.
 
 ## What was not used
 
@@ -41,4 +53,8 @@ Claude Code in the terminal.
 - A new requirement for bringing back a deleted block was not written, because it would choose the form of the protection before the customer does.
 - A self-signed certificate and a Certbot certificate were explained and not used: Certbot cannot validate an address reached only from the university network, and the course gives no domain name.
 - Hosting the product on the alternative server was offered as a fallback and not taken.
+- A separate diagram field in the LLM's reply was weighed for #223 and not used, because it needs a new column and separates a diagram from the text around it.
+- Rendering diagrams in members' own messages was offered and not taken.
+- Zooming and panning in the modal, and downloading a diagram as a file, were offered and left for later.
+- Storing the rendered SVG in an image block was weighed for #224 and not used, because the board polls every block each second and the SVG is many times larger than the code.
 - No generated text was submitted unchecked.
