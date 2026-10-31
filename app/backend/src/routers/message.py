@@ -130,7 +130,7 @@ def create_message(
             content=AI_FAILURE_MESSAGE,
         )
 
-    db.add(reply)
+    db.expunge_all()  # QR-02 QRT-01: the reply is no longer stored
     db.commit()
     db.refresh(reply)
 

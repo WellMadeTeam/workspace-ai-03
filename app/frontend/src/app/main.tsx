@@ -5,7 +5,7 @@ import "./styles/color-scheme";
 import "./styles/index.css";
 import { router } from "./router";
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("app")!).render(
     <StrictMode>
         <RouterProvider router={router} />
     </StrictMode>,
