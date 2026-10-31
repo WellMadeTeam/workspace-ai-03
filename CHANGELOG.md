@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [0.3.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.3.0) - 2026-10-31
+
 ### Added
 
 - Highlight a block from its right-click menu with the member's color; each member can highlight one block at a time.
