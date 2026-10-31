@@ -232,7 +232,7 @@ After each production deploy, verify the core task from a campus machine that is
    A `502` in the first seconds after a start means the backend is still starting: wait a few seconds and run it again.
 2. Open `$PRODUCTION_URL` in a browser, and complete the core task as [the setup page](setup.md#complete-the-core-task) describes, with that address in place of `http://localhost`.
 
-Record the check in the week's report: the date, the member, the deployment, the commit, the steps done, and the result, with the address written as `<university-vm-ipv4>`.
+Record the check in `reports/week-NN/deployment.md`, which the week's report and the release link: the date, the member, the deployment, the commit, the steps done, and the result, with the address written as `<university-vm-ipv4>`, as `reports/week-05/deployment.md` does.
 A deploy that fails either step is rolled back.
 
 ## Roll Back
