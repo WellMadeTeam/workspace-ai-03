@@ -10,6 +10,8 @@ type DiagramModalProps = {
     code: string;
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
+    // Classes for the picture, such as a backing for a light diagram.
+    pictureClassName?: string;
 };
 
 /**
@@ -22,6 +24,7 @@ export function DiagramModal({
     code,
     isOpen,
     onOpenChange,
+    pictureClassName = "",
 }: DiagramModalProps) {
     // The diagram stays in the message under the modal, so this copy gets its
     // own ids, or the styles of one would apply to the other.
@@ -42,7 +45,9 @@ export function DiagramModal({
             </Button>
             <Modal.Backdrop>
                 <Modal.Container size="cover" className="sm:w-full">
-                    <Modal.Dialog>
+                    {/* "nokey" keeps the board's shortcuts, such as Backspace
+                        deleting the selected block, out of the modal. */}
+                    <Modal.Dialog className="nokey">
                         <Modal.CloseTrigger />
                         <Tabs
                             variant="secondary"
@@ -68,7 +73,7 @@ export function DiagramModal({
                             <Modal.Body className="min-h-0 flex-1">
                                 <Tabs.Panel id="diagram">
                                     <div
-                                        className="[&_svg]:mx-auto"
+                                        className={`[&_svg]:mx-auto ${pictureClassName}`}
                                         dangerouslySetInnerHTML={{
                                             __html: modalSvg,
                                         }}

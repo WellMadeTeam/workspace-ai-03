@@ -1,6 +1,7 @@
 import { Handle, Position, useConnection, type NodeProps } from "@xyflow/react";
 import type { WidgetNode } from "../model/widget-node";
 import { AiWidgetNode } from "./ai-widget-node";
+import { ImageWidgetNode } from "./image-widget-node";
 import { TextWidgetNode } from "./text-widget-node";
 
 const SIDES = [Position.Top, Position.Right, Position.Bottom, Position.Left];
@@ -18,10 +19,14 @@ export function WidgetNodeView({ id, data, selected }: NodeProps<WidgetNode>) {
 
     return (
         <>
-            {data.widget_type === "text" ? (
+            {data.widget_type === "text" && (
                 <TextWidgetNode id={id} data={data} selected={selected} />
-            ) : (
+            )}
+            {data.widget_type === "ai" && (
                 <AiWidgetNode id={id} data={data} selected={selected} />
+            )}
+            {data.widget_type === "image" && (
+                <ImageWidgetNode id={id} data={data} selected={selected} />
             )}
             {/*
              * Covers the whole block while a connection is dragged, so it can

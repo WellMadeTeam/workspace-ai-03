@@ -191,6 +191,7 @@ export function WhiteboardPage() {
                             <MessagesPanel
                                 key={selectedAiNode.id}
                                 node={selectedAiNode}
+                                onAddWidget={addWidget}
                             />
                         </Panel>
                     )}

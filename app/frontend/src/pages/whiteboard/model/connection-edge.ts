@@ -26,9 +26,10 @@ export const canConnect = (
     const sourceNode = nodes.find((node) => node.id === source);
     const targetNode = nodes.find((node) => node.id === target);
     if (!targetNode || !sourceNode) return false;
+    // An AI block feeds only other AI blocks, not text or image blocks.
     if (
         sourceNode.data.widget_type === "ai" &&
-        targetNode.data.widget_type === "text"
+        targetNode.data.widget_type !== "ai"
     )
         return false;
 

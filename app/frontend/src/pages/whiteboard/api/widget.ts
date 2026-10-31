@@ -1,6 +1,7 @@
 import { request } from "@/shared/api";
 
-export type WidgetType = "text" | "ai";
+// An image block shows a diagram, and its content is the Mermaid code.
+export type WidgetType = "text" | "ai" | "image";
 
 export type Widget = {
     id: string;
@@ -24,6 +25,7 @@ export type NewWidget = {
     board_id: string;
     widget_type: WidgetType;
     title: string;
+    content?: string;
     x: number;
     y: number;
 };
