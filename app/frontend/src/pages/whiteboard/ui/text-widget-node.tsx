@@ -49,6 +49,14 @@ export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
     return (
         <div
             onDoubleClick={() => setIsEditing(true)}
+            style={
+                data.highlightColor
+                    ? {
+                          outline: `3px solid ${data.highlightColor}`,
+                          outlineOffset: 2,
+                      }
+                    : undefined
+            }
             className={`w-48 rounded-md [border:var(--xy-node-border-default)] bg-(--xy-node-background-color-default) p-2 text-xs text-(--xy-node-color-default) ${
                 selected ? "ring-2 ring-purple-500" : ""
             }`}

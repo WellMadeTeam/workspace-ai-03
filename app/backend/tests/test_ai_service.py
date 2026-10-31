@@ -74,6 +74,28 @@ class AiServiceTests(unittest.TestCase):
 
         self.assertEqual(ai_service.unescape_line_breaks(answer), answer)
 
+    def test_summarize_conversation_returns_the_summary(self):
+        client = Mock()
+        client.chat.completions.create.return_value.choices = [
+            SimpleNamespace(message=SimpleNamespace(content="Summary"))
+        ]
+
+        with patch.object(ai_service, "client", client):
+            summary = ai_service.summarize_conversation("User: Question")
+
+        self.assertEqual(summary, "Summary")
+        client.chat.completions.create.assert_called_once()
+
+    def test_summarize_conversation_fails_on_an_empty_summary(self):
+        client = Mock()
+        client.chat.completions.create.return_value.choices = [
+            SimpleNamespace(message=SimpleNamespace(content=""))
+        ]
+
+        with patch.object(ai_service, "client", client):
+            with self.assertRaises(RuntimeError):
+                ai_service.summarize_conversation("User: Question")
+
 
 if __name__ == "__main__":
     unittest.main()

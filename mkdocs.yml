@@ -11,7 +11,9 @@ theme:
 nav:
   - Home: index.md
   - Setup and run: setup.md
+  - Deployment: deployment.md
   - Product vision: product-vision.md
+  - Features: features.md
   - Functional requirements: functional-requirements/README.md
   - Quality requirements: quality-requirements/README.md
   - Architecture:

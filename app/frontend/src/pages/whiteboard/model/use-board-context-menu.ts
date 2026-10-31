@@ -10,6 +10,11 @@ import type { WidgetNode } from "./widget-node";
 
 export type ContextMenuPosition = { x: number; y: number };
 
+type ContextMenuState = {
+    position: ContextMenuPosition;
+    widgetId: string | null;
+};
+
 // A field the member is typing in keeps the browser's menu, for copy and paste.
 const isEditingField = (target: EventTarget) =>
     (target instanceof HTMLInputElement ||
@@ -31,9 +36,9 @@ const selectOnly = (
 
 /**
  * Opens the board's context menu at the cursor on a right click on a block, a
- * connection or a selection. A right click on a block or a connection outside
- * the selection selects only it first, so the menu always acts on the
- * selection.
+ * connection or a selection. A right click outside the selection selects only
+ * that element first; block-specific actions still target the block under the
+ * cursor.
  */
 export function useBoardContextMenu(
     nodes: WidgetNode[],
@@ -41,18 +46,21 @@ export function useBoardContextMenu(
     onNodesChange: OnNodesChange<WidgetNode>,
     onEdgesChange: OnEdgesChange<ConnectionEdge>,
 ) {
-    const [position, setPosition] = useState<ContextMenuPosition | null>(null);
+    const [menu, setMenu] = useState<ContextMenuState | null>(null);
 
-    const close = useCallback(() => setPosition(null), []);
+    const close = useCallback(() => setMenu(null), []);
 
-    const open = (event: MouseEvent) => {
+    const open = (event: MouseEvent, widgetId: string | null = null) => {
         if (isEditingField(event.target)) {
             close();
             return;
         }
 
         event.preventDefault();
-        setPosition({ x: event.clientX, y: event.clientY });
+        setMenu({
+            position: { x: event.clientX, y: event.clientY },
+            widgetId,
+        });
     };
 
     const onNodeContextMenu: NodeMouseHandler<WidgetNode> = (event, node) => {
@@ -60,7 +68,7 @@ export function useBoardContextMenu(
             onNodesChange(selectOnly(nodes, node.id));
             onEdgesChange(selectOnly(edges, null));
         }
-        open(event);
+        open(event, node.id);
     };
 
     const onEdgeContextMenu: EdgeMouseHandler<ConnectionEdge> = (
@@ -78,7 +86,8 @@ export function useBoardContextMenu(
     const onSelectionContextMenu = (event: MouseEvent) => open(event);
 
     return {
-        position,
+        position: menu?.position ?? null,
+        widgetId: menu?.widgetId ?? null,
         close,
         onNodeContextMenu,
         onEdgeContextMenu,
