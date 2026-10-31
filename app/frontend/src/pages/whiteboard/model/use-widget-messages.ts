@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { usePolling } from "@/shared/lib";
+import { randomUUID, usePolling } from "@/shared/lib";
 import { createMessage, listMessages, type Message } from "../api/message";
 
 const MESSAGES_POLL_INTERVAL_MS = 2000;
@@ -38,7 +38,7 @@ export function useWidgetMessages(widgetId: string) {
     const send = useCallback(
         async (content: string) => {
             setPending({
-                id: crypto.randomUUID(),
+                id: randomUUID(),
                 role: "user",
                 content,
                 has_context: false,
