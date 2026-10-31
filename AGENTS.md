@@ -14,6 +14,7 @@ The project's words are fixed in [`docs/glossary.md`](docs/glossary.md): use the
   A new page in `docs/` also gets its line in the `nav` of `mkdocs.yml`.
 - `docs/setup.md` is the only setup and run guide, and a change to how the product starts or is configured updates it.
 - `scripts/` holds the commands that run the `scripted` and `deployed` quality requirement tests, each named in its test's `**Runs at:**`; they are run by a member, never by CI.
+- `docs/deployment.md` is the runbook for staging and production on the university VM, and a change to how the product is deployed updates it; it links `docs/setup.md` instead of repeating it, and carries no real address or secret.
 - `reports/week-NN/` holds each week's evidence: the report, the meeting script, report, and transcript, the retrospective, and the AI usage.
 - `.github/` holds the workflows, the issue forms, the pull request template, and the Dependabot configuration.
 
