@@ -10,18 +10,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 - Highlight a block from its right-click menu with the member's color; each member can highlight one block at a time.
 - Open text blocks in a side panel to read and edit their full text and rename them.
+- Widen the side panel of an AI or text block by dragging its left edge, or with the arrow keys on that edge; the panel keeps its width for the next block and after a reload.
 - Show Mermaid diagrams in AI replies as pictures, with a tab for their copyable source, a button to open a diagram over the whole board, and the error when a diagram cannot be drawn.
 - Add a diagram from an AI reply to the board as an image block, which every member sees, opens full size, and can connect to other blocks, though it is not used as context yet.
-- Widen the side panel of an AI or text block by dragging its left edge, or with the arrow keys on that edge; the panel keeps its width for the next block and after a reload.
+- Clear an AI block's conversation or a text block's text with «Clear» in the right-click menu.
+- Delete a single message from an AI block's conversation.
+- Ask for confirmation before deleting blocks, clearing a block, or deleting a message.
+- Connect a text block to another text block.
 - Summarize a long connected AI conversation before using it as context.
 
 ### Fixed
 
-- Fixed backend Docker container
-- Allow text-to-text connections
-- Fix context build of multiple connected text blocks
-- Use a connected AI block's conversation as context for another AI block's replies
+- Use a connected AI block's conversation as context for another AI block's replies.
+- Use every connected text block as context when several text blocks are connected to one block.
 - Send a query that is sent again after a failure to the AI only once.
+- Open the board over plain HTTP from another computer, where it failed with `crypto.randomUUID is not a function`.
+- Start the backend container with `docker compose up`, which exited right after it started.
 
 ## [0.2.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.2.0) - 2026-10-25
 
