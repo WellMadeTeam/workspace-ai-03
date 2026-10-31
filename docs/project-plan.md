@@ -73,8 +73,16 @@ Members join a board by its link, highlight part of it, see LLM diagrams rendere
 - **Due:** 2026-10-31
 - **Sprint Backlog:** [the issues scheduled into SPRINT-05](https://github.com/WellMadeTeam/workspace-ai-03/milestone/5)
 - **Planned Velocity:** 26
+- **Actual Velocity:** 5; `US-02`, `US-05`, `US-08`, and `US-14` were not accepted by the customer in this sprint, so they moved to `SPRINT-06`.
 
 #### REL-05
+
+- **Released:** [v0.3.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.3.0) on 2026-10-31.
+- **Checked QRs:**
+  - [QR-02](quality-requirements/qr/QR-02.md)
+  - [QR-04](quality-requirements/qr/QR-04.md)
+
+The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
 
 ### SPRINT-06
 
