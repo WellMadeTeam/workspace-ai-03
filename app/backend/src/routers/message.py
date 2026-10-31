@@ -110,7 +110,7 @@ def create_message(
         answer, references = generate_reply(ai_messages)
 
         # Keep only ids of widgets that were actually given to the AI.
-        context_ids = {str(widget.id) for widget in documents}
+        context_ids = {str(document.id) for document in documents}
         references = list(dict.fromkeys(
             reference for reference in references if reference in context_ids
         ))

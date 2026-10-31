@@ -1,12 +1,20 @@
+from dataclasses import dataclass
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.backend.src.models import Connection, Widget
+from app.backend.src.models import Connection, Message, Widget
 
 
-def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[Widget]:
+@dataclass
+class ContextDocument:
+    id: UUID
+    kind: str
+    text: str
+
+
+def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[ContextDocument]:
     visited = set()
     added = set()
     queue = [ai_widget_id]
@@ -28,16 +36,47 @@ def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[Widget]:
                 continue
 
             # A widget reached by several paths is sent to the AI only once.
-            if source.content and source.id not in added:
-                added.add(source.id)
-                documents.append(source)
+            if source.id not in added:
+                document = build_document(db, source)
+                if document:
+                    added.add(source.id)
+                    documents.append(document)
 
             queue.append(source.id)
 
     return documents
 
 
-def build_system_prompt(documents: list[Widget]) -> str:
+def build_document(db: Session, widget: Widget) -> ContextDocument | None:
+    if widget.widget_type == "ai":
+        text = build_conversation(db, widget.id)
+        kind = "ai conversation"
+    else:
+        text = widget.content
+        kind = "text"
+
+    if not text:
+        return None
+
+    return ContextDocument(id=widget.id, kind=kind, text=text)
+
+
+def build_conversation(db: Session, widget_id: UUID) -> str:
+    # System messages are added by the product, such as the failure text, so
+    # they are not part of the conversation.
+    statement = (
+        select(Message)
+        .where(Message.widget_id == widget_id, Message.role != "system")
+        .order_by(Message.created_at.asc(), Message.id.asc())
+    )
+
+    return "\n".join(
+        f"{'AI' if message.role == 'ai' else 'User'}: {message.content}"
+        for message in db.scalars(statement).all()
+    )
+
+
+def build_system_prompt(documents: list[ContextDocument]) -> str:
     prompt = (
         "You are a helpful assistant in Workspace "
         "for AI Collaboration. Be clear and concise."
@@ -47,8 +86,8 @@ def build_system_prompt(documents: list[Widget]) -> str:
         return prompt
 
     context = "\n".join(
-        f'<doc id="{widget.id}">{widget.content}</doc>'
-        for widget in documents
+        f'<doc id="{document.id}" type="{document.kind}">{document.text}</doc>'
+        for document in documents
     )
 
     return (
@@ -58,4 +97,3 @@ def build_system_prompt(documents: list[Widget]) -> str:
         "If you use context from a connected widget, add its id "
         "to the references array."
     )
-
