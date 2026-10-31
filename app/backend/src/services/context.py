@@ -155,7 +155,12 @@ def keep_recent(lines: list[str], limit: int) -> str:
 def build_system_prompt(documents: list[ContextDocument]) -> str:
     prompt = (
         "You are a helpful assistant in Workspace "
-        "for AI Collaboration. Be clear and concise."
+        "for AI Collaboration. Be clear and concise.\n\n"
+        # The frontend renders only these fenced blocks as diagrams.
+        "When a diagram helps, write it in Mermaid inside a fenced code "
+        "block that opens with ```mermaid on its own line and closes with "
+        "``` on its own line. Put one diagram in each block, and never draw "
+        "a diagram in any other syntax."
     )
 
     if not documents:

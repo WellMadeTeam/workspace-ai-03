@@ -59,6 +59,12 @@ A message a member sends from an AI block to the LLM service provider.
 
 The answer the LLM service provider gives to a query, stored in the AI block the query was sent from.
 
+### Diagram
+
+A Mermaid diagram that a reply holds in a code block marked `mermaid`, which the AI block shows as a picture next to its copyable source, and as the source with the error when it cannot be drawn.
+
+**Defined by:** [`DEC-019`](decisions.md#dec-019) and [`DEC-033`](decisions.md#dec-033).
+
 ### Context
 
 The content sent to the LLM service provider along with a query: the AI block's own conversation and the content of the blocks connected to it, and never the rest of the board.
