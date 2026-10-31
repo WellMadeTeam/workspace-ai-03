@@ -2,7 +2,7 @@
 
 ## Tools
 
-Claude Code in the terminal.
+Claude Code in the terminal; Codex.
 
 ## What we used them for
 
@@ -32,6 +32,8 @@ Claude Code in the terminal.
 - Claude Code: proposing to summarize a long conversation, checking Groq's published rate limits for `openai/gpt-oss-20b`, creating #226 from the task form through `gh`, and setting its type to Task.
 - Claude Code: planning #226 and implementing it in #229, stacked on #227: summarizing a connected AI conversation longer than 6000 characters from its most recent 12000, caching the summary until the block gets a new message, sending the most recent messages with a note when the summary fails, and writing a test for each criterion.
 - Claude Code: formatting meeting artifacts according to the requirements
+- Codex: implementing the frontend part of #211 and checking it with frontend and backend tests and a multi-client WebSocket smoke test.
+
 
 ## What we did with the output
 
@@ -52,6 +54,7 @@ Claude Code in the terminal.
 - At our request, the side panels became resizable, with their former width as the minimum, the same for AI and text blocks.
 - For #224, we read the plan before any change, and the agent's recommended choices were taken: the block stores the Mermaid code, AI to image connections are rejected, and a diagram is placed below its AI block.
 - Changes for #213 and #226 were taken as is, as they satisfied the requirements and were checked manually by danmaninc.
+- We kept highlighting in the right-click menu; at our request, each member has at most one active block and only the first active member's color shows when several highlight the same block.
 
 ## What was not used
 
@@ -65,4 +68,5 @@ Claude Code in the terminal.
 - Storing the rendered SVG in an image block was weighed for #224 and not used, because the board polls every block each second and the SVG is many times larger than the code.
 - A sentence in `FR-007` saying that an AI block's content is its conversation was offered and not written, because the glossary's context already says so.
 - Storing summaries in the database was weighed for #226 and not used, because the schema is created without migrations, so a new column would not reach the existing database.
+- Automatic highlighting on selecting or deselecting a block was not used.
 - No generated text was submitted unchecked.
