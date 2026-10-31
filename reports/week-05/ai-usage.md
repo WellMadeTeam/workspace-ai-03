@@ -19,6 +19,7 @@ Claude Code in the terminal.
 - Claude Code: after the first staging deploy failed with `crypto.randomUUID is not a function` over plain HTTP, creating task #220 and replacing the call with a UUID function built on `crypto.getRandomValues`, with a test, in #221.
 - Claude Code: explaining what a self-signed certificate and Certbot would take for the VM, without changing any file.
 - Claude Code: writing `reports/week-05/deployment.md` from the deploy that danmaninc ran, and recording the two failures in the runbook's failed runs.
+- Claude Code: reading #165, planning how to stop a query that is sent again after a failure from reaching the LLM twice, and implementing it in #225 with a `build_history` function in `message.py` and router tests for each acceptance criterion.
 
 ## What we did with the output
 
@@ -32,6 +33,7 @@ Claude Code in the terminal.
 - At our request, the `HTTPS_PROXY` line carries the proxy user and password, and the runbook gives staging and production their own proxy users.
 - We kept the deployment on the university VM behind the proxy rather than moving it to another server, which would have been a deviation.
 - We chose replacing `crypto.randomUUID` over a self-signed certificate, so the customer meets no certificate warning.
+- At our request, the LLM history for #165 leaves out both the `system` messages and the failed `user` queries before them, and we approved the plan before the agent changed any file.
 
 ## What was not used
 
