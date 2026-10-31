@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { ScrollShadow } from "@heroui/react";
 import { CircleAlert } from "lucide-react";
 import type { Message } from "../api/message";
+import { MessageContent } from "./message-content";
 import { MessageReferences } from "./message-references";
 
 const bubbleClassName =
@@ -57,16 +58,18 @@ export function MessageList({ messages, isSending }: MessageListProps) {
                                 {message.content}
                             </li>
                         ) : (
+                            // A diagram takes the whole width, so it is not
+                            // squeezed to the width of the text around it.
                             <li
                                 key={message.id}
-                                className="flex max-w-[85%] flex-col items-start gap-0.5 self-start"
+                                className="flex max-w-[85%] flex-col items-start gap-0.5 self-start has-[figure]:w-full"
                             >
-                                <p
-                                    className={`${bubbleClassName} max-w-full bg-(--surface-secondary)`}
+                                <div
+                                    className={`${bubbleClassName} max-w-full bg-(--surface-secondary) has-[figure]:w-full`}
                                 >
                                     <span className="sr-only">AI: </span>
-                                    {message.content}
-                                </p>
+                                    <MessageContent content={message.content} />
+                                </div>
                                 {message.references.length > 0 && (
                                     <MessageReferences
                                         references={message.references}
