@@ -15,8 +15,8 @@ The product runs in four environments.
 | ----------- | --------------- | -------------- | ------------------------- | ---------- |
 | Development | The product on a member's machine, started as [the setup page](setup.md) describes | That member, at `http://localhost` | The member's own `app/backend/.env` with their own key | `scripted` |
 | Integration | The workflows in `.github/workflows/` on GitHub Actions, on every pull request and every push to `main` | The team, on the pull request page | None: the automated tests do not call the LLM service provider | `CI` |
-| Staging | The release candidate, as the Compose project `workspace-ai-staging` on port `8080` of the VM | Members on the university network | `/opt/workspace-ai/staging/app/.env` and `app/backend/.env`, with the staging key | `deployed` |
-| Production | The released commit, as the Compose project `workspace-ai-production` on port `80` of the VM | The customer and the members on the university network | `/opt/workspace-ai/production/app/.env` and `app/backend/.env`, with the production key | None: only the core task is verified |
+| Staging | The release candidate, as the Compose project `workspace-ai-staging` on port `8080` of the VM | Members on the university network | `/opt/workspace-ai/staging/app/.env` and `app/backend/.env`, with the staging key and proxy user | `deployed` |
+| Production | The released commit, as the Compose project `workspace-ai-production` on port `80` of the VM | The customer and the members on the university network | `/opt/workspace-ai/production/app/.env` and `app/backend/.env`, with the production key and proxy user | None: only the core task is verified |
 
 A `manual` test has no environment of its own and runs wherever the product already is.
 
@@ -72,16 +72,18 @@ Off campus, the connection times out: use a machine on the university network.
 
 Do this once after the VM is recreated, in the SSH session.
 
-1. Check that the VM reaches the LLM service provider, Docker Hub, and GitHub:
+1. Check that the VM reaches Docker Hub, GitHub, PyPI, and the npm registry, which the deploy pulls from:
 
    ```bash
-   curl -sS -o /dev/null -w '%{http_code}\n' https://api.groq.com/openai/v1/models
    curl -sS -o /dev/null -w '%{http_code}\n' https://registry-1.docker.io/v2/
    curl -sS -o /dev/null -w '%{http_code}\n' https://github.com
+   curl -sS -o /dev/null -w '%{http_code}\n' https://pypi.org/simple/
+   curl -sS -o /dev/null -w '%{http_code}\n' https://registry.npmjs.org/
    ```
 
-   Each command prints a status code, such as `401` from the first two and `200` from the third.
+   Each command prints a status code, such as `401` from the first and `200` from the others.
    A timeout means the network blocks that site, and no deploy can succeed until it is reachable.
+   The LLM service provider refuses the VM's network, so it is reached through the proxy in [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider).
 2. Install Docker Engine with the Compose plugin, and let the user run it without `sudo`:
 
    ```bash
@@ -112,14 +114,16 @@ Each deployment has two files, both ignored by git and installed only on the VM:
 | File | What it holds | Shape |
 | ---- | ------------- | ----- |
 | `app/.env` | The Compose project name and the host port | `app/.env.example` |
-| `app/backend/.env` | The LLM service provider's key | `app/backend/.env.example` |
+| `app/backend/.env` | The LLM service provider's key and the proxy to it | `app/backend/.env.example` |
 
 The values for each deployment:
 
-| Deployment | Directory | `COMPOSE_PROJECT_NAME` | `HTTP_PORT` | `GROQ_API_KEY` |
-| ---------- | --------- | ---------------------- | ----------- | -------------- |
-| Staging | `/opt/workspace-ai/staging` | `workspace-ai-staging` | `8080` | The staging key, from the team's password manager |
-| Production | `/opt/workspace-ai/production` | `workspace-ai-production` | `80` | The production key, from the team's password manager |
+| Deployment | Directory | `COMPOSE_PROJECT_NAME` | `HTTP_PORT` | `GROQ_API_KEY` | `HTTPS_PROXY` |
+| ---------- | --------- | ---------------------- | ----------- | -------------- | ------------- |
+| Staging | `/opt/workspace-ai/staging` | `workspace-ai-staging` | `8080` | The staging key | The proxy address with the staging proxy user |
+| Production | `/opt/workspace-ai/production` | `workspace-ai-production` | `80` | The production key | The proxy address with the production proxy user |
+
+The keys, the proxy address, and the proxy users and passwords are in the team's password manager.
 
 Install them once per deployment, here for staging; for production, use its directory and its values:
 
@@ -131,7 +135,34 @@ chmod 600 backend/.env
 nano backend/.env
 ```
 
-In `nano` or another editor, put the deployment's key in place of `your key`, and never paste the production key into staging or the other way round.
+In `nano` or another editor, put the deployment's key in place of `your key`, remove the `#` before `HTTPS_PROXY`, and fill in the deployment's proxy user, its password, the proxy host, and its port.
+Never paste a production value into staging or the other way round.
+
+### The Proxy To The LLM Service Provider
+
+The LLM service provider answers `403` to every request from the VM's network, so the backend sends its calls to the provider through an HTTP proxy on a team server outside the university network.
+The backend's client reads the proxy from `HTTPS_PROXY`, and the provider's key is not visible to the proxy, because the proxy only forwards the encrypted connection.
+The proxy accepts only the VM's address and only the two proxy users, so nobody else can use it.
+
+One way to run it is `tinyproxy`, with this in `/etc/tinyproxy/tinyproxy.conf` on the proxy server:
+
+```text
+Port <proxy-port>
+Allow <university-vm-ipv4>
+BasicAuth <staging-proxy-user> <staging-proxy-password>
+BasicAuth <production-proxy-user> <production-proxy-password>
+ConnectPort 443
+```
+
+Check the proxy from the VM, with each deployment's `HTTPS_PROXY` value in place of the variable:
+
+```bash
+export LLM_PROXY='http://<proxy-user>:<proxy-password>@<proxy-host>:<proxy-port>'
+curl -sS -o /dev/null -w '%{http_code}\n' -x "$LLM_PROXY" https://api.groq.com/openai/v1/models
+```
+
+It prints `401`, because the request carries no key.
+A `407` means a wrong proxy user or password, a timeout means the VM cannot reach the proxy, and a `403` means the request did not go through the proxy.
 
 Without its own `COMPOSE_PROJECT_NAME`, each deployment is named `app` after its directory, and the second deploy replaces the first one's containers and reuses its database.
 
@@ -240,6 +271,7 @@ docker compose logs --tail=100 backend
 ```
 
 A backend that exits at once with `GROQ_API_KEY not found` has no key in `app/backend/.env`.
+A query that fails while the rest of the board works points at the proxy: check it as [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider) describes.
 
 ## When The VM Is Not Available
 
@@ -253,3 +285,4 @@ Each deploy that went wrong is recorded here: what showed it, how it was recover
 | Date | Deployment | What showed it | Recovery | Try first next time |
 | ---- | ---------- | -------------- | -------- | ------------------- |
 | 2026-10-30 | Before the first deploy | The backend container exited at once with `/bin/sh: syntax error: unterminated quoted string` | The cut-off `CMD` line of `app/backend/Dockerfile` was restored in [#214](https://github.com/WellMadeTeam/workspace-ai-03/pull/214) | `docker compose logs backend` |
+| 2026-10-31 | Before the first deploy | `curl` from the VM to the LLM service provider printed `403` | The calls to the provider go through the proxy in [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider) | The proxy check with `curl -x` |
