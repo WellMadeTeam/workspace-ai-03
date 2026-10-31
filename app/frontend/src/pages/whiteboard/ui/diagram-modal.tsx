@@ -42,7 +42,9 @@ export function DiagramModal({
             </Button>
             <Modal.Backdrop>
                 <Modal.Container size="cover" className="sm:w-full">
-                    <Modal.Dialog>
+                    {/* "nokey" keeps the board's shortcuts, such as Backspace
+                        deleting the selected block, out of the modal. */}
+                    <Modal.Dialog className="nokey">
                         <Modal.CloseTrigger />
                         <Tabs
                             variant="secondary"
