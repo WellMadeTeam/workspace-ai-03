@@ -1,6 +1,6 @@
 import { Dropdown, Kbd } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
-import { Eye, EyeOff, Trash2 } from "lucide-react";
+import { Eraser, Eye, EyeOff, Trash2 } from "lucide-react";
 import type { ConnectionEdge } from "../model/connection-edge";
 import type { ContextMenuPosition } from "../model/use-board-context-menu";
 import type { WidgetNode } from "../model/widget-node";
@@ -12,6 +12,7 @@ type BoardContextMenuProps = {
     onHighlight: (widgetId: string) => void;
     onRemoveHighlight: (widgetId: string) => void;
     onClose: () => void;
+    onClear: (ids: string[]) => void;
 };
 
 /** Actions for the selected elements and right-clicked block. */
@@ -22,6 +23,7 @@ export function BoardContextMenu({
     onHighlight,
     onRemoveHighlight,
     onClose,
+    onClear,
 }: BoardContextMenuProps) {
     const { getNodes, getEdges, deleteElements } = useReactFlow<
         WidgetNode,
@@ -63,6 +65,13 @@ export function BoardContextMenu({
                             onHighlight(widgetId);
                         if (key === "remove-highlight" && widgetId)
                             onRemoveHighlight(widgetId);
+                        if (key === "clear") {
+                            onClear(
+                                getNodes()
+                                    .filter((node) => node.selected)
+                                    .map((node) => node.id),
+                            );
+                        }
                     }}
                 >
                     {widgetId && (
@@ -90,6 +99,10 @@ export function BoardContextMenu({
                             </span>
                         </Dropdown.Item>
                     )}
+                    <Dropdown.Item id="clear" textValue="Clear">
+                        <Eraser className="size-4" />
+                        <span className="flex-1">Clear</span>
+                    </Dropdown.Item>
                     <Dropdown.Item
                         id="delete"
                         textValue="Delete"

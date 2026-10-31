@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { CloseButton, Surface } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
 import { MessageSquare } from "lucide-react";
 import { useWidgetMessages } from "../model/use-widget-messages";
 import type { AiWidgetNode, WidgetNode } from "../model/widget-node";
 import { MessageComposer } from "./message-composer";
+import { ConfirmationDialog } from "./confirmation-dialog";
 import { MessageList } from "./message-list";
 
 type MessagesPanelProps = {
@@ -13,8 +15,10 @@ type MessagesPanelProps = {
 export function MessagesPanel({ node }: MessagesPanelProps) {
     const { updateNode } = useReactFlow<WidgetNode>();
     const { label } = node.data;
-    const { messages, isSending, error, send } = useWidgetMessages(node.id);
+    const { messages, isSending, error, send, removeMessage } =
+        useWidgetMessages(node.id);
 
+    const [deletingMessage, setDeletingMessage] = useState<string | null>(null);
     const close = () => updateNode(node.id, { selected: false });
 
     return (
@@ -31,7 +35,23 @@ export function MessagesPanel({ node }: MessagesPanelProps) {
                 <CloseButton aria-label="Close messages" onPress={close} />
             </header>
 
-            <MessageList messages={messages} isSending={isSending} />
+            <MessageList
+                messages={messages}
+                isSending={isSending}
+                onDelete={setDeletingMessage}
+            />
+            <ConfirmationDialog
+                message={
+                    deletingMessage
+                        ? "Are you sure you want to delete this message?"
+                        : null
+                }
+                onCancel={() => setDeletingMessage(null)}
+                onConfirm={() => {
+                    if (deletingMessage) void removeMessage(deletingMessage);
+                    setDeletingMessage(null);
+                }}
+            />
 
             {error && (
                 <p className="px-4 pb-2 text-sm text-danger" role="alert">

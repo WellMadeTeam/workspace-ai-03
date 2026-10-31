@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
     Background,
     BackgroundVariant,
@@ -11,6 +11,7 @@ import {
     type NodeTypes,
     type OnConnect,
     type OnDelete,
+    type OnBeforeDelete,
     type OnNodeDrag,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
@@ -24,6 +25,7 @@ import { useBoardHighlights } from "../model/use-board-highlights";
 import { useBoardId } from "../model/use-board-id";
 import { useBoardWidgets } from "../model/use-board-widgets";
 import { isAiNode, isTextNode, type WidgetNode } from "../model/widget-node";
+import { ConfirmationDialog } from "./confirmation-dialog";
 import { BoardContextMenu } from "./board-context-menu";
 import { BoardError } from "./board-error";
 import { BoardGate, type BoardGateState } from "./board-gate";
@@ -59,6 +61,7 @@ export function WhiteboardPage() {
         addWidget,
         saveWidget,
         removeWidgets,
+        clearWidgets,
     } = useBoardWidgets(isMember ? boardId : null);
     const {
         edges,
@@ -70,6 +73,33 @@ export function WhiteboardPage() {
         isMember ? boardId : null,
         nodes.map((node) => node.id),
     );
+    const [confirmation, setConfirmation] = useState<{
+        action: "clear" | "delete";
+        ids: string[];
+    } | null>(null);
+    const deletionResolver = useRef<((allowed: boolean) => void) | null>(null);
+    const requestClear = (ids: string[]) => {
+        if (ids.length) setConfirmation({ action: "clear", ids });
+    };
+    const onBeforeDelete: OnBeforeDelete<WidgetNode, ConnectionEdge> = ({
+        nodes: selectedNodes,
+    }) => {
+        if (!selectedNodes.length) return Promise.resolve(true);
+        return new Promise<boolean>((resolve) => {
+            deletionResolver.current = resolve;
+            setConfirmation({
+                action: "delete",
+                ids: selectedNodes.map((node) => node.id),
+            });
+        });
+    };
+    const finishConfirmation = (confirmed: boolean) => {
+        if (confirmed && confirmation?.action === "clear")
+            void clearWidgets(confirmation.ids);
+        deletionResolver.current?.(confirmed);
+        deletionResolver.current = null;
+        setConfirmation(null);
+    };
     const error = widgetsError ?? connectionsError;
     const contextMenu = useBoardContextMenu(
         nodes,
@@ -180,6 +210,7 @@ export function WhiteboardPage() {
                     isValidConnection={isValidConnection}
                     onConnect={onConnect}
                     onDelete={onDelete}
+                    onBeforeDelete={onBeforeDelete}
                     onNodeContextMenu={contextMenu.onNodeContextMenu}
                     onEdgeContextMenu={contextMenu.onEdgeContextMenu}
                     onSelectionContextMenu={contextMenu.onSelectionContextMenu}
@@ -244,6 +275,16 @@ export function WhiteboardPage() {
                             )
                         }
                         onClose={contextMenu.close}
+                        onClear={requestClear}
+                    />
+                    <ConfirmationDialog
+                        message={
+                            confirmation
+                                ? `Are you sure you want to ${confirmation.action} this widget?`
+                                : null
+                        }
+                        onConfirm={() => finishConfirmation(true)}
+                        onCancel={() => finishConfirmation(false)}
                     />
                 </ReactFlow>
             </div>
