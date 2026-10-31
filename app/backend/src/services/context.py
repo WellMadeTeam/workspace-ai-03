@@ -19,9 +19,9 @@ MAX_SUMMARY_INPUT_CHARS = 12000
 
 OMITTED_NOTE = "[Earlier messages omitted]"
 
-# The latest summary of each AI widget, with the id of its last message then,
-# so a new message in the widget makes the summary stale.
-summary_cache: dict[UUID, tuple[UUID, str]] = {}
+# The latest summary of each AI widget, with the ids of its messages then, so
+# a new or deleted message in the widget makes the summary stale.
+summary_cache: dict[UUID, tuple[tuple[UUID, ...], str]] = {}
 
 
 @dataclass
@@ -99,9 +99,9 @@ def build_conversation_document(
     if len(text) <= MAX_CONVERSATION_CHARS:
         return ContextDocument(id=widget_id, kind="ai conversation", text=text)
 
-    last_message_id = messages[-1].id
+    message_ids = tuple(message.id for message in messages)
     cached = summary_cache.get(widget_id)
-    if cached and cached[0] == last_message_id:
+    if cached and cached[0] == message_ids:
         return ContextDocument(
             id=widget_id,
             kind="ai conversation summary",
@@ -121,7 +121,7 @@ def build_conversation_document(
             text=keep_recent(lines, MAX_CONVERSATION_CHARS),
         )
 
-    summary_cache[widget_id] = (last_message_id, summary)
+    summary_cache[widget_id] = (message_ids, summary)
 
     return ContextDocument(
         id=widget_id,

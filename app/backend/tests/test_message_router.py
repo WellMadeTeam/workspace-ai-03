@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
@@ -298,6 +298,44 @@ class MessageRouterTests(unittest.TestCase):
         self.add_messages(source_id, ("ai", "New answer"))
         self.ask(self.widget_id)
         self.assertEqual(summarize_conversation.call_count, 2)
+
+    @patch(
+        "app.backend.src.services.context.summarize_conversation",
+        return_value="Summary",
+    )
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Answer", []),
+    )
+    def test_summary_is_redone_after_an_earlier_message_is_deleted(
+        self, generate_reply, summarize_conversation
+    ):
+        source_id = self.add_widget("ai")
+        self.add_long_conversation(source_id)
+        # Another long message keeps it over the limit after the deletion.
+        filler = "x" * (MAX_CONVERSATION_CHARS // 3)
+        self.add_messages(source_id, ("ai", f"Last {filler}"))
+        self.connect(source_id, self.widget_id)
+
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 1)
+
+        with self.session_factory() as db:
+            oldest_id = db.scalars(
+                select(Message.id).where(
+                    Message.widget_id == source_id,
+                    Message.content.startswith("Oldest"),
+                )
+            ).one()
+        response = self.client.delete(f"/messages/{oldest_id}")
+        self.assertEqual(response.status_code, 204)
+
+        self.ask(self.widget_id)
+        self.assertEqual(summarize_conversation.call_count, 2)
+        self.assertNotIn(
+            "Oldest",
+            summarize_conversation.call_args.args[0],
+        )
 
     @patch(
         "app.backend.src.services.context.summarize_conversation",
