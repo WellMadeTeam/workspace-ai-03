@@ -44,6 +44,14 @@ export function AiWidgetNode({ id, data, selected }: AiWidgetNodeProps) {
     return (
         <div
             onDoubleClick={startEditing}
+            style={
+                data.highlightColor
+                    ? {
+                          outline: `3px solid ${data.highlightColor}`,
+                          outlineOffset: 2,
+                      }
+                    : undefined
+            }
             className={`w-48 rounded-md [border:var(--xy-node-border-default)] border-blue-500! bg-(--xy-node-background-color-default) p-2 text-xs text-(--xy-node-color-default) ${
                 selected ? "ring-2 ring-purple-500" : ""
             }`}

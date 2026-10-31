@@ -6,11 +6,13 @@ export type TextWidgetData = {
     widget_type: "text";
     label: string;
     content: string;
+    highlightColor?: string;
 };
 
 export type AiWidgetData = {
     widget_type: "ai";
     label: string;
+    highlightColor?: string;
 };
 
 export type WidgetNodeData = TextWidgetData | AiWidgetData;
