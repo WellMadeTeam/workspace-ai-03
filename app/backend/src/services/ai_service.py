@@ -40,6 +40,21 @@ RESPONSE_FORMAT = {
 }
 
 
+def unescape_line_breaks(answer: str) -> str:
+    # The model sometimes escapes the line breaks in its JSON twice, so the
+    # answer holds a backslash and an "n" instead of each line break, and a
+    # Mermaid fence never starts a line. An answer that has real line breaks
+    # is left alone, as any escaped one in it is meant, such as in code.
+    if "\n" in answer or "\\n" not in answer:
+        return answer
+
+    return (
+        answer.replace("\\r\\n", "\n")
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+    )
+
+
 def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     if client is None:
         raise RuntimeError("GROQ_API_KEY not found. Check backend/.env")
@@ -59,7 +74,7 @@ def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
         raise RuntimeError("The AI returned an empty response")
 
     reply = json.loads(content)
-    answer = reply["response"]
+    answer = unescape_line_breaks(reply["response"])
 
     if not answer:
         raise RuntimeError("The AI returned an empty response")
