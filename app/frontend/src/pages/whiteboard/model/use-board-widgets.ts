@@ -124,14 +124,17 @@ export function useBoardWidgets(boardId: string | null) {
     );
 
     const addWidget = useCallback(
+        // Resolves to whether the block was added.
         async (widget: Omit<NewWidget, "board_id">) => {
-            if (!boardId) return;
+            if (!boardId) return false;
 
             try {
                 await createWidget({ board_id: boardId, ...widget });
                 void refresh();
+                return true;
             } catch {
                 setError("Could not add the block.");
+                return false;
             }
         },
         [boardId, refresh],

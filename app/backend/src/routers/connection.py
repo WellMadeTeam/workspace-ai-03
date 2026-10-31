@@ -39,6 +39,12 @@ def _validate_connection(db: Session, source_id: UUID, target_id: UUID) -> None:
             detail="AI to Text connections are not allowed",
         )
 
+    if source.widget_type == "ai" and target.widget_type == "image":
+        raise HTTPException(
+            status_code=400,
+            detail="AI to Image connections are not allowed",
+        )
+
     existing = db.scalar(
         select(Connection).where(
             Connection.source_widget_id == source_id,

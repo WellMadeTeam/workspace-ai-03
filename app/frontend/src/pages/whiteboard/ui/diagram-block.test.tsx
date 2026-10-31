@@ -6,6 +6,7 @@ const renderDiagram = vi.hoisted(() => vi.fn());
 
 vi.mock("../lib/render-diagram", () => ({ renderDiagram }));
 
+import { AddDiagramContext } from "../model/add-diagram";
 import { DiagramBlock } from "./diagram-block";
 
 const CODE = "graph TD\n  A --> B";
@@ -15,8 +16,14 @@ const DIAGRAM = 'svg[id^="diagram-"]';
 let container: HTMLDivElement;
 let root: Root;
 
-const show = async () => {
-    await act(async () => root.render(<DiagramBlock code={CODE} />));
+const show = async (addDiagram?: (code: string) => Promise<boolean>) => {
+    await act(async () =>
+        root.render(
+            <AddDiagramContext value={addDiagram ?? null}>
+                <DiagramBlock code={CODE} />
+            </AddDiagramContext>,
+        ),
+    );
 };
 
 const press = async (element: Element | null | undefined) => {
@@ -98,6 +105,29 @@ describe("DiagramBlock", () => {
         const dialog = document.querySelector('[role="dialog"]');
         expect(dialog?.querySelector(DIAGRAM)?.id).toBe(`${id}-full`);
         expect(dialog?.querySelectorAll('[role="tab"]')).toHaveLength(2);
+    });
+
+    it("adds the diagram to the board", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+        const addDiagram = vi.fn().mockResolvedValue(true);
+
+        await show(addDiagram);
+        await press(byLabel("Add to board")[0]);
+
+        expect(addDiagram).toHaveBeenCalledWith(CODE);
+        expect(container.textContent).toContain("Added to the board");
+    });
+
+    it("offers no adding outside an AI block's panel", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+
+        await show();
+
+        expect(byLabel("Add to board")).toHaveLength(0);
     });
 
     it("shows the code and the error when the diagram is invalid", async () => {

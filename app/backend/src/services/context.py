@@ -68,7 +68,8 @@ def build_document(db: Session, widget: Widget) -> ContextDocument | None:
     if widget.widget_type == "ai":
         return build_conversation_document(db, widget.id)
 
-    if not widget.content:
+    # An image is not context yet, but the widgets behind it still are.
+    if not widget.content or widget.widget_type == "image":
         return None
 
     return ContextDocument(id=widget.id, kind="text", text=widget.content)
