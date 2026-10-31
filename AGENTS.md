@@ -13,6 +13,7 @@ The project's words are fixed in [`docs/glossary.md`](docs/glossary.md): use the
 - `docs/` holds the maintained artifacts, published as the documentation site by `mkdocs.yml`: the vision, the plan, the decisions, the risks, the requirements under `docs/quality-requirements/` and `docs/functional-requirements/`, the architecture under `docs/architecture/`, the research under `docs/research/`, and the glossary.
   A new page in `docs/` also gets its line in the `nav` of `mkdocs.yml`.
 - `docs/setup.md` is the only setup and run guide, and a change to how the product starts or is configured updates it.
+- `scripts/` holds the commands that run the `scripted` and `deployed` quality requirement tests, each named in its test's `**Runs at:**`; they are run by a member, never by CI.
 - `reports/week-NN/` holds each week's evidence: the report, the meeting script, report, and transcript, the retrospective, and the AI usage.
 - `.github/` holds the workflows, the issue forms, the pull request template, and the Dependabot configuration.
 
