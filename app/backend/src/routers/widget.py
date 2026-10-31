@@ -90,3 +90,16 @@ def delete_widget(
     db.commit()
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@widget_router.post("/{widget_id}/clear", status_code=status.HTTP_204_NO_CONTENT)
+def clear_widget(widget_id: UUID, db: Session = Depends(get_db)):
+    widget = db.get(Widget, widget_id)
+    if widget is None:
+        raise HTTPException(status_code=404, detail="Widget not found")
+    if widget.widget_type == "ai":
+        db.execute(delete(Message).where(Message.widget_id == widget_id))
+    else:
+        widget.content = ""
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
