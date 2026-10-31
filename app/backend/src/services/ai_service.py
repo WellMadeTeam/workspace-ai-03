@@ -47,7 +47,9 @@ def generate_reply(messages: list[dict[str, str]]) -> tuple[str, list[str]]:
     completion = client.chat.completions.create(
         model="openai/gpt-oss-20b",
         messages=messages,
-        max_completion_tokens=512,
+        # The model reasons before it answers, and a Mermaid diagram inside
+        # the JSON reply does not fit in fewer tokens.
+        max_completion_tokens=2048,
         response_format=RESPONSE_FORMAT,
     )
 

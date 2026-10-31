@@ -28,6 +28,22 @@ class AiServiceTests(unittest.TestCase):
         self.assertEqual(references, ["widget-id"])
         client.chat.completions.create.assert_called_once()
 
+    def test_generate_reply_leaves_room_for_a_diagram(self):
+        client = Mock()
+        client.chat.completions.create.return_value.choices = [
+            SimpleNamespace(
+                message=SimpleNamespace(
+                    content='{"response":"Answer","references":[]}'
+                )
+            )
+        ]
+
+        with patch.object(ai_service, "client", client):
+            ai_service.generate_reply([{"role": "user", "content": "Draw"}])
+
+        _, kwargs = client.chat.completions.create.call_args
+        self.assertGreaterEqual(kwargs["max_completion_tokens"], 2048)
+
 
 if __name__ == "__main__":
     unittest.main()
