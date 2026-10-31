@@ -19,7 +19,7 @@ A person who has a board open in their browser, with the same rights as everyone
 
 ### Block
 
-An item a member places on a board, either an AI block or a text block, which every member of the board can move, edit, and delete.
+An item a member places on a board, either an AI block, a text block, or an image block, which every member of the board can move, edit, and delete.
 
 **Defined by:** [`DEC-012`](decisions.md#dec-012).
 
@@ -34,6 +34,12 @@ A block that holds one conversation with the LLM service provider: the queries m
 A block that holds text a member writes on the board, such as a note, and that is not sent to the LLM service provider unless it is connected to an AI block.
 
 **Defined by:** [`DEC-024`](decisions.md#dec-024) and [`DEC-025`](decisions.md#dec-025).
+
+### Image Block
+
+A block that shows a diagram a member added to the board from a reply, as the same picture for every member, and that is not sent to the LLM service provider, even when it is connected to an AI block.
+
+**Defined by:** [`DEC-034`](decisions.md#dec-034).
 
 ### Connection
 
