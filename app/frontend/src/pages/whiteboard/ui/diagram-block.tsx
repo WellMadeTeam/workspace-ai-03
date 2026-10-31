@@ -1,21 +1,44 @@
-import { useState } from "react";
-import { Tabs } from "@heroui/react";
+import { use, useEffect, useRef, useState } from "react";
+import { Button, Tabs } from "@heroui/react";
+import { Check, ImagePlus } from "lucide-react";
+import { AddDiagramContext } from "../model/add-diagram";
 import { useRenderedDiagram } from "../model/use-rendered-diagram";
 import { DiagramCode } from "./diagram-code";
 import { DiagramError } from "./diagram-error";
 import { DiagramModal } from "./diagram-modal";
+
+const ADDED_FEEDBACK_MS = 2000;
 
 type DiagramBlockProps = {
     code: string;
 };
 
 /**
- * A Mermaid diagram in an AI answer: the picture, which opens in a modal, and
- * its source; or the source and the error if it could not be rendered.
+ * A Mermaid diagram in an AI answer: the picture, which opens in a modal or
+ * goes on the board as an image block, and its source; or the source and the
+ * error if it could not be rendered.
  */
 export function DiagramBlock({ code }: DiagramBlockProps) {
     const diagram = useRenderedDiagram(code);
+    const addDiagram = use(AddDiagramContext);
     const [isExpanded, setExpanded] = useState(false);
+    const [isAdded, setAdded] = useState(false);
+    const resetTimerRef = useRef<number | undefined>(undefined);
+
+    useEffect(() => () => window.clearTimeout(resetTimerRef.current), []);
+
+    const addToBoard = async () => {
+        if (!addDiagram || !(await addDiagram(code))) {
+            return;
+        }
+
+        setAdded(true);
+        window.clearTimeout(resetTimerRef.current);
+        resetTimerRef.current = window.setTimeout(
+            () => setAdded(false),
+            ADDED_FEEDBACK_MS,
+        );
+    };
 
     if (diagram.status === "failed") {
         return (
@@ -35,7 +58,7 @@ export function DiagramBlock({ code }: DiagramBlockProps) {
                 align="start"
                 defaultSelectedKey="diagram"
             >
-                <Tabs.ListContainer className="pr-9">
+                <Tabs.ListContainer className="pr-18">
                     <Tabs.List aria-label="Diagram view">
                         <Tabs.Tab id="diagram">
                             Diagram
@@ -69,7 +92,25 @@ export function DiagramBlock({ code }: DiagramBlockProps) {
             </Tabs>
             {/* Outside the tabs, whose tab list would take the modal's tabs. */}
             {diagram.status === "rendered" && (
-                <div className="absolute top-0 right-0">
+                <div className="absolute top-0 right-0 flex">
+                    {addDiagram && (
+                        <Button
+                            isIconOnly
+                            size="sm"
+                            variant="ghost"
+                            aria-label="Add to board"
+                            onPress={addToBoard}
+                        >
+                            {isAdded ? (
+                                <Check className="size-4" aria-hidden />
+                            ) : (
+                                <ImagePlus className="size-4" aria-hidden />
+                            )}
+                        </Button>
+                    )}
+                    <span className="sr-only" role="status">
+                        {isAdded ? "Added to the board" : ""}
+                    </span>
                     <DiagramModal
                         renderId={diagram.id}
                         svg={diagram.svg}
