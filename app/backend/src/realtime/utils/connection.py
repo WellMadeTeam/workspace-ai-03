@@ -2,7 +2,7 @@
 
 import asyncio
 import json
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from fastapi import WebSocket
 
@@ -16,6 +16,14 @@ PING_INTERVAL_S = 25
 RECEIVE_TIMEOUT_S = 60
 MAX_FRAME_BYTES = 4096
 
+
+def _parse_uuid_field(frame: dict, field: str) -> UUID | None:
+    """Extracts and validates a UUID string from frame['data'][field]."""
+    try:
+        return UUID(frame["data"][field])
+    except (KeyError, TypeError, ValueError):
+        return None
+    
 
 async def receive_frames(websocket: WebSocket, member: Member) -> None:
     """Reads client frames until the client leaves or breaks the protocol."""
@@ -39,8 +47,24 @@ async def receive_frames(websocket: WebSocket, member: Member) -> None:
             member.close(CloseCode.BAD_REQUEST, "bad_request")
             return
 
-        # Clients send only pongs until drag and editing presence arrive.
-        if frame_type != "pong":
+        if frame_type == "pong":
+            pass
+
+        elif frame_type == "highlight.start":
+            widget_id = _parse_uuid_field(frame, "widget_id")
+            if widget_id is None:
+                member.close(CloseCode.BAD_REQUEST, "bad_request")
+                return
+            hub.highlight_start(member.board_id, member.client_id, member.color, widget_id)
+
+        elif frame_type == "highlight.stop":
+            widget_id = _parse_uuid_field(frame, "widget_id")
+            if widget_id is None:
+                member.close(CloseCode.BAD_REQUEST, "bad_request")
+                return
+            hub.highlight_stop(member.board_id, member.client_id, member.color, widget_id)
+
+        else:
             member.close(CloseCode.BAD_REQUEST, "bad_request")
             return
 
