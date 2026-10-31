@@ -1,7 +1,7 @@
 import logging
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -148,3 +148,12 @@ def get_messages(
     messages = db.scalars(statement).all()
 
     return {"items": messages}
+
+@message_router.delete("/{message_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_message(message_id: UUID, db: Session = Depends(get_db)):
+    message = db.get(Message, message_id)
+    if message is None:
+        raise HTTPException(status_code=404, detail="Message not found")
+    db.delete(message)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

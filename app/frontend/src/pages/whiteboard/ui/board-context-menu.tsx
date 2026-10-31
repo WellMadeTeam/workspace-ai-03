@@ -1,6 +1,6 @@
 import { Dropdown, Kbd } from "@heroui/react";
 import { useReactFlow } from "@xyflow/react";
-import { Trash2 } from "lucide-react";
+import { Eraser, Trash2 } from "lucide-react";
 import type { ConnectionEdge } from "../model/connection-edge";
 import type { ContextMenuPosition } from "../model/use-board-context-menu";
 import type { WidgetNode } from "../model/widget-node";
@@ -8,10 +8,11 @@ import type { WidgetNode } from "../model/widget-node";
 type BoardContextMenuProps = {
     position: ContextMenuPosition | null;
     onClose: () => void;
+    onClear: (ids: string[]) => void;
 };
 
 /** Actions for the selected blocks and connections, opened with a right click. */
-export function BoardContextMenu({ position, onClose }: BoardContextMenuProps) {
+export function BoardContextMenu({ position, onClose, onClear }: BoardContextMenuProps) {
     const { getNodes, getEdges, deleteElements } = useReactFlow<
         WidgetNode,
         ConnectionEdge
@@ -47,8 +48,15 @@ export function BoardContextMenu({ position, onClose }: BoardContextMenuProps) {
                     aria-label="Selection actions"
                     onAction={(key) => {
                         if (key === "delete") deleteSelection();
+                        if (key === "clear") {
+                            onClear(getNodes().filter((node) => node.selected).map((node) => node.id));
+                        }
                     }}
                 >
+                    <Dropdown.Item id="clear" textValue="Clear">
+                        <Eraser className="size-4" />
+                        <span className="flex-1">Clear</span>
+                    </Dropdown.Item>
                     <Dropdown.Item
                         id="delete"
                         textValue="Delete"

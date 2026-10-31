@@ -4,6 +4,7 @@ import { ApiError } from "@/shared/api";
 import { usePolling } from "@/shared/lib";
 import {
     createWidget,
+    clearWidget,
     deleteWidget,
     listWidgets,
     updateWidget,
@@ -175,6 +176,21 @@ export function useBoardWidgets(boardId: string | null) {
         [refresh],
     );
 
+    const clearWidgets = useCallback(async (ids: string[]) => {
+        for (const id of ids) {
+            clearTimeout(saveTimers.current.get(id));
+            saveTimers.current.delete(id);
+            pendingUpdates.current.delete(id);
+            unsavedWidgets.current.add(id);
+        }
+        const results = await Promise.allSettled(ids.map((id) => clearWidget(id)));
+        if (results.some((result) => result.status === "rejected")) {
+            setError("Could not clear some blocks.");
+        }
+        for (const id of ids) unsavedWidgets.current.delete(id);
+        void refresh();
+    }, [refresh]);
+
     const isLoaded = boardId !== null && loadedBoardId === boardId;
 
     return {
@@ -185,5 +201,6 @@ export function useBoardWidgets(boardId: string | null) {
         addWidget,
         saveWidget,
         removeWidgets,
+        clearWidgets,
     };
 }

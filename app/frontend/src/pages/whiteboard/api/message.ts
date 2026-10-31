@@ -31,3 +31,6 @@ export const createMessage = (message: {
         method: "POST",
         body: JSON.stringify(message),
     });
+
+export const deleteMessage = (messageId: string) =>
+    request<void>(`/messages/${encodeURIComponent(messageId)}`, { method: "DELETE" });
