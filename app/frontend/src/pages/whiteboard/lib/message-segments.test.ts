@@ -54,4 +54,40 @@ describe("splitMessage", () => {
             { kind: "diagram", code: "  graph TD" },
         ]);
     });
+
+    it("finds a diagram written on one line after some text", () => {
+        const content =
+            "HI! ```mermaid graph TD;A[Block1]-->B[Block2]; ``` Done.";
+
+        expect(splitMessage(content)).toEqual([
+            { kind: "text", text: "HI!" },
+            { kind: "diagram", code: "graph TD;A[Block1]-->B[Block2];" },
+            { kind: "text", text: "Done." },
+        ]);
+    });
+
+    it("finds a diagram after escaped line breaks left in the text", () => {
+        const content = "HI!\\n\\n```mermaid\n graph TD\n A --> B\n```";
+
+        expect(splitMessage(content)).toEqual([
+            { kind: "text", text: "HI!\\n\\n" },
+            { kind: "diagram", code: " graph TD\n A --> B" },
+        ]);
+    });
+
+    it("leaves a language that only starts with mermaid as text", () => {
+        const content = "```mermaidjs\ngraph TD\n```";
+
+        expect(splitMessage(content)).toEqual([
+            { kind: "text", text: content },
+        ]);
+    });
+
+    it("leaves an empty diagram block as text", () => {
+        const content = "```mermaid\n```";
+
+        expect(splitMessage(content)).toEqual([
+            { kind: "text", text: content },
+        ]);
+    });
 });

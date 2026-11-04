@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 - Collapse and expand a diagram in an AI reply, hiding both its picture and its source, or an image block on the board, hiding its picture; each member collapses only their own view.
 
+### Fixed
+
+- Show a Mermaid diagram in an AI reply when its fence does not start a line or its code follows the fence on the same line.
+
 ## [0.3.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.3.0) - 2026-10-31
 
 ### Added

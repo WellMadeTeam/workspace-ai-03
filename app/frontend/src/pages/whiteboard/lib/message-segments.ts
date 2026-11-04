@@ -2,10 +2,12 @@ export type MessageSegment =
     | { kind: "text"; text: string }
     | { kind: "diagram"; code: string };
 
-// A Mermaid diagram in a fenced code block, as the system prompt asks the AI
-// to write it. Other code blocks stay text.
+// A Mermaid diagram in a fenced code block. The system prompt asks the AI to
+// put each fence on its own line, but it does not always do so, so a fence may
+// start anywhere and the code may follow on the same line. Other code blocks
+// stay text.
 const DIAGRAM_PATTERN =
-    /^[ \t]*```mermaid[ \t]*\r?\n([\s\S]*?)\r?\n[ \t]*```[ \t]*$/gim;
+    /[ \t]*```mermaid(?:[ \t]*\r?\n|[ \t]+)([\s\S]*?\S)\s*```[ \t]*/gi;
 
 /** Splits a message into its text and the Mermaid diagrams inside it. */
 export function splitMessage(content: string): MessageSegment[] {
