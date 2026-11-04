@@ -32,6 +32,11 @@ const show = async () => {
     );
 };
 
+const press = async (element: Element | null | undefined) => {
+    expect(element).toBeTruthy();
+    await act(async () => (element as HTMLElement).click());
+};
+
 describe("ImageWidgetNode", () => {
     beforeEach(() => {
         Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
@@ -76,5 +81,47 @@ describe("ImageWidgetNode", () => {
         expect(
             container.querySelector('[aria-label="Open diagram"]'),
         ).toBeNull();
+    });
+
+    it("collapses and expands the picture, keeping the title", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+
+        await show();
+        const toggle = container.querySelector('[aria-label="Show diagram"]');
+        const picture = container.querySelector('svg[id^="diagram-"]');
+
+        expect(toggle?.getAttribute("aria-expanded")).toBe("true");
+        expect(picture?.closest("[hidden]")).toBeNull();
+
+        await press(toggle);
+
+        expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+        expect(picture?.closest("[hidden]")).toBeTruthy();
+        expect(
+            container
+                .querySelector('[aria-label="Image block title"]')
+                ?.closest("[hidden]"),
+        ).toBeNull();
+        expect(
+            container
+                .querySelector('[aria-label="Open diagram"]')
+                ?.closest("[hidden]"),
+        ).toBeNull();
+
+        await press(toggle);
+
+        expect(toggle?.getAttribute("aria-expanded")).toBe("true");
+        expect(picture?.closest("[hidden]")).toBeNull();
+    });
+
+    it("collapses the error of an invalid diagram", async () => {
+        renderDiagram.mockResolvedValue({ error: "Parse error on line 2" });
+
+        await show();
+        await press(container.querySelector('[aria-label="Show diagram"]'));
+
+        expect(container.querySelector("p")?.closest("[hidden]")).toBeTruthy();
     });
 });
