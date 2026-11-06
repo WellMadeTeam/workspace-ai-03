@@ -86,4 +86,3 @@
 | Next week's work includes accounts and board export, besides the usability study.     | The usability study matters more for the course, and accounts and permissions would take too long. | Moved accounts and export behind the usability study and the analytics, per [`DEC-045`](../../docs/decisions.md#dec-045). |
 | The architecture is shown as a diagram.                                               | Write it in plain text, and use a diagram only where words fail and the picture has a purpose.     | Rewrite the architecture decisions in plain text, per [`DEC-047`](../../docs/decisions.md#dec-047).                       |
 | A connected block receives a summary of a long conversation without telling the user. | The user will assume everything is sent, so the interface should signal it.                        | Added a signal in the interface, per [`DEC-042`](../../docs/decisions.md#dec-042).                                        |
-
