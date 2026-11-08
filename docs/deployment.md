@@ -1,6 +1,6 @@
 # Deployment
 
-This page is the runbook for staging and production on the university VM: the environments, the VM and its access, the configuration, the deploy, the verification, and the rollback.
+This page is the runbook for staging and production on the university VM: the environments, the VM and its access, the configuration, the telemetry pipelines, the deploy, the verification, and the rollback.
 It is written for a member on the university network who redeploys the product without the member who deployed it first.
 The build and the local run are in [the setup page](setup.md), and this page repeats none of it.
 
@@ -105,7 +105,7 @@ Do this once after the VM is recreated, in the SSH session.
 
 4. Check the firewall with `sudo ufw status`.
    When it is active, allow SSH with `sudo ufw allow OpenSSH`.
-   Docker publishes ports `80` and `8080` past `ufw`, so a port that does not answer from campus is blocked outside the VM: ask the university's IT support to open it.
+   Docker publishes ports `80`, `8080`, and the analytics port `3000` past `ufw`, so a port that does not answer from campus is blocked outside the VM: ask the university's IT support to open it.
 
 ## Configuration
 
@@ -114,7 +114,7 @@ Each deployment has two files, both ignored by git and installed only on the VM:
 | File | What it holds | Shape |
 | ---- | ------------- | ----- |
 | `app/.env` | The Compose project name and the host port | `app/.env.example` |
-| `app/backend/.env` | The LLM service provider's key and the proxy to it | `app/backend/.env.example` |
+| `app/backend/.env` | The LLM service provider's key, the proxy to it, and the analytics client in [Configure Each Deployment's Backend](#configure-each-deployments-backend) | `app/backend/.env.example` |
 
 The values for each deployment:
 
@@ -168,6 +168,176 @@ Without its own `COMPOSE_PROJECT_NAME`, each deployment is named `app` after its
 
 The backend creates the tables it is missing when it starts, and never changes a table that exists.
 A release that changes a column of an existing table needs its database moved by hand, which no deploy below does.
+
+## The Telemetry Pipelines
+
+The telemetry pipelines carry what the product records from the deployment that records it to the backend that stores it and serves its dashboards, on the same VM.
+This section has the steps and the configuration; the events, the metrics, and the queries the dashboards run are in [the analytics plan](analytics.md), which links here instead of repeating them.
+
+### Analytics
+
+The analytics backend is OpenPanel, self-hosted on the VM, so the events never leave the university network.
+
+| What | Value |
+| ---- | ----- |
+| Version | OpenPanel 2.3.0, from the `self-hosting` directory of [its repository](https://github.com/Openpanel-dev/openpanel) |
+| Directory | `/opt/workspace-ai/analytics/self-hosting`, a Compose project of its own, apart from both deployments |
+| Dashboard | `http://<university-vm-ipv4>:3000` |
+| Event endpoint | `http://<university-vm-ipv4>:3000/api` |
+| Environment scopes | One organization with two projects, `staging` and `production`, each with its own `write` client |
+| Credentials | The owner account and each project's client ID and secret, in the team's password manager and the Moodle submission |
+| Reached by | The members and the customer on the university network, and the `backend` of each deployment, which sends the events |
+
+OpenPanel runs Postgres, Redis, ClickHouse, its API, its worker, its dashboard, and a Caddy proxy, and only the proxy publishes a port.
+
+#### Install OpenPanel
+
+Do this once after the VM is prepared, in the SSH session.
+
+1. Get the self-hosting files at the installed version:
+
+   ```bash
+   cd /opt/workspace-ai
+   git clone https://github.com/Openpanel-dev/openpanel.git analytics
+   cd analytics
+   git checkout --detach v2.3.0
+   cd self-hosting
+   ```
+
+2. Run the setup script:
+
+   ```bash
+   ./setup
+   ```
+
+   Give the domain as `http://<university-vm-ipv4>:3000`, use the bundled Postgres, Redis, and ClickHouse, and skip the email settings.
+   The script writes `.env`, `docker-compose.yml`, and `caddy/Caddyfile`; `.env` holds the generated secrets, so protect it with `chmod 600 .env`.
+3. Check that `.env` has `DASHBOARD_URL=http://<university-vm-ipv4>:3000` and `API_URL=http://<university-vm-ipv4>:3000/api`, both with `http://`.
+4. In `docker-compose.yml`, change the `op-proxy` service's ports from `80:80` and `443:443` to the one line `"3000:80"`, because port `80` is production's.
+5. Replace `caddy/Caddyfile` with this, which serves plain HTTP:
+
+   ```text
+   {
+       auto_https off
+   }
+
+   http:// {
+       encode gzip
+
+       handle_path /api* {
+           reverse_proxy op-api:3000
+       }
+
+       reverse_proxy /* op-dashboard:3000
+   }
+   ```
+
+   The generated Caddyfile names the site without `http://`, so Caddy issues itself a certificate and redirects every request to HTTPS, which the VM, having no domain name, cannot serve.
+   The generated `worker.` site is dropped, because an IP address has no subdomain; the queue dashboard it served is not needed.
+6. Start it, and check that it answers:
+
+   ```bash
+   ./start
+   docker compose ps
+   curl -sS -o /dev/null -w '%{http_code}\n' http://localhost:3000/
+   ```
+
+   The last command prints `200`, or a redirect to an `http://` path such as the login page, and never to `https://`.
+7. From a campus machine that is not the VM, open `http://<university-vm-ipv4>:3000` in a browser.
+   A timeout means port `3000` is blocked outside the VM: ask the university's IT support to open it.
+
+Running `./setup` again regenerates `caddy/Caddyfile`, so step 5 is repeated after it.
+
+#### Create The Projects
+
+1. Sign up at the dashboard at once, with the team's account, and store its password in the password manager.
+   OpenPanel has no default account: the first user to sign up owns the instance, and registration closes after it, so the other members and the customer join by invitation.
+2. Create the organization, named `Workspace AI`.
+3. Create the two projects, `staging` and `production`.
+4. In each project's settings, create a client of the `write` type, which sends events and reads nothing, and store its client ID and secret in the password manager and the Moodle submission; the secret is shown once.
+5. In each project's settings, enable the domains and add the project's allowed domain below.
+
+| Project | Allowed domain | Client ID | Client secret |
+| ------- | -------------- | --------- | ------------- |
+| `staging` | `http://<university-vm-ipv4>:8080` | `<staging-client-id>` | `<staging-client-secret>` |
+| `production` | `http://<university-vm-ipv4>` | `<production-client-id>` | `<production-client-secret>` |
+
+The `backend` sends every event with its client's ID and secret, so OpenPanel accepts it without checking an `Origin`.
+The allowed domains then only matter to an event sent from a browser, and a project created without them refuses every such event; they are kept so that a browser event added later reaches only its own project.
+Neither client allows the wildcard `*` or ignores the domain and the secret.
+A client's secret stays in the password manager and the deployment's `app/backend/.env`, and never goes into the frontend.
+
+#### Configure Each Deployment's Backend
+
+The `backend` sends the events in [the analytics plan](analytics.md), after the request that records them, so each deployment's `backend` is configured with its own project's client.
+Add these lines to each deployment's `app/backend/.env`, beside the values in [Configuration](#configuration), here for staging:
+
+```bash
+ANALYTICS_ENABLED=true
+OPENPANEL_API_URL=http://<university-vm-ipv4>:3000/api
+OPENPANEL_CLIENT_ID=<staging-client-id>
+OPENPANEL_CLIENT_SECRET=<staging-client-secret>
+```
+
+| Deployment | `ANALYTICS_ENABLED` | `OPENPANEL_API_URL` | `OPENPANEL_CLIENT_ID` and `OPENPANEL_CLIENT_SECRET` |
+| ---------- | ------------------- | ------------------- | --------------------------------------------------- |
+| Staging | `true` | `http://<university-vm-ipv4>:3000/api` | The staging project's client |
+| Production | `true` | `http://<university-vm-ipv4>:3000/api` | The production project's client |
+
+The values are read when the `backend` starts, so a change takes effect after `docker compose up -d` in the deployment's `app/` directory, and both deployments keep running the same images.
+A local run sends no events, because [the setup page](setup.md) leaves `ANALYTICS_ENABLED` at `false`.
+Never paste a production client into staging or the other way round: the client, not the address, decides which project an event reaches.
+
+#### Check The Pipeline
+
+Check the pipeline after it is installed, after each change to a project or a deployment's `app/backend/.env`, and after each deploy to staging.
+
+1. Check, in the SSH session, that each deployment has its own project's client:
+
+   ```bash
+   grep -H OPENPANEL_CLIENT_ID /opt/workspace-ai/staging/app/backend/.env /opt/workspace-ai/production/app/backend/.env
+   ```
+
+   The two IDs differ, and each matches its project's client in the password manager.
+2. Check, from the staging `backend` container, that it reaches the staging project with its client, by sending one test event tagged `source=smoke`:
+
+   ```bash
+   cd /opt/workspace-ai/staging/app
+   docker compose exec backend python -c "from app.backend.src.services.analytics import send_event; send_event('smoke_check', {}, 'smoke')"
+   docker compose logs --tail=20 backend
+   ```
+
+   The logs carry no `Could not send analytics event` and no `configuration is incomplete` line.
+   The command needs the instrumentation in the deployed commit; before it is deployed, the module does not exist and the command fails with `ModuleNotFoundError`.
+3. From a campus machine that is not the VM, open `$STAGING_URL/?source=smoke`, open a board, and submit one query, so the `backend` sends `board_opened`, `query_submitted`, and `reply_received` tagged `source=smoke`.
+4. Open the staging project's event list and check that `smoke_check` and the three events are there with `source` set to `smoke`.
+5. Open the production project's event list and check that it has none of them and no other test traffic.
+6. Check that each project's dashboard carries the chart `Weekly boards completing a context-reuse flow`, after the focus metric in [the analytics plan](analytics.md), with the metric's `**Query:**`, and that the staging chart leaves the `smoke` events out while the staging event list shows them.
+
+A `smoke` event that reaches the production project is a deviation the week's report declares.
+
+| What showed it | What it means |
+| -------------- | ------------- |
+| `Analytics is enabled but OpenPanel configuration is incomplete` in the `backend`'s logs | One of the four values is missing from `app/backend/.env` |
+| `Could not send analytics event` in the `backend`'s logs | OpenPanel refused the event or could not be reached: check the client ID and secret, then the address and port `3000` |
+| No event and no warning | `ANALYTICS_ENABLED` is not `true`, or the `backend` was not restarted after the change |
+| A test event in the production project | The production deployment has the staging client, or the other way round: fix `app/backend/.env`, restart, and delete the event |
+
+OpenPanel caches a client's settings for a few minutes, so a changed client or allowed domain takes effect after that, or at once after `docker compose restart op-api` in its directory.
+
+#### Run And Restart
+
+In `/opt/workspace-ai/analytics/self-hosting`:
+
+```bash
+./stop
+./start
+docker compose ps
+docker compose logs --tail=100 op-api
+```
+
+`./stop` keeps the data volumes, so the events survive a restart.
+An upgrade checks out the new version's tag, repeats the steps of [Install OpenPanel](#install-openpanel) from step 2 with the existing `.env` kept, and updates the version above.
 
 ## Deploy
 
@@ -288,3 +458,5 @@ Each deploy that went wrong is recorded here: what showed it, how it was recover
 | 2026-10-30 | Before the first deploy | The backend container exited at once with `/bin/sh: syntax error: unterminated quoted string` | The cut-off `CMD` line of `app/backend/Dockerfile` was restored in [#214](https://github.com/WellMadeTeam/workspace-ai-03/pull/214) | `docker compose logs backend` |
 | 2026-10-31 | Before the first deploy | `curl` from the VM to the LLM service provider printed `403` | The calls to the provider go through the proxy in [The Proxy To The LLM Service Provider](#the-proxy-to-the-llm-service-provider) | The proxy check with `curl -x` |
 | 2026-10-31 | Staging | The board did not open over plain HTTP, and the browser console showed `crypto.randomUUID is not a function`, because browsers offer it only over HTTPS or on `localhost` | The frontend makes its UUIDs with `crypto.getRandomValues` since [#221](https://github.com/WellMadeTeam/workspace-ai-03/pull/221), and the fixed commit is deployed to staging again | The browser console on `$STAGING_URL` |
+| 2026-11-08 | Analytics | Every request to the dashboard was redirected to HTTPS, which the VM cannot serve | The plain-HTTP Caddyfile in [Install OpenPanel](#install-openpanel) | `curl -sS -o /dev/null -w '%{redirect_url}\n'` on the dashboard |
+| 2026-11-08 | Analytics | The staging test event was refused with `401` and `Ingestion: Invalid cors or secret` | Enabling Domains feature of the project | The staging project's allowed domain against `$STAGING_URL` |
