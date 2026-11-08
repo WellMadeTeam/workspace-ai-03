@@ -15,7 +15,9 @@ nav:
   - Product vision: product-vision.md
   - Features: features.md
   - Functional requirements: functional-requirements/README.md
-  - Quality requirements: quality-requirements/README.md
+  - Quality requirements:
+      - Index: quality-requirements/README.md
+      - QR-05: quality-requirements/qr/QR-05.md
   - Architecture:
       - Overview: architecture/README.md
       - ADR-001: architecture/adr/ADR-001.md
