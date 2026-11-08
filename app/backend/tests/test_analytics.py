@@ -10,7 +10,7 @@ class AnalyticsTests(unittest.TestCase):
     @patch("app.backend.src.services.analytics.OPENPANEL_CLIENT_ID", "client")
     @patch("app.backend.src.services.analytics.OPENPANEL_API_URL", "http://openpanel")
     @patch("app.backend.src.services.analytics.ANALYTICS_ENABLED", True)
-    def test_sends_only_event_properties_and_source(self, post):
+    def test_sends_event_properties_source_and_board_group(self, post):
         post.return_value = Mock()
 
         send_event(
@@ -34,11 +34,25 @@ class AnalyticsTests(unittest.TestCase):
                         "has_ai_context": False,
                         "source": "smoke",
                     },
+                    "groups": ["opaque-board"],
                 },
             },
             timeout=2.0,
         )
         post.return_value.raise_for_status.assert_called_once()
+
+    @patch("app.backend.src.services.analytics.httpx.post")
+    @patch("app.backend.src.services.analytics.OPENPANEL_CLIENT_SECRET", "secret")
+    @patch("app.backend.src.services.analytics.OPENPANEL_CLIENT_ID", "client")
+    @patch("app.backend.src.services.analytics.OPENPANEL_API_URL", "http://openpanel")
+    @patch("app.backend.src.services.analytics.ANALYTICS_ENABLED", True)
+    def test_event_without_board_has_no_group(self, post):
+        post.return_value = Mock()
+
+        send_event("smoke_check", {}, "smoke")
+
+        payload = post.call_args.kwargs["json"]["payload"]
+        self.assertNotIn("groups", payload)
 
     @patch("app.backend.src.services.analytics.httpx.post")
     @patch("app.backend.src.services.analytics.ANALYTICS_ENABLED", False)
