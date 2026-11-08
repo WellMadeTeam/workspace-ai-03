@@ -14,7 +14,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@heroui/react": "^3.2.6",
+        "@heroui/react": "^3.2.7",
         "@heroui/styles": "^3.2.6",
         "@tailwindcss/vite": "4.3.3",
         "@xyflow/react": "12.12.0",
