@@ -369,3 +369,103 @@ Undoing a deletion is a nice-to-have outside the current scope
 - **Made by:** Customer
 - **Source:** [the Week 5 meeting](../reports/week-05/meeting-report.md)
 - **Why:** an undo needs a trash bin and, if shared, synchronized history of who sees what, which is complex; once a deletion is confirmed it is gone and the block can be recreated, and the team keeps the undo as a later option rather than dropping it.
+
+## DEC-038
+
+Accept the story for highlighting a block on the board, limited to one highlighted block at a time
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** a highlighted block shows for every member, and highlighting another block replaces it; the customer liked that highlighting stays deliberate, said it should be sold as a way to draw everyone's attention to one thing, and so settled the open question about how many blocks stay highlighted.
+
+## DEC-039
+
+Accept `US-05`, using earlier answers as context
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** the customer saw an AI block use another AI block's conversation as context, and in his own use two generated answers were combined and a contradiction between them was found; this replaces the rejection in [DEC-029](#dec-029).
+
+## DEC-040
+
+Accept the story for sharing LLM diagrams on the board
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** a diagram renders in the AI conversation with its code copyable and collapsible, and a button adds it to the board as an image that opens with its code, which matches [DEC-033](#dec-033) and [DEC-034](#dec-034); the customer called it done.
+
+## DEC-041
+
+Accept the story for long text in a text block
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** a long text opens in the side panel like an AI block and can be edited there, as [DEC-025](#dec-025) asked; the customer said it works.
+
+## DEC-042
+
+Tell the user when a connected block receives a summary instead of a whole conversation
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** a conversation above 6,000 characters is passed on as a summary, and the customer finds a user will reasonably assume everything is sent, so the interface should signal it; the team had no way to check it from the app either.
+
+## DEC-043
+
+Support basic Markdown formatting in AI answers and text blocks, as a separate story
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** numbered and unnumbered lists in an LLM answer lose their numbering and are hard to read as plain text, so the customer asked for simple Markdown formatting, and the team took it as its own story rather than part of the long text story.
+
+## DEC-044
+
+Send only a diagram's code, not its image, as context, and only after the analytics and the usability study
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** images are not yet used as context and would mean working with different providers, while the code is enough; the customer would like diagrams usable as context, but said to focus on the analytics and the usability study if there is no time.
+
+## DEC-045
+
+Put the usability study and the analytics ahead of accounts and board export
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** the customer called accounts a could-have that is not worth the time it takes, with permissions leading to many choices, and said that for the course the usability study and the analytics it needs matter more than further features; this keeps [DEC-011](#dec-011) and moves the remaining could-haves behind them.
+
+## DEC-046
+
+Run the usability study as a comparison of a group using the board with a control group, with surveys and an observer
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** the goal is to verify whether a shared board helps teams brainstorm with LLMs, so one group works on an architectural problem with the board and a control group with its usual tools; the team only observes without helping, participants answer a survey after the task, an observer answers one too, and the customer expects students as participants, which goes into the limitations.
+
+## DEC-047
+
+Describe the architecture decisions in plain text, and use a diagram only where it has a purpose
+
+- **Status:** Active
+- **Date:** 2026-11-05
+- **Made by:** Customer
+- **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
+- **Why:** a diagram is not the architecture, and a few sentences naming the Python backend, the Nginx gateway, the React frontend, the SQLite database and the LLM provider are easier to read than boxes and arrows; a picture is for a concept that is too wordy to explain.
