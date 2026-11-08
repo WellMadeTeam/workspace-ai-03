@@ -88,3 +88,21 @@ The external service that answers queries, which the backend calls with the key 
 A message the product itself adds to an AI block's conversation, such as the plain-language error shown to every member when the LLM service provider fails to answer a query.
 
 **Defined by:** [`DEC-018`](decisions.md#dec-018) and [`QR-03`](quality-requirements/qr/QR-03.md).
+
+## Analytics
+
+### Focus Metric
+
+The one metric that best expresses the value the product is meant to deliver and guides which outcomes the team improves.
+
+### Input Metric
+
+A measurable factor that contributes to the focus metric and that the team can influence through its work.
+
+### Counter-metric
+
+A metric watched alongside the focus metric to reveal harm caused by improving it.
+
+### Metric Tree
+
+A hierarchy that links the focus metric to the input metrics that contribute to it and the counter-metric that guards against harm.
