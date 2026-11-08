@@ -9,6 +9,7 @@ from app.backend.src.realtime.hub import BoardFullError, hub
 from app.backend.src.realtime.utils.connection import ping_periodically, receive_frames
 from app.backend.src.realtime.utils.handshake import board_exists, origin_allowed, parse_uuid
 from app.backend.src.realtime.utils.protocol import CloseCode
+from app.backend.src.services.analytics import AnalyticsSource, send_event
 
 
 router = APIRouter(tags=["realtime"])
@@ -17,7 +18,12 @@ CLOSE_TIMEOUT_S = 5
 
 
 @router.websocket("/ws/boards/{board_id}")
-async def board_socket(websocket: WebSocket, board_id: str, client_id: str | None = None):
+async def board_socket(
+    websocket: WebSocket,
+    board_id: str,
+    client_id: str | None = None,
+    source: AnalyticsSource = "web",
+):
     # Accept first: a browser cannot read why a handshake was refused, but it
     # can read the code and reason of a close frame.
     await websocket.accept()
@@ -40,6 +46,15 @@ async def board_socket(websocket: WebSocket, board_id: str, client_id: str | Non
     except BoardFullError:
         await websocket.close(CloseCode.BOARD_FULL, "board_full")
         return
+
+    asyncio.create_task(
+        asyncio.to_thread(
+            send_event,
+            "board_opened",
+            {"board_id": str(board_uuid)},
+            source,
+        )
+    )
 
     writer = asyncio.create_task(member.write())
     pinger = asyncio.create_task(ping_periodically(member))

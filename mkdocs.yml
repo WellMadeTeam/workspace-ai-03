@@ -14,7 +14,9 @@ nav:
   - Deployment: deployment.md
   - Product vision: product-vision.md
   - Features: features.md
-  - Functional requirements: functional-requirements/README.md
+  - Functional requirements:
+      - Index: functional-requirements/README.md
+      - FR-022: functional-requirements/fr/FR-022.md
   - Quality requirements: quality-requirements/README.md
   - Architecture:
       - Overview: architecture/README.md
