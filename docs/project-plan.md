@@ -86,10 +86,11 @@ The result and the last check of each test are in the [Quality Requirement Testi
 
 ### SPRINT-06
 
-Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, a block deleted by mistake no longer takes the team's work with it, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
+The customer accepts highlighting, reusing earlier answers as context, sharing LLM diagrams, and working with a long text block like an AI block, and the product records how teams go through the core task and exposes its request signals, both shown on self-hosted analytics and observability dashboards in staging and production; images from an LLM and the team's reference documents reach the board if time allows.
 
-- **Due:** 2026-11-07
+- **Due:** 2026-11-08
 - **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
+- **Planned Velocity:** 47
 
 #### REL-06
 
