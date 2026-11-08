@@ -93,7 +93,7 @@ def read_log_point(
             for hit in hits
             if hit.get("request_id") == request_id
             and hit.get("route") == "/messages"
-            and hit.get("outcome") == "failure"
+            and hit.get("outcome") in {"client_error", "server_error"}
         ]
 
         if len(matching) > 1:
