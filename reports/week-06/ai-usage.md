@@ -15,6 +15,11 @@ Claude Code in the terminal.
 - Claude Code: reading #265 and #262, the Part 4 and Part 6 sections of Assignment 6, and the analytics and observability guide they cite, and writing step-by-step instructions for deploying OpenObserve and OpenPanel on the university VM, each with a `staging` and a `production` scope and a check that test traffic reaches only staging.
 - Claude Code: reading OpenPanel's self-hosting files and ingest code through `gh` to explain why its dashboard redirected to HTTPS, which is Caddy's automatic HTTPS for a site named without `http://`, that it has no default account, and how its `/track` endpoint checks a browser event's `Origin` and drops a request it takes for a bot.
 - Claude Code: drafting the `The Telemetry Pipelines` section of `docs/deployment.md` for #262, with the OpenPanel 2.3.0 install and the two projects, and rewriting it after reading the `backend` instrumentation on the `261-product-analytics-instrumentation` branch, so each deployment's `backend` is configured with its own project's client and the `source=smoke` check goes through the staging `backend`.
+- Claude Code: opening #284 for #262 with the pull request template filled in and each acceptance criterion addressed.
+- Claude Code: reading OpenPanel 2.3.0's chart code through `gh` for #263, which showed that a chart counts distinct users, sessions, or groups but not distinct values of a property such as `board_id`, and writing step-by-step instructions for the two dashboards.
+- Claude Code: implementing the change #263 needed in #287: the `backend` sends each event's `board_id` as its OpenPanel group, with a test, and `docs/analytics.md` records the report settings beside each charted metric's query and names the two dashboards.
+- Claude Code: checking the two dashboard screenshots before #287 was pushed, and writing the ClickHouse queries that removed a member's check from the production project.
+- Claude Code: filling the analytics parts of the week's report draft in `reports/week-06/README.md` from #282, #284, and #287.
 - Claude Code: drafting this report from the week's issues and pull requests.
 
 ## What we did with the output
@@ -27,6 +32,8 @@ Claude Code in the terminal.
 - The OpenPanel instructions were followed on the VM: the plain-HTTP Caddyfile ended the redirect, and the `source=smoke` event sent from campus reached the staging project, while the same event with the production client ID was refused with `401`.
 - Two instructions were wrong and were corrected against what we saw: the output named a **Website** client type, while what OpenPanel checks is each project's allowed domains, and the first `401` was caused by the projects' domains being disabled, not by the "ignore CORS" option the output suspected; enabling the domains fixed it.
 - The values the output did not know, the OpenPanel tag and the organization's name, were marked `[BLANK]` and filled in by the member accountable for #262.
+- The deletion queries were previewed with a `SELECT` on the same condition before the `DELETE`, and the production dashboard was checked to show no data before its screenshot was retaken.
+- The dashboards were built by hand in OpenPanel from the settings in `docs/analytics.md`, and the staging values were checked against the flows run: `1` for the board outside the `smoke` source, and the smoke board's two events in the smoke report.
 - #258 was closed without merging, because the `504` answers came from a GitHub incident and not from the workflow, and the link check recovers when the incident is resolved.
 
 ## What was not used
