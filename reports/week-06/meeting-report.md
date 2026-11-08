@@ -27,7 +27,6 @@
 | [`reports/week-05/meeting-report.md`](../week-05/meeting-report.md#action-points): "Prepare a specific brainstorming task to run with the customer to validate the tool's value"                                   | Replaced: we asked the customer which goal the session should pursue, and he defined it as a usability study with two groups, so the work becomes planning that study.                                                 | [`DEC-046`](../../docs/decisions.md#dec-046)                                               |
 | [`reports/week-05/meeting-report.md`](../week-05/meeting-report.md#action-points): "Reword the "board is full" message to say that the maximum of 10 members is reached"                                           | Not covered at the meeting, so it is not closed; it reappears in this report's action points.                                                                                                                          | None                                                                                       |
 | [`reports/week-05/meeting-report.md`](../week-05/meeting-report.md#action-points): "Draft the architecture decisions as proposed, to settle with the customer"                                                     | Partly carried out: we showed the architecture (frontend, Nginx gateway, backend, SQLite, LLM provider), and the customer asked for it in plain text; the decisions are not yet settled, so the action reappears.      | [`DEC-047`](../../docs/decisions.md#dec-047)                                               |
-| [`reports/week-05/meeting-report.md`](../week-05/meeting-report.md#action-points): "Remind the customer to post the Week 4 video and transcript"                                                                   | Not covered at the meeting, so it is not closed; it reappears in this report's action points.                                                                                                                          | None                                                                                       |
 
 ## Previous open questions
 
@@ -70,7 +69,6 @@
 | Add a user story for automatic block titling/summarization using the LLM                                                                            | Kamil116  | End of Week 7 |
 | Reword the "board is full" message to say that the maximum of 10 members is reached                                                                 | danmaninc | End of Week 7 |
 | Choose the diagram kinds to support, from the kinds the customer names                                                                              | danmaninc | End of Week 7 |
-| Confirm with the customer that the Week 4 and Week 5 videos and transcripts are posted                                                              | danmaninc | End of Week 7 |
 
 ## Open questions
 
