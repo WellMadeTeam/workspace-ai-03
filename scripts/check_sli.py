@@ -54,7 +54,10 @@ def read_log_point(
     if not re.fullmatch(r"[A-Za-z0-9_-]+", LOG_STREAM):
         raise ValueError("OPENOBSERVE_LOG_STREAM must be a simple stream name")
 
-    endpoint = f"{openobserve_url}/api/staging/_search"
+    api_url = openobserve_url.rstrip("/")
+    if not api_url.endswith("/api"):
+        api_url = f"{api_url}/api"
+    endpoint = f"{api_url}/staging/_search"
     sql = (
         'SELECT request_id, route, outcome, duration_ms '
         f'FROM "{LOG_STREAM}" WHERE request_id = \'{request_id}\' '
