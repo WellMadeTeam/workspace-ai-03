@@ -1,4 +1,5 @@
 import { socketUrl } from "@/shared/api";
+import { getAnalyticsSource } from "@/shared/lib";
 
 // Matches CloseCode in app/backend/src/realtime/utils/protocol.py.
 export const BoardCloseCode = {
@@ -51,12 +52,16 @@ export type BoardSocketEvent =
       >
     | ServerFrame<"ping", { nonce: string }>;
 
-export const openBoardSocket = (boardId: string, clientId: string) =>
-    new WebSocket(
-        socketUrl(
-            `/ws/boards/${encodeURIComponent(boardId)}?client_id=${encodeURIComponent(clientId)}`,
-        ),
+export const openBoardSocket = (boardId: string, clientId: string) => {
+    const params = new URLSearchParams({
+        client_id: clientId,
+        source: getAnalyticsSource(),
+    });
+
+    return new WebSocket(
+        socketUrl(`/ws/boards/${encodeURIComponent(boardId)}?${params}`),
     );
+};
 
 export const sendPong = (socket: WebSocket, nonce: string) =>
     socket.send(JSON.stringify({ type: "pong", data: { nonce } }));

@@ -133,8 +133,11 @@ class MessageRouterTests(unittest.TestCase):
         messages = generate_reply.call_args.args[0]
         return messages[0]["content"]
 
+    @patch("app.backend.src.routers.message.queue_event")
     @patch("app.backend.src.routers.message.generate_reply")
-    def test_connected_ai_conversation_is_used_as_context(self, generate_reply):
+    def test_connected_ai_conversation_is_used_as_context(
+        self, generate_reply, queue_event
+    ):
         source_id = self.add_widget("ai")
         self.add_messages(
             source_id,
@@ -155,6 +158,18 @@ class MessageRouterTests(unittest.TestCase):
         self.assertIn('type="ai conversation"', prompt)
         self.assertTrue(response.json()["reply"]["has_context"])
         self.assertEqual(response.json()["reply"]["references"], [str(source_id)])
+        events = {call.args[1]: call.args[2] for call in queue_event.call_args_list}
+        self.assertEqual(
+            set(events),
+            {
+                "query_submitted",
+                "context_reuse_query_submitted",
+                "reply_received",
+                "context_reuse_reply_received",
+            },
+        )
+        self.assertTrue(events["query_submitted"]["has_ai_context"])
+        self.assertNotIn("PELICAN-42", str(events))
 
     @patch(
         "app.backend.src.routers.message.generate_reply",
@@ -169,6 +184,46 @@ class MessageRouterTests(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertNotIn("PELICAN-42", self.system_prompt(generate_reply))
         self.assertFalse(response.json()["reply"]["has_context"])
+
+    @patch("app.backend.src.routers.message.queue_event")
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        return_value=("Stored answer", []),
+    )
+    def test_query_and_reply_events_carry_ids_but_not_text(
+        self, generate_reply, queue_event
+    ):
+        response = self.ask(self.widget_id)
+
+        self.assertEqual(response.status_code, 201)
+        events = {call.args[1]: call.args[2] for call in queue_event.call_args_list}
+        self.assertEqual(set(events), {"query_submitted", "reply_received"})
+        self.assertEqual(events["query_submitted"]["board_id"], str(self.board_id))
+        self.assertEqual(
+            events["query_submitted"]["query_id"],
+            response.json()["user_message"]["id"],
+        )
+        self.assertFalse(events["query_submitted"]["has_ai_context"])
+        self.assertNotIn("content", events["query_submitted"])
+        self.assertNotIn("Stored answer", str(events))
+        generate_reply.assert_called_once()
+
+    @patch("app.backend.src.routers.message.queue_event")
+    @patch(
+        "app.backend.src.routers.message.generate_reply",
+        side_effect=RuntimeError("provider failed"),
+    )
+    def test_failed_query_emits_failure_event_without_failure_text(
+        self, generate_reply, queue_event
+    ):
+        response = self.ask(self.widget_id)
+
+        self.assertEqual(response.status_code, 201)
+        events = {call.args[1]: call.args[2] for call in queue_event.call_args_list}
+        self.assertEqual(set(events), {"query_submitted", "query_failed"})
+        self.assertNotIn("content", events["query_failed"])
+        self.assertNotIn(AI_FAILURE_MESSAGE, str(events))
+        generate_reply.assert_called_once()
 
     @patch(
         "app.backend.src.routers.message.generate_reply",

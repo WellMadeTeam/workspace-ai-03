@@ -14,7 +14,9 @@ nav:
   - Deployment: deployment.md
   - Product vision: product-vision.md
   - Features: features.md
-  - Functional requirements: functional-requirements/README.md
+  - Functional requirements:
+      - Index: functional-requirements/README.md
+      - FR-022: functional-requirements/fr/FR-022.md
   - Quality requirements: quality-requirements/README.md
   - Architecture:
       - Overview: architecture/README.md
@@ -25,6 +27,7 @@ nav:
   - Assumptions: assumptions.md
   - Threshold of success: threshold-of-success.md
   - Project plan: project-plan.md
+  - Analytics: analytics.md
   - Risks: risks.md
   - Definition of done: definition-of-done.md
   - Glossary: glossary.md
