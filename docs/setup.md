@@ -35,6 +35,15 @@ GROQ_API_KEY="your key"
 
 Never commit `backend/.env`: it is ignored by git and holds your secret key.
 
+Analytics collection is optional and off by default.
+To send events to a self-hosted OpenPanel project, set `ANALYTICS_ENABLED=true`, `OPENPANEL_API_URL`, `OPENPANEL_CLIENT_ID`, and `OPENPANEL_CLIENT_SECRET` in `backend/.env`; leave collection off when those values are unavailable.
+The client ID and secret must be a write client for the intended environment,
+and the API URL must point to that OpenPanel instance.
+For a pipeline check, add `?source=smoke` to the staging URL; for a usability
+session, use `?source=usability-test`.
+The product sends only opaque IDs and fixed event properties, never query or
+reply text.
+
 The database path needs no configuration. The backend stores a SQLite database in a Docker volume, so the data survives restarts.
 
 To use a port other than 80, set `HTTP_PORT` when you start the product, for example `HTTP_PORT=8080 docker compose up --build`.
