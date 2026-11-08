@@ -1,6 +1,6 @@
 # Wide Candidate List
 
-1) **URL:** <https://alternativeto.net/software/team-gpt/>  
+1) **URL:** <https://<!-- -->alternativeto.net/software/team-gpt/>  
   **Why relevant:** Team-GPT, now described as Juma, provides shared chat history, folders, prompts, and multi-model access in a collaborative workspace.
 
 2) **URL:** <https://platform.teamai.com>  
