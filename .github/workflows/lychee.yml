@@ -15,16 +15,28 @@ jobs:
             LYCHEE_VERSION: v0.24.2
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-            # lychee-action downloads lychee with one curl call and no retries,
-            # so a single HTTP error from the release fails the job with exit code 22.
+            # lychee-action downloads lychee from the release's browser download
+            # URL with one curl call, which fails the job with exit code 22 when
+            # that URL answers 504; `gh` fetches the asset through the REST API.
             - name: Install lychee
+              env:
+                  GH_TOKEN: ${{ github.token }}
               run: |
                   file="lychee-x86_64-unknown-linux-gnu.tar.gz"
-                  url="https://github.com/lycheeverse/lychee/releases/download/lychee-${LYCHEE_VERSION}/${file}"
                   dir="${RUNNER_TEMP}/lychee"
                   mkdir -p "${dir}"
                   cd "${dir}"
-                  curl -sSfL --retry 5 --retry-all-errors --retry-delay 10 -O "${url}" -O "${url}.sha256"
+                  for attempt in 1 2 3 4 5; do
+                      gh release download "lychee-${LYCHEE_VERSION}" \
+                          --repo lycheeverse/lychee \
+                          --pattern "${file}" \
+                          --pattern "${file}.sha256" \
+                          --clobber && break
+                      if [ "${attempt}" -eq 5 ]; then
+                          exit 1
+                      fi
+                      sleep $((attempt * 10))
+                  done
                   sha256sum -c "${file}.sha256"
                   tar -xzf "${file}" --strip-components=1
                   echo "${dir}" >> "${GITHUB_PATH}"
