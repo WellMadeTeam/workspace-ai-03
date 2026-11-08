@@ -1,12 +1,22 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    Header,
+    HTTPException,
+    Query,
+    Response,
+    status,
+)
 from sqlalchemy import delete, or_, select
 from sqlalchemy.orm import Session
 
 from app.backend.src.database import get_db
 from app.backend.src.models import Board, Connection, Message, Widget
 from app.backend.src.schemas.widget import WidgetCreate, WidgetListResponse, WidgetResponse, WidgetUpdate
+from app.backend.src.services.analytics import AnalyticsSource, queue_event
 
 
 widget_router = APIRouter(prefix="/widgets", tags=["widgets"])
@@ -34,6 +44,8 @@ def list_widgets(
 @widget_router.post("", response_model=WidgetResponse, status_code=status.HTTP_201_CREATED)
 def create_widget(
     widget_data: WidgetCreate,
+    background_tasks: BackgroundTasks,
+    source: AnalyticsSource = Header(default="web", alias="X-Analytics-Source"),
     db: Session = Depends(get_db),
 ):
     ensure_board_exists(db, widget_data.board_id)
@@ -43,6 +55,14 @@ def create_widget(
     db.add(widget)
     db.commit()
     db.refresh(widget)
+
+    if widget.widget_type == "ai":
+        queue_event(
+            background_tasks,
+            "ai_block_created",
+            {"board_id": str(widget.board_id), "widget_id": str(widget.id)},
+            source,
+        )
 
     return widget
 
