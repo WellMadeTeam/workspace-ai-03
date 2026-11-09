@@ -24,9 +24,12 @@ nav:
       - QR-05: quality-requirements/qr/QR-05.md
   - Architecture:
       - Overview: architecture/README.md
+      - ADR index: architecture/adr/README.md
       - ADR-001: architecture/adr/ADR-001.md
       - ADR-002: architecture/adr/ADR-002.md
       - ADR-003: architecture/adr/ADR-003.md
+      - ADR-004: architecture/adr/ADR-004.md
+      - ADR-005: architecture/adr/ADR-005.md
   - Decisions: decisions.md
   - Assumptions: assumptions.md
   - Threshold of success: threshold-of-success.md
