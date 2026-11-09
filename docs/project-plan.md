@@ -99,7 +99,6 @@ The customer accepts highlighting, reusing earlier answers as context, sharing L
   - [QR-01](quality-requirements/qr/QR-01.md)
   - [QR-02](quality-requirements/qr/QR-02.md)
   - [QR-04](quality-requirements/qr/QR-04.md)
-  - [QR-05](quality-requirements/qr/QR-05.md)
 
 The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
 
