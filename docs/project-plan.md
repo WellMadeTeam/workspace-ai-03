@@ -139,7 +139,7 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Not verified | None                    | [SPRINT-06](#sprint-06) | [partial log output][qr-05-log]                                                                     |
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes       | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | the scripted run in the Week 06 report                                                              |
 
-[qr-05-log]: https://github.com/WellMadeTeam/workspace-ai-03/pull/283#issuecomment-6748099949
+[qr-05-log]: https://github.com/WellMadeTeam/workspace-ai-03/pull/283#issuecomment-6749240716
 
 ## Progress Monitoring
 
