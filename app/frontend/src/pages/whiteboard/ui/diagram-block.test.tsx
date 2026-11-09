@@ -142,4 +142,84 @@ describe("DiagramBlock", () => {
         expect(container.querySelector("pre")?.textContent).toBe(CODE);
         expect(byLabel("Open diagram")).toHaveLength(0);
     });
+
+    it("collapses and expands the picture and the code", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+
+        await show();
+        const toggle = byLabel("Show diagram")[0];
+
+        expect(toggle.getAttribute("aria-expanded")).toBe("true");
+        expect(
+            container.querySelector(DIAGRAM)?.closest("[hidden]"),
+        ).toBeNull();
+
+        await press(toggle);
+
+        expect(toggle.getAttribute("aria-expanded")).toBe("false");
+        expect(
+            container.querySelector(DIAGRAM)?.closest("[hidden]"),
+        ).toBeTruthy();
+        expect(tab("Code")?.closest("[hidden]")).toBeTruthy();
+        expect(container.querySelector("figcaption")?.textContent).toBe(
+            "Diagram",
+        );
+
+        await press(toggle);
+
+        expect(toggle.getAttribute("aria-expanded")).toBe("true");
+        expect(
+            container.querySelector(DIAGRAM)?.closest("[hidden]"),
+        ).toBeNull();
+        expect(container.querySelector("figcaption")).toBeNull();
+    });
+
+    it("keeps the selected tab across collapsing", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+
+        await show();
+        await press(tab("Code"));
+        await press(byLabel("Show diagram")[0]);
+        await press(byLabel("Show diagram")[0]);
+
+        expect(tab("Code")?.getAttribute("aria-selected")).toBe("true");
+        expect(container.querySelector("pre")?.closest("[hidden]")).toBeNull();
+    });
+
+    it("adds and opens a collapsed diagram", async () => {
+        renderDiagram.mockImplementation(async (id: string) => ({
+            svg: `<svg id="${id}"></svg>`,
+        }));
+        const addDiagram = vi.fn().mockResolvedValue(true);
+
+        await show(addDiagram);
+        await press(byLabel("Show diagram")[0]);
+        await press(byLabel("Add to board")[0]);
+        await press(byLabel("Open diagram")[0]);
+
+        expect(addDiagram).toHaveBeenCalledWith(CODE);
+        expect(
+            document.querySelector('[role="dialog"]')?.querySelector(DIAGRAM),
+        ).toBeTruthy();
+    });
+
+    it("collapses the error and the code of an invalid diagram", async () => {
+        renderDiagram.mockResolvedValue({ error: "Parse error on line 2" });
+
+        await show();
+        await press(byLabel("Show diagram")[0]);
+
+        expect(
+            container.querySelector("pre")?.closest("[hidden]"),
+        ).toBeTruthy();
+        expect(
+            [...container.querySelectorAll("p")].every((note) =>
+                note.closest("[hidden]"),
+            ),
+        ).toBe(true);
+    });
 });

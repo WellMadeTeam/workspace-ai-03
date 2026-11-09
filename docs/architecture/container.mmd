@@ -4,5 +4,7 @@ graph LR
     Gateway -->|"JSON over HTTP, /api prefix removed"| Backend["backend (Python, FastAPI)"]
     Backend -->|"SQL"| Database[("database (SQLite)")]
     Backend -->|"HTTPS, chat completion"| LLM["LLM service provider (Groq API)"]
+    Backend -->|"HTTP, product analytics events"| OpenPanel["analytics backend (OpenPanel)"]
+    Backend -->|"OTLP/HTTP, logs and metrics"| OpenObserve["observability backend (OpenObserve)"]
     classDef external stroke-dasharray: 5 5
-    class LLM external
+    class LLM,OpenPanel,OpenObserve external

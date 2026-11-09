@@ -14,7 +14,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@heroui/react": "^3.2.6",
+        "@heroui/react": "^3.2.7",
         "@heroui/styles": "^3.2.6",
         "@tailwindcss/vite": "4.3.3",
         "@xyflow/react": "12.12.0",
@@ -22,17 +22,17 @@
         "mermaid": "^12.2.0",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
-        "react-router": "^8.5.0",
+        "react-router": "^8.5.1",
         "tailwindcss": "4.3.3"
     },
     "devDependencies": {
         "@feature-sliced/steiger-plugin": "^0.8.0",
-        "@types/node": "^26.6.5",
+        "@types/node": "^26.6.6",
         "@types/react": "^19.2.18",
         "@types/react-dom": "^19.2.7",
         "@vitejs/plugin-react": "^6.1.1",
         "jsdom": "^29.1.1",
-        "oxfmt": "0.74.0",
+        "oxfmt": "0.75.0",
         "oxlint": "^1.90.0",
         "steiger": "^0.8.0",
         "typescript": "~7.0.2",

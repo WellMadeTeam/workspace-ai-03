@@ -88,3 +88,63 @@ The external service that answers queries, which the backend calls with the key 
 A message the product itself adds to an AI block's conversation, such as the plain-language error shown to every member when the LLM service provider fails to answer a query.
 
 **Defined by:** [`DEC-018`](decisions.md#dec-018) and [`QR-03`](quality-requirements/qr/QR-03.md).
+
+## Analytics
+
+### Focus Metric
+
+The one metric that best expresses the value the product is meant to deliver and guides which outcomes the team improves.
+
+### Input Metric
+
+A measurable factor that contributes to the focus metric and that the team can influence through its work.
+
+### Counter-metric
+
+A metric watched alongside the focus metric to reveal harm caused by improving it.
+
+### Metric Tree
+
+A hierarchy that links the focus metric to the input metrics that contribute to it and the counter-metric that guards against harm.
+
+### Event
+
+A named record of a product action, with the properties needed to measure product use.
+
+### Instrumentation
+
+Code in the product that records and sends analytics events or operating signals.
+
+### Analytics Backend
+
+A service that receives and stores product-use events so an analyst can review them.
+
+### Dashboard
+
+A page of charts that displays analytics events or operating metrics for one environment.
+
+## Observability
+
+### Signal
+
+A record or measurement the backend emits about a request or its behavior, such as a log or a metric.
+
+### Observability Backend
+
+A service that receives and stores operating signals, such as request logs and duration metrics.
+
+### SLI
+
+The abbreviation for service level indicator.
+
+### Service Level Indicator
+
+A number measured over a defined time window that shows how a service performs.
+
+### Observability
+
+The ability to understand how a service behaves by inspecting the signals it emits.
+
+### Telemetry
+
+Data a service records and sends to an observability backend, including logs and metrics.
