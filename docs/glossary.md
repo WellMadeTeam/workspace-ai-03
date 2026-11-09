@@ -107,11 +107,31 @@ A metric watched alongside the focus metric to reveal harm caused by improving i
 
 A hierarchy that links the focus metric to the input metrics that contribute to it and the counter-metric that guards against harm.
 
+### Event
+
+A named record of a product action, with the properties needed to measure product use.
+
+### Instrumentation
+
+Code in the product that records and sends analytics events or operating signals.
+
+### Analytics Backend
+
+A service that receives and stores product-use events so an analyst can review them.
+
+### Dashboard
+
+A page of charts that displays analytics events or operating metrics for one environment.
+
 ## Observability
 
 ### Signal
 
 A record or measurement the backend emits about a request or its behavior, such as a log or a metric.
+
+### Observability Backend
+
+A service that receives and stores operating signals, such as request logs and duration metrics.
 
 ### SLI
 
