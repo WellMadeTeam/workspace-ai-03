@@ -94,6 +94,15 @@ The customer accepts highlighting, reusing earlier answers as context, sharing L
 
 #### REL-06
 
+- **Released:** [v0.4.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.4.0) on 2026-11-09.
+- **Checked QRs:**
+  - [QR-01](quality-requirements/qr/QR-01.md)
+  - [QR-02](quality-requirements/qr/QR-02.md)
+  - [QR-04](quality-requirements/qr/QR-04.md)
+  - [QR-05](quality-requirements/qr/QR-05.md)
+
+The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
+
 ### SPRINT-07
 
 Provisional: ten clients work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, an outside team's feedback on the board is presented, the product is improved and its bugs are fixed, and, if time allows, members keep their boards under their own accounts and export a board to a file.
