@@ -1,7 +1,17 @@
 import logging
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    Header,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    status,
+)
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -10,6 +20,7 @@ from app.backend.src.schemas.message import MessageCreate, MessageCreateResponse
 from app.backend.src.services.ai_service import generate_reply
 from app.backend.src.models import Message, Widget
 from app.backend.src.services.context import build_system_prompt, get_context_for_ai
+from app.backend.src.services.analytics import AnalyticsSource, queue_event
 
 
 logger = logging.getLogger(__name__)
@@ -59,7 +70,10 @@ def build_history(history: list[Message]) -> list[dict[str, str]]:
     status_code=status.HTTP_201_CREATED,
 )
 def create_message(
+    request: Request,
     message_data: MessageCreate,
+    background_tasks: BackgroundTasks,
+    source: AnalyticsSource = Header(default="web", alias="X-Analytics-Source"),
     db: Session = Depends(get_db),
 ):
     widget = db.get(Widget, message_data.widget_id)
@@ -95,6 +109,25 @@ def create_message(
     history = db.scalars(statement).all()
 
     documents = get_context_for_ai(db, message_data.widget_id)
+    has_ai_context = any(document.has_ai_reply for document in documents)
+    event_properties = {
+        "board_id": str(widget.board_id),
+        "widget_id": str(widget.id),
+        "query_id": str(user_message.id),
+        "has_ai_context": has_ai_context,
+    }
+    queue_event(background_tasks, "query_submitted", event_properties, source)
+    if has_ai_context:
+        queue_event(
+            background_tasks,
+            "context_reuse_query_submitted",
+            {
+                "board_id": str(widget.board_id),
+                "widget_id": str(widget.id),
+                "query_id": str(user_message.id),
+            },
+            source,
+        )
 
     ai_messages = [
         {
@@ -122,7 +155,9 @@ def create_message(
             has_context=len(documents) > 0,
             references=references,
         )
-    except Exception:
+    except Exception as error:
+        request.state.outcome = "server_error"
+        request.state.error_type = type(error).__name__
         logger.exception("The LLM failed to answer a query")
         reply = Message(
             widget_id=message_data.widget_id,
@@ -133,6 +168,22 @@ def create_message(
     db.add(reply)
     db.commit()
     db.refresh(reply)
+
+    if reply.role == "ai":
+        queue_event(background_tasks, "reply_received", event_properties, source)
+        if has_ai_context:
+            queue_event(
+                background_tasks,
+                "context_reuse_reply_received",
+                {
+                    "board_id": str(widget.board_id),
+                    "widget_id": str(widget.id),
+                    "query_id": str(user_message.id),
+                },
+                source,
+            )
+    else:
+        queue_event(background_tasks, "query_failed", event_properties, source)
 
     return {
         "user_message": user_message,

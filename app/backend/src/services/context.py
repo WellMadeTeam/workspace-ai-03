@@ -29,6 +29,7 @@ class ContextDocument:
     id: UUID
     kind: str
     text: str
+    has_ai_reply: bool = False
 
 
 def get_context_for_ai(db: Session, ai_widget_id: UUID) -> list[ContextDocument]:
@@ -98,7 +99,12 @@ def build_conversation_document(
     text = "\n".join(lines)
 
     if len(text) <= MAX_CONVERSATION_CHARS:
-        return ContextDocument(id=widget_id, kind="ai conversation", text=text)
+        return ContextDocument(
+            id=widget_id,
+            kind="ai conversation",
+            text=text,
+            has_ai_reply=any(message.role == "ai" for message in messages),
+        )
 
     message_ids = tuple(message.id for message in messages)
     cached = summary_cache.get(widget_id)
@@ -107,6 +113,7 @@ def build_conversation_document(
             id=widget_id,
             kind="ai conversation summary",
             text=cached[1],
+            has_ai_reply=any(message.role == "ai" for message in messages),
         )
 
     try:
@@ -120,6 +127,7 @@ def build_conversation_document(
             id=widget_id,
             kind="ai conversation",
             text=keep_recent(lines, MAX_CONVERSATION_CHARS),
+            has_ai_reply=any(message.role == "ai" for message in messages),
         )
 
     summary_cache[widget_id] = (message_ids, summary)
@@ -128,6 +136,7 @@ def build_conversation_document(
         id=widget_id,
         kind="ai conversation summary",
         text=summary,
+        has_ai_reply=any(message.role == "ai" for message in messages),
     )
 
 

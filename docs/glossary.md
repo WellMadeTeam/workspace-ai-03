@@ -106,3 +106,25 @@ A metric watched alongside the focus metric to reveal harm caused by improving i
 ### Metric Tree
 
 A hierarchy that links the focus metric to the input metrics that contribute to it and the counter-metric that guards against harm.
+
+## Observability
+
+### Signal
+
+A record or measurement the backend emits about a request or its behavior, such as a log or a metric.
+
+### SLI
+
+The abbreviation for service level indicator.
+
+### Service Level Indicator
+
+A number measured over a defined time window that shows how a service performs.
+
+### Observability
+
+The ability to understand how a service behaves by inspecting the signals it emits.
+
+### Telemetry
+
+Data a service records and sends to an observability backend, including logs and metrics.
