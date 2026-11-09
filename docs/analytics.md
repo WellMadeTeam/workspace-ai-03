@@ -47,6 +47,7 @@ Count each board once in the window.
 **Source:** [`context_reuse_query_submitted`](#the-events) and [`context_reuse_reply_received`](#the-events), correlated by `query_id` and grouped by the opaque `board_id`.
 
 **Query:** Count distinct `board_id` values from `context_reuse_reply_received` in the last seven days, where `source != 'smoke'`.
+In OpenPanel, the report counts the event `context_reuse_reply_received` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**, because each event's group is its `board_id`.
 This metric is computed by the query, not counted by hand.
 
 ### Context-reuse query failure rate
@@ -64,6 +65,7 @@ This metric is computed by the query, not counted by hand.
 **Source:** [`context_reuse_query_submitted`](#the-events), grouped by the opaque `board_id`.
 
 **Query:** Count distinct `board_id` values from `context_reuse_query_submitted` in the last seven days, where `source != 'smoke'`.
+In OpenPanel, the report counts the event `context_reuse_query_submitted` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**.
 
 ### Weekly core-task query attempts
 
@@ -86,6 +88,7 @@ This metric is computed by the query, not counted by hand.
 Every event is named `object_action` in snake case.
 Every event carries `source`, which is one of `web`, `usability-test`, or `smoke`; `smoke` marks the team's own pipeline check.
 The backend sends events to the OpenPanel project configured for its environment.
+An event with a `board_id` is sent with that `board_id` as its OpenPanel group, because OpenPanel counts distinct groups but not distinct values of a property, so a count of distinct boards is the segment **Unique groups**.
 
 | Event | Fires when | Fields | Collected at |
 | --- | --- | --- | --- |
@@ -101,3 +104,19 @@ The backend sends events to the OpenPanel project configured for its environment
 The events carry only opaque UUIDs, booleans, and the closed `source` value.
 They never carry member identities, block titles, query text, answer text, or other free text.
 The product sends no events when `ANALYTICS_ENABLED=false`.
+
+## The Dashboards
+
+Each OpenPanel project has one dashboard, and both dashboards carry the same reports with the same settings.
+
+| Environment | Dashboard | Reports |
+| ----------- | --------- | ------- |
+| Staging | `Staging: product analytics` | `Weekly boards completing a context-reuse flow`, `Weekly context-reuse query attempts`, and `Smoke events (excluded from the metric)` |
+| Production | `Production: product analytics` | The same three reports |
+
+Each metric report runs the `**Query:**` recorded in its metric's section, which this page owns, and is named after that metric.
+`Smoke events (excluded from the metric)` counts the events `context_reuse_query_submitted` and `context_reuse_reply_received` with the segment **All events**, the filter `source` is `smoke`, a breakdown by event name, and the range **Last 7 days**, so the staging dashboard shows the test events its metric reports leave out.
+The production project receives no test traffic, so its `Smoke events (excluded from the metric)` report stays empty.
+
+The dashboards are reachable from the university network only, by the members and the customer with an OpenPanel account, and their addresses are in the Moodle submission.
+OpenPanel's installation, its projects, and the configuration of each deployment are in [the telemetry pipelines](deployment.md#the-telemetry-pipelines).

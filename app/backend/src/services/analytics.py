@@ -48,6 +48,16 @@ def send_event(
             _configuration_warning_logged = True
         return
 
+    payload: dict[str, object] = {
+        "name": name,
+        "properties": {**properties, "source": source},
+    }
+    # OpenPanel counts distinct groups but not distinct property values, so the
+    # board is the event's group for the board-count metrics.
+    board_id = properties.get("board_id")
+    if isinstance(board_id, str) and board_id:
+        payload["groups"] = [board_id]
+
     try:
         response = httpx.post(
             f"{OPENPANEL_API_URL}/track",
@@ -55,13 +65,7 @@ def send_event(
                 "openpanel-client-id": OPENPANEL_CLIENT_ID,
                 "openpanel-client-secret": OPENPANEL_CLIENT_SECRET,
             },
-            json={
-                "type": "track",
-                "payload": {
-                    "name": name,
-                    "properties": {**properties, "source": source},
-                },
-            },
+            json={"type": "track", "payload": payload},
             timeout=2.0,
         )
         response.raise_for_status()
