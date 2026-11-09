@@ -6,6 +6,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import Request
+from fastapi.responses import PlainTextResponse
 from opentelemetry.exporter.otlp.proto.http._log_exporter import OTLPLogExporter
 from opentelemetry.exporter.otlp.proto.http.metric_exporter import (
     OTLPMetricExporter,
@@ -129,13 +130,15 @@ def configure_observability() -> Telemetry | None:
 
 
 async def observe_http_request(request: Request, call_next):
+    request_id = uuid4().hex
+    request.state.request_id = request_id
+
     telemetry = getattr(request.app.state, "telemetry", None)
 
     if telemetry is None:
-        return await call_next(request)
-
-    request_id = uuid4().hex
-    request.state.request_id = request_id
+        response = await call_next(request)
+        response.headers["X-Request-ID"] = request_id
+        return response
 
     started_at = perf_counter()
     status_code = 500
@@ -150,12 +153,15 @@ async def observe_http_request(request: Request, call_next):
         route_object = request.scope.get("route")
         route = getattr(route_object, "path", "unmatched")
 
-        if status_code >= 500:
-            outcome = "server_error"
-        elif status_code >= 400:
-            outcome = "client_error"
-        else:
-            outcome = "success"
+        outcome = getattr(request.state, "outcome", None)
+
+        if outcome is None:
+            if status_code >= 500:
+                outcome = "server_error"
+            elif status_code >= 400:
+                outcome = "client_error"
+            else:
+                outcome = "success"
 
         attributes = {
             "environment": telemetry.environment,
@@ -168,16 +174,36 @@ async def observe_http_request(request: Request, call_next):
             attributes,
         )
 
-        request_logger.info(
-            "http_request",
-            extra={
-                "request_id": request_id,
-                "route": route,
-                "outcome": outcome,
-                "duration_ms": duration_ms,
-                "environment": telemetry.environment,
-            },
-        )
+        log_fields = {
+            "request_id": request_id,
+            "route": route,
+            "outcome": outcome,
+            "duration_ms": duration_ms,
+            "environment": telemetry.environment,
+        }
+        error_type = getattr(request.state, "error_type", None)
+
+        if error_type:
+            log_fields["error_type"] = error_type
+
+        request_logger.info("http_request", extra=log_fields)
+
+
+async def handle_unhandled_exception(
+    request: Request,
+    exc: Exception,
+) -> PlainTextResponse:
+    request_id = getattr(request.state, "request_id", None)
+    headers = {}
+
+    if request_id:
+        headers["X-Request-ID"] = request_id
+
+    return PlainTextResponse(
+        "Internal Server Error",
+        status_code=500,
+        headers=headers,
+    )
 
 
 def shutdown_observability(telemetry: Telemetry | None) -> None:

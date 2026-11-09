@@ -14,6 +14,12 @@ from app.backend.src.routers.board import board_router
 from app.backend.src.routers.connection import connection_router
 from app.backend.src.routers.message import message_router
 from app.backend.src.routers.widget import widget_router
+from app.backend.src.observability import (
+    configure_observability,
+    handle_unhandled_exception,
+    observe_http_request,
+    shutdown_observability,
+)
 
 
 Base.metadata.create_all(bind=engine)
@@ -37,6 +43,8 @@ app = FastAPI(
     title="Workspace for AI Collaboration",
     lifespan=lifespan,
 )
+
+app.add_exception_handler(Exception, handle_unhandled_exception)
 
 app.middleware("http")(observe_http_request)
 
