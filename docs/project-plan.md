@@ -91,6 +91,7 @@ The customer accepts highlighting, reusing earlier answers as context, sharing L
 - **Due:** 2026-11-08
 - **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
 - **Planned Velocity:** 47
+- **Actual Velocity:** 21; `US-09`, `US-10`, `US-17`, and `US-18` were not completed or accepted by the customer in this sprint, so they moved to `SPRINT-07`.
 
 #### REL-06
 
