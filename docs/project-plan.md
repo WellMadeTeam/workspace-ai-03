@@ -86,12 +86,22 @@ The result and the last check of each test are in the [Quality Requirement Testi
 
 ### SPRINT-06
 
-Provisional: real-time sync keeps every update for several clients on one board, the LLM takes the team's reference documents into account, images from an LLM appear on the board for every member, a block deleted by mistake no longer takes the team's work with it, and the product reports how teams use it, with a brainstorming session held by an outside team if time allows.
+The customer accepts highlighting, reusing earlier answers as context, sharing LLM diagrams, and working with a long text block like an AI block, and the product records how teams go through the core task and exposes its request signals, both shown on self-hosted analytics and observability dashboards in staging and production; images from an LLM and the team's reference documents reach the board if time allows.
 
-- **Due:** 2026-11-07
+- **Due:** 2026-11-08
 - **Sprint Backlog:** [the issues scheduled into SPRINT-06](https://github.com/WellMadeTeam/workspace-ai-03/milestone/6)
+- **Planned Velocity:** 47
+- **Actual Velocity:** 21; `US-09`, `US-10`, `US-17`, and `US-18` were not completed or accepted by the customer in this sprint, so they moved to `SPRINT-07`.
 
 #### REL-06
+
+- **Released:** [v0.4.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.4.0) on 2026-11-09.
+- **Checked QRs:**
+  - [QR-01](quality-requirements/qr/QR-01.md)
+  - [QR-02](quality-requirements/qr/QR-02.md)
+  - [QR-04](quality-requirements/qr/QR-04.md)
+
+The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
 
 ### SPRINT-07
 
@@ -124,9 +134,12 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 
 | QR                                        | QRT                                                     | Status       | Checked                 | Planned for sprint      | Evidence                                                                                            |
 | ----------------------------------------- | ------------------------------------------------------- | ------------ | ----------------------- | ----------------------- | --------------------------------------------------------------------------------------------------- |
-| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Not verified | None                    | [SPRINT-06](#sprint-06) | None                                                                                                |
-| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes       | [SPRINT-05](#sprint-05) | [SPRINT-05](#sprint-05) | [the CI run on `debfe3e`](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/41236272755) |
-| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes       | [SPRINT-05](#sprint-05) | [SPRINT-05](#sprint-05) | [the scripted run in the Week 05 report](../reports/week-05/README.md#quality-requirement-tests)    |
+| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails        | [SPRINT-06](#sprint-06) | [SPRINT-07](#sprint-07) | the staging run in the Week 06 report                                                               |
+| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes       | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | [the CI run on `0d9eb66`](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/42679223070) |
+| [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Not verified | None                    | [SPRINT-06](#sprint-06) | [partial log output][qr-05-log]                                                                     |
+| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes       | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | the scripted run in the Week 06 report                                                              |
+
+[qr-05-log]: https://github.com/WellMadeTeam/workspace-ai-03/pull/283#issuecomment-6749240716
 
 ## Progress Monitoring
 

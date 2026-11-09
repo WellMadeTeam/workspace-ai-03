@@ -1,10 +1,11 @@
-import { use, useRef, useState } from "react";
+import { use, useId, useRef, useState } from "react";
 import { useReactFlow } from "@xyflow/react";
 import { DEFAULT_IMAGE_TITLE, MAX_TITLE_LENGTH } from "../config/widget-title";
 import { editableFieldClassName, useFocusOnEdit } from "../lib/editable-field";
 import { SaveWidgetContext } from "../model/save-widget";
 import { useRenderedDiagram } from "../model/use-rendered-diagram";
 import type { ImageWidgetData, WidgetNode } from "../model/widget-node";
+import { DiagramCollapseToggle } from "./diagram-collapse-toggle";
 import { DiagramError } from "./diagram-error";
 import { DiagramModal } from "./diagram-modal";
 
@@ -30,6 +31,9 @@ export function ImageWidgetNode({ id, data, selected }: ImageWidgetNodeProps) {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [titleDraft, setTitleDraft] = useState("");
     const [isExpanded, setExpanded] = useState(false);
+    // Each member's own view: the block stays the same for the other members.
+    const [isCollapsed, setCollapsed] = useState(false);
+    const contentId = useId();
 
     useFocusOnEdit(titleInputRef, isEditingTitle);
 
@@ -63,7 +67,7 @@ export function ImageWidgetNode({ id, data, selected }: ImageWidgetNodeProps) {
                 selected ? "ring-2 ring-purple-500" : ""
             }`}
         >
-            <div className="mb-1 flex items-center gap-1">
+            <div className="flex items-center gap-1">
                 <input
                     ref={titleInputRef}
                     className={`${isEditingTitle ? editableFieldClassName(true) : "block w-full cursor-default bg-transparent outline-none"} min-w-0 flex-1 truncate font-semibold`}
@@ -81,9 +85,9 @@ export function ImageWidgetNode({ id, data, selected }: ImageWidgetNodeProps) {
                             event.currentTarget.blur();
                     }}
                 />
-                {diagram.status === "rendered" && (
-                    // "nodrag" lets the button be pressed without moving the block.
-                    <div className="nodrag">
+                {/* "nodrag" lets the buttons be pressed without moving the block. */}
+                <div className="nodrag flex">
+                    {diagram.status === "rendered" && (
                         <DiagramModal
                             renderId={diagram.id}
                             svg={diagram.svg}
@@ -92,24 +96,31 @@ export function ImageWidgetNode({ id, data, selected }: ImageWidgetNodeProps) {
                             onOpenChange={setExpanded}
                             pictureClassName={PICTURE_CLASS_NAME}
                         />
-                    </div>
+                    )}
+                    <DiagramCollapseToggle
+                        contentId={contentId}
+                        isCollapsed={isCollapsed}
+                        onCollapsedChange={setCollapsed}
+                    />
+                </div>
+            </div>
+            <div id={contentId} hidden={isCollapsed} className="mt-1">
+                {diagram.status === "rendered" && (
+                    <div
+                        className={PICTURE_CLASS_NAME}
+                        onDoubleClick={() => setExpanded(true)}
+                        dangerouslySetInnerHTML={{ __html: diagram.svg }}
+                    />
+                )}
+                {diagram.status === "rendering" && (
+                    <p className="opacity-60" role="status">
+                        Rendering the diagram…
+                    </p>
+                )}
+                {diagram.status === "failed" && (
+                    <DiagramError error={diagram.error} />
                 )}
             </div>
-            {diagram.status === "rendered" && (
-                <div
-                    className={PICTURE_CLASS_NAME}
-                    onDoubleClick={() => setExpanded(true)}
-                    dangerouslySetInnerHTML={{ __html: diagram.svg }}
-                />
-            )}
-            {diagram.status === "rendering" && (
-                <p className="opacity-60" role="status">
-                    Rendering the diagram…
-                </p>
-            )}
-            {diagram.status === "failed" && (
-                <DiagramError error={diagram.error} />
-            )}
         </div>
     );
 }

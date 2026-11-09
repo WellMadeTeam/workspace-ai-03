@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [0.4.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.4.0) - 2026-11-09
+
+### Added
+
+- Record how teams go through the core task, from adding an AI block and connecting blocks to sending a query and getting its reply or failure, and send these anonymous events to a self-hosted OpenPanel project when `ANALYTICS_ENABLED` is `true` and `OPENPANEL_API_URL`, `OPENPANEL_CLIENT_ID`, and `OPENPANEL_CLIENT_SECRET` are set; the events carry opaque IDs and never the text of a query or a reply.
+- Export a structured log line for every backend request and the request duration as a metric over OTLP/HTTP to a self-hosted OpenObserve organization when `OBSERVABILITY_ENABLED` is `true` and `OBSERVABILITY_OTLP_ENDPOINT` and `OBSERVABILITY_AUTHORIZATION` are set.
+- Collapse and expand a diagram in an AI reply, hiding both its picture and its source, or an image block on the board, hiding its picture; each member collapses only their own view.
+
+### Fixed
+
+- Show a Mermaid diagram in an AI reply when its fence does not start a line or its code follows the fence on the same line.
+
 ## [0.3.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.3.0) - 2026-10-31
 
 ### Added

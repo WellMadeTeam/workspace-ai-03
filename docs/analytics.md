@@ -45,17 +45,16 @@ Rejected as a vanity metric: total page views, because reloads and internal chec
 Count each board once in the window.
 
 **Source:** [`context_reuse_query_submitted`](#the-events) and [`context_reuse_reply_received`](#the-events), correlated by `query_id` and grouped by the opaque `board_id`.
-The event names and fields are proposed for task #261 to define in the event table.
 
 **Query:** Count distinct `board_id` values from `context_reuse_reply_received` in the last seven days, where `source != 'smoke'`.
+In OpenPanel, the report counts the event `context_reuse_reply_received` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**, because each event's group is its `board_id`.
 This metric is computed by the query, not counted by hand.
 
 ### Context-reuse query failure rate
 
 **Definition:** The percentage of submitted queries that use an earlier AI reply as context and fail before a reply is delivered, in a rolling seven-day window.
 
-**Source:** [`context_reuse_query_submitted`](#the-events) and [`query_failed`](#the-events), correlated by `query_id`; `query_failed` must identify that the failed query used an earlier AI reply as context.
-The event names and fields are proposed for task #261 to define in the event table.
+**Source:** [`context_reuse_query_submitted`](#the-events) and [`query_failed`](#the-events), correlated by `query_id`; `query_failed` carries `has_ai_context=true` when the failed query used an earlier AI reply as context.
 
 **Query:** Count failed context-reuse query IDs in the last seven days, divide by all submitted context-reuse query IDs in the same window, and multiply by 100; exclude events where `source = 'smoke'`.
 
@@ -64,16 +63,15 @@ The event names and fields are proposed for task #261 to define in the event tab
 **Definition:** The number of distinct boards that submit at least one query using an earlier AI reply as context in a rolling seven-day window.
 
 **Source:** [`context_reuse_query_submitted`](#the-events), grouped by the opaque `board_id`.
-The event name and fields are proposed for task #261 to define in the event table.
 
 **Query:** Count distinct `board_id` values from `context_reuse_query_submitted` in the last seven days, where `source != 'smoke'`.
+In OpenPanel, the report counts the event `context_reuse_query_submitted` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**.
 
 ### Weekly core-task query attempts
 
 **Definition:** The number of distinct boards that submit at least one query in a rolling seven-day window.
 
 **Source:** [`query_submitted`](#the-events), grouped by the opaque `board_id`.
-The event name and fields are proposed for task #261 to define in the event table.
 
 **Query:** Count distinct `board_id` values from `query_submitted` in the last seven days, where `source != 'smoke'`.
 
@@ -82,11 +80,43 @@ The event name and fields are proposed for task #261 to define in the event tabl
 **Definition:** The number of distinct boards that receive at least one AI reply in a rolling seven-day window, making a previous result available as context for a later query.
 
 **Source:** [`reply_received`](#the-events), grouped by the opaque `board_id`.
-The event name and fields are proposed for task #261 to define in the event table.
 
 **Query:** Count distinct `board_id` values from `reply_received` in the last seven days, where `source != 'smoke'`.
 
 ## The Events
 
-Task #261 defines the event table and instrumentation.
-It will replace the provisional event names above with the agreed event names and complete each metric's source with those names.
+Every event is named `object_action` in snake case.
+Every event carries `source`, which is one of `web`, `usability-test`, or `smoke`; `smoke` marks the team's own pipeline check.
+The backend sends events to the OpenPanel project configured for its environment.
+An event with a `board_id` is sent with that `board_id` as its OpenPanel group, because OpenPanel counts distinct groups but not distinct values of a property, so a count of distinct boards is the segment **Unique groups**.
+
+| Event | Fires when | Fields | Collected at |
+| --- | --- | --- | --- |
+| `board_opened` | A member joins a board over its WebSocket. | `board_id` (UUID, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `ai_block_created` | The backend stores a new AI block. | `board_id` (UUID, required), `widget_id` (UUID, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `connection_created` | The backend stores a connection between two blocks. | `board_id` (UUID, required), `source_widget_id` (UUID, required), `target_widget_id` (UUID, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `query_submitted` | The backend stores a member's query before sending it to the LLM service provider. | `board_id` (UUID, required), `widget_id` (UUID, required), `query_id` (UUID, required), `has_ai_context` (boolean, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `reply_received` | The backend stores an AI reply from the LLM service provider. | `board_id` (UUID, required), `widget_id` (UUID, required), `query_id` (UUID, required), `has_ai_context` (boolean, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `query_failed` | The backend stores a system message because the LLM service provider did not answer a query. | `board_id` (UUID, required), `widget_id` (UUID, required), `query_id` (UUID, required), `has_ai_context` (boolean, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `context_reuse_query_submitted` | The backend stores a query whose context includes an earlier AI reply. | `board_id` (UUID, required), `widget_id` (UUID, required), `query_id` (UUID, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+| `context_reuse_reply_received` | The backend stores an AI reply to a query whose context includes an earlier AI reply. | `board_id` (UUID, required), `widget_id` (UUID, required), `query_id` (UUID, required), `source` (one of `web`, `usability-test`, `smoke`, required) | `backend`, staging and production |
+
+The events carry only opaque UUIDs, booleans, and the closed `source` value.
+They never carry member identities, block titles, query text, answer text, or other free text.
+The product sends no events when `ANALYTICS_ENABLED=false`.
+
+## The Dashboards
+
+Each OpenPanel project has one dashboard, and both dashboards carry the same reports with the same settings.
+
+| Environment | Dashboard | Reports |
+| ----------- | --------- | ------- |
+| Staging | `Staging: product analytics` | `Weekly boards completing a context-reuse flow`, `Weekly context-reuse query attempts`, and `Smoke events (excluded from the metric)` |
+| Production | `Production: product analytics` | The same three reports |
+
+Each metric report runs the `**Query:**` recorded in its metric's section, which this page owns, and is named after that metric.
+`Smoke events (excluded from the metric)` counts the events `context_reuse_query_submitted` and `context_reuse_reply_received` with the segment **All events**, the filter `source` is `smoke`, a breakdown by event name, and the range **Last 7 days**, so the staging dashboard shows the test events its metric reports leave out.
+The production project receives no test traffic, so its `Smoke events (excluded from the metric)` report stays empty.
+
+The dashboards are reachable from the university network only, by the members and the customer with an OpenPanel account, and their addresses are in the Moodle submission.
+OpenPanel's installation, its projects, and the configuration of each deployment are in [the telemetry pipelines](deployment.md#the-telemetry-pipelines).

@@ -1,12 +1,21 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    Header,
+    HTTPException,
+    Query,
+    status,
+)
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
 from app.backend.src.database import get_db
 from app.backend.src.models import Board, Connection, Widget
 from app.backend.src.schemas.connection import ConnectionCreate, ConnectionResponse
+from app.backend.src.services.analytics import AnalyticsSource, queue_event
 
 connection_router = APIRouter(prefix="/connections", tags=["connections"])
 
@@ -58,6 +67,8 @@ def _validate_connection(db: Session, source_id: UUID, target_id: UUID) -> None:
 @connection_router.post("", response_model=ConnectionResponse, status_code=status.HTTP_201_CREATED)
 def create_connection(
     data: ConnectionCreate,
+    background_tasks: BackgroundTasks,
+    source: AnalyticsSource = Header(default="web", alias="X-Analytics-Source"),
     db: Session = Depends(get_db),
 ):
     _validate_connection(db, data.source_widget_id, data.target_widget_id)
@@ -70,6 +81,19 @@ def create_connection(
     db.add(connection)
     db.commit()
     db.refresh(connection)
+
+    source_widget = db.get(Widget, data.source_widget_id)
+    if source_widget is not None:
+        queue_event(
+            background_tasks,
+            "connection_created",
+            {
+                "board_id": str(source_widget.board_id),
+                "source_widget_id": str(connection.source_widget_id),
+                "target_widget_id": str(connection.target_widget_id),
+            },
+            source,
+        )
 
     return connection
 

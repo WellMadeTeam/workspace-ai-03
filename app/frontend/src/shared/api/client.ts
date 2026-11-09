@@ -1,3 +1,5 @@
+import { getAnalyticsSource } from "@/shared/lib";
+
 // Requests go through the Vite dev server proxy (see vite.config.ts),
 // so the backend does not need CORS.
 export const API_URL = "/api";
@@ -12,9 +14,13 @@ export class ApiError extends Error {
 }
 
 export async function request<T>(path: string, init?: RequestInit): Promise<T> {
+    const headers = new Headers(init?.headers);
+    headers.set("Content-Type", "application/json");
+    headers.set("X-Analytics-Source", getAnalyticsSource());
+
     const response = await fetch(`${API_URL}${path}`, {
         ...init,
-        headers: { "Content-Type": "application/json", ...init?.headers },
+        headers,
     });
 
     if (!response.ok) {
