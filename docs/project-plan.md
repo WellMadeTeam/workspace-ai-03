@@ -123,11 +123,11 @@ Provisional: the final release is published with the evidence of whether the sha
 
 Each row is one test, in the order of [the quality requirements index](quality-requirements/README.md); the test itself is defined in its requirement's file.
 
-| QR                                        | QRT                                                     | Status       | Checked                 | Planned for sprint      | Evidence                                                                                            |
-| ----------------------------------------- | ------------------------------------------------------- | ------------ | ----------------------- | ----------------------- | --------------------------------------------------------------------------------------------------- |
-| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Not verified | None                    | [SPRINT-06](#sprint-06) | None                                                                                                |
-| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes       | [SPRINT-05](#sprint-05) | [SPRINT-05](#sprint-05) | [the CI run on `debfe3e`](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/41236272755) |
-| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes       | [SPRINT-05](#sprint-05) | [SPRINT-05](#sprint-05) | [the scripted run in the Week 05 report](../reports/week-05/README.md#quality-requirement-tests)    |
+| QR                                        | QRT                                                     | Status | Checked                 | Planned for sprint      | Evidence                                                                                            |
+| ----------------------------------------- | ------------------------------------------------------- | ------ | ----------------------- | ----------------------- | --------------------------------------------------------------------------------------------------- |
+| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails  | [SPRINT-06](#sprint-06) | [SPRINT-07](#sprint-07) | the staging run in the Week 06 report                                                               |
+| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | [the CI run on `5191692`](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/42637687059) |
+| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | the scripted run in the Week 06 report                                                              |
 
 ## Progress Monitoring
 
