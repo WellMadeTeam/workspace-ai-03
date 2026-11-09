@@ -1,5 +1,6 @@
 import unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -9,6 +10,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.backend.src.database import Base, get_db
 from app.backend.src.models import Board, Connection, Message, Widget
+from app.backend.src.observability import observe_http_request, request_logger
 from app.backend.src.routers.message import AI_FAILURE_MESSAGE, message_router
 from app.backend.src.services import context
 from app.backend.src.services.context import (
@@ -34,6 +36,17 @@ class MessageRouterTests(unittest.TestCase):
         )
 
         app = FastAPI()
+        self.request_duration_histogram = Mock()
+        app.state.telemetry = SimpleNamespace(
+            environment="test",
+            request_duration_histogram=self.request_duration_histogram,
+        )
+
+        @app.get("/server-error-test", status_code=503)
+        def server_error_test():
+            return {"detail": "Service unavailable"}
+
+        app.middleware("http")(observe_http_request)
         app.include_router(message_router)
 
         def get_test_db():
@@ -213,18 +226,64 @@ class MessageRouterTests(unittest.TestCase):
         "app.backend.src.routers.message.generate_reply",
         side_effect=RuntimeError("provider failed"),
     )
-    def test_failed_query_emits_failure_event_without_failure_text(
+    def test_failed_query_emits_server_error_without_failure_text(
         self, generate_reply, queue_event
     ):
-        response = self.ask(self.widget_id)
+        with patch.object(request_logger, "info") as request_log:
+            response = self.ask(self.widget_id)
 
         self.assertEqual(response.status_code, 201)
         events = {call.args[1]: call.args[2] for call in queue_event.call_args_list}
         self.assertEqual(set(events), {"query_submitted", "query_failed"})
         self.assertNotIn("content", events["query_failed"])
         self.assertNotIn(AI_FAILURE_MESSAGE, str(events))
+
+        log_fields = request_log.call_args.kwargs["extra"]
+        self.assertEqual(log_fields["outcome"], "server_error")
+        self.assertEqual(log_fields["error_type"], "RuntimeError")
+        self.assertEqual(log_fields["route"], "/messages")
+        self.assertEqual(
+            log_fields["request_id"],
+            response.headers["X-Request-ID"],
+        )
+        self.assertNotIn("provider failed", str(log_fields))
+
+        self.request_duration_histogram.record.assert_called_once()
+        metric_attributes = (
+            self.request_duration_histogram.record.call_args.args[1]
+        )
+        self.assertEqual(metric_attributes["outcome"], "server_error")
         generate_reply.assert_called_once()
 
+    def test_http_status_codes_use_client_and_server_error_outcomes(self):
+        missing_widget_id = "00000000-0000-0000-0000-000000000000"
+
+        with patch.object(request_logger, "info") as request_log:
+            client_response = self.client.get(
+                "/messages",
+                params={"widgetId": missing_widget_id},
+            )
+
+        self.assertEqual(client_response.status_code, 404)
+        self.assertEqual(
+            request_log.call_args.kwargs["extra"]["outcome"],
+            "client_error",
+        )
+
+        with patch.object(request_logger, "info") as request_log:
+            server_response = self.client.get("/server-error-test")
+
+        self.assertEqual(server_response.status_code, 503)
+        self.assertEqual(
+            request_log.call_args.kwargs["extra"]["outcome"],
+            "server_error",
+        )
+
+        recorded_outcomes = [
+            call.args[1]["outcome"]
+            for call in self.request_duration_histogram.record.call_args_list
+        ]
+        self.assertEqual(recorded_outcomes, ["client_error", "server_error"])
     @patch(
         "app.backend.src.routers.message.generate_reply",
         return_value=("Answer", []),

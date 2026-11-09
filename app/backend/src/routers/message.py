@@ -8,6 +8,7 @@ from fastapi import (
     Header,
     HTTPException,
     Query,
+    Request,
     Response,
     status,
 )
@@ -69,6 +70,7 @@ def build_history(history: list[Message]) -> list[dict[str, str]]:
     status_code=status.HTTP_201_CREATED,
 )
 def create_message(
+    request: Request,
     message_data: MessageCreate,
     background_tasks: BackgroundTasks,
     source: AnalyticsSource = Header(default="web", alias="X-Analytics-Source"),
@@ -153,7 +155,9 @@ def create_message(
             has_context=len(documents) > 0,
             references=references,
         )
-    except Exception:
+    except Exception as error:
+        request.state.outcome = "server_error"
+        request.state.error_type = type(error).__name__
         logger.exception("The LLM failed to answer a query")
         reply = Message(
             widget_id=message_data.widget_id,

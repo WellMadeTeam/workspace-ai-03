@@ -33,7 +33,22 @@ Open `backend/.env` and put your Groq API key in place of the placeholder:
 GROQ_API_KEY="your key"
 ```
 
-Never commit `backend/.env`: it is ignored by git and holds your secret key.
+Never commit `backend/.env`: it is ignored by git and holds secret values.
+
+Observability is disabled by default.
+For local development, leave `OBSERVABILITY_ENABLED=false` unless you can reach an OpenObserve instance.
+
+To enable observability, set these values in `backend/.env`:
+
+```text
+OBSERVABILITY_ENABLED=true
+OBSERVABILITY_ENVIRONMENT=development
+OBSERVABILITY_OTLP_ENDPOINT=http://<openobserve-host>:5080/api/<organization>
+OBSERVABILITY_AUTHORIZATION="Basic <authorization-value-from-openobserve>"
+OBSERVABILITY_LOG_STREAM=backend_requests
+OBSERVABILITY_LOG_EXPORT_INTERVAL_SECONDS=1
+OBSERVABILITY_METRIC_EXPORT_INTERVAL_SECONDS=10
+```
 
 Analytics collection is optional and off by default.
 To send events to a self-hosted OpenPanel project, set `ANALYTICS_ENABLED=true`, `OPENPANEL_API_URL`, `OPENPANEL_CLIENT_ID`, and `OPENPANEL_CLIENT_SECRET` in `backend/.env`; leave collection off when those values are unavailable.
