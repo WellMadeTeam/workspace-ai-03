@@ -4,8 +4,9 @@
 
 The customer accepts the core flow, where a team member puts a query and its response on the shared board and another member sends a new query with selected responses as its context, by the end of Week 5.
 
-- **Status:** Open
+- **Status:** Missed
 - **Measure:** the customer's `DEC-nnn` accepting `US-01`, `US-04`, and `US-05`, which together make the core flow, at the Week 5 meeting, recorded in [decisions.md](decisions.md), by the end of Week 5.
+- **Outcome:** the customer accepted `US-01` in [DEC-022](decisions.md#dec-022) and `US-04` in [DEC-023](decisions.md#dec-023) at the Week 4 meeting, but rejected `US-05` at the [Week 5 meeting](../reports/week-05/meeting-report.md) in [DEC-029](decisions.md#dec-029), because a connected AI block did not yet pass its conversation on as context, so the core flow was not accepted by the end of Week 5; the customer accepted the reworked `US-05` one week late, at the [Week 6 meeting](../reports/week-06/meeting-report.md), in [DEC-039](decisions.md#dec-039).
 
 ## TOS-02
 
