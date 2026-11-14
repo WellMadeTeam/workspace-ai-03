@@ -80,6 +80,7 @@ Before each counted session, confirm all applicable checks:
 - [ ] The participant/session link works and identifies the session's run.
 - [ ] Before the first counted session, a team-run verification confirms that every analytics-pipeline test event uses `source=usability-test` and that no production data is written.
 - [ ] The required recording and durable consent are ready.
+- [ ] The recording tool and capture method have been explained before the participant signs the durable consent.
 
 Do not count a session until the recording and consent are ready and all applicable checks have passed.
 These checks are still planned; this record does not claim that staging or instrumentation has been verified.
