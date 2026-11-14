@@ -3,6 +3,7 @@ import { ScrollShadow } from "@heroui/react";
 import { CircleAlert, Trash2 } from "lucide-react";
 import type { Message } from "../api/message";
 import { MessageContent } from "./message-content";
+import { MarkdownContent } from "./markdown-content";
 import { MessageReferences } from "./message-references";
 
 const bubbleClassName =
@@ -71,7 +72,9 @@ export function MessageList({
                                     </span>
                                     <span aria-hidden> · </span>
                                     <span className="sr-only">: </span>
-                                    {message.content}
+                                    <MarkdownContent
+                                        content={message.content}
+                                    />
                                 </p>
 
                                 {deleteButton(
