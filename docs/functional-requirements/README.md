@@ -27,3 +27,4 @@ This is the index of the functional requirements, in `FR-nnn` order. Each requir
 | [FR-021](fr/FR-021.md) | Clear An AI Block's Context                     | `frontend`, `backend`            | Active |
 | [FR-022](fr/FR-022.md) | Record The Core Task For Product Analytics      | `backend`                        | Active |
 | [FR-023](fr/FR-023.md) | Record Backend Request Signals                  | `backend`                        | Active |
+| [FR-024](fr/FR-024.md) | Render Markdown In Blocks                       | `frontend`, `backend`            | Active |
