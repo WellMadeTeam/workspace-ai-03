@@ -153,6 +153,7 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails        | [SPRINT-06](#sprint-06) | [SPRINT-07](#sprint-07) | the staging run in the Week 06 report                                                               |
 | [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes       | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | [the CI run on `0d9eb66`](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/42679223070) |
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Not verified | None                    | [SPRINT-06](#sprint-06) | [partial log output][qr-05-log]                                                                     |
+| [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Not verified | None                    | [SPRINT-08](#sprint-08) | None                                                                                                |
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes       | [SPRINT-06](#sprint-06) | [SPRINT-05](#sprint-05) | the scripted run in the Week 06 report                                                              |
 
 [qr-05-log]: https://github.com/WellMadeTeam/workspace-ai-03/pull/283#issuecomment-6749240716

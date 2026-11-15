@@ -31,6 +31,7 @@ nav:
   - Quality requirements:
       - Index: quality-requirements/README.md
       - QR-05: quality-requirements/qr/QR-05.md
+      - QR-06: quality-requirements/qr/QR-06.md
   - Architecture:
       - Overview: architecture/README.md
       - ADR index: architecture/adr/README.md
