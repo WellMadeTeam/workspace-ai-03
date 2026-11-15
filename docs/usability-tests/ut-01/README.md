@@ -233,12 +233,12 @@ With only one board team, passing means that this team completed the task unaide
 ### Proposed recruitment and allocation for review
 
 This proposal would replace the current five-person recruitment target with six representative participants: two teams of three, one shared-board team and one control team.
-Each person participates in one condition only and completes all three tasks in the existing order, with individual pre-test, SEQ, SUS, and post-test records.
+For the primary comparison, each person participates in one condition only and completes all three tasks in the existing order, with individual pre-test, SEQ, SUS, and post-test records.
 Retain a separate participant session record and code for each person, linked to the shared team-run record; six people do not become six independent task outcomes.
 
 Before any task starts, form two teams of three using the pre-test familiarity answers to avoid concentrating all frequent LLM or collaborative-whiteboard users in one team where practical.
 Record the allocation basis privately and summarize relevant group differences without identities in the results.
-Assign the two formed teams to conditions by a coin toss and record the assignment before either run; no participant switches conditions or repeats the tasks in the other condition.
+Assign the two formed teams to conditions by a coin toss and record the assignment before either run; no participant switches conditions within the primary comparison.
 Use the same facilitator, task wording, limits, and observation method for both teams.
 Schedule replacements before the affected run starts, using the same eligibility criteria and a new participant code.
 If six eligible participants cannot be recruited, revise and review the design before counted sessions rather than silently using smaller groups.
@@ -247,12 +247,23 @@ This allocation provides three product users for the manual QR test and equally 
 Differences in team composition, prior familiarity, and group dynamics remain confounded with condition; no causal advantage of the product can be inferred.
 The course defines individual participant outcomes, while the current team tasks supply shared outcomes; the team must confirm this adaptation with the customer/instructor and record any required deviation before treating the design as course-complete.
 
-### Approval and freeze
+### Optional supplementary run
 
-The reviewer should explicitly accept or amend the six-person allocation, the team-level outcome adaptation, and the proposed QR scope and bar.
-Once agreed, update Recruitment target and Protocol to the accepted allocation, synchronize QR-06/QRT-01 in #313, and record the accepted plan revision before the first counted session.
-Until then, these sections remain proposals and #315 remains open.
-No threshold or allocation may be changed after inspecting participant outcomes to obtain a passing result.
+After completing the primary session, the shared-board team may voluntarily try its usual tools on a different brainstorming topic.
+Prepare that topic before counted sessions and keep the task structure, time limits, and observation method the same; record the topic and any departures from the primary protocol.
+Invite the team regardless of its primary outcome, and confirm that consent covers the additional recording and data collection.
+Declining or stopping this optional run does not invalidate the completed primary session or its evidence.
+If anyone declines, do not pressure them or treat them as a participant in the supplementary run; record the actual team composition if the remaining volunteers proceed.
+
+Assign a new team-run key linked to the original run, retain the existing participant codes, and label it `Supplementary`.
+Record whether it was completed, stopped early, or not started; a stopped run remains partial evidence, not a completed counted session.
+Store its observations separately in the supplementary results table, including any separately collected questionnaire responses.
+Exclude it from primary outcome, time, tool-switch, SEQ, and SUS aggregates, from the QR numerator and denominator, and from recruitment counts.
+It does not replace the independent control team.
+Interpret it descriptively, noting prior task exposure, the changed topic, voluntary participation, and any change in team composition.
+Do not treat a repeated observation from the same participant as independent support for a theme.
+
+Freeze the analysis methods, primary allocation, supplementary protocol, and QR bar before the first counted session; do not change them after inspecting outcomes to obtain a passing result.
 
 ### Qualitative analysis and severity
 
@@ -271,7 +282,8 @@ Assign each finding one severity and state the reason in `results.md`:
 
 For the board condition only, use the private mapping from the team-run key to opaque `board_id` and the task's recorded start/end timestamps to select staging OpenPanel events with `source=usability-test`.
 Compare `board_opened`, `ai_block_created`, `query_submitted`, and `reply_received` with the main task notes; compare `context_reuse_query_submitted`, `context_reuse_reply_received`, and `query_failed` with secondary task 1; compare `query_submitted` and `reply_received` with secondary task 2.
-Record the event coverage, supporting evidence, discrepancies, and missing records for each team run and task.
+For each team run and task, list the expected event names and which were found in the selected telemetry, with supporting evidence and discrepancies.
+Only expect events whose triggering actions occurred; distinguish an action not attempted from a missing event and from telemetry that could not be inspected.
 These events can corroborate product actions, but they do not establish task success, facilitator help, tool switches, or that a diagram was rendered and shared.
 Use the observer's end-state evidence and timings for those measures; do not substitute request latency for task duration.
 

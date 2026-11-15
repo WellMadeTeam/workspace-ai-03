@@ -2,6 +2,7 @@
 
 This is an empty results template; no sessions, findings, or QR verdict are reported here.
 Fill it from the [analysis plan](README.md#analysis-plan) after the counted sessions.
+The primary tables exclude optional supplementary runs, which are recorded separately below.
 
 ## The Results
 
@@ -73,6 +74,17 @@ No statistical significance or causal effect is claimed.
 | Task or all tasks | Measure | Shared-board summary and valid n/unit | Control summary and valid n/unit | Switch-rate difference, if applicable | Interpretation and limitations |
 | ----------------- | ------- | ------------------------------------- | -------------------------------- | ------------------------------------- | ------------------------------ |
 
+### Supplementary observations
+
+Record optional runs separately; retain the original participant codes and link the original primary run.
+A refusal leaves the primary session valid; a stopped optional run is partial evidence, not a completed counted session.
+Do not include these runs in primary aggregates, the QR measure, or the distinct-participant recruitment count.
+Keep any additional questionnaire responses separate from the primary SEQ and SUS results.
+Describe observations with the changed topic, prior task exposure, self-selection, and any changed team composition in mind.
+
+| Supplementary run | Original run | Participant codes | Topic and protocol differences | Completion status or stop reason | Observations and separate questionnaire results | Sanitized evidence | Limitations |
+| ----------------- | ------------ | ----------------- | ------------------------------ | -------------------------------- | ----------------------------------------------- | ------------------ | ----------- |
+
 ## Findings
 
 Duplicate this template as `### Finding 1`, `### Finding 2`, and so on only after evidence supports a finding.
@@ -97,9 +109,13 @@ Retain stable finding anchors once published.
 
 For the board condition, correlate task timestamps and the private run-to-board mapping with the specified staging events.
 Keep raw telemetry and opaque board identifiers private.
-Control runs have no product telemetry; mark event coverage as not applicable.
+In `Expected and observed events`, list the event names expected from the recorded actions and say which were found in the selected telemetry.
+For example, write `query_submitted found; reply_received missing despite an observed successful reply` only if the observation supports that expectation; this is a filling example, not a study result.
+If no query was attempted, write `Query events not expected: no query attempted`; if the export is unavailable, write `Not checked: telemetry unavailable` rather than claiming events were missing.
+Use `Coverage gap` to describe the missing or uninspectable portion and `Agreement or discrepancy` to explain how the records compare with the observer's account.
+Control runs have no product telemetry; write `Not applicable: control condition`.
 
-| Team run | Condition | Task | Observer evidence | Event coverage | Agreement or discrepancy | Coverage gap |
+| Team run | Condition | Task | Observer evidence | Expected and observed events | Agreement or discrepancy | Coverage gap |
 | -------- | --------- | ---- | ----------------- | -------------- | ------------------------ | ------------ |
 
 ## Limitations
