@@ -121,6 +121,15 @@ The Week 7 handoff links the design and the scheduled execution work, with resul
 
 #### REL-07
 
+- **Released:** [v0.5.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.0) on 2026-11-15.
+- **Checked QRs:**
+  - [QR-01](quality-requirements/qr/QR-01.md)
+  - [QR-02](quality-requirements/qr/QR-02.md)
+  - [QR-05](quality-requirements/qr/QR-05.md)
+  - [QR-04](quality-requirements/qr/QR-04.md)
+
+The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
+
 ### SPRINT-08
 
 Provisional: representative participants complete the usability test on staging, and the team publishes sanitized evidence of the board's usability, the findings and their triage, the quality requirement verdict, and REL-08 with any fixes completed in the sprint.
