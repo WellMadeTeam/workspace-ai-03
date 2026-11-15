@@ -16,7 +16,7 @@ Verify whether, and to what degree, a shared board solves the problem of teams l
 
 ## Requirement
 
-The usability requirement is `QR-06`, being specified in [TODO: task #313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313); link its requirement file here when that task is merged.
+The usability requirement is [QR-06](../../quality-requirements/qr/QR-06.md), checked by its [manual QRT-01](../../quality-requirements/qr/QR-06.md#qrt-01).
 
 ## Participant Profile
 
@@ -209,13 +209,13 @@ For each task, report the descriptive difference `shared-board median rate - con
 A negative difference means fewer observed switches per participant-minute in these runs; it does not establish causation or a population effect.
 Show task outcome, time, help, SEQ, observer ratings, and SUS summaries side by side by condition; do not pool conditions or run significance tests on this small study.
 
-### QR-06 decision before counted sessions
+### QR-06 measure before counted sessions
 
-The following is a concrete proposal for team review, not an approved QR or permission to start counted sessions.
-Accept or revise it in this PR before collecting participant data, then carry the agreed definition into QR-06/QRT-01 through [#313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313).
-The earlier 80% participant-completion proposal remains withdrawn.
+The following measure and pass bar are specified in [QR-06](../../quality-requirements/qr/QR-06.md).
+Any revision must be reviewed and recorded before the first counted session; do not change the bar after seeing participant data.
+The earlier 80% participant-completion proposal was withdrawn.
 
-| Item | Proposed definition |
+| Item | Definition |
 | --- | --- |
 | Characteristic | Interaction Capability / Operability: whether a team can reach the main task's end state without facilitator help. |
 | Measure | Main-task unaided team completion, `U / N`, in the shared-board condition only. |
@@ -223,7 +223,7 @@ The earlier 80% participant-completion proposal remains withdrawn.
 | Denominator `N` | All eligible shared-board team runs that start the main task; `Assisted`, `Failed`, and abandoned attempts remain in the denominator. |
 | Usable evidence | At least three distinct representative participants in the shared-board condition, with required consent and recordings, and a recorded main-task outcome for every eligible started run. Missing outcomes prevent a verdict; they are not silently dropped. |
 | Pass bar | `U / N = 100%`, with `N >= 1` and the usable-evidence rule met. Any observed assisted or failed run prevents passing. |
-| Rationale | The essential flow should be achievable without coaching by every tested team. With the proposed single board team, the criterion is deliberately binary; a fractional percentage would imply more precision than the sample supports. This is a proposed acceptance target, not an empirical benchmark. |
+| Rationale | The essential flow should be achievable without coaching by every tested team. With the proposed single board team, the criterion is deliberately binary; a fractional percentage would imply more precision than the sample supports. This is a test acceptance target, not an empirical benchmark. |
 
 Report `U`, `N`, the number of distinct participants, missing outcomes, and the unrounded proportion in the existing main-task aggregate table in [results.md](results.md).
 If an otherwise eligible run has a missing outcome, report the QR statistic as unavailable until the evidence gap is resolved; retain the complete-case descriptive rate separately.
