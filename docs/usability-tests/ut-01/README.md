@@ -139,7 +139,19 @@ Product metric queries must include only events with `source=web`.
 Events with `source=usability-test` and `source=smoke` are excluded from product metrics.
 No new analytics event is required for this study; the observer records the actions not covered by the existing events.
 Before the first counted session, a team member must run and record a staging verification that confirms the participant/session link identifies the run, every analytics-pipeline test event carries `source=usability-test`, and no production data is written.
-The verification is a prerequisite for counting sessions and has not yet been completed.
+The team-run check is prepared by #338. The pre-session staging verification is tracked in [task #340](https://github.com/WellMadeTeam/workspace-ai-03/issues/340) and must pass before any counted session.
+
+### Team-run instrumentation check
+
+- **Date:** 2026-11-15.
+- **Environment:** Staging.
+- **Store:** Staging OpenPanel project.
+- **Events observed:** `board_opened`, `ai_block_created`, `connection_created`, `query_submitted`, and `query_failed`.
+- **Result:** The inspected `query_failed` event had `source=usability-test`, and its `board_id` matched the test board. No matching `query_failed` event was found in the production OpenPanel project.
+- **Coverage gap:** The LLM service provider failed during the run, so successful reply and context-reuse events were not verified.
+- **Follow-up:** Task [#340](https://github.com/WellMadeTeam/workspace-ai-03/issues/340) must verify the staging deployment before the first counted session.
+
+This team run is not a counted participant session.
 
 ## Analysis Plan
 
