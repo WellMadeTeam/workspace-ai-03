@@ -122,6 +122,27 @@ export function useBoardConnections(
         [refresh],
     );
 
+    const acceptCopies = useCallback(
+        (connections: Connection[]) => {
+            void refresh();
+            setEdges((current) => {
+                const copyIds = new Set(
+                    connections.map((connection) => connection.id),
+                );
+                return [
+                    ...current
+                        .filter((edge) => !copyIds.has(edge.id))
+                        .map((edge) => ({ ...edge, selected: false })),
+                    ...connections.map((connection) => ({
+                        ...toEdge(connection),
+                        selected: true,
+                    })),
+                ];
+            });
+        },
+        [refresh, setEdges],
+    );
+
     const widgetIdsKey = widgetIds.join(",");
     const visibleEdges = useMemo(() => {
         const known = new Set(widgetIdsKey.split(","));
@@ -135,6 +156,7 @@ export function useBoardConnections(
         onEdgesChange,
         error,
         addConnection,
+        acceptCopies,
         removeConnections,
     };
 }
