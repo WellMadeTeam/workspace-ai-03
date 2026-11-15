@@ -37,7 +37,36 @@ TODO: Task design and success criteria are being prepared in [task #311](https:/
 
 ## Protocol
 
-TODO: The fixed session protocol and observation sheet are being prepared in [task #311](https://github.com/WellMadeTeam/workspace-ai-03/issues/311). The Week 7 teammate dry run is not a counted session or evidence.
+Prepare the staging board before the participant arrives.
+Reset it to the same synthetic seed used for every session.
+Use staging only and make no real payment.
+Do not put staging credentials in this repository.
+
+Run every session in person on the university network.
+At least two team members take part in each session.
+The same facilitator runs every counted session.
+
+Follow these steps in order:
+
+1. Welcome the participant and explain the purpose of the session.
+2. Check that the participant has given consent and understands whether the session will be recorded.
+3. Ask the pre-test questions in [surveys.md](surveys.md).
+4. Ask the participant to think aloud while completing the tasks.
+5. Read each task scenario exactly as written in **The Tasks**.
+6. Let the participant work while the observer records task completion, time, difficulties, and any help given.
+7. After each task, ask the participant to answer its SEQ question in [surveys.md](surveys.md).
+8. After all tasks, ask the participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
+9. Debrief the participant and thank them.
+
+The facilitator may clarify the scenario but must not explain the interface or solve a task.
+The observer records what happened without directing the participant.
+Stop the session if the participant asks to stop or the team observes a critical or security-sensitive problem.
+Record the reason for stopping in the session note.
+A session stopped before its data is complete is not recorded as completed.
+
+Before the first counted session, verify that the test instrumentation works and sends data to the destination named in the test design.
+Confirm that the participant/session link identifies the run and that analytics test events carry `source=usability-test`.
+The teammate dry run is a rehearsal and is not a counted session.
 
 ## Measures
 
@@ -63,7 +92,11 @@ The SPRINT-07 teammate dry run is excluded from the recruitment count and result
 
 ## Roles
 
-TODO: Facilitator, observer, and captured-data custodian are to be named by GitHub username in the design review.
+| Role | Team member | Responsibility |
+| --- | --- | --- |
+| Facilitator | `@danmaninc` | Welcomes the participant, reads each task, and follows the protocol. |
+| Observer | `@Kamil116`, `@hrrrsss` | Records task completion, time, difficulties, and help given. |
+| Data custodian | `@AntonChulakov` | Stores consent records, identity mapping, raw notes, and recordings in the private locations. |
 
 ## Environment
 
