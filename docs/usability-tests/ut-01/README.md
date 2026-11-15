@@ -21,7 +21,8 @@ The usability requirement is [QR-06](../../quality-requirements/qr/QR-06.md), ch
 ## Participant Profile
 
 - **Role and task:** An adult who studies or works in software development or software architecture and has taken part in a team brainstorming task about a software problem.
-- **Familiarity:** Has used a conversational LLM for a work or study task at least once in the past six months. The pre-test records how often the participant uses conversational LLMs and similar collaborative whiteboards; prior use of this product is not required.
+- **Familiarity:** Has used a conversational LLM for a work or study task at least once in the past six months.
+  Prior use of this product or a collaborative whiteboard is not required; usage frequency is not collected.
 - **Device:** A laptop or desktop computer with a keyboard and a current browser, used in person on the university network. A phone-only session does not match the profile.
 - **Relation to the target user:** Directly represents a member of a software team who brainstorms with LLMs, as described by [VP-01](../../research/value-proposition.md#vp-01). A classmate outside the product team may qualify if they meet the same criteria.
 
@@ -29,7 +30,27 @@ The usability requirement is [QR-06](../../quality-requirements/qr/QR-06.md), ch
 
 The analysis plan proposes recruiting six people into two teams of three, one shared-board team and one control team; this allocation awaits review before counted sessions. Obtain at least three completed, counted participant sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
 
-Invite eligible classmates outside the team and people in the team's software-development or software-architecture networks to volunteer. Screen volunteers against the profile with the pre-test before scheduling; do not publish names or contact details. A session that fails to meet the profile is exploratory and is not counted.
+Invite eligible classmates outside the team and people in the team's software-development or software-architecture networks to volunteer.
+Confirm eligibility during recruitment using the checks below; do not publish names or contact details.
+A session that fails to meet the profile is exploratory and is not counted.
+
+### Recruitment eligibility check
+
+During recruitment, confirm only that the volunteer:
+
+- Declares they are 18 or older.
+- Is outside the product team and is not the customer, an instructor, or course staff.
+- Studies or works in software development or software architecture.
+- Has taken part in a team brainstorming task about a software problem.
+- Has used a conversational LLM for work or study at least once in the past six months.
+- Can attend in person on the university network using a laptop or desktop with a keyboard and a current browser; the team may provide the computer.
+
+Keep the eligibility confirmations under the participant code in the private usability-data repository, separate from contact details and the identity mapping.
+Do not collect exact ages, organization names, tool-use frequencies, expectations, or open-ended background answers.
+If the volunteer is under 18, stop recruitment and do not run a session.
+Confirm any missing or unclear eligibility information before scheduling a counted session; another unmet criterion makes a session exploratory only.
+The session note records the profile match and a sanitized description of the role, minimum LLM familiarity, and device.
+Eligibility checks do not replace durable consent or the session-readiness checks.
 
 ## The Tasks
 
@@ -82,15 +103,18 @@ Follow these steps in order:
 
 1. Welcome each participant and explain the purpose of the session.
 2. Check that each participant has given consent and understands whether the session will be recorded.
-3. Ask each participant the pre-test questions in [surveys.md](surveys.md).
-4. Ask participants to think aloud while completing the tasks together.
-5. Read each task scenario exactly as written in **The Tasks**.
-6. Let the team work while the observer records the shared task outcome, time, difficulties, and any help given once per team run.
-7. After each task, ask every participant to answer the SEQ question in [surveys.md](surveys.md).
-8. After all tasks, ask every participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
-9. Invite every participant to an optional run in the opposite condition on a different preselected topic; explain that declining or stopping it does not affect the primary session.
-10. If the team volunteers, confirm consent for the additional recording and follow the supplementary-run rules below.
-11. Debrief the participants and thank them.
+3. Ask participants to think aloud while completing the tasks together.
+4. Read each task scenario exactly as written in **The Tasks**.
+5. Let the team work while the observer records the shared task outcome, time, difficulties, and any help given once per team run.
+6. After each task, ask every participant to answer the SEQ question in [surveys.md](surveys.md).
+7. After all tasks, ask every participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
+8. Invite every participant to an optional run in the opposite condition on a different preselected topic; explain that declining or stopping it does not affect the primary session.
+9. If the team volunteers, confirm consent for the additional recording and follow the supplementary-run rules below.
+10. Debrief the participants and thank them.
+
+There is no pre-test questionnaire, following [DEC-048](../../decisions.md#dec-048).
+Eligibility is established during [recruitment](#recruitment-eligibility-check).
+The [Week 7 deviation](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-07/README.md#deviations) records the departure from the assignment's pre-test requirement.
 
 The facilitator may clarify the scenario but must not explain the interface or solve a task.
 The observer records what happened without directing the participant.
@@ -248,11 +272,12 @@ With only one board team, passing means that this team completed the task unaide
 ### Proposed recruitment and allocation for review
 
 This proposal would replace the current five-person recruitment target with six representative participants: two teams of three, one shared-board team and one control team.
-For the primary comparison, each person participates in one condition only and completes all three tasks in the existing order, with individual pre-test, SEQ, SUS, and post-test records.
+For the primary comparison, each person participates in one condition only and completes all three tasks in the existing order, with individual SEQ, SUS, and open-ended post-test records.
 Retain a separate participant session record and code for each person, linked to the shared team-run record; six people do not become six independent task outcomes.
 
-Before any task starts, form two teams of three using the pre-test familiarity answers to avoid concentrating all frequent LLM or collaborative-whiteboard users in one team where practical.
-Record the allocation basis privately and summarize relevant group differences without identities in the results.
+Before any task starts, draw the six eligible participant codes at random without replacement, assigning the first three to one team and the remaining three to the other.
+Record the draw and team membership privately before either run.
+No familiarity survey is collected or used to balance the teams, following [DEC-048](../../decisions.md#dec-048).
 Assign the two formed teams to conditions by a coin toss and record the assignment before either run; no participant switches conditions within the primary comparison.
 Use the same facilitator, task wording, limits, and observation method for both teams.
 Schedule replacements before the affected run starts, using the same eligibility criteria and a new participant code.
@@ -310,6 +335,7 @@ Exclude test events from product metrics and disclose all instrumentation covera
 ### Limitations
 
 In `results.md`, state participant counts, distinct team counts, run counts, team sizes, exclusions, and missing data in each condition, how participants relate to the target user, the in-person staging environment on the university network, and any task, measure, or event the team could not observe.
+Disclose that the pre-test was omitted under DEC-048: there is no baseline for expectations or detailed prior tool familiarity, and familiarity differences cannot be checked or balanced between conditions.
 Report missing observations with their valid `n`; do not fill gaps with estimates.
 Describe the findings as evidence from these sessions, not estimates for a wider population.
 
