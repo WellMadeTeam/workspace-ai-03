@@ -32,6 +32,25 @@ This draft records the AI use disclosed so far; the team must add any other AI u
 - **Data:** No participant identities, recordings, raw or sanitized usability-session notes, or test telemetry were supplied for this task.
   No participant answers, usability results, or usability findings were generated.
 
+## Block and connection copying (#354, PR #359)
+
+- **Tool:** Codex (OpenAI) through Orca, including a separate Codex reviewer coordinated through Orca orchestration.
+- **Purpose:** Inspect the issue and existing code, prepare the implementation plan, implement block copying and pasting, write regression tests and documentation, and prepare the commits and [PR #359](https://github.com/WellMadeTeam/workspace-ai-03/pull/359) for [#354](https://github.com/WellMadeTeam/workspace-ai-03/issues/354).
+- **Output:** Generated the backend copy endpoint, frontend clipboard behavior, tests, FR-025, feature documentation, changelog entry, and PR description.
+  The backend copies stored AI conversations and creates independent block, message, and connection identifiers.
+- **Use of output:** The user accepted the plan and extended it to copy a connection only when the connection itself and both endpoint blocks were selected.
+  The initial exclusion of connection copying was replaced because it no longer matched that requested scope.
+  The first AI review reproduced a save/clear race; Codex changed the save ordering, invalidated queued edits on clear, and added three regression tests.
+  Codex also accepted the reviewer's callback-naming suggestion for readability.
+  The second AI review reported no remaining actionable correctness or readability findings.
+  The implementation, frontend, and documentation were committed separately and published in PR #359; the AI reviews do not replace the required member approval.
+- **Verification and limits:** The local checks passed with 60 frontend tests and 42 backend tests, frontend lint and FSD checks, formatting, the production build, Markdown lint, and the MkDocs build.
+  The documentation build reported existing warnings, and the local external-link check encountered connection failures.
+  Live synchronization between two browsers was inspected in code rather than exercised manually.
+  The clipboard records selection and positions when copying; stored block content and conversation history are read when pasting.
+- **Data:** No participant identities, recordings, raw or sanitized usability-session notes, or test telemetry were supplied for this task.
+  No participant answers, usability results, or usability findings were generated.
+
 ## Tools
 
 - Codex (OpenAI).
