@@ -44,7 +44,7 @@ Copy this section into a new file named with the participant code, for example `
 - **Eligibility checked against surveys.md:** Yes / No
 - **Facilitator GitHub username:**
 - **Observer GitHub username:**
-- **Staging seed reset:** Yes / No
+- **Staging reset:** Yes / No
 
 ### Task results
 
