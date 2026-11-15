@@ -38,7 +38,7 @@ TODO: Task design and success criteria are being prepared in [task #311](https:/
 ## Protocol
 
 Prepare the staging board before the participant arrives.
-Reset it to the same synthetic seed used for every session.
+Reset it to the initial empty state.
 Use staging only and make no real payment.
 Do not put staging credentials in this repository.
 
