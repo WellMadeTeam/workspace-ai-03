@@ -140,7 +140,101 @@ The verification is a prerequisite for counting sessions and has not yet been co
 
 ## Analysis Plan
 
-TODO: The analysis plan is being prepared in [task #315](https://github.com/WellMadeTeam/workspace-ai-03/issues/315). No results or findings are claimed during the design week.
+Write and freeze this analysis plan, including the QR-06 measure and pass bar, before the first counted session.
+Do not change a measure or its scope after looking at participant data.
+
+### Analysis unit and conditions
+
+One counted session is one participant run, identified as `UT-01 P-nn`.
+Report results separately for the shared-board condition and the control condition that uses participants' usual tools.
+Show the number of valid sessions (`n`) for every statistic.
+Do not pool conditions when reporting product usability.
+
+### Participant-level table
+
+For each counted participant, record the condition, each task's `Unaided`, `Assisted`, or `Failed` outcome, the help given, elapsed time, the task's SEQ response, observer ease rating, and the SUS score.
+Keep this table in the private working analysis; publish only a sanitized version that contains participant codes and no identifying information.
+Use the task names and the start/end rules in [The Tasks](#the-tasks).
+
+### Quantitative measures
+
+Report the following for the shared-board and control conditions separately, with counts and valid `n`:
+
+- **Main task completion:** number and proportion of participants who reached the main task end state, regardless of whether help was needed.
+- **Main task unaided completion:** number and proportion who reached the main task end state without facilitator help.
+  The denominator is all counted participants who started the main task.
+- **Main task time on task:** median elapsed time in minutes, measured from the end of the scenario reading until the participant reaches the end state or the task time limit is reached.
+  Include failed attempts at their observed stopping time and label the outcome alongside the time.
+- **SEQ:** median score for each of the three tasks, with valid `n`; scores range from 1 (very difficult) to 7 (very easy).
+- **SUS:** mean and median of the valid scores, with `n=<count>` for each condition.
+  Calculate each participant's score from the ten recorded answers using the formula in [surveys.md](surveys.md); do not impute a missing answer or score.
+- **Observer ease rating:** report the count and distribution by task and condition as a separate observer measure; do not combine it with participant SEQ.
+
+For an even number of valid observations, calculate the median as the arithmetic mean of the two middle values after sorting.
+Round percentages to whole numbers and time medians to one decimal minute; retain unrounded values for the calculations.
+Do not make population claims from this small, non-random sample.
+
+### QR-06 measure and bar
+
+The proposed primary measure is the proportion of shared-board participants who complete the main task unaided.
+The proposed pass bar is at least 80% of counted participants who start the main task.
+This measure and bar require team confirmation in [#313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313) before the first counted session; after confirmation, copy the same statistic, scope, and bar into QR-06 and QRT-01.
+All other measures above remain analysis results and do not change the QR/QRT verdict.
+
+### Qualitative analysis and severity
+
+Review sanitized observation notes and think-aloud evidence from all counted sessions.
+Group recurring difficulties and observed benefits into a small set of themes, and list the participant codes that support each theme.
+Do not present one participant's remark as a theme.
+Keep direct quotes only when the participant separately consented to an anonymized quotation.
+
+Assign each finding one severity and state the reason in `results.md`:
+
+- **Critical:** the participant cannot safely continue or the product loses or exposes their work.
+- **Major:** the participant cannot reach a task end state without substantial facilitator help or cannot use a central part of the product.
+- **Minor:** the participant reaches the end state, but a difficulty, delay, or workaround makes the experience worse.
+
+### Instrumentation comparison
+
+For each task, compare the observation sheet with the staging analytics records linked to the same participant/session identifier.
+Record whether the events in [Instrumentation](#instrumentation) support the observed task outcome and time; compare observed tool switches and task assistance with notes where analytics cannot cover them.
+Use only events tagged `source=usability-test` and exclude them from product metrics.
+State which task or question has no instrumentation coverage, and do not infer participant success from an event alone.
+
+### Limitations
+
+In `results.md`, state the counted sample size and the number in each condition, how participants relate to the target user, the in-person staging environment on the university network, and any task, measure, or event the team could not observe.
+Report missing observations with their valid `n`; do not fill gaps with estimates.
+Describe the findings as evidence from these sessions, not estimates for a wider population.
+
+### Results, findings, and triage
+
+`results.md` is the run-week record; leave its result fields empty until sessions have been analyzed.
+Each finding uses the template below and a stable `#finding-n` anchor:
+
+```markdown
+### Finding 1
+
+- **Severity:** Critical / Major / Minor — reason
+- **Tasks:** task name; UT-01 P-nn codes
+- **Evidence:** sanitized observation or aggregate measure, linked to its evidence
+- **Recommendation:** proposed change or None
+- **Task issue:** issue link or None
+```
+
+Triage every finding by recording its severity, whether it creates a task, and its planned sprint.
+Schedule significant work in SPRINT-08; do not invent a finding or task before seeing the session evidence.
+If a finding becomes a task issue, link that issue from the finding and link the finding anchor from the issue.
+
+### Evidence map
+
+- The public product repository contains this plan, sanitized session notes, aggregate results, and findings without participant identity or private access details.
+- The private usability-data repository holds consent records, the identity mapping, raw notes, the filtered test telemetry, and working calculations and themes.
+- The team-owned recordings folder holds session recordings; keep its access link and instructions in the private repository and Moodle, not in this public repository.
+- The Moodle submission carries the private repository access details, the recordings-folder access details, and the archive fallback if instructors cannot access GitHub.
+- Never send participant identities, consent records, or raw notes to an external generative AI service.
+
+The analysis plan is prepared before the first counted session; no results or findings are claimed during the design week.
 
 ## Schedule
 
