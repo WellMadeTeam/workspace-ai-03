@@ -60,7 +60,7 @@ Record any other help.
 
 ### Secondary usability test task 2: Create a diagram of the ideas
 
-- **Scenario:** Create a diagram that summarizes the selected design and shows how its main parts relate to each other.
+- **Scenario:** Create a diagram that summarizes the selected design and shows how its main parts relate to each other using LLM.
 - **Start state:** The team's selected design and brainstormed ideas are available.
 - **Time limit:** 10 minutes.
 - **End state:** The team has created a diagram and made it available in its shared workspace.
