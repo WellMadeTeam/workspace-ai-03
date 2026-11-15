@@ -4,7 +4,7 @@
 
 Before the participant arrives:
 
-- Reset the staging board to the same synthetic seed used for every session.
+- Reset the staging board to the initial empty state.
 - Confirm that staging is reachable from a machine on the university network.
 - Prepare the consent form, capturing method, pre-test, task scenarios, and observation sheet.
 - Keep staging credentials out of this repository.
