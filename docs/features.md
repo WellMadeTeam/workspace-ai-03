@@ -10,6 +10,13 @@ You can open a [board](glossary.md#board) and see its [blocks](glossary.md#block
 **Behavior:** [FR-001](functional-requirements/fr/FR-001.md), [FR-002](functional-requirements/fr/FR-002.md), [FR-003](functional-requirements/fr/FR-003.md), [FR-004](functional-requirements/fr/FR-004.md)
 **Decisions:** [ADR-001](architecture/adr/ADR-001.md), [ADR-002](architecture/adr/ADR-002.md)
 
+## Copy blocks and connections
+
+You can copy selected [blocks](glossary.md#block) and [connections](glossary.md#connection) into independent copies on the same [board](glossary.md#board), preserving each [AI block](glossary.md#ai-block)'s conversation.
+
+- **Stories:** [US-01](https://github.com/WellMadeTeam/workspace-ai-03/issues/37)
+- **Behavior:** [FR-025](functional-requirements/fr/FR-025.md), [FR-003](functional-requirements/fr/FR-003.md)
+
 ## Ask the LLM a question
 
 You can send a [query](glossary.md#query) from an [AI block](glossary.md#ai-block) and see its [reply](glossary.md#reply).

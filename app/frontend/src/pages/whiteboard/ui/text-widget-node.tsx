@@ -3,11 +3,9 @@ import { useReactFlow } from "@xyflow/react";
 import { MAX_TITLE_LENGTH } from "../config/widget-title";
 import { editableFieldClassName, useFocusOnEdit } from "../lib/editable-field";
 import { SaveWidgetContext } from "../model/save-widget";
+import { useTextContent } from "../model/use-text-content";
 import type { TextWidgetData, WidgetNode } from "../model/widget-node";
 import { MarkdownContent } from "./markdown-content";
-
-// Wait for a pause in typing before saving the text to the server.
-const SAVE_CONTENT_DELAY_MS = 500;
 
 type TextWidgetNodeProps = {
     id: string;
@@ -18,7 +16,7 @@ type TextWidgetNodeProps = {
 export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
     const { updateNodeData } = useReactFlow<WidgetNode>();
     const saveWidget = use(SaveWidgetContext);
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    const textContent = useTextContent(id, data.content);
     const titleInputRef = useRef<HTMLInputElement>(null);
     // The text becomes editable only after a double click, like the AI block's
     // title. A single click (or Shift/Cmd/Ctrl-click) only selects the block,
@@ -28,7 +26,7 @@ export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [titleDraft, setTitleDraft] = useState("");
 
-    useFocusOnEdit(textAreaRef, isEditing);
+    useFocusOnEdit(textContent.ref, isEditing);
     useFocusOnEdit(titleInputRef, isEditingTitle);
 
     const startEditingTitle = () => {
@@ -83,15 +81,9 @@ export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
             />
             {isEditing ? (
                 <textarea
-                    ref={textAreaRef}
+                    {...textContent}
                     className={`${editableFieldClassName(true)} min-h-12 resize-none field-sizing-content`}
                     aria-label="Text block content"
-                    value={data.content}
-                    onChange={(event) => {
-                        const content = event.target.value;
-                        updateNodeData(id, { content });
-                        saveWidget(id, { content }, SAVE_CONTENT_DELAY_MS);
-                    }}
                     onBlur={() => setIsEditing(false)}
                     onKeyDown={(event) => {
                         if (event.key === "Escape") event.currentTarget.blur();

@@ -126,7 +126,7 @@ Do not count a session without the required consent or capture, or one that is t
 A participant who cannot complete a task still counts, because that outcome is evidence.
 If a participant withdraws, remove their raw notes and captured data and retire their code.
 
-Keep consent records, the identity mapping, raw notes, working analysis, and the test's filtered telemetry export in the private usability-data repository.
+Keep consent records, the identity mapping, raw notes, working analysis, and the test's filtered telemetry export in the [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) (GitHub sign-in and granted team/instructor access required).
 Keep session-capture data in the team-owned cloud folder shared with instructors.
 The private repository, its history, captured data, and copies held by tools are deleted after the course is graded; the sanitized public record remains.
 Publish only sanitized session notes and aggregate results; keep identities, access instructions, and private folder links out of this repository.
@@ -134,7 +134,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 ## Evidence Map
 
 - The public repository contains this sanitized test design and, after the sessions, sanitized session notes and results.
-- The private usability-data repository holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export.
+- The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
 - The Week 7 report links the public profile and session plan and claims no usability result.

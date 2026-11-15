@@ -56,3 +56,7 @@ https://www.producthunt.com/products/vokal-2
 
 # TeamAI returns 403 during CI for unknown reasons.
 https://platform.teamai.com
+
+# Private usability-data repository: requires GitHub sign-in and granted access.
+# Repository availability and private visibility verified via authenticated GitHub API on 2026-11-15.
+^https://github\.com/WellMadeTeam/workspace-ai-03-usability-data/?$
