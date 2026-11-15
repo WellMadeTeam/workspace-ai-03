@@ -27,7 +27,7 @@ The usability requirement is `QR-06`, being specified in [TODO: task #313](https
 
 ### Recruitment target
 
-Recruit five people as the design target and obtain at least three completed, counted sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
+The analysis plan proposes recruiting six people into two teams of three, one shared-board team and one control team; this allocation awaits review before counted sessions. Obtain at least three completed, counted participant sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
 
 Invite eligible classmates outside the team and people in the team's software-development or software-architecture networks to volunteer. Screen volunteers against the profile with the pre-test before scheduling; do not publish names or contact details. A session that fails to meet the profile is exploratory and is not counted.
 
@@ -74,20 +74,23 @@ Use staging only.
 Do not put staging credentials in this repository.
 
 Run every session in person on the university network.
-At least two team members take part in each session.
+At least two study team members take part in each session as facilitator and observer.
+The proposed comparison uses three participants per task team; confirm its allocation before counted sessions.
 The same facilitator runs every counted session.
 
 Follow these steps in order:
 
-1. Welcome the participant and explain the purpose of the session.
-2. Check that the participant has given consent and understands whether the session will be recorded.
-3. Ask the pre-test questions in [surveys.md](surveys.md).
-4. Ask the participant to think aloud while completing the tasks.
+1. Welcome each participant and explain the purpose of the session.
+2. Check that each participant has given consent and understands whether the session will be recorded.
+3. Ask each participant the pre-test questions in [surveys.md](surveys.md).
+4. Ask participants to think aloud while completing the tasks together.
 5. Read each task scenario exactly as written in **The Tasks**.
-6. Let the participant work while the observer records task completion, time, difficulties, and any help given.
-7. After each task, ask the participant to answer its SEQ question in [surveys.md](surveys.md).
-8. After all tasks, ask the participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
-9. Debrief the participant and thank them.
+6. Let the team work while the observer records the shared task outcome, time, difficulties, and any help given once per team run.
+7. After each task, ask every participant to answer the SEQ question in [surveys.md](surveys.md).
+8. After all tasks, ask every participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
+9. Invite every participant to an optional run in the opposite condition on a different preselected topic; explain that declining or stopping it does not affect the primary session.
+10. If the team volunteers, confirm consent for the additional recording and follow the supplementary-run rules below.
+11. Debrief the participants and thank them.
 
 The facilitator may clarify the scenario but must not explain the interface or solve a task.
 The observer records what happened without directing the participant.
@@ -140,7 +143,188 @@ The verification is a prerequisite for counting sessions and has not yet been co
 
 ## Analysis Plan
 
-TODO: The analysis plan is being prepared in [task #315](https://github.com/WellMadeTeam/workspace-ai-03/issues/315). No results or findings are claimed during the design week.
+Write and freeze this analysis plan, including the QR-06 measure and pass bar, before the first counted session.
+Do not change a measure or its scope after looking at participant data.
+
+### Analysis units and conditions
+
+The tasks are completed by teams, while each participant answers their own SEQ and SUS.
+Assign an anonymous team-run key to each team's attempt of the three tasks and associate each `UT-01 P-nn` with that run and its condition in the private records.
+Record team membership and condition before the run starts.
+Record team outcome, help, elapsed time, and observer rating once per task per team run.
+Do not turn one team's successful attempt into several independently successful participant attempts.
+
+Report the shared-board and control conditions separately.
+For every summary, state whether `n` counts team runs, participants, or observer ratings, and show missing and excluded counts separately.
+Report team sizes and the number of distinct teams as well as the number of runs; repeated attempts by one team are not independent teams.
+If there is only one team run in a condition, show its observed values and do not describe the contrast as a general effect of the product.
+Participant questionnaires from the same team are also related observations.
+
+### Source tables
+
+Use one team-task row for each run and task, with condition, shared outcome, help, elapsed time, and a link to the sanitized session evidence.
+Use one participant-task row for each participant and task, with the team-run key, condition, shared outcome and help referenced from the team-task row, individual SEQ, and that participant's tool-switch count and observation duration.
+The shared outcome in the participant table describes the team's result, not an independently assessed individual success.
+Calculate completion and time aggregates from the team-task table only.
+Store one SUS score per participant after all tasks and one observer-rating row per observer, team run, and task.
+Use the task names in [The Tasks](#the-tasks); never treat a missing value as zero or an unattempted task as a failure.
+
+### Quantitative measures
+
+Report these descriptive measures separately by condition:
+
+- **Main task completion:** `(Unaided + Assisted) / N` and the corresponding count and percentage, where `N` is the number of eligible team runs that started the main task and have a recorded outcome.
+- **Main task unaided completion:** `Unaided / N`, with the same denominator.
+  A failed task remains in `N`; do not exclude it because the team did not finish.
+  Report runs with missing outcomes separately, so a complete-case rate is never presented as the rate for all recruited runs.
+- **Task time:** median elapsed minutes for each task across team runs with a valid duration, including failed attempts.
+  Start timing when the facilitator finishes reading the scenario and invites the team to begin; stop at the defined end state, the team's decision to abandon the task, or its time limit, whichever comes first.
+  An abandoned task is `Failed`; record the reason and elapsed time.
+  Report completed and failed durations alongside the combined median so an early failure is not mistaken for efficient completion.
+- **Task help:** counts of `Unaided`, `Assisted`, and `Failed` by task and condition, with help descriptions linked to the notes.
+- **SEQ:** median valid participant score for each task, with the number of responses and contributing team runs.
+  Accept only recorded values from 1 to 7; do not pool the three tasks into a single SEQ score.
+- **SUS:** mean and median of valid participant scores, with participant and team-run counts.
+  Use all ten answers and the formula in [surveys.md](surveys.md); an incomplete questionnaire has no calculated SUS score and is reported as missing.
+- **Observer ease rating:** the frequency of each score from 1 to 7 by task and condition, with observer-rating and team-run counts.
+  Identify the observer by team GitHub username; if multiple observers rate one run, retain their separate ratings rather than treating them as separate runs or participant SEQ responses.
+
+For an even number of observations, the median is the mean of the two middle sorted values.
+With no valid observations, report `Not available (n=0)` rather than a numeric result.
+Round displayed percentages to whole numbers and durations to one decimal minute; keep unrounded values for calculations and any agreed QR comparison.
+
+### Tool-switch analysis and condition comparison
+
+For each participant and task, the observer counts each move from one application or tool to another, using the definition in Measures.
+Observe the same task interval used for timing in both conditions and record its duration.
+A participant's switch is counted once; do not multiply it by the number of teammates who see it.
+For each team-task run, sum the participants' observed switch counts and their observed durations in minutes, then calculate switches per observed participant-minute as `total switches / total observed participant-minutes`.
+Retain each participant's count and duration so the total can be checked.
+If any participant's interval is incompletely observed, record a coverage gap and exclude that team-task run from the rate summary rather than treating unobserved switches as zero.
+A zero or missing observation duration produces no rate.
+
+Report each team-task total and rate, then the median total and median rate by task and condition with valid team-run counts.
+The rate accounts for different task durations and team sizes; also show raw totals, completion outcomes, and durations so an early failure or a small team cannot appear beneficial solely through fewer switches.
+For each task, report the descriptive difference `shared-board median rate - control median rate` only when both medians exist.
+A negative difference means fewer observed switches per participant-minute in these runs; it does not establish causation or a population effect.
+Show task outcome, time, help, SEQ, observer ratings, and SUS summaries side by side by condition; do not pool conditions or run significance tests on this small study.
+
+### QR-06 decision before counted sessions
+
+The following is a concrete proposal for team review, not an approved QR or permission to start counted sessions.
+Accept or revise it in this PR before collecting participant data, then carry the agreed definition into QR-06/QRT-01 through [#313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313).
+The earlier 80% participant-completion proposal remains withdrawn.
+
+| Item | Proposed definition |
+| --- | --- |
+| Characteristic | Interaction Capability / Operability: whether a team can reach the main task's end state without facilitator help. |
+| Measure | Main-task unaided team completion, `U / N`, in the shared-board condition only. |
+| Numerator `U` | Eligible team runs recorded as `Unaided`: at least two design ideas recorded and one selected within 30 minutes, without facilitator help. |
+| Denominator `N` | All eligible shared-board team runs that start the main task; `Assisted`, `Failed`, and abandoned attempts remain in the denominator. |
+| Usable evidence | At least three distinct representative participants in the shared-board condition, with required consent and recordings, and a recorded main-task outcome for every eligible started run. Missing outcomes prevent a verdict; they are not silently dropped. |
+| Pass bar | `U / N = 100%`, with `N >= 1` and the usable-evidence rule met. Any observed assisted or failed run prevents passing. |
+| Rationale | The essential flow should be achievable without coaching by every tested team. With the proposed single board team, the criterion is deliberately binary; a fractional percentage would imply more precision than the sample supports. This is a proposed acceptance target, not an empirical benchmark. |
+
+Report `U`, `N`, the number of distinct participants, missing outcomes, and the unrounded proportion in the existing main-task aggregate table in [results.md](results.md).
+If an otherwise eligible run has a missing outcome, report the QR statistic as unavailable until the evidence gap is resolved; retain the complete-case descriptive rate separately.
+A run excluded for invalid consent, withdrawal, missing recording, or technical failure is disclosed with its reason and is not silently replaced by a successful attempt.
+Task failure alone never makes a run ineligible.
+Do not rerun a failed attempt to replace its outcome or recruit additional teams after inspecting outcomes to reach the bar.
+The control condition and all other measures remain descriptive and do not determine this QR verdict.
+With only one board team, passing means that this team completed the task unaided; it does not establish individual operability or a population success rate.
+
+### Proposed recruitment and allocation for review
+
+This proposal would replace the current five-person recruitment target with six representative participants: two teams of three, one shared-board team and one control team.
+For the primary comparison, each person participates in one condition only and completes all three tasks in the existing order, with individual pre-test, SEQ, SUS, and post-test records.
+Retain a separate participant session record and code for each person, linked to the shared team-run record; six people do not become six independent task outcomes.
+
+Before any task starts, form two teams of three using the pre-test familiarity answers to avoid concentrating all frequent LLM or collaborative-whiteboard users in one team where practical.
+Record the allocation basis privately and summarize relevant group differences without identities in the results.
+Assign the two formed teams to conditions by a coin toss and record the assignment before either run; no participant switches conditions within the primary comparison.
+Use the same facilitator, task wording, limits, and observation method for both teams.
+Schedule replacements before the affected run starts, using the same eligibility criteria and a new participant code.
+If six eligible participants cannot be recruited, revise and review the design before counted sessions rather than silently using smaller groups.
+
+This allocation provides three product users for the manual QR test and equally sized groups for a descriptive comparison, but only one independent team per condition.
+Differences in team composition, prior familiarity, and group dynamics remain confounded with condition; no causal advantage of the product can be inferred.
+The course defines individual participant outcomes, while the current team tasks supply shared outcomes; the team must confirm this adaptation with the customer/instructor and record any required deviation before treating the design as course-complete.
+
+### Optional supplementary run
+
+After completing the primary session, invite each team to an optional run in the opposite condition on a different brainstorming topic: the shared-board team may try its usual tools, and the control team may try the shared board.
+Prepare that topic before counted sessions and keep the task structure, time limits, and observation method the same; record the topic and any departures from the primary protocol.
+Invite the team regardless of its primary outcome, and confirm that consent covers the additional recording and data collection.
+Declining or stopping this optional run does not invalidate the completed primary session or its evidence.
+If anyone declines, do not pressure them or treat them as a participant in the supplementary run; record the actual team composition if the remaining volunteers proceed.
+
+Assign a new team-run key linked to the original run, retain the existing participant codes, and label it `Supplementary`.
+Record whether it was completed, stopped early, or not started; a stopped run remains partial evidence, not a completed counted session.
+Store its observations separately in the supplementary results table, including any separately collected questionnaire responses.
+Exclude it from primary outcome, time, tool-switch, SEQ, and SUS aggregates, from the QR numerator and denominator, and from recruitment counts.
+It does not replace either primary team or create an independent comparison group.
+For an optional shared-board run, use a separate staging board and retain its telemetry outside the primary instrumentation comparison.
+Interpret it descriptively, noting prior task exposure, the changed topic, voluntary participation, and any change in team composition.
+Do not treat a repeated observation from the same participant as independent support for a theme.
+
+Freeze the analysis methods, primary allocation, supplementary protocol, and QR bar before the first counted session; do not change them after inspecting outcomes to obtain a passing result.
+
+### Qualitative analysis and severity
+
+Review sanitized observation notes and think-aloud evidence from all counted sessions.
+Group recurring difficulties and observed benefits into a small set of themes, and list the participant codes that support each theme.
+Do not present one participant's remark as a theme.
+Keep direct quotes only when the participant separately consented to an anonymized quotation.
+
+Assign each finding one severity and state the reason in `results.md`:
+
+- **Critical:** the participant cannot safely continue or the product loses or exposes their work.
+- **Major:** the participant cannot reach a task end state without substantial facilitator help or cannot use a central part of the product.
+- **Minor:** the participant reaches the end state, but a difficulty, delay, or workaround makes the experience worse.
+
+### Instrumentation comparison
+
+For the board condition only, use the private mapping from the team-run key to opaque `board_id` and the task's recorded start/end timestamps to select staging OpenPanel events with `source=usability-test`.
+Compare `board_opened`, `ai_block_created`, `query_submitted`, and `reply_received` with the main task notes; compare `context_reuse_query_submitted`, `context_reuse_reply_received`, and `query_failed` with secondary task 1; compare `query_submitted` and `reply_received` with secondary task 2.
+For each team run and task, list the expected event names and which were found in the selected telemetry, with supporting evidence and discrepancies.
+Only expect events whose triggering actions occurred; distinguish an action not attempted from a missing event and from telemetry that could not be inspected.
+These events can corroborate product actions, but they do not establish task success, facilitator help, tool switches, or that a diagram was rendered and shared.
+Use the observer's end-state evidence and timings for those measures; do not substitute request latency for task duration.
+
+The control condition produces no product analytics events; compare its observation sheets with its session evidence and mark product-event coverage as not applicable.
+Do not classify the absence of control telemetry as an export failure.
+Exclude test events from product metrics and disclose all instrumentation coverage gaps.
+
+### Limitations
+
+In `results.md`, state participant counts, distinct team counts, run counts, team sizes, exclusions, and missing data in each condition, how participants relate to the target user, the in-person staging environment on the university network, and any task, measure, or event the team could not observe.
+Report missing observations with their valid `n`; do not fill gaps with estimates.
+Describe the findings as evidence from these sessions, not estimates for a wider population.
+
+### Results, findings, and triage
+
+`results.md` is the run-week record; leave its result fields empty until sessions have been analyzed.
+Each finding uses the template below and a stable `#finding-n` anchor:
+
+```markdown
+### Finding 1
+
+- **Severity:** Critical / Major / Minor — reason
+- **Tasks:** task name; UT-01 P-nn codes
+- **Evidence:** sanitized observation or aggregate measure, linked to its evidence
+- **Recommendation:** proposed change or None
+- **Task issue:** issue link or None
+```
+
+Triage every finding by recording its severity, whether it creates a task, and its planned sprint.
+When significant findings exist, schedule at least one resulting task in SPRINT-08; record a reason and planned sprint for any deferred finding.
+Do not invent a finding or task before seeing the session evidence.
+Product tasks must link their story and acceptance criterion and name the relevant FR or ADR; a defect must not use `None: repository upkeep`.
+If a finding becomes a task issue, link that issue from the finding and link the finding anchor from the issue.
+
+The public and private artifact locations are defined in [Evidence Map](#evidence-map).
+
+This draft records the analysis methods before the first counted session; the QR decision above remains open and no results or findings are claimed.
 
 ## Schedule
 
@@ -198,6 +382,8 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
 - The Week 7 report links the public profile and session plan and claims no usability result.
+- The Moodle submission carries the private repository and recordings-folder access instructions and the private text-archive fallback if instructors cannot access GitHub.
+- Never send participant identities, consent records, or raw notes to an external generative AI service.
 
 ## Results
 
