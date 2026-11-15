@@ -210,4 +210,3 @@ The System Usability Scale, a ten-statement questionnaire that each participant 
 The Single Ease Question, which each participant answers on a seven-point scale after each task to say how difficult or easy it was, where 1 is very difficult and 7 is very easy.
 
 **Defined by:** [the `UT-01` surveys](usability-tests/ut-01/surveys.md#seq-after-each-task).
-
