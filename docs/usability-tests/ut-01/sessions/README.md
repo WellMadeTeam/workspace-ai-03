@@ -39,7 +39,7 @@ Copy this section into a new file named with the participant code, for example `
 - **Participant code:**
 - **Date:** Keep the date private if it could identify the participant.
 - **Profile matched:** Yes / No
-- **Consent and recording check completed:** Yes / No
+- **Consent and capturing check completed:** Yes / No
 - **Pre-test completed and stored privately:** Yes / No
 - **Eligibility checked against surveys.md:** Yes / No
 - **Facilitator GitHub username:**
