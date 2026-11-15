@@ -4,6 +4,7 @@ import { MAX_TITLE_LENGTH } from "../config/widget-title";
 import { editableFieldClassName, useFocusOnEdit } from "../lib/editable-field";
 import { SaveWidgetContext } from "../model/save-widget";
 import type { TextWidgetData, WidgetNode } from "../model/widget-node";
+import { MarkdownContent } from "./markdown-content";
 
 // Wait for a pause in typing before saving the text to the server.
 const SAVE_CONTENT_DELAY_MS = 500;
@@ -80,24 +81,35 @@ export function TextWidgetNode({ id, data, selected }: TextWidgetNodeProps) {
                         event.currentTarget.blur();
                 }}
             />
-            <textarea
-                ref={textAreaRef}
-                className={`${editableFieldClassName(isEditing)} min-h-12 resize-none field-sizing-content`}
-                readOnly={!isEditing}
-                tabIndex={isEditing ? 0 : -1}
-                placeholder="Type something…"
-                aria-label="Text block content"
-                value={data.content}
-                onChange={(event) => {
-                    const content = event.target.value;
-                    updateNodeData(id, { content });
-                    saveWidget(id, { content }, SAVE_CONTENT_DELAY_MS);
-                }}
-                onBlur={() => setIsEditing(false)}
-                onKeyDown={(event) => {
-                    if (event.key === "Escape") event.currentTarget.blur();
-                }}
-            />
+            {isEditing ? (
+                <textarea
+                    ref={textAreaRef}
+                    className={`${editableFieldClassName(true)} min-h-12 resize-none field-sizing-content`}
+                    aria-label="Text block content"
+                    value={data.content}
+                    onChange={(event) => {
+                        const content = event.target.value;
+                        updateNodeData(id, { content });
+                        saveWidget(id, { content }, SAVE_CONTENT_DELAY_MS);
+                    }}
+                    onBlur={() => setIsEditing(false)}
+                    onKeyDown={(event) => {
+                        if (event.key === "Escape") event.currentTarget.blur();
+                    }}
+                />
+            ) : (
+                <div
+                    className="min-h-12 cursor-text"
+                    aria-label="Text block content"
+                    onDoubleClick={() => setIsEditing(true)}
+                >
+                    {data.content ? (
+                        <MarkdownContent content={data.content} />
+                    ) : (
+                        <span className="opacity-50">Type something…</span>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

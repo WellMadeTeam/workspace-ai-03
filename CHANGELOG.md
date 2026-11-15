@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- Render basic Markdown formatting in text blocks and AI conversation messages while keeping the original text editable and Mermaid diagrams working.
+
 ## [0.4.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.4.0) - 2026-11-09
 
 ### Added
