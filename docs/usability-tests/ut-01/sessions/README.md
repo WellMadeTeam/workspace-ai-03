@@ -61,9 +61,16 @@ Copy this section into a new file named with the participant code, for example `
 
 ### Open-ended post-test
 
-- **Overall impression:**
-- **What would the participant change?**
-- **What did we not ask that we should have?**
+Ask these questions in the same order as in [surveys.md](../surveys.md):
+
+1. What is your overall impression of using Workspace for AI Collaboration across the tasks you just tried?
+2. What did you find most useful about Workspace for AI Collaboration?
+3. What was the biggest obstacle or frustration for you?
+4. What, if anything, would you change about the experience, and why?
+5. What else about your experience would you like to share that we have not asked about?
+
+Keep raw answers in the approved private location.
+Publish only sanitized notes, according to the participant's consent.
 
 ### Debrief and stop record
 
