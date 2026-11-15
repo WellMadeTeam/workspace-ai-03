@@ -6,7 +6,7 @@ Before the participant arrives:
 
 - Reset the staging board to the same synthetic seed used for every session.
 - Confirm that staging is reachable from a machine on the university network.
-- Prepare the consent form, recording method, pre-test, task scenarios, and observation sheet.
+- Prepare the consent form, capturing method, pre-test, task scenarios, and observation sheet.
 - Keep staging credentials out of this repository.
 
 At least two team members take part in each session.
