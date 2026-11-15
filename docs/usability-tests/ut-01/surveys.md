@@ -24,15 +24,17 @@ Do not request names, contact details, organization names, exact ages, or other 
    Choose one: Never / Less than once a month / At least once a month but less than once a week / At least once a week but not every day / Every day.
 7. **Have you used Workspace for AI Collaboration before?**
    Choose one: Yes / No / Not sure.
-8. **Which device will you use for this session?**
-   Choose one: Laptop / Desktop computer / Tablet / Phone / Other.
+8. **Will you be able to use a laptop for this session?**
+   Choose one: Yes / No.
 9. **What would you expect a shared board to help you do during a brainstorming session with an LLM?**
    Give an open response without names, organization details, or other identifying information.
+10. **Which tools have you used previously during your brainstorming sessions, if any?**
+    Give an open response without names, organization details, or other identifying information.
 
 ### Eligibility And Recording
 
-A counted participant must answer Yes to questions 1 and 4, No to question 2, select at least one software-related study or work option in question 3, report some LLM use in question 5, and use a laptop or desktop in question 8.
-Before the session, the facilitator confirms that the chosen device has a keyboard and a current browser and that the session can run in person on the university network.
+A counted participant must answer Yes to questions 1, 4, and 8, No to question 2, select at least one software-related study or work option in question 3, and report some LLM use in question 5.
+Before the session, the facilitator confirms that the laptop has a keyboard and a current browser and that the session can run in person on the university network.
 Whiteboard familiarity and prior use of this product are background information, not eligibility conditions.
 
 If question 1 is answered No, stop the screening and do not run the session.
@@ -40,7 +42,7 @@ If another eligibility condition is not met, do not count the session towards UT
 If an eligibility answer is missing or unclear, confirm it before accepting the person for a counted session.
 This screening does not replace the consent and session-readiness checks in the UT-01 record.
 
-Record both the selected options and the open response to question 9 in the private usability-data repository.
+Record the selected options and the open responses to questions 9 and 10 in the private usability-data repository.
 For a scheduled participant, use their assigned `UT-01 P-nn` code; keep screening responses private and keep contact details and the identity mapping separate from survey answers.
 Mark missing responses as missing and never infer an answer.
 If an answer contains identifying details, omit those details from the survey record while preserving the non-identifying meaning of the answer.
