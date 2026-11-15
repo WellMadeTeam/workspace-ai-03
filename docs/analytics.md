@@ -24,7 +24,7 @@ The focus metric depends on several inputs: teams need to start the core task, r
 Query attempts and replies available for reuse are nearer-term inputs the team can influence.
 The focus metric is measurable from opaque board identifiers and events that record query submission and reply delivery without collecting query or answer text.
 The proposed events do not establish that the member who reuses an answer differs from the member whose query produced it, so this metric does not by itself prove cross-member collaboration.
-It may have no value until people outside the team use the product; team smoke events are excluded, and internal development activity is not evidence that the product's value proposition works for customers.
+It may have no value until people outside the team use the product; team smoke events and usability-test events are excluded, and internal development activity is not evidence that the product's value proposition works for customers.
 The metric is a hypothesis about value and is not evidence by itself that customers retain or pay for the product.
 
 The focus metric is checked against the seven North Star Framework criteria:
@@ -34,7 +34,7 @@ The focus metric is checked against the seven North Star Framework criteria:
 - **Is a leading indicator of success:** repeated completed flows may indicate that teams find the core workflow useful before longer-term retention is observable; usability evidence must validate that interpretation.
 - **Is actionable:** the team can improve context selection, query flow, and collaboration to help more boards complete it.
 - **Is understandable to non-technical partners:** it counts boards that complete the reuse flow in a week.
-- **Is measurable:** the event stream records the flow with an opaque board identifier and excludes `source=smoke`.
+- **Is measurable:** the event stream records the flow with an opaque board identifier and excludes events with `source=smoke` and `source=usability-test`.
 - **Is not a vanity metric:** each counted board completed the core reuse behavior rather than merely opening the product or generating traffic, though the count alone cannot show whether the reuse helped the team.
 
 Rejected as a vanity metric: total page views, because reloads and internal checks can raise the count without showing that a team reused an answer.
@@ -46,8 +46,8 @@ Count each board once in the window.
 
 **Source:** [`context_reuse_query_submitted`](#the-events) and [`context_reuse_reply_received`](#the-events), correlated by `query_id` and grouped by the opaque `board_id`.
 
-**Query:** Count distinct `board_id` values from `context_reuse_reply_received` in the last seven days, where `source != 'smoke'`.
-In OpenPanel, the report counts the event `context_reuse_reply_received` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**, because each event's group is its `board_id`.
+**Query:** Count distinct `board_id` values from `context_reuse_reply_received` in the last seven days, where `source = 'web'`.
+In OpenPanel, the report counts the event `context_reuse_reply_received` with the segment **Unique groups**, the filter `source` is `web`, the range **Last 7 days**, and the chart type **Metric**, because each event's group is its `board_id`.
 This metric is computed by the query, not counted by hand.
 
 ### Context-reuse query failure rate
@@ -56,7 +56,8 @@ This metric is computed by the query, not counted by hand.
 
 **Source:** [`context_reuse_query_submitted`](#the-events) and [`query_failed`](#the-events), correlated by `query_id`; `query_failed` carries `has_ai_context=true` when the failed query used an earlier AI reply as context.
 
-**Query:** Count failed context-reuse query IDs in the last seven days, divide by all submitted context-reuse query IDs in the same window, and multiply by 100; exclude events where `source = 'smoke'`.
+**Query:** Count failed context-reuse query IDs with `source = 'web'` in the last seven days.
+Divide that number by all submitted context-reuse query IDs with `source = 'web'` in the same window and multiply by 100.
 
 ### Weekly context-reuse query attempts
 
@@ -64,8 +65,8 @@ This metric is computed by the query, not counted by hand.
 
 **Source:** [`context_reuse_query_submitted`](#the-events), grouped by the opaque `board_id`.
 
-**Query:** Count distinct `board_id` values from `context_reuse_query_submitted` in the last seven days, where `source != 'smoke'`.
-In OpenPanel, the report counts the event `context_reuse_query_submitted` with the segment **Unique groups**, the filter `source` is not `smoke`, the range **Last 7 days**, and the chart type **Metric**.
+**Query:** Count distinct `board_id` values from `context_reuse_query_submitted` in the last seven days, where `source = 'web'`.
+In OpenPanel, the report counts the event `context_reuse_query_submitted` with the segment **Unique groups**, the filter `source` is `web`, the range **Last 7 days**, and the chart type **Metric**.
 
 ### Weekly core-task query attempts
 
@@ -73,7 +74,7 @@ In OpenPanel, the report counts the event `context_reuse_query_submitted` with t
 
 **Source:** [`query_submitted`](#the-events), grouped by the opaque `board_id`.
 
-**Query:** Count distinct `board_id` values from `query_submitted` in the last seven days, where `source != 'smoke'`.
+**Query:** Count distinct `board_id` values from `query_submitted` in the last seven days, where `source = 'web'`.
 
 ### Weekly boards with replies available for reuse
 
@@ -81,13 +82,15 @@ In OpenPanel, the report counts the event `context_reuse_query_submitted` with t
 
 **Source:** [`reply_received`](#the-events), grouped by the opaque `board_id`.
 
-**Query:** Count distinct `board_id` values from `reply_received` in the last seven days, where `source != 'smoke'`.
+**Query:** Count distinct `board_id` values from `reply_received` in the last seven days, where `source = 'web'`.
 
 ## The Events
 
 Every event is named `object_action` in snake case.
 Every event carries `source`, which is one of `web`, `usability-test`, or `smoke`; `smoke` marks the team's own pipeline check.
 The backend sends events to the OpenPanel project configured for its environment.
+Product metric reports include only events with `source=web`.
+They exclude events with `source=usability-test` and `source=smoke`.
 An event with a `board_id` is sent with that `board_id` as its OpenPanel group, because OpenPanel counts distinct groups but not distinct values of a property, so a count of distinct boards is the segment **Unique groups**.
 
 | Event | Fires when | Fields | Collected at |
@@ -115,7 +118,7 @@ Each OpenPanel project has one dashboard, and both dashboards carry the same rep
 | Production | `Production: product analytics` | The same three reports |
 
 Each metric report runs the `**Query:**` recorded in its metric's section, which this page owns, and is named after that metric.
-`Smoke events (excluded from the metric)` counts the events `context_reuse_query_submitted` and `context_reuse_reply_received` with the segment **All events**, the filter `source` is `smoke`, a breakdown by event name, and the range **Last 7 days**, so the staging dashboard shows the test events its metric reports leave out.
+`Smoke events (excluded from the metric)` counts the events `context_reuse_query_submitted` and `context_reuse_reply_received` with the segment **All events**, the filter `source` is `smoke`, a breakdown by event name, and the range **Last 7 days**, so the staging dashboard shows the smoke events its metric reports leave out.
 The production project receives no test traffic, so its `Smoke events (excluded from the metric)` report stays empty.
 
 The dashboards are reachable from the university network only, by the members and the customer with an OpenPanel account, and their addresses are in the Moodle submission.

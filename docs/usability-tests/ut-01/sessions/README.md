@@ -48,11 +48,11 @@ Copy this section into a new file named with the participant code, for example `
 
 ### Task results
 
-| Task             | Completed | Unaided or assisted | Time | SEQ (1–7) |
-| ---------------- | --------- | ------------------- | ---- | --------- |
-| Main task        |           |                     |      |           |
-| Secondary task 1 |           |                     |      |           |
-| Secondary task 2 |           |                     |      |           |
+| Task             | Completed | Unaided or assisted | Time | Tool switches | SEQ (1–7) | Observer rating (1–7) |
+| ---------------- | --------- | ------------------- | ---- | ------------- | --------- | --------------------- |
+| Main task        |           |                     |      |               |           |                       |
+| Secondary task 1 |           |                     |      |               |           |                       |
+| Secondary task 2 |           |                     |      |               |           |                       |
 
 ### SUS
 

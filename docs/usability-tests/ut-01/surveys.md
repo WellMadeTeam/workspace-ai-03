@@ -49,9 +49,51 @@ If an answer contains identifying details, omit those details from the survey re
 
 ## SEQ, After Each Task
 
+Ask every participant this question after each usability test task:
+
+> Overall, how difficult or easy was the task to complete?
+
+Choose one answer on a seven-point scale.
+`1` means very difficult, and `7` means very easy.
+A higher score means the task felt easier to complete.
+
+## Observer Rating, After Each Task
+
+After each task, the observer answers this question separately from the participants:
+
+> Based on what you observed, how difficult or easy was it for the team to complete the task?
+
+Choose one answer on a seven-point scale.
+`1` means very difficult, and `7` means very easy.
+Record the observer's rating separately; do not combine it with the participants' SEQ answers.
+
 ## SUS, After All The Tasks
 
+Ask every participant to answer these ten statements about the tools used during the session.
+Keep the statements in this order and do not reword them.
+
+1. I think that I would like to use this system frequently.
+2. I found the system unnecessarily complex.
+3. I thought the system was easy to use.
+4. I think that I would need the support of a technical person to be able to use this system.
+5. I found the various functions in this system were well integrated.
+6. I thought there was too much inconsistency in this system.
+7. I would imagine that most people would learn to use this system very quickly.
+8. I found the system very cumbersome to use.
+9. I felt very confident using the system.
+10. I needed to learn a lot of things before I could get going with this system.
+
+For each statement, choose one answer from `1` (strongly disagree) to `5` (strongly agree).
+
 ## SUS Scoring
+
+Calculate each participant's SUS score using the answers as recorded:
+
+`SUS = 2.5 × (20 + sum(odd answers) - sum(even answers))`
+
+Do not reverse-code the even answers before applying the formula.
+Report the mean and median SUS score separately for each study condition, together with the number of participants (`n`).
+Keep raw answers in the private usability-data repository; publish only sanitized aggregate scores.
 
 ## Open-ended Post-test
 
