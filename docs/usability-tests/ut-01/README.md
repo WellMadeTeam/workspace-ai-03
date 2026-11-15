@@ -47,7 +47,7 @@ Record any other help.
 - **Start state:** The team receives the same problem description and starts with an empty workspace.
 - **Time limit:** 30 minutes.
   The team may finish earlier once it reaches the end state.
-- **End state:** The team has recorded three different design ideas and selected one to develop further.
+- **End state:** The team has recorded at least two different design ideas and selected one to develop further.
 - **Success criterion:** `Unaided` if the team reaches the end state without facilitator help; `Assisted` if facilitator help is needed; `Failed` if the end state is not reached within the time limit.
 
 ### Secondary usability test task 1: Reuse another member's AI answer
