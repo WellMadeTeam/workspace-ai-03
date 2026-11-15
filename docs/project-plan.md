@@ -111,6 +111,9 @@ A production-ready draft of the usability test is ready for customer review and 
 - **Due:** 2026-11-15
 - **Sprint Backlog:** [the issues scheduled into SPRINT-07](https://github.com/WellMadeTeam/workspace-ai-03/milestone/7)
 - **Planned Velocity:** 21
+- **Actual Velocity:** 13 (`US-17`: 5 + `US-18`: 8); the two stories were completed and accepted at the Week 7 meeting.
+
+The teammate dry run and customer acceptance of `US-19` move to `SPRINT-08`; image generation (`US-09`) returns to the unscheduled product backlog following [`DEC-050`](decisions.md#dec-050).
 
 The test design follows [`DEC-046`](decisions.md#dec-046) and includes the participant and observer surveys, tasks and protocol, consent, private data repository, recordings folder, recruitment and session plan, usability quality requirement and manual test, and analysis plan.
 Instrumentation is designed and implemented before the dry run; the dry run checks the wording, time limits, and instrumentation without counting as a participant session.
@@ -138,6 +141,7 @@ Provisional: representative participants complete the usability test on staging,
 - **Sprint Backlog:** [the issues scheduled into SPRINT-08](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8)
 
 Instrumentation verification runs after implementation and before the first counted session, confirming that a team-run record reaches the named store and can be linked to that run.
+Run the deferred teammate dry run before that verification, using the same staging deployment so the protocol rehearsal and instrumentation check can be completed together before participants start.
 Verification is due before that session, rather than at the results deadline, and no later than the start of SPRINT-09.
 Counted sessions are planned for SPRINT-08, the sprint of the last counted session; the Week 7 dry run is excluded.
 The results and findings follow the analysis plan fixed before the first session, and significant findings produce task issues scheduled for this sprint when they can be completed before REL-08.
