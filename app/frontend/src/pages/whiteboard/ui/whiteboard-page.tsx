@@ -20,6 +20,7 @@ import { canConnect, type ConnectionEdge } from "../model/connection-edge";
 import { SaveWidgetContext } from "../model/save-widget";
 import { useBoardConnection } from "../model/use-board-connection";
 import { useBoardConnections } from "../model/use-board-connections";
+import { useBoardClipboard } from "../model/use-board-clipboard";
 import { useBoardContextMenu } from "../model/use-board-context-menu";
 import { useBoardHighlights } from "../model/use-board-highlights";
 import { useBoardId } from "../model/use-board-id";
@@ -62,6 +63,8 @@ export function WhiteboardPage() {
         saveWidget,
         removeWidgets,
         clearWidgets,
+        flushWidgets,
+        acceptCopies: acceptWidgetCopies,
     } = useBoardWidgets(isMember ? boardId : null);
     const {
         edges,
@@ -69,6 +72,7 @@ export function WhiteboardPage() {
         error: connectionsError,
         addConnection,
         removeConnections,
+        acceptCopies: acceptConnectionCopies,
     } = useBoardConnections(
         isMember ? boardId : null,
         nodes.map((node) => node.id),
@@ -100,7 +104,18 @@ export function WhiteboardPage() {
         deletionResolver.current = null;
         setConfirmation(null);
     };
-    const error = widgetsError ?? connectionsError;
+    const clipboard = useBoardClipboard({
+        boardId,
+        enabled: isMember && isLoaded && !confirmation,
+        nodes,
+        edges,
+        flushWidgets,
+        onPasted: (copies) => {
+            acceptWidgetCopies(copies.items);
+            acceptConnectionCopies(copies.connections);
+        },
+    });
+    const error = clipboard.error ?? widgetsError ?? connectionsError;
     const contextMenu = useBoardContextMenu(
         nodes,
         edges,

@@ -19,13 +19,19 @@ nav:
       - Index: usability-tests/README.md
       - UT-01: usability-tests/ut-01/README.md
       - Consent template: usability-tests/ut-01/consent.md
+      - Surveys: usability-tests/ut-01/surveys.md
+      - Sessions: usability-tests/ut-01/sessions/README.md
+      - Results: usability-tests/ut-01/results.md
   - Functional requirements:
       - Index: functional-requirements/README.md
       - FR-022: functional-requirements/fr/FR-022.md
       - FR-023: functional-requirements/fr/FR-023.md
+      - FR-024: functional-requirements/fr/FR-024.md
+      - FR-025: functional-requirements/fr/FR-025.md
   - Quality requirements:
       - Index: quality-requirements/README.md
       - QR-05: quality-requirements/qr/QR-05.md
+      - QR-06: quality-requirements/qr/QR-06.md
   - Architecture:
       - Overview: architecture/README.md
       - ADR index: architecture/adr/README.md

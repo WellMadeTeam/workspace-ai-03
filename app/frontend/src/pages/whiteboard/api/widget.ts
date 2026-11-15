@@ -1,4 +1,5 @@
 import { request } from "@/shared/api";
+import type { Connection } from "./connection";
 
 // An image block shows a diagram, and its content is the Mermaid code.
 export type WidgetType = "text" | "ai" | "image";
@@ -54,4 +55,18 @@ export const deleteWidget = (widgetId: string) =>
 export const clearWidget = (widgetId: string) =>
     request<void>(`/widgets/${encodeURIComponent(widgetId)}/clear`, {
         method: "POST",
+    });
+
+export type WidgetCopy = {
+    board_id: string;
+    items: { source_widget_id: string; x: number; y: number }[];
+    connection_ids: string[];
+};
+
+export type WidgetCopies = { items: Widget[]; connections: Connection[] };
+
+export const copyWidgets = (data: WidgetCopy) =>
+    request<WidgetCopies>("/widgets/copy", {
+        method: "POST",
+        body: JSON.stringify(data),
     });

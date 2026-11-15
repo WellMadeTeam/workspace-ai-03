@@ -148,3 +148,65 @@ The ability to understand how a service behaves by inspecting the signals it emi
 ### Telemetry
 
 Data a service records and sends to an observability backend, including logs and metrics.
+
+## Usability Testing
+
+### Usability Test
+
+A test in which people outside the team attempt planned tasks on the staging product while team members observe, to show whether a shared board helps a team brainstorm with an LLM without help.
+
+**Defined by:** [`DEC-046`](decisions.md#dec-046) and [`UT-01`](usability-tests/ut-01/README.md).
+
+### Participant
+
+A person aged 18 or older who matches the usability test's participant profile and is not a member of the product team, the customer, an instructor, or course staff, and who attempts the test's tasks.
+
+**Defined by:** [the `UT-01` participant profile](usability-tests/ut-01/README.md#participant-profile).
+
+### Usability Session
+
+One participant's run of the usability test's tasks, in person on the staging deployment, with a facilitator and an observer from the team.
+
+**Defined by:** [the `UT-01` protocol](usability-tests/ut-01/README.md#protocol) and [the session instructions](usability-tests/ut-01/sessions/README.md).
+
+### Consent
+
+The participant's durable, signed agreement, given before a session, to its capture and to the publication of sanitized results, which the participant can withdraw at any time.
+
+**Defined by:** [the consent template](usability-tests/ut-01/consent.md).
+
+### Recording
+
+The data captured during a usability session, kept in the team-owned cloud folder shared with the instructors and never in this repository, which starts only after the participant has given consent.
+
+**Defined by:** [the `UT-01` consent and data rules](usability-tests/ut-01/README.md#consent-and-data) and [the consent template](usability-tests/ut-01/consent.md).
+
+### Measure
+
+A quantity that one usability session records for one participant, such as a task's outcome, its time, or a survey score.
+
+**Defined by:** [the `UT-01` measures](usability-tests/ut-01/README.md#measures).
+
+### Metric
+
+A number the product's analytics computes from the events it records, which is not a measure that a session records.
+
+**Defined by:** [the analytics page](analytics.md#the-value-and-the-metrics).
+
+### Statistic
+
+A summary, such as a count, a proportion, a median, or a mean, that is computed from the recorded values of one measure.
+
+**Defined by:** [the `UT-01` measures](usability-tests/ut-01/README.md#measures) and [the SUS scoring](usability-tests/ut-01/surveys.md#sus-scoring).
+
+### SUS
+
+The System Usability Scale, a ten-statement questionnaire that each participant answers from 1 to 5 after all the tasks and that is scored as 2.5 × (20 + the sum of the odd answers − the sum of the even answers).
+
+**Defined by:** [the `UT-01` surveys](usability-tests/ut-01/surveys.md#sus-after-all-the-tasks) and [the SUS scoring](usability-tests/ut-01/surveys.md#sus-scoring).
+
+### SEQ
+
+The Single Ease Question, which each participant answers on a seven-point scale after each task to say how difficult or easy it was, where 1 is very difficult and 7 is very easy.
+
+**Defined by:** [the `UT-01` surveys](usability-tests/ut-01/surveys.md#seq-after-each-task).

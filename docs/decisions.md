@@ -469,3 +469,53 @@ Describe the architecture decisions in plain text, and use a diagram only where 
 - **Made by:** Customer
 - **Source:** [the Week 6 meeting](../reports/week-06/meeting-report.md)
 - **Why:** a diagram is not the architecture, and a few sentences naming the Python backend, the Nginx gateway, the React frontend, the SQLite database and the LLM provider are easier to read than boxes and arrows; a picture is for a concept that is too wordy to explain.
+
+## DEC-048
+
+Adopt a post-test-only survey design for the usability study
+
+- **Status:** Active
+- **Date:** 2026-11-12
+- **Made by:** Customer
+- **Source:** [the Week 7 meeting](../reports/week-07/meeting-report.md)
+- **Why:** pre-tests are seen as overwhelming for participants and offer limited comparative value in an exploratory setting without a strict baseline, so the study will rely on post-task surveys and observer notes.
+
+## DEC-049
+
+Target brainstorming groups of 4-5 participants per board
+
+- **Status:** Active
+- **Date:** 2026-11-12
+- **Made by:** Customer
+- **Source:** [the Week 7 meeting](../reports/week-07/meeting-report.md)
+- **Why:** groups larger than 5 tend to fragment into side conversations or become passive, while smaller groups lack diversity; 4-5 is the optimal size for active collaborative brainstorming dynamics.
+
+## DEC-050
+
+Deprioritize Image Generation and Reference Documents in favor of the usability study
+
+- **Status:** Active
+- **Date:** 2026-11-12
+- **Made by:** Customer
+- **Source:** [the Week 7 meeting](../reports/week-07/meeting-report.md)
+- **Why:** these features are "nice-to-haves" that do not significantly impact the core hypothesis validation; resources must be concentrated on preparing and running the usability study to meet course deadlines.
+
+## DEC-051
+
+Focus analytics on deriving specific insights from event logs rather than generic thresholds
+
+- **Status:** Active
+- **Date:** 2026-11-12
+- **Made by:** Customer
+- **Source:** [the Week 7 meeting](../reports/week-07/meeting-report.md)
+- **Why:** raw event counts are less useful than actionable scenarios (e.g., identifying boards where users failed to adopt AI features), so dashboards should be built around these specific analytical questions.
+
+## DEC-052
+
+Avoid phrasing non-functional requirements as user stories
+
+- **Status:** Active
+- **Date:** 2026-11-12
+- **Made by:** Customer
+- **Source:** [the Week 7 meeting](../reports/week-07/meeting-report.md)
+- **Why:** customers find it confusing when technical stability guarantees (like "analytics doesn't crash the app") are presented as functional user stories; these should be documented as quality attributes or regression tests instead.
