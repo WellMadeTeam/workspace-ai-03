@@ -88,7 +88,9 @@ Follow these steps in order:
 6. Let the team work while the observer records the shared task outcome, time, difficulties, and any help given once per team run.
 7. After each task, ask every participant to answer the SEQ question in [surveys.md](surveys.md).
 8. After all tasks, ask every participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
-9. Debrief the participants and thank them.
+9. Invite every participant to an optional run in the opposite condition on a different preselected topic; explain that declining or stopping it does not affect the primary session.
+10. If the team volunteers, confirm consent for the additional recording and follow the supplementary-run rules below.
+11. Debrief the participants and thank them.
 
 The facilitator may clarify the scenario but must not explain the interface or solve a task.
 The observer records what happened without directing the participant.
@@ -250,7 +252,7 @@ The course defines individual participant outcomes, while the current team tasks
 
 ### Optional supplementary run
 
-After completing the primary session, the shared-board team may voluntarily try its usual tools on a different brainstorming topic.
+After completing the primary session, invite each team to an optional run in the opposite condition on a different brainstorming topic: the shared-board team may try its usual tools, and the control team may try the shared board.
 Prepare that topic before counted sessions and keep the task structure, time limits, and observation method the same; record the topic and any departures from the primary protocol.
 Invite the team regardless of its primary outcome, and confirm that consent covers the additional recording and data collection.
 Declining or stopping this optional run does not invalidate the completed primary session or its evidence.
@@ -260,7 +262,8 @@ Assign a new team-run key linked to the original run, retain the existing partic
 Record whether it was completed, stopped early, or not started; a stopped run remains partial evidence, not a completed counted session.
 Store its observations separately in the supplementary results table, including any separately collected questionnaire responses.
 Exclude it from primary outcome, time, tool-switch, SEQ, and SUS aggregates, from the QR numerator and denominator, and from recruitment counts.
-It does not replace the independent control team.
+It does not replace either primary team or create an independent comparison group.
+For an optional shared-board run, use a separate staging board and retain its telemetry outside the primary instrumentation comparison.
 Interpret it descriptively, noting prior task exposure, the changed topic, voluntary participation, and any change in team composition.
 Do not treat a repeated observation from the same participant as independent support for a theme.
 
