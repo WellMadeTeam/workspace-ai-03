@@ -43,7 +43,7 @@ Record any other help.
 ### Main usability test task: Brainstorm an architecture
 
 - **Scenario:** Your team needs to plan a simple service for organizing university events.
-  Brainstorm possible designs, then agree on one design to develop further.
+  Brainstorm possible designs, use LLM for assisting you during session, then agree on one design to develop further.
 - **Start state:** The team receives the same problem description and starts with an empty workspace.
 - **Time limit:** 30 minutes.
   The team may finish earlier once it reaches the end state.
