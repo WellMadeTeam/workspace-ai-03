@@ -23,13 +23,14 @@ Once the core flow works, members highlight part of the board and see the diagra
 
 ### MLS-07
 
-- **Due:** 2026-11-14
+- **Due:** 2026-11-15
 - **Sprints:** [SPRINT-06](#sprint-06), [SPRINT-07](#sprint-07)
 - **Advances:** [TOS-02](threshold-of-success.md#tos-02)
 
 Ten clients work on one board at once, per [`CON-03`](product-vision.md#con-03), with no update lost and every change visible to the others, shown by a repeatable test.
-The increment also extends the core flow: the LLM takes the team's reference documents into account, images from an LLM reach the board if they did not fit into the previous increment, and a block deleted by mistake no longer takes the team's work with it.
-Accounts and export, per [`DEC-011`](decisions.md#dec-011) and [`DEC-007`](decisions.md#dec-007), come last and are the first to drop if time runs out, because they are not part of the threshold.
+The increment prepares a production-ready draft of the usability test, with images from the LLM service provider and basic Markdown rendering in text blocks and AI conversations available for the review.
+The usability study and its analytics take priority over accounts and board export, per [`DEC-045`](decisions.md#dec-045).
+Reference documents are outside the current scope, and deletion protection remains in the unscheduled product backlog.
 
 ### MLS-08
 
@@ -37,8 +38,8 @@ Accounts and export, per [`DEC-011`](decisions.md#dec-011) and [`DEC-007`](decis
 - **Sprints:** [SPRINT-08](#sprint-08)
 - **Advances:** [TOS-03](threshold-of-success.md#tos-03)
 
-A team outside ours runs a brainstorming session on the board and reuses its responses as context for new queries.
-The session is the evidence for the project goal of [`DEC-008`](decisions.md#dec-008): whether, and how well, a shared board replaces passing LLM results through messengers.
+At least three representative adults complete the usability sessions, with five as the design target, and the team publishes sanitized results, findings, and their triage.
+The study follows [`DEC-046`](decisions.md#dec-046), comparing a group using the board with a control group using its usual tools, and provides evidence for the project goal of [`DEC-008`](decisions.md#dec-008): whether, and how well, a shared board replaces passing LLM results through messengers.
 
 ## Sprints
 
@@ -105,18 +106,33 @@ The result and the last check of each test are in the [Quality Requirement Testi
 
 ### SPRINT-07
 
-Provisional: ten clients work on one board with no lost updates and every change visible to the others, shown by a test linked from the Week 7 report, an outside team's feedback on the board is presented, the product is improved and its bugs are fixed, and, if time allows, members keep their boards under their own accounts and export a board to a file.
+A production-ready draft of the usability test is ready for customer review and a teammate dry run, supported by working analytics and observability, with images from the LLM service provider and basic Markdown rendered in text blocks and AI conversation messages.
 
-- **Due:** 2026-11-14
+- **Due:** 2026-11-15
 - **Sprint Backlog:** [the issues scheduled into SPRINT-07](https://github.com/WellMadeTeam/workspace-ai-03/milestone/7)
+- **Planned Velocity:** 21
+
+The test design follows [`DEC-046`](decisions.md#dec-046) and includes the participant and observer surveys, tasks and protocol, consent, private data repository, recordings folder, recruitment and session plan, usability quality requirement and manual test, and analysis plan.
+Instrumentation is designed and implemented before the dry run; the dry run checks the wording, time limits, and instrumentation without counting as a participant session.
+The draft must let another person run the test without asking the team to fill in missing instructions.
+Basic Markdown support follows [`DEC-043`](decisions.md#dec-043), including numbered and unnumbered lists in blocks and conversation messages.
+Reference documents are outside this sprint's scope; accounts and export remain behind the study and its analytics, per [`DEC-045`](decisions.md#dec-045).
+The Week 7 handoff links the design and the scheduled execution work, with results, findings, triage, and the usability verdict due in SPRINT-08.
 
 #### REL-07
 
 ### SPRINT-08
 
-Provisional: a team outside ours completes a brainstorming session on the board, recorded in the Week 8 report, on a product that is improved and has its bugs fixed.
+Provisional: representative participants complete the usability test on staging, and the team publishes sanitized evidence of the board's usability, the findings and their triage, the quality requirement verdict, and REL-08 with any fixes completed in the sprint.
 
 - **Due:** 2026-11-21
+- **Sprint Backlog:** [the issues scheduled into SPRINT-08](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8)
+
+Instrumentation verification runs after implementation and before the first counted session, confirming that a team-run record reaches the named store and can be linked to that run.
+Verification is due before that session, rather than at the results deadline, and no later than the start of SPRINT-09.
+Counted sessions are planned for SPRINT-08, the sprint of the last counted session; the Week 7 dry run is excluded.
+The results and findings follow the analysis plan fixed before the first session, and significant findings produce task issues scheduled for this sprint when they can be completed before REL-08.
+Future feature stories stay estimated in the product backlog without milestones, ownership values, or assignees until their sprint is planned.
 
 #### REL-08
 
