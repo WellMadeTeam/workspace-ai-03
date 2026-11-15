@@ -72,9 +72,7 @@ export function MessageList({
                                     </span>
                                     <span aria-hidden> · </span>
                                     <span className="sr-only">: </span>
-                                    <MarkdownContent
-                                        content={message.content}
-                                    />
+                                    {message.content}
                                 </p>
 
                                 {deleteButton(
@@ -93,7 +91,10 @@ export function MessageList({
                                     className={`${bubbleClassName} min-w-0 bg-purple-500 text-white`}
                                 >
                                     <span className="sr-only">You: </span>
-                                    {message.content}
+                                    <MarkdownContent
+                                        content={message.content}
+                                        linkTone="inverse"
+                                    />
                                 </div>
                             </li>
                         ) : (
