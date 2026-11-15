@@ -109,3 +109,4 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 ## Results
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
+The results will be recorded in [results.md](results.md).
