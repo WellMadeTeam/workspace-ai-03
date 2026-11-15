@@ -15,6 +15,10 @@ nav:
   - Observability: observability.md
   - Product vision: product-vision.md
   - Features: features.md
+  - Usability tests:
+      - Index: usability-tests/README.md
+      - UT-01: usability-tests/ut-01/README.md
+      - Consent template: usability-tests/ut-01/consent.md
   - Functional requirements:
       - Index: functional-requirements/README.md
       - FR-022: functional-requirements/fr/FR-022.md
