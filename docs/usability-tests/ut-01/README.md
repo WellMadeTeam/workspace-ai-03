@@ -27,7 +27,7 @@ The usability requirement is `QR-06`, being specified in [TODO: task #313](https
 
 ### Recruitment target
 
-Recruit five people as the design target and obtain at least three completed, counted sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
+The analysis plan proposes recruiting six people into two teams of three, one shared-board team and one control team; this allocation awaits review before counted sessions. Obtain at least three completed, counted participant sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
 
 Invite eligible classmates outside the team and people in the team's software-development or software-architecture networks to volunteer. Screen volunteers against the profile with the pre-test before scheduling; do not publish names or contact details. A session that fails to meet the profile is exploratory and is not counted.
 
@@ -74,20 +74,21 @@ Use staging only.
 Do not put staging credentials in this repository.
 
 Run every session in person on the university network.
-At least two team members take part in each session.
+At least two study team members take part in each session as facilitator and observer.
+The proposed comparison uses three participants per task team; confirm its allocation before counted sessions.
 The same facilitator runs every counted session.
 
 Follow these steps in order:
 
-1. Welcome the participant and explain the purpose of the session.
-2. Check that the participant has given consent and understands whether the session will be recorded.
-3. Ask the pre-test questions in [surveys.md](surveys.md).
-4. Ask the participant to think aloud while completing the tasks.
+1. Welcome each participant and explain the purpose of the session.
+2. Check that each participant has given consent and understands whether the session will be recorded.
+3. Ask each participant the pre-test questions in [surveys.md](surveys.md).
+4. Ask participants to think aloud while completing the tasks together.
 5. Read each task scenario exactly as written in **The Tasks**.
-6. Let the participant work while the observer records task completion, time, difficulties, and any help given.
-7. After each task, ask the participant to answer its SEQ question in [surveys.md](surveys.md).
-8. After all tasks, ask the participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
-9. Debrief the participant and thank them.
+6. Let the team work while the observer records the shared task outcome, time, difficulties, and any help given once per team run.
+7. After each task, ask every participant to answer the SEQ question in [surveys.md](surveys.md).
+8. After all tasks, ask every participant to complete the SUS and open-ended post-test in [surveys.md](surveys.md).
+9. Debrief the participants and thank them.
 
 The facilitator may clarify the scenario but must not explain the interface or solve a task.
 The observer records what happened without directing the participant.
