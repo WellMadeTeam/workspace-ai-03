@@ -7,7 +7,3 @@ The `UT-01` recruitment target is five people, with at least three completed cou
 The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) provides homes for consent records, identity mapping, raw notes, filtered telemetry, and working analysis.
 GitHub sign-in and granted team/instructor access are required.
 Its README documents the Moodle-only text-archive fallback if GitHub access is unavailable.
-
-## AI usage
-
-See the [AI usage report](ai-usage.md) for the private-data layout and repository-link documentation work.
