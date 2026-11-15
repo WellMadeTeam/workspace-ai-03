@@ -37,6 +37,9 @@ Copy this section into a new file named with the participant code, for example `
 ### Session details
 
 - **Participant code:**
+- **Anonymous team-run key:**
+- **Condition:** Shared board / Control
+- **Team size:**
 - **Date:** Keep the date private if it could identify the participant.
 - **Profile matched:** Yes / No
 - **Consent and capturing check completed:** Yes / No
@@ -48,11 +51,27 @@ Copy this section into a new file named with the participant code, for example `
 
 ### Task results
 
+Record shared outcome, help, and elapsed time once in a team-task record identified by the team-run key.
+Reference that record in each participant note; copied shared values must not be counted as additional team attempts.
+The SEQ and tool-switch count below belong to this participant; the observer rating belongs to the team task and observer.
+
 | Task             | Completed | Unaided or assisted | Time | Tool switches | SEQ (1–7) | Observer rating (1–7) |
 | ---------------- | --------- | ------------------- | ---- | ------------- | --------- | --------------------- |
 | Main task        |           |                     |      |               |           |                       |
 | Secondary task 1 |           |                     |      |               |           |                       |
 | Secondary task 2 |           |                     |      |               |           |                       |
+
+### Tool-switch observation coverage
+
+For each task, record this participant's switch count and observed duration over the same start/stop interval as the task timing.
+Flag any interval the observer could not follow; an unobserved switch count is missing, not zero.
+These participant records supply the team totals and rates in the analysis plan.
+
+| Task | Participant switches | Observed minutes | Coverage complete? | Gap or missing-data reason |
+| ---- | -------------------- | ---------------- | ------------------ | -------------------------- |
+| Main task | | | | |
+| Secondary task 1 | | | | |
+| Secondary task 2 | | | | |
 
 ### SUS
 
