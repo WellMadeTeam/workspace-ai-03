@@ -208,13 +208,51 @@ Show task outcome, time, help, SEQ, observer ratings, and SUS summaries side by 
 
 ### QR-06 decision before counted sessions
 
-The QR-06 measure and pass bar are not yet approved.
-The earlier 80% participant-completion proposal is withdrawn because the task outcome is observed at team level and the threshold had no agreed basis.
-[#313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313) must fix one recorded measure, its unit and scope, the denominator or valid-response rule, the minimum usable sample, and the pass bar with a rationale before the first counted session.
-Copy the agreed definition into this plan and QR-06/QRT-01, and confirm that the results template reports that statistic.
-Do not count sessions until this decision and the team composition/condition allocation are recorded in the study protocol.
-The remaining measures are descriptive analysis results; they must not be substituted for the chosen QR measure after data collection.
-Task #315 remains incomplete until this pre-session decision is recorded.
+The following is a concrete proposal for team review, not an approved QR or permission to start counted sessions.
+Accept or revise it in this PR before collecting participant data, then carry the agreed definition into QR-06/QRT-01 through [#313](https://github.com/WellMadeTeam/workspace-ai-03/issues/313).
+The earlier 80% participant-completion proposal remains withdrawn.
+
+| Item | Proposed definition |
+| --- | --- |
+| Characteristic | Interaction Capability / Operability: whether a team can reach the main task's end state without facilitator help. |
+| Measure | Main-task unaided team completion, `U / N`, in the shared-board condition only. |
+| Numerator `U` | Eligible team runs recorded as `Unaided`: at least two design ideas recorded and one selected within 30 minutes, without facilitator help. |
+| Denominator `N` | All eligible shared-board team runs that start the main task; `Assisted`, `Failed`, and abandoned attempts remain in the denominator. |
+| Usable evidence | At least three distinct representative participants in the shared-board condition, with required consent and recordings, and a recorded main-task outcome for every eligible started run. Missing outcomes prevent a verdict; they are not silently dropped. |
+| Pass bar | `U / N = 100%`, with `N >= 1` and the usable-evidence rule met. Any observed assisted or failed run prevents passing. |
+| Rationale | The essential flow should be achievable without coaching by every tested team. With the proposed single board team, the criterion is deliberately binary; a fractional percentage would imply more precision than the sample supports. This is a proposed acceptance target, not an empirical benchmark. |
+
+Report `U`, `N`, the number of distinct participants, missing outcomes, and the unrounded proportion in the existing main-task aggregate table in [results.md](results.md).
+If an otherwise eligible run has a missing outcome, report the QR statistic as unavailable until the evidence gap is resolved; retain the complete-case descriptive rate separately.
+A run excluded for invalid consent, withdrawal, missing recording, or technical failure is disclosed with its reason and is not silently replaced by a successful attempt.
+Task failure alone never makes a run ineligible.
+Do not rerun a failed attempt to replace its outcome or recruit additional teams after inspecting outcomes to reach the bar.
+The control condition and all other measures remain descriptive and do not determine this QR verdict.
+With only one board team, passing means that this team completed the task unaided; it does not establish individual operability or a population success rate.
+
+### Proposed recruitment and allocation for review
+
+This proposal would replace the current five-person recruitment target with six representative participants: two teams of three, one shared-board team and one control team.
+Each person participates in one condition only and completes all three tasks in the existing order, with individual pre-test, SEQ, SUS, and post-test records.
+Retain a separate participant session record and code for each person, linked to the shared team-run record; six people do not become six independent task outcomes.
+
+Before any task starts, form two teams of three using the pre-test familiarity answers to avoid concentrating all frequent LLM or collaborative-whiteboard users in one team where practical.
+Record the allocation basis privately and summarize relevant group differences without identities in the results.
+Assign the two formed teams to conditions by a coin toss and record the assignment before either run; no participant switches conditions or repeats the tasks in the other condition.
+Use the same facilitator, task wording, limits, and observation method for both teams.
+Schedule replacements before the affected run starts, using the same eligibility criteria and a new participant code.
+If six eligible participants cannot be recruited, revise and review the design before counted sessions rather than silently using smaller groups.
+
+This allocation provides three product users for the manual QR test and equally sized groups for a descriptive comparison, but only one independent team per condition.
+Differences in team composition, prior familiarity, and group dynamics remain confounded with condition; no causal advantage of the product can be inferred.
+The course defines individual participant outcomes, while the current team tasks supply shared outcomes; the team must confirm this adaptation with the customer/instructor and record any required deviation before treating the design as course-complete.
+
+### Approval and freeze
+
+The reviewer should explicitly accept or amend the six-person allocation, the team-level outcome adaptation, and the proposed QR scope and bar.
+Once agreed, update Recruitment target and Protocol to the accepted allocation, synchronize QR-06/QRT-01 in #313, and record the accepted plan revision before the first counted session.
+Until then, these sections remain proposals and #315 remains open.
+No threshold or allocation may be changed after inspecting participant outcomes to obtain a passing result.
 
 ### Qualitative analysis and severity
 
