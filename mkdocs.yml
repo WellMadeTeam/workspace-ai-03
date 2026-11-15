@@ -27,6 +27,7 @@ nav:
       - FR-022: functional-requirements/fr/FR-022.md
       - FR-023: functional-requirements/fr/FR-023.md
       - FR-024: functional-requirements/fr/FR-024.md
+      - FR-025: functional-requirements/fr/FR-025.md
   - Quality requirements:
       - Index: quality-requirements/README.md
       - QR-05: quality-requirements/qr/QR-05.md

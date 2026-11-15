@@ -29,6 +29,10 @@ export function useBoardWidgets(boardId: string | null) {
     const [loadedBoardId, setLoadedBoardId] = useState<string | null>(null);
     // Widgets with unsaved local changes; polling must not overwrite them.
     const unsavedWidgets = useRef(new Set<string>());
+    const inFlightSaves = useRef(new Map<string, Promise<boolean>>());
+    const failedUpdates = useRef(new Map<string, WidgetUpdate>());
+    // Clearing or deleting a block invalidates saves not yet submitted.
+    const saveGenerations = useRef(new Map<string, number>());
     const pendingUpdates = useRef(new Map<string, WidgetUpdate>());
     const saveTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
     // Widgets removed locally whose deletion the server has not confirmed yet;
@@ -82,8 +86,65 @@ export function useBoardWidgets(boardId: string | null) {
         intervalMs: POLL_INTERVAL_MS,
     });
 
-    // Updates are merged per widget and sent after `delayMs`, so typing does
-    // not send a request for every keystroke.
+    // Serialize saves per block so an older request cannot overwrite a newer edit.
+    const savePending = useCallback(
+        (widgetId: string): Promise<boolean> => {
+            clearTimeout(saveTimers.current.get(widgetId));
+            saveTimers.current.delete(widgetId);
+            const update = pendingUpdates.current.get(widgetId);
+            if (!update && !failedUpdates.current.has(widgetId))
+                return (
+                    inFlightSaves.current.get(widgetId) ?? Promise.resolve(true)
+                );
+            pendingUpdates.current.delete(widgetId);
+
+            const generation = saveGenerations.current.get(widgetId) ?? 0;
+            const previous = inFlightSaves.current.get(widgetId);
+            const saving = Promise.resolve(previous).then(async () => {
+                const changes = {
+                    ...failedUpdates.current.get(widgetId),
+                    ...update,
+                };
+                try {
+                    if (
+                        (saveGenerations.current.get(widgetId) ?? 0) !==
+                        generation
+                    )
+                        return false;
+                    await updateWidget(widgetId, changes);
+                    failedUpdates.current.delete(widgetId);
+                    return true;
+                } catch (err) {
+                    if (
+                        !(err instanceof ApiError && err.status === 404) &&
+                        (saveGenerations.current.get(widgetId) ?? 0) ===
+                            generation
+                    ) {
+                        // Keep failed edits so another paste retries the save
+                        // instead of silently copying the older server state.
+                        failedUpdates.current.set(widgetId, changes);
+                        setError("Could not save changes.");
+                    }
+                    return false;
+                } finally {
+                    if (inFlightSaves.current.get(widgetId) === saving) {
+                        inFlightSaves.current.delete(widgetId);
+                        if (
+                            !pendingUpdates.current.has(widgetId) &&
+                            !failedUpdates.current.has(widgetId)
+                        )
+                            unsavedWidgets.current.delete(widgetId);
+                    }
+                    void refresh();
+                }
+            });
+            inFlightSaves.current.set(widgetId, saving);
+            return saving;
+        },
+        [refresh],
+    );
+
+    // Updates are merged per block and sent after a pause in typing.
     const saveWidget: SaveWidget = useCallback(
         (widgetId, update, delayMs = 0) => {
             unsavedWidgets.current.add(widgetId);
@@ -92,35 +153,40 @@ export function useBoardWidgets(boardId: string | null) {
                 ...update,
             });
             clearTimeout(saveTimers.current.get(widgetId));
-
-            const timer = setTimeout(async () => {
-                saveTimers.current.delete(widgetId);
-                const pendingUpdate =
-                    pendingUpdates.current.get(widgetId) ?? {};
-                pendingUpdates.current.delete(widgetId);
-
-                try {
-                    await updateWidget(widgetId, pendingUpdate);
-                } catch (err) {
-                    // 404: the block was deleted (by us or another member)
-                    // while the save was in flight; the refresh below
-                    // removes it from the canvas.
-                    if (!(err instanceof ApiError && err.status === 404)) {
-                        setError("Could not save changes.");
-                    }
-                } finally {
-                    // Newer edits may have been scheduled while this request ran.
-                    if (!saveTimers.current.has(widgetId)) {
-                        unsavedWidgets.current.delete(widgetId);
-                    }
-                    // Also discards polls started before the save finished.
-                    void refresh();
-                }
-            }, delayMs);
-
-            saveTimers.current.set(widgetId, timer);
+            saveTimers.current.set(
+                widgetId,
+                setTimeout(() => void savePending(widgetId), delayMs),
+            );
         },
-        [refresh],
+        [savePending],
+    );
+
+    const flushWidgets = useCallback(
+        async (ids: string[]) => {
+            const results = await Promise.all(ids.map(savePending));
+            return results.every(Boolean);
+        },
+        [savePending],
+    );
+
+    const acceptCopies = useCallback(
+        (widgets: Widget[]) => {
+            // Starting a fresh load invalidates polls from before the copy.
+            void refresh();
+            setNodes((current) => {
+                const copyIds = new Set(widgets.map((widget) => widget.id));
+                return [
+                    ...current
+                        .filter((node) => !copyIds.has(node.id))
+                        .map((node) => ({ ...node, selected: false })),
+                    ...widgets.map((widget) => ({
+                        ...toNode(widget),
+                        selected: true,
+                    })),
+                ];
+            });
+        },
+        [refresh, setNodes],
     );
 
     const addWidget = useCallback(
@@ -140,6 +206,17 @@ export function useBoardWidgets(boardId: string | null) {
         [boardId, refresh],
     );
 
+    const discardPendingSaves = useCallback((id: string) => {
+        saveGenerations.current.set(
+            id,
+            (saveGenerations.current.get(id) ?? 0) + 1,
+        );
+        clearTimeout(saveTimers.current.get(id));
+        saveTimers.current.delete(id);
+        pendingUpdates.current.delete(id);
+        failedUpdates.current.delete(id);
+    }, []);
+
     // Expects the nodes to be already removed from the canvas (React Flow does
     // it before calling onNodesDelete). On failure the next poll restores them.
     const removeWidgets = useCallback(
@@ -147,9 +224,7 @@ export function useBoardWidgets(boardId: string | null) {
             for (const widgetId of widgetIds) {
                 deletingWidgets.current.add(widgetId);
                 // Drop unsent edits, the server would reject them with 404.
-                clearTimeout(saveTimers.current.get(widgetId));
-                saveTimers.current.delete(widgetId);
-                pendingUpdates.current.delete(widgetId);
+                discardPendingSaves(widgetId);
                 unsavedWidgets.current.delete(widgetId);
             }
 
@@ -176,27 +251,41 @@ export function useBoardWidgets(boardId: string | null) {
             // Also discards polls started before the deletion finished.
             void refresh();
         },
-        [refresh],
+        [discardPendingSaves, refresh],
     );
 
     const clearWidgets = useCallback(
         async (ids: string[]) => {
-            for (const id of ids) {
-                clearTimeout(saveTimers.current.get(id));
-                saveTimers.current.delete(id);
-                pendingUpdates.current.delete(id);
+            const clears = ids.map((id) => {
+                discardPendingSaves(id);
                 unsavedWidgets.current.add(id);
-            }
-            const results = await Promise.allSettled(
-                ids.map((id) => clearWidget(id)),
-            );
-            if (results.some((result) => result.status === "rejected")) {
+                // Active saves finish first, queued old saves are skipped,
+                // and edits made after this clear wait for it to finish.
+                const previous = inFlightSaves.current.get(id);
+                const clearing = Promise.resolve(previous).then(async () => {
+                    try {
+                        await clearWidget(id);
+                        return true;
+                    } catch {
+                        return false;
+                    } finally {
+                        if (inFlightSaves.current.get(id) === clearing) {
+                            inFlightSaves.current.delete(id);
+                            if (!pendingUpdates.current.has(id))
+                                unsavedWidgets.current.delete(id);
+                        }
+                        void refresh();
+                    }
+                });
+                inFlightSaves.current.set(id, clearing);
+                return clearing;
+            });
+            const results = await Promise.all(clears);
+            if (results.some((result) => !result)) {
                 setError("Could not clear some blocks.");
             }
-            for (const id of ids) unsavedWidgets.current.delete(id);
-            void refresh();
         },
-        [refresh],
+        [discardPendingSaves, refresh],
     );
 
     const isLoaded = boardId !== null && loadedBoardId === boardId;
@@ -208,6 +297,8 @@ export function useBoardWidgets(boardId: string | null) {
         isLoaded,
         addWidget,
         saveWidget,
+        flushWidgets,
+        acceptCopies,
         removeWidgets,
         clearWidgets,
     };
