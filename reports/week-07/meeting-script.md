@@ -61,4 +61,3 @@ The rewrite forces the customer to evaluate the utility of the data itself, ensu
 
 The original jumps to a technical constraint.
 The rewrite opens the discussion to the methodology, allowing the customer to weigh the value of detailed observation against the friction of privacy concerns.
-
