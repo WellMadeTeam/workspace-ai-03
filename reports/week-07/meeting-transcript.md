@@ -1,7 +1,7 @@
 # Week 7 meeting transcript
 
 - **Date:** 2026-11-12
-- **Participants:** danmaninc, hrrrsss, Customer
+- **Participants:** Customer, danmaninc, hrrrsss
 
 [00:00:23] Customer: Okay, so notes… Our… Happening on weekends…
 [00:00:31] Customer: One more thing I forgot, I need to do allow screen share.
