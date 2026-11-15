@@ -13,6 +13,25 @@ This draft records the AI use disclosed so far; the team must add any other AI u
   No implementation checks were run because this was a read-only assessment.
 - **Data:** No participant identities, completed consent forms, recordings, raw notes, or test telemetry were supplied to the assistant.
 
+## Block and connection copying (#354, PR #359)
+
+- **Tool:** Codex (OpenAI) through Orca, including a separate Codex reviewer coordinated through Orca orchestration.
+- **Purpose:** Inspect the issue and existing code, prepare the implementation plan, implement block copying and pasting, write regression tests and documentation, and prepare the commits and [PR #359](https://github.com/WellMadeTeam/workspace-ai-03/pull/359) for [#354](https://github.com/WellMadeTeam/workspace-ai-03/issues/354).
+- **Output:** Generated the backend copy endpoint, frontend clipboard behavior, tests, FR-025, feature documentation, changelog entry, and PR description.
+  The backend copies stored AI conversations and creates independent block, message, and connection identifiers.
+- **Use of output:** The user accepted the plan and extended it to copy a connection only when the connection itself and both endpoint blocks were selected.
+  The initial exclusion of connection copying was replaced because it no longer matched that requested scope.
+  The first AI review reproduced a save/clear race; Codex changed the save ordering, invalidated queued edits on clear, and added three regression tests.
+  Codex also accepted the reviewer's callback-naming suggestion for readability.
+  The second AI review reported no remaining actionable correctness or readability findings.
+  The implementation, frontend, and documentation were committed separately and published in PR #359; the AI reviews do not replace the required member approval.
+- **Verification and limits:** The local checks passed with 60 frontend tests and 42 backend tests, frontend lint and FSD checks, formatting, the production build, Markdown lint, and the MkDocs build.
+  The documentation build reported existing warnings, and the local external-link check encountered connection failures.
+  Live synchronization between two browsers was inspected in code rather than exercised manually.
+  The clipboard records selection and positions when copying; stored block content and conversation history are read when pasting.
+- **Data:** No participant identities, recordings, raw or sanitized usability-session notes, or test telemetry were supplied for this task.
+  No participant answers, usability results, or usability findings were generated.
+
 ## Tools
 
 - Codex (OpenAI).
@@ -29,6 +48,8 @@ This draft records the AI use disclosed so far; the team must add any other AI u
 - Assessing the user-written goal and hypotheses and proposing research-question wording about tool switching, context reuse, and task completion without assistance.
 - Preparing [PR #345](https://github.com/WellMadeTeam/workspace-ai-03/pull/345), addressing its review, and verifying #310's acceptance criteria against the merged documentation before updating its checkboxes.
 - Checking Markdown formatting, local links, and documentation builds for the relevant changes.
+- Diagnosing the text-block caret jump in [#353](https://github.com/WellMadeTeam/workspace-ai-03/issues/353) and proposing three solutions before implementation.
+- Implementing the approved synchronous editor-state approach, selection preservation, explanatory comments, regression tests, changelog entry, and [PR #358](https://github.com/WellMadeTeam/workspace-ai-03/pull/358).
 
 ## What we did with the output
 
@@ -46,6 +67,12 @@ This draft records the AI use disclosed so far; the team must add any other AI u
 - For PR #345's review fixes, Markdown lint and the MkDocs build passed; the build reported existing warnings for other documentation pages.
   The local full link check was unavailable because `lychee` was not installed.
 - The UT-01 results sections remained empty; the disclosure does not treat scaffolding or research-question suggestions as session evidence.
+- For #353, the user approved synchronous local editor state before Codex implemented the fix and later requested explanations and code comments.
+  The implementation was adapted to the Markdown preview/edit controls merged into main and submitted as three logical commits in PR #358, which has merged.
+- The initial jsdom caret check also passed against the original code, so it was not treated as proof of the fix.
+  Chromium with mocked API responses reproduced the original board-editor jump and verified the fixed caret, autosave/polling, and shared updates in both editors; the original side-panel jump was not reproduced.
+- For PR #358, all 59 frontend tests, lint, formatting, build, and Markdown lint passed locally.
+  The local external-link check failed to connect, but GitHub's Markdown, link, actionlint, frontend, and backend checks all passed.
 
 ## What was not used
 
