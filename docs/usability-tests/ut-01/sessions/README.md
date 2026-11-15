@@ -41,7 +41,7 @@ Copy this section into a new file named with the participant code, for example `
 - **Profile matched:** Yes / No
 - **Consent and capturing check completed:** Yes / No
 - **Pre-test completed and stored privately:** Yes / No
-- **Eligibility checked against surveys.md:** Yes / No
+- **Eligibility checked against `surveys.md`:** Yes / No
 - **Facilitator GitHub username:**
 - **Observer GitHub username:**
 - **Staging reset:** Yes / No
