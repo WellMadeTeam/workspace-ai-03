@@ -122,4 +122,3 @@ The counted sessions need one facilitator, in-person slots on the university net
 - **Window:** [SPRINT-08](project-plan.md#sprint-08), from 2026-11-16 up to [MLS-08](project-plan.md#mls-08) on 2026-11-21.
 - **Mitigation:** hold the facilitator's time for the whole session window, fix every counted session's slot at the start of [SPRINT-08](project-plan.md#sprint-08), and run the teammate dry run and the instrumentation verification first, so no session waits for a prerequisite.
 - **Contingency:** postpone the unfinished study to [SPRINT-09](project-plan.md#sprint-09): move its row in the [testing plan](project-plan.md#quality-requirement-testing-plan) to SPRINT-09 with the reason, declare the open window in the Week 8 report, and claim no result or verdict until the sessions are complete.
-
