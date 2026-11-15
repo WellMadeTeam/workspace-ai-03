@@ -6,7 +6,8 @@ Before the participant arrives:
 
 - Reset the staging board to the initial empty state.
 - Confirm that staging is reachable from a machine on the university network.
-- Prepare the consent form, capturing method, pre-test, task scenarios, and observation sheet.
+- Confirm that the [recruitment eligibility check](../README.md#recruitment-eligibility-check) is complete and stored privately.
+- Prepare the consent form, capturing method, task scenarios, and observation sheet.
 - Keep staging credentials out of this repository.
 
 At least two team members take part in each session.
@@ -15,6 +16,7 @@ The same facilitator runs every counted session.
 During the session:
 
 - Follow the protocol in [UT-01](../README.md).
+- Omit the pre-test questionnaire, following [DEC-048](../../../decisions.md#dec-048).
 - Use the participant code, such as `P-01`, instead of the participant's name.
 - Do not record names, email addresses, phone numbers, or other identifying details here.
 - The facilitator may clarify the scenario but must not explain the interface or solve a task.
@@ -43,8 +45,10 @@ Copy this section into a new file named with the participant code, for example `
 - **Date:** Keep the date private if it could identify the participant.
 - **Profile matched:** Yes / No
 - **Consent and capturing check completed:** Yes / No
-- **Pre-test completed and stored privately:** Yes / No
-- **Eligibility checked against `surveys.md`:** Yes / No
+- **Recruitment eligibility confirmed and stored privately:** Yes / No
+- **Relation to the target user:** Sanitized role and brainstorming experience; no organization names.
+- **Familiarity:** Meets the minimum LLM-use criterion / Does not meet it / Not confirmed.
+- **Device:** Laptop or desktop, keyboard, and current browser; no identifying details.
 - **Facilitator GitHub username:**
 - **Observer GitHub username:**
 - **Staging reset:** Yes / No

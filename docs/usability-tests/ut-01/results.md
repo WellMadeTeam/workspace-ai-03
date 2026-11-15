@@ -122,6 +122,7 @@ Control runs have no product telemetry; write `Not applicable: control condition
 
 Record sample sizes, condition allocation, team sizes, related observations within teams, repeat runs, participants' relation to the target user, and environment.
 Disclose exclusions, missing responses, incomplete switch observations, and instrumentation gaps.
+State that the pre-test was omitted under [DEC-048](../../decisions.md#dec-048), so expectations and detailed prior tool familiarity have no baseline and familiarity differences between conditions cannot be assessed.
 One team run per condition permits a description of those runs only.
 
 ## Conclusion
