@@ -48,11 +48,11 @@ Copy this section into a new file named with the participant code, for example `
 
 ### Task results
 
-| Task             | Start/end or duration | What the participant did | Difficulty or friction | Help given | Relevant quote |
-| ---------------- | --------------------- | ------------------------ | ---------------------- | ---------- | -------------- |
-| Main task        |                       |                          |                        |            |                |
-| Secondary task 1 |                       |                          |                        |            |                |
-| Secondary task 2 |                       |                          |                        |            |                |
+| Task             | Completed | Unaided or assisted | Time | SEQ (1–7) |
+| ---------------- | --------- | ------------------- | ---- | --------- |
+| Main task        |           |                     |      |           |
+| Secondary task 1 |           |                     |      |           |
+| Secondary task 2 |           |                     |      |           |
 
 ### SUS
 
@@ -74,11 +74,11 @@ Copy this section into a new file named with the participant code, for example `
 
 ## Observation Sheet
 
-| Task | Start/end or duration | What the participant did | Difficulty or friction | Help given | Relevant quote |
-| --- | --- | --- | --- | --- | --- |
-| Main task |  |  |  |  |  |
-| Secondary task 1 |  |  |  |  |  |
-| Secondary task 2 |  |  |  |  |  |
+| Task             | Start/end or duration | What the participant did | Difficulty or friction | Help given | Relevant quote |
+| ---------------- | --------------------- | ------------------------ | ---------------------- | ---------- | -------------- |
+| Main task        |                       |                          |                        |            |                |
+| Secondary task 1 |                       |                          |                        |            |                |
+| Secondary task 2 |                       |                          |                        |            |                |
 
 Record what happened without adding the observer's guesses about what the participant intended.
 Do not include identifying details or quotes unless publication is allowed by the participant's consent.
