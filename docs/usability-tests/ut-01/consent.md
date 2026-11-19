@@ -23,7 +23,7 @@ Your name, contact details, captured data, and other identifying information wil
 
 The team uses the staging product in a browser, human observers, telemetry collection tools, its private data repository, and team-owned cloud storage.
 Before you sign, the facilitator will explain what will be captured, name the tools involved, and explain how copies they hold are deleted.
-The team will not send your identity data to external generative AI. However, your anonymized data may be processed and analyzed with the usage of external AI tools for the feedback and usage analysis purposes.
+The team will not send your identity data to external generative AI. The team may share only the sanitized session note with external AI tools to analyze feedback about the product.
 Copies held by the team or its tools, including the private repository and its history and the captured data, will be deleted after the course is graded.
 The sanitized public record will remain.
 
