@@ -63,8 +63,7 @@ Record any other help.
 
 ### Main usability test task: Brainstorm an architecture
 
-- **Scenario:** Your team needs to plan a simple service for organizing university events.
-  Brainstorm possible designs, use LLM for assisting you during session, then agree on one design to develop further.
+- **Scenario:** Plan a New Year event for students. Brainstorm ideas and use an LLM for assistance.
 - **Start state:** The team receives the same problem description and starts with an empty workspace.
 - **Time limit:** 30 minutes.
   The team may finish earlier once it reaches the end state.
@@ -73,15 +72,15 @@ Record any other help.
 
 ### Secondary usability test task 1: Reuse another member's AI answer
 
-- **Scenario:** Develop one additional idea using an earlier AI answer created by another team member.
-- **Start state:** An earlier AI answer from the main task is available to the team.
+- **Scenario:** Gather ideas from different users by building on an earlier AI conversations.
+- **Start state:** An earlier AI conversations from the main task are available to the team.
 - **Time limit:** 10 minutes.
 - **End state:** The team has created and recorded one new idea that builds on the earlier answer.
 - **Success criterion:** `Unaided` if the team reaches the end state without facilitator help; `Assisted` if facilitator help is needed; `Failed` if the end state is not reached within the time limit.
 
 ### Secondary usability test task 2: Create a diagram of the ideas
 
-- **Scenario:** Create a diagram that summarizes the selected design and shows how its main parts relate to each other using LLM.
+- **Scenario:** Create a diagram that summarizes the results.
 - **Start state:** The team's selected design and brainstormed ideas are available.
 - **Time limit:** 10 minutes.
 - **End state:** The team has created a diagram and made it available in its shared workspace.
