@@ -12,6 +12,8 @@ The project's words are fixed in [`docs/glossary.md`](docs/glossary.md): use the
 - `app/frontend/src/app/main.tsx`, `app/backend/src/routers/message.py`, and `app/backend/src/services/ai_service.py` are the critical modules that [`QR-02`](docs/quality-requirements/qr/QR-02.md) names.
 - `docs/` holds the maintained artifacts, published as the documentation site by `mkdocs.yml`: the vision, the plan, the decisions, the risks, the requirements under `docs/quality-requirements/` and `docs/functional-requirements/`, the architecture under `docs/architecture/`, the research under `docs/research/`, and the glossary.
   A new page in `docs/` also gets its line in the `nav` of `mkdocs.yml`.
+- [The configuration plan](docs/configuration-plan.md) inventories the files, settings, and processes the repository depends on.
+  Update it in the same pull request when a change alters what it records.
 - `docs/setup.md` is the only setup and run guide, and a change to how the product starts or is configured updates it.
 - `scripts/` holds the commands that run the `scripted` and `deployed` quality requirement tests, each named in its test's `**Runs at:**`; they are run by a member, never by CI.
 - `docs/deployment.md` is the runbook for staging and production on the university VM, and a change to how the product is deployed updates it; it links `docs/setup.md` instead of repeating it, and carries no real address or secret.
