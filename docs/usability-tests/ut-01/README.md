@@ -4,6 +4,10 @@
 - **Design sprint:** [SPRINT-07](../../project-plan.md#sprint-07)
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
+The participant sessions took place during SPRINT-08.
+The private eligibility checks and final counted-session total await confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
+The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
+
 ## Goal
 
 Verify whether, and to what degree, a shared board solves the problem of teams losing context when they share LLM queries and results.
@@ -365,11 +369,15 @@ This draft records the analysis methods before the first counted session; the QR
 
 ## Schedule
 
-The team will invite and screen volunteers after the design review and once the consent and data-handling prerequisites are ready. Counted sessions are planned in person on the university network during SPRINT-08, 16–21 November 2026; exact appointments will be agreed with eligible volunteers. Results are due with Submission 8 on 21 November 2026.
+The session plan requires inviting and screening volunteers after the design review and once the consent and data-handling prerequisites are ready.
+The sessions took place during [SPRINT-08](../../project-plan.md#sprint-08), 16–21 November 2026; the sanitized session notes must record the actual dates.
+Refer to [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) for confirmation of the private eligibility checks and final counted-session total.
+Results are due with Submission 8 on 21 November 2026.
 
 Assign `P-01`, `P-02`, and subsequent codes in the order sessions are scheduled. Never reuse a code. If a participant withdraws or a session cannot count, retire that code and assign a replacement the next free code; the identity mapping stays private.
 
-The SPRINT-07 teammate dry run is excluded from the recruitment count and results. Sessions cannot count until consent and capture are ready and the instrumentation verification above has passed.
+The teammate dry run is excluded from the recruitment count and results.
+Sessions cannot count until consent and capture are ready and the instrumentation verification above has passed.
 
 ## Roles
 
