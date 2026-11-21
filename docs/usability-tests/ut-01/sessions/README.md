@@ -1,5 +1,73 @@
 # UT-01 Sessions
 
+## Recorded sessions
+
+Three participants completed the tasks together in one shared-board team run, `T-01`, on 19 November 2026 during [SPRINT-08](../../../project-plan.md#sprint-08).
+No control or supplementary run took place.
+Each participant has a sanitized observation record; their shared task outcomes represent one team attempt per task.
+The three records do not establish three counted sessions: only P-01 has fully confirmed eligibility, while P-02 and P-03 remain partially unconfirmed.
+
+| Participant | Team run | Condition | Public note |
+| --- | --- | --- | --- |
+| UT-01 P-01 | T-01 | Shared board | [P-01](P-01.md) |
+| UT-01 P-02 | T-01 | Shared board | [P-02](P-02.md) |
+| UT-01 P-03 | T-01 | Shared board | [P-03](P-03.md) |
+
+### Eligibility, consent, and capture confirmation
+
+The team reports one fully confirmed eligibility profile (P-01) and two partially unconfirmed profiles (P-02 and P-03).
+The outstanding individual checks for P-02 and P-03 are not specified; do not infer which criteria passed or failed.
+All three participants gave consent, and the capture method was explained as telemetry and human observations, with no video.
+The team confirms that consent preceded capture for all three participants and that there were no withdrawals.
+The underlying consent and eligibility records remain private.
+
+| Participant | Eligibility status | Counted-session status |
+| --- | --- | --- |
+| UT-01 P-01 | All checks confirmed | Confirmed eligibility, prior consent, capture, and no withdrawal. |
+| UT-01 P-02 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
+| UT-01 P-03 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
+
+The currently confirmed counted-session total is one (P-01), using the documented telemetry and observer-capture method.
+P-02 and P-03 remain outside that count while eligibility is partially unconfirmed.
+The minimum of three counted sessions is therefore not met.
+The results work must use the confirmed counted-session total rather than treating all three participants as eligible.
+
+### T-01 shared task record
+
+The team member confirmed completion with assistance on all three tasks.
+The task names correspond to [the UT-01 tasks](../README.md#the-tasks).
+The 30-, 10-, and 10-minute task limits in the design are not recorded elapsed times.
+
+| Task | Team outcome | Assistance | Actual elapsed time |
+| --- | --- | --- | --- |
+| Task 1: Brainstorm ideas and select one | Assisted | P-01 needed help with editing-related technical difficulties and bugs and asked questions about functionality; P-02 and P-03 asked questions about functionality and received assistance. | Not recorded |
+| Task 2: Reuse another member's AI answer | Assisted | All three participants asked questions about functionality and received assistance. | Not recorded |
+| Task 3: Create and share a diagram | Assisted | All three participants needed a substantial hint to locate the diagram feature. | Not recorded |
+
+These are retrospective outcome confirmations, not reconstructed timings.
+Detailed descriptions of the selected idea, reused answer, and final diagram are not established by the supplied notes or questionnaire.
+The formal QR/QRT verdict is separate from this session record.
+
+### Shared observations
+
+The notes describe manual copying from AI replies into text blocks and confusion about connecting AI blocks to text blocks with the ambiguous attribution P-02/P-03.
+They do not establish whether one or both participants experienced each issue.
+Other group observations concern arrow direction, text-block titles, the interpretation of blue as another member, and missing onboarding; individual support is not enumerated for each observation.
+The observer separately noted a small reply area for both P-01 and P-02.
+Group feedback described diagram creation as non-obvious, with the dedicated-button suggestion explicitly attributed to P-01.
+Observer ideas about generation status, Mermaid import, and diagram appearance are not treated as participant findings.
+
+### Measurement limitations
+
+SEQ was not administered after any task; all participant SEQ values are missing (`n=0`).
+Task durations, participant tool-switch counts and observation durations, and observer ease ratings are unavailable in the supplied material.
+SUS scores use the ten recorded numeric answers and the formula in [surveys.md](../surveys.md#sus-scoring); raw answers and post-test responses remain private.
+There is one team and no control group, so neither individual questionnaire responses nor repeated task outcomes establish independent team comparisons or a population effect.
+The team member retrospectively confirmed the date, software-development student roles, and laptop use.
+Device details were not captured during the session.
+P-01 has since confirmed all eligibility checks, including the minimum LLM-use and device criteria; exact browser details remain unrecorded.
+P-02 and P-03 have only partial eligibility confirmation.
+
 ## Session Instructions
 
 Before the participant arrives:
