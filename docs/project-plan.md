@@ -135,25 +135,47 @@ The result and the last check of each test are in the [Quality Requirement Testi
 
 ### SPRINT-08
 
-Provisional: representative participants complete the usability test on staging, and the team publishes sanitized evidence of the board's usability, the findings and their triage, the quality requirement verdict, and REL-08 with any fixes completed in the sprint.
+The team establishes whether the shared board helps representative participants brainstorm with an LLM, supported by sanitized usability evidence and a configuration evaluation of the repository released as REL-08.
 
 - **Due:** 2026-11-21
 - **Sprint Backlog:** [the issues scheduled into SPRINT-08](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8)
+- **Planned Velocity:** 0
 
-Instrumentation verification runs after implementation and before the first counted session, confirming that a team-run record reaches the named store and can be linked to that run.
-Run the deferred teammate dry run before that verification, using the same staging deployment so the protocol rehearsal and instrumentation check can be completed together before participants start.
-Verification is due before that session, rather than at the results deadline, and no later than the start of SPRINT-09.
-Counted sessions are planned for SPRINT-08, the sprint of the last counted session; the Week 7 dry run is excluded.
-The results and findings follow the analysis plan fixed before the first session, and significant findings produce task issues scheduled for this sprint when they can be completed before REL-08.
-Future feature stories stay estimated in the product backlog without milestones, ownership values, or assignees until their sprint is planned.
+This is a task sprint: no feature user stories are selected, so the hand-computed total of selected stories' points is 0.
+Markdown acceptance and image generation return to the unscheduled product backlog alongside the other refined feature stories, with their estimates retained and no milestone, ownership values, or assignees until a later sprint is planned.
+
+Before the first counted session, review the teammate dry-run evidence and resolve its blocking findings, confirm the study's recruitment and condition allocation, and freeze the protocol, analysis plan, and QR-06 measure and pass bar.
+The proposed two teams of three require review against the customer's group-size decision in [DEC-049](decisions.md#dec-049); planning does not approve a different study design.
+Instrumentation verification on the exact staging deployment must confirm successful reply and context-reuse events, the named store, the session link, `source=usability-test`, exclusion from product metrics, and isolation from production.
+A failed verification blocks counted sessions until corrected and rerun; it is due before participants start, not with the results.
+
+Run at least three eligible adult participant sessions, with five as the current design target and the proposed six-person allocation subject to review, on staging in person on the university network before the results are written.
+Require durable consent and capture before each counted session, reset the synthetic seed, keep raw text and filtered telemetry in the private usability-data repository and recordings in the team-owned cloud folder, and publish only sanitized session notes.
+All counted sessions ran during SPRINT-08, as confirmed during planning; the teammate dry run is excluded.
+The UT-01 record and index name SPRINT-08 as the run sprint, and the sanitized session notes must supply the session dates and evidence of the prerequisites above.
+
+Analyze the sessions using the frozen analysis plan, publish the results and stable findings, and triage every finding.
+When a Critical or Major finding exists, schedule at least one resulting fix task in SPRINT-08 with its finding, story and AC-nn, and FR-nnn or ADR-nnn links; this does not schedule a new feature story.
+Include landed fixes in REL-08 and move unfinished fixes to SPRINT-09 at sprint close with the reason recorded in the report.
+With fewer than three counted sessions, publish the qualitative record and declared shortfall without aggregate statistics, keep UT-01 Planned, and claim no usability result.
+Evaluate QR-06 QRT-01 and TOS-03 from the recorded evidence; a failed requirement stays visible, and an incomplete test stays Not verified or moves to SPRINT-09 with its reason.
+
+The configuration plan documents the current configuration, and its public evaluation judges the artifacts by the local goals they serve, including tradeoffs and the first proposed change.
+Configuration implementation is not required by the evaluation.
+Update the glossary and risks, review the usability evidence and next steps with the customer at the Sprint Review, apply same-week feedback, and run the testing-plan rows scheduled for this sprint or declare their reason for moving to SPRINT-09.
+Publish REL-08 after the sprint's changes merge, then record actual velocity, the retrospective, AI usage, and the Week 9 handoff at sprint close.
 
 #### REL-08
 
 ### SPRINT-09
 
-Provisional: the final release is published with the evidence of whether the shared board solves the aggregation problem.
+Provisional: the final repository state and REL-09, the 7-minute presentation deck, and the reflection explain whether the shared board solves the aggregation problem, using the usability results, configuration evaluation, and declared limitations.
 
 - **Due:** 2026-11-28
+- **Sprint Backlog:** [the SPRINT-09 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9)
+
+The existing milestone is linked for the handoff; no feature story is scheduled in advance.
+Refined stories remain in the product backlog until SPRINT-09 planning selects them against the final-delivery work and any deferred usability fixes or unverified tests.
 
 #### REL-09
 
