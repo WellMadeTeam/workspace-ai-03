@@ -1,11 +1,11 @@
 # UT-01: Brainstorm with an LLM on a shared board
 
-- **Status:** Completed
+- **Status:** Planned
 - **Design sprint:** [SPRINT-07](../../project-plan.md#sprint-07)
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
 The participant sessions took place during SPRINT-08.
-The private eligibility checks and final counted-session total await confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
+The [confirmation in PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) establishes one currently counted session (P-01); P-02 and P-03 remain partially unconfirmed for eligibility and are not currently counted.
 The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
 
 ## Goal
@@ -69,8 +69,9 @@ The minimum of three counted sessions is not met, so the results must follow the
 The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
-The sessions and descriptive [results](results.md) are recorded, so the test is `Completed`.
-This status does not mean the quality requirement passes or that process departures are resolved; the [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations, while implementation and the formal verdict remain pending.
+Only one counted session is currently confirmed, below the required minimum of three.
+The test stays `Planned`, and [results.md](results.md) contains the qualitative shortfall record without aggregate statistics or a completed usability-result claim.
+The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and the formal testing-plan response remain pending.
 
 ### Recruitment eligibility check
 
@@ -411,7 +412,7 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; descriptive [results](results.md) are recorded, with [findings](results.md#findings) and their [triage](results.md#triage) recorded; the selected fix and the formal QR/QRT verdict remain separate work.
+The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, with [findings](results.md#findings) and their [triage](results.md#triage) recorded; implementation and the formal testing-plan response remain separate work.
 
 ## Schedule
 
@@ -470,7 +471,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 ## Evidence Map
 
-- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and [descriptive results](results.md).
+- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and the [qualitative shortfall record](results.md).
 - The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
@@ -482,7 +483,8 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-The [results](results.md) record the descriptive measures, thematic analysis, instrumentation comparison, limitations, and research-question answers.
-The [numbered findings](results.md#findings) record severity, evidence, and recommendations.
-The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for the Major diagram-discovery finding in SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
-Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the formal verdict remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, and declared shortfall.
+It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
+The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
+The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
+Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the formal testing-plan response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
