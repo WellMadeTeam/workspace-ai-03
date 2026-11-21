@@ -71,7 +71,7 @@ The [session confirmation summary](sessions/README.md#eligibility-consent-and-ca
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
 Only one counted session is currently confirmed, below the required minimum of three.
 The test stays `Planned`, and [results.md](results.md) contains the qualitative shortfall record without aggregate statistics or a completed usability-result claim.
-Findings, product-response decisions, and the formal testing-plan response remain under review.
+The [findings](results.md#findings) are prepared for triage; product-response decisions and the formal testing-plan response remain under review.
 
 ### Recruitment eligibility check
 
@@ -412,7 +412,7 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, while findings, product-response decisions, and the formal testing-plan response remain under review.
+The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, with [findings](results.md#findings) prepared for triage; product-response decisions and the formal testing-plan response remain under review.
 
 ## Schedule
 
@@ -485,4 +485,5 @@ Results and findings are due in SPRINT-08 and are not recorded during the design
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
 The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, and declared shortfall.
 It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
-The product-response decisions and formal findings/verdict require coordination through #385–#387 before final review.
+The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
+Product-response decisions and the formal testing-plan response require coordination through #386 and #387 before final review.
