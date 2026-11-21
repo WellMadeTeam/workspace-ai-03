@@ -151,7 +151,8 @@ A failed verification blocks counted sessions until corrected and rerun; it is d
 
 Run at least three eligible adult participant sessions, with five as the current design target and the proposed six-person allocation subject to review, on staging in person on the university network before the results are written.
 Require durable consent and capture before each counted session, reset the synthetic seed, keep raw text and filtered telemetry in the private usability-data repository and recordings in the team-owned cloud folder, and publish only sanitized session notes.
-All counted sessions ran during SPRINT-08, as confirmed during planning; the teammate dry run is excluded.
+The usability sessions took place during SPRINT-08; the teammate dry run is excluded.
+The final counted-session total is subject to the private eligibility checks awaiting confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
 The UT-01 record and index name SPRINT-08 as the run sprint, and the sanitized session notes must supply the session dates and evidence of the prerequisites above.
 
 Analyze the sessions using the frozen analysis plan, publish the results and stable findings, and triage every finding.

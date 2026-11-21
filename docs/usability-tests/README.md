@@ -1,7 +1,8 @@
 # Usability tests
 
 This index links each usability test to its public record and run sprint.
-All counted UT-01 sessions ran during SPRINT-08; the test stays Planned until its required session evidence and results are recorded.
+The UT-01 sessions took place during SPRINT-08; [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) tracks confirmation of the private eligibility checks and final counted-session total.
+The test stays Planned until its required session evidence and results are recorded.
 
 | UT                       | Goal                                     | Status  | Results | Sprints                                                                                         |
 | ------------------------ | ---------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
