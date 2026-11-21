@@ -63,7 +63,9 @@ The team member retrospectively confirmed software-development student roles and
 P-01 has confirmed all recruitment eligibility checks, including the minimum prior LLM-use criterion.
 Eligibility for P-02 and P-03 remains partially unconfirmed; the outstanding checks are not specified in this update.
 All three gave consent to explained telemetry and observer capture, with no video.
-Consent timing and withdrawal status still require confirmation before establishing the counted-session total.
+The team confirms that consent preceded capture for all three participants and that there were no withdrawals.
+The currently confirmed counted-session total is one (P-01); P-02 and P-03 are not counted while eligibility remains partially unconfirmed.
+The minimum of three counted sessions is not met, so the results must follow the qualitative shortfall reporting rule rather than publish aggregates for three counted participants.
 The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.

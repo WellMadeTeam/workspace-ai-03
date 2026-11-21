@@ -18,16 +18,18 @@ The three records do not establish three counted sessions: only P-01 has fully c
 The team reports one fully confirmed eligibility profile (P-01) and two partially unconfirmed profiles (P-02 and P-03).
 The outstanding individual checks for P-02 and P-03 are not specified; do not infer which criteria passed or failed.
 All three participants gave consent, and the capture method was explained as telemetry and human observations, with no video.
-Consent timing and withdrawal status still require confirmation before establishing the counted-session total.
+The team confirms that consent preceded capture for all three participants and that there were no withdrawals.
 The underlying consent and eligibility records remain private.
 
 | Participant | Eligibility status | Counted-session status |
 | --- | --- | --- |
-| UT-01 P-01 | All checks confirmed | Not established until prior consent and withdrawal status are confirmed. |
+| UT-01 P-01 | All checks confirmed | Confirmed eligibility, prior consent, capture, and no withdrawal. |
 | UT-01 P-02 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
 | UT-01 P-03 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
 
-The minimum of three counted sessions is not established by these records.
+The currently confirmed counted-session total is one (P-01), using the documented telemetry and observer-capture method.
+P-02 and P-03 remain outside that count while eligibility is partially unconfirmed.
+The minimum of three counted sessions is therefore not met.
 The results work must use the confirmed counted-session total rather than treating all three participants as eligible.
 
 ### T-01 shared task record
