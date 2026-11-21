@@ -227,31 +227,31 @@ The team's work of identifying, owning, reviewing, and updating the configuratio
 
 The team's judgement of the configuration plan at a fixed baseline, asking whether the artifacts serve their local goals conveniently and what the team would change.
 
-**Defined by:** [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
+**Defined by:** [the Week 8 evaluation](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
 
 ### Configuration Plan
 
 The maintained inventory at `docs/configuration-plan.md` that records the configuration items, their purposes, owners, locations, and connections, with the date it was reviewed.
 
-**Defined by:** [the course's configuration plan rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
+**Defined by:** [the configuration plan](configuration-plan.md) and [the course's configuration plan rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
 
 ### Configuration Item
 
 One maintained file, setting, process, or dependency that this project needs to be built, checked, delivered, or understood, recorded under a stable `CFG-nn` identifier in the configuration plan.
 
-**Defined by:** [the course's configuration item rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-configuration-items).
+**Defined by:** [the configuration plan's items](configuration-plan.md#source-control-and-release) and [the course's configuration item rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-configuration-items).
 
 ### Configuration Evaluation
 
 The record of a configuration review in `reports/week-NN/cm-evaluation.md`, preserving the baseline, method, judgement for each local goal, what could not be judged, and the first proposed change as that week's evidence.
 
-**Defined by:** [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
+**Defined by:** [the Week 8 evaluation](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
 
 ### Baseline
 
 The frozen state of the repository identified by the tag or commit that a configuration evaluation judges, so later changes can be compared with the state reviewed.
 
-**Defined by:** [the course's configuration baseline rule](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
+**Defined by:** [the Week 8 evaluation's baseline](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration baseline rule](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
 
 ### Upkeep
 

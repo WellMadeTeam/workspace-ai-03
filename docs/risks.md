@@ -136,9 +136,11 @@ The deployment uses provider, proxy, and telemetry credentials while the reposit
   - A leaked credential could give access to the provider or telemetry data and force a service interruption during the remaining sessions or the final demonstration.
 - **Likelihood:** Medium
   - The [deployment configuration](deployment.md#configuration) requires several credentials to be entered by hand, while `.gitignore` protects secret files but cannot stop a value pasted into another file or a review.
+  - [CFG-11](configuration-plan.md#cfg-11) records the deployment and incident-response owners, but [the evaluation's limits](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md#what-we-could-not-judge) leave credential revocation and rotation ownership and replacement steps unverified.
 - **Trigger:** a secret scan, a reviewer, or a service alert identifies a real credential in a public file, commit, issue, or pull request.
 - **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), during configuration changes, deployment, and final submission.
 - **Mitigation:** keep real values in the password manager and the deployment's ignored environment files, use placeholders in examples and evidence, and review the complete diff for credentials before publishing it.
+  Confirm the revocation and rotation responsibilities and replacement steps for each deployment with the owners recorded in [CFG-11](configuration-plan.md#cfg-11).
 - **Contingency:** revoke or rotate the exposed secret immediately, tell the instructor, remove it from public files and git history, and send the instructor a private account of what was exposed, when, and the response, following [the incident response rule](https://github.com/inno-itpd/itpd/blob/main/requirements/repository-requirements.md#sensitive-data-incident-response).
 
 ## RISK-10
@@ -152,8 +154,8 @@ The configuration spans repository files and external settings that can change i
   - The [runbook](deployment.md#configuration) includes settings outside git, and [Dependabot](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/dependabot.yml) updates dependencies weekly, so reviewing only file changes can miss an inventory change.
 - **Trigger:** a pull request or the weekly review finds that a configuration item's recorded purpose, owner, location, or connections no longer match the repository or its settings.
 - **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), from the configuration plan's creation through the final handoff.
-- **Mitigation:** compare every configuration change with the inventory, update the affected entries in the same pull request when the recorded facts change, and check the plan against the repository at the weekly review.
-- **Contingency:** treat the stale plan as a defect and update `docs/configuration-plan.md` in the pull request that records the configuration change, restoring the affected entries and their connections before accepting that change.
+- **Mitigation:** compare every configuration change with the [inventory](configuration-plan.md), update the affected entries in the same pull request when the recorded facts change, and check the plan against the repository at the weekly review.
+- **Contingency:** treat the stale plan as a defect and update [the configuration plan](configuration-plan.md) in the pull request that records the configuration change, restoring the affected entries and their connections before accepting that change.
 
 ## RISK-11
 
@@ -163,7 +165,7 @@ The product depends on packages and container images maintained outside the team
 - **Impact:** High
   - An incompatible dependency can stop the core query flow or the build, preventing the release from reaching staging and the customer.
 - **Likelihood:** Medium
-  - [Dependabot](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/dependabot.yml) proposes weekly updates across npm, pip, actions, and Docker, while the [backend requirements](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/app/backend/requirements.txt) include interdependent packages that must remain compatible.
+  - [CFG-12](configuration-plan.md#cfg-12), [CFG-13](configuration-plan.md#cfg-13), and [CFG-14](configuration-plan.md#cfg-14) record the lockfile, exact Python requirements, build inputs, and weekly dependency proposals, whose versions must remain compatible.
 - **Trigger:** a dependency update fails a documented build, a critical-module test, or the staging core task, and a compatible update cannot be completed within the sprint.
 - **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), on each dependency update before the release.
 - **Mitigation:** review updates as dependency changes, install from the lockfile and exact requirements, and run the relevant [checks and tests](setup.md#checks-and-tests) and staging verification before accepting an update.
@@ -178,6 +180,7 @@ Staging and production are deployed manually and the container base images use m
   - A production failure after staging passed would invalidate confidence in the release and could prevent the customer from completing the core task in the final demonstration.
 - **Likelihood:** Medium
   - The [runbook](deployment.md#deploy) builds each deployment separately, the Dockerfiles name image tags rather than digests, and environment files are installed outside git, so the same source commit alone does not guarantee identical runtime state.
+  - [The evaluation's reproduction goal](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md#reproduce-the-same-product-across-test-and-deployment) also identifies different CI and container runtimes in [CFG-07](configuration-plan.md#cfg-07), [CFG-12](configuration-plan.md#cfg-12), and [CFG-13](configuration-plan.md#cfg-13); the confirmed builds do not show that this difference caused a failure.
 - **Trigger:** deployment verification shows a different source commit, image identity, or undocumented configuration change between production and the candidate that passed staging.
 - **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), during each staging and production deploy and rollback.
 - **Mitigation:** record the candidate commit and built image identities, compare the two environments while allowing only the [documented environment differences](deployment.md#environments), and verify production through the runbook after each deploy.
