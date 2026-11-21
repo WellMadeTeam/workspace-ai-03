@@ -5,7 +5,7 @@
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
 The participant sessions took place during SPRINT-08.
-The private eligibility checks and final counted-session total await confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
+The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility.
 The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
 
 ## Goal
@@ -69,7 +69,9 @@ The minimum of three counted sessions is not met, so the results must follow the
 The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
-Results, analysis, and the QR/QRT verdict remain pending; the test stays `Planned` until the counted sessions and results are recorded.
+The [qualitative record](results.md) declares the shortfall without aggregate statistics or a completed usability result.
+UT-01 remains `Planned`, and QR-06 QRT-01 remains `Not verified` in the [testing plan](../../project-plan.md#quality-requirement-testing-plan).
+[TOS-03](../../threshold-of-success.md#tos-03) is Missed because its existing measure is not established by the available evidence.
 
 ### Recruitment eligibility check
 
@@ -388,7 +390,7 @@ Describe the findings as evidence from these sessions, not estimates for a wider
 
 ### Results, findings, and triage
 
-`results.md` is the run-week record; leave its result fields empty until sessions have been analyzed.
+[results.md](results.md) is the run-week qualitative record; the current counted-session shortfall prevents aggregate statistics or a completed usability result.
 Each finding uses the template below and a stable `#finding-n` anchor:
 
 ```markdown
@@ -410,7 +412,9 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; results, findings, and the QR/QRT verdict remain pending.
+The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall.
+Numbered findings and product-response triage remain under review through #385 and #386.
+The [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified, and [TOS-03](../../threshold-of-success.md#tos-03) records the missed measure.
 
 ## Schedule
 
@@ -481,4 +485,5 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-Analysis and findings remain pending in [results.md](results.md).
+The [qualitative record](results.md) documents observations, missing measures, instrumentation limitations, and research-question answers.
+UT-01 remains Planned; numbered findings and product-response triage remain under review through #385 and #386.

@@ -152,7 +152,7 @@ A failed verification blocks counted sessions until corrected and rerun; it is d
 Run at least three eligible adult participant sessions, with five as the current design target and the proposed six-person allocation subject to review, on staging in person on the university network before the results are written.
 Require durable consent and capture before each counted session, reset the synthetic seed, keep raw text and filtered telemetry in the private usability-data repository and recordings in the team-owned cloud folder, and publish only sanitized session notes.
 The usability sessions took place during SPRINT-08; the teammate dry run is excluded.
-The final counted-session total is subject to the private eligibility checks awaiting confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
+The [session confirmation summary](usability-tests/ut-01/sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility.
 The UT-01 record and index name SPRINT-08 as the run sprint, and the sanitized session notes must supply the session dates and evidence of the prerequisites above.
 
 Analyze the sessions using the frozen analysis plan, publish the results and stable findings, and triage every finding.
@@ -191,6 +191,13 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15) |
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15) |
 | [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Not verified | None | [SPRINT-08](#sprint-08) | None |
+
+QR-06 QRT-01 remains `Not verified` in SPRINT-08 because the [UT-01 qualitative record](usability-tests/ut-01/results.md#session-count-and-shortfall) establishes only one counted session, below the minimum of three.
+P-02 and P-03 remain partially unconfirmed for eligibility; their observation records do not establish additional counted sessions or independent team attempts.
+The observed main task was Assisted and its duration is unavailable; no unaided-completion pass is claimed.
+`Checked` and `Evidence` remain `None` because no completed QRT check is recorded.
+UT-01 remains Planned, and no later execution is scheduled here.
+The Week 08 report must declare this shortfall when its draft is finalized.
 
 QR-01 is scheduled for another check in SPRINT-08 because the Week 07 run still exceeded the two-second limit for nine query-message reads.
 QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03-scenario-check-2026-11-15), but its requirement defines no QRT, so it has no test row here.
