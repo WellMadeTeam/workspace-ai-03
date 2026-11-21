@@ -28,6 +28,7 @@ The project is exploratory: its goal is to verify whether, and to what degree, a
 
 ## Project
 
+- [Configuration plan](configuration-plan.md): the configuration items, their owners, and what depends on them.
 - [Threshold of success](threshold-of-success.md): the goals that must all be achieved for the project to count as a success.
 - [Project plan](project-plan.md): the milestones, the sprints and their releases, and how progress is monitored.
 - [Risks](risks.md): what could take the plan away, and the fallback for each.
