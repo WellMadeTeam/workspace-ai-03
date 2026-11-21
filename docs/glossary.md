@@ -210,3 +210,79 @@ The System Usability Scale, a ten-statement questionnaire that each participant 
 The Single Ease Question, which each participant answers on a seven-point scale after each task to say how difficult or easy it was, where 1 is very difficult and 7 is very easy.
 
 **Defined by:** [the `UT-01` surveys](usability-tests/ut-01/surveys.md#seq-after-each-task).
+
+## Configuration Management
+
+### Configuration
+
+The files, settings, and processes that the team uses to produce, check, store, and deliver this repository's artifacts and that an agent reads to find them.
+
+**Defined by:** [the course's artifact terminology](https://github.com/inno-itpd/itpd/blob/main/requirements/general-requirements.md#artifact-concepts-and-terminology).
+
+### Configuration Management
+
+The team's work of identifying, owning, reviewing, and updating the configuration so that the product can be built, checked, delivered, and understood as the repository changes.
+
+### Configuration Review
+
+The team's judgement of the configuration plan at a fixed baseline, asking whether the artifacts serve their local goals conveniently and what the team would change.
+
+**Defined by:** [the Week 8 evaluation](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
+
+### Configuration Plan
+
+The maintained inventory at `docs/configuration-plan.md` that records the configuration items, their purposes, owners, locations, and connections, with the date it was reviewed.
+
+**Defined by:** [the configuration plan](configuration-plan.md) and [the course's configuration plan rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
+
+### Configuration Item
+
+One maintained file, setting, process, or dependency that this project needs to be built, checked, delivered, or understood, recorded under a stable `CFG-nn` identifier in the configuration plan.
+
+**Defined by:** [the configuration plan's items](configuration-plan.md#source-control-and-release) and [the course's configuration item rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-configuration-items).
+
+### Configuration Evaluation
+
+The record of a configuration review in `reports/week-NN/cm-evaluation.md`, preserving the baseline, method, judgement for each local goal, what could not be judged, and the first proposed change as that week's evidence.
+
+**Defined by:** [the Week 8 evaluation](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration evaluation rules](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#the-evaluation).
+
+### Baseline
+
+The frozen state of the repository identified by the tag or commit that a configuration evaluation judges, so later changes can be compared with the state reviewed.
+
+**Defined by:** [the Week 8 evaluation's baseline](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/reports/week-08/cm-evaluation.md) and [the course's configuration baseline rule](https://github.com/inno-itpd/itpd/blob/main/requirements/configuration-management-requirements.md#where-the-configuration-plan-and-the-review-live).
+
+### Upkeep
+
+Work that keeps this repository's configuration and maintained documentation accurate and usable, tracked as `None: repository upkeep` when a task serves no product requirement.
+
+**Defined by:** [the course's task requirement rules](https://github.com/inno-itpd/itpd/blob/main/requirements/task-issues-requirements.md#the-issue-form).
+
+### Reproducible Build
+
+A build that another member can repeat from the same commit, dependency versions, and documented configuration to obtain equivalent runnable product artifacts.
+
+### Dependency Pinning
+
+Fixing a dependency to an identified version or commit, using this project's lockfile, exact Python requirements, or action commit references, so an install does not silently select a different dependency.
+
+**Defined by:** [the frontend lockfile](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/app/frontend/package-lock.json), [the backend requirements](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/app/backend/requirements.txt), and [the course's action pinning rules](https://github.com/inno-itpd/itpd/blob/main/requirements/repository-requirements.md#pinning-third-party-actions).
+
+### Secret
+
+A credential that grants access to a service or deployment, such as the LLM service provider's key or a telemetry client's secret, kept in the team's password manager and the appropriate environment rather than in this public repository.
+
+**Defined by:** [the deployment configuration](deployment.md#configuration) and [the course's sensitive information rules](https://github.com/inno-itpd/itpd/blob/main/requirements/repository-requirements.md#configuration-and-sensitive-information).
+
+## Agent Context
+
+### Context Window
+
+The limited amount of instructions, conversation, and file content a coding agent can consider at once while working on this repository.
+
+### Agent Instruction
+
+A repository rule addressed to a coding agent, entered through the root `AGENTS.md`, that directs how the agent finds project context, changes files, and checks its work.
+
+**Defined by:** [the team's agent instructions](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/AGENTS.md).
