@@ -59,7 +59,7 @@ Individual prior LLM-use details remain unrecorded in the supplied sanitized mat
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
 The sessions and descriptive [results](results.md) are recorded, so the test is `Completed`.
-This status does not mean the quality requirement passes or that process departures are resolved; findings, product-response decisions, and the formal verdict remain under review.
+This status does not mean the quality requirement passes or that process departures are resolved; the [findings](results.md#findings) await team triage, and product-response decisions and the formal verdict remain under review.
 
 ### Recruitment eligibility check
 
@@ -400,7 +400,7 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; descriptive [results](results.md) are recorded, while findings, product-response decisions, and the formal QR/QRT verdict remain under review.
+The session record discloses execution departures; descriptive [results](results.md) are recorded, with [findings](results.md#findings) prepared for triage; product-response decisions and the formal QR/QRT verdict remain under review.
 
 ## Schedule
 
@@ -469,4 +469,5 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
 The [results](results.md) record the descriptive measures, thematic analysis, instrumentation comparison, limitations, and research-question answers.
-The product-response decisions and formal findings/verdict require coordination through #385–#387 before final review.
+The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
+Product-response decisions and the formal verdict require coordination through #386 and #387 before final review.
