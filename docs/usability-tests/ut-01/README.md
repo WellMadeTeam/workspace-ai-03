@@ -44,7 +44,8 @@ A session that fails to meet the profile is exploratory and is not counted.
 ### Actual study allocation
 
 Three participants took part as one team using the shared board only.
-Every participant completed all three tasks with assistance, giving three participant sessions and one team run (`T-01`).
+Every participant completed all three tasks with assistance, giving three participant observation records from one team run (`T-01`).
+These records do not establish three counted sessions: P-01 has confirmed all eligibility checks, while P-02 and P-03 are partially unconfirmed.
 There were not enough volunteers to form a control group.
 The customer agreed that a control group was desirable but optional, depending on recruitment.
 No control or supplementary run took place.
@@ -59,7 +60,11 @@ SEQ was omitted after every task.
 Task durations, tool-switch counts and observation durations, and observer ease ratings are not available in the supplied material.
 The fourth SUS statement used shortened wording; the [session limitations](sessions/README.md#measurement-limitations) disclose this difference.
 The team member retrospectively confirmed software-development student roles and laptop use; device details were not captured during the session.
-Individual prior LLM-use details remain unrecorded in the supplied sanitized material; private eligibility confirmations are separate.
+P-01 has confirmed all recruitment eligibility checks, including the minimum prior LLM-use criterion.
+Eligibility for P-02 and P-03 remains partially unconfirmed; the outstanding checks are not specified in this update.
+All three gave consent to explained telemetry and observer capture, with no video.
+Consent timing and withdrawal status still require confirmation before establishing the counted-session total.
+The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
 Results, analysis, and the QR/QRT verdict remain pending; the test stays `Planned` until the counted sessions and results are recorded.

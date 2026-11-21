@@ -4,13 +4,31 @@
 
 Three participants completed the tasks together in one shared-board team run, `T-01`, on 19 November 2026 during [SPRINT-08](../../../project-plan.md#sprint-08).
 No control or supplementary run took place.
-Each participant has a sanitized note; their shared task outcomes represent one team attempt per task.
+Each participant has a sanitized observation record; their shared task outcomes represent one team attempt per task.
+The three records do not establish three counted sessions: only P-01 has fully confirmed eligibility, while P-02 and P-03 remain partially unconfirmed.
 
 | Participant | Team run | Condition | Public note |
 | --- | --- | --- | --- |
 | UT-01 P-01 | T-01 | Shared board | [P-01](P-01.md) |
 | UT-01 P-02 | T-01 | Shared board | [P-02](P-02.md) |
 | UT-01 P-03 | T-01 | Shared board | [P-03](P-03.md) |
+
+### Eligibility, consent, and capture confirmation
+
+The team reports one fully confirmed eligibility profile (P-01) and two partially unconfirmed profiles (P-02 and P-03).
+The outstanding individual checks for P-02 and P-03 are not specified; do not infer which criteria passed or failed.
+All three participants gave consent, and the capture method was explained as telemetry and human observations, with no video.
+Consent timing and withdrawal status still require confirmation before establishing the counted-session total.
+The underlying consent and eligibility records remain private.
+
+| Participant | Eligibility status | Counted-session status |
+| --- | --- | --- |
+| UT-01 P-01 | All checks confirmed | Not established until prior consent and withdrawal status are confirmed. |
+| UT-01 P-02 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
+| UT-01 P-03 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
+
+The minimum of three counted sessions is not established by these records.
+The results work must use the confirmed counted-session total rather than treating all three participants as eligible.
 
 ### T-01 shared task record
 
@@ -44,7 +62,9 @@ Task durations, participant tool-switch counts and observation durations, and ob
 SUS scores use the ten recorded numeric answers and the formula in [surveys.md](../surveys.md#sus-scoring); raw answers and post-test responses remain private.
 There is one team and no control group, so neither individual questionnaire responses nor repeated task outcomes establish independent team comparisons or a population effect.
 The team member retrospectively confirmed the date, software-development student roles, and laptop use.
-Device details were not captured during the session; browsers and individual prior LLM-use details remain unrecorded in the supplied material.
+Device details were not captured during the session.
+P-01 has since confirmed all eligibility checks, including the minimum LLM-use and device criteria; exact browser details remain unrecorded.
+P-02 and P-03 have only partial eligibility confirmation.
 
 ## Session Instructions
 
