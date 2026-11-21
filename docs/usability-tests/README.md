@@ -1,6 +1,7 @@
 # Usability tests
 
-This index links each usability test to its public record and planned run sprint.
+This index links each usability test to its public record and run sprint.
+All counted UT-01 sessions ran during SPRINT-08; the test stays Planned until its required session evidence and results are recorded.
 
 | UT                       | Goal                                     | Status  | Results | Sprints                                                                                         |
 | ------------------------ | ---------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
