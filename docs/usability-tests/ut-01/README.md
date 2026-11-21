@@ -1,6 +1,6 @@
 # UT-01: Brainstorm with an LLM on a shared board
 
-- **Status:** Planned
+- **Status:** Completed
 - **Design sprint:** [SPRINT-07](../../project-plan.md#sprint-07)
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
@@ -58,7 +58,8 @@ The team member retrospectively confirmed software-development student roles and
 Individual prior LLM-use details remain unrecorded in the supplied sanitized material; private eligibility confirmations are separate.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
-Results, analysis, and the QR/QRT verdict remain pending; the test stays `Planned` until the counted sessions and results are recorded.
+The sessions and descriptive [results](results.md) are recorded, so the test is `Completed`.
+This status does not mean the quality requirement passes or that process departures are resolved; findings, product-response decisions, and the formal verdict remain under review.
 
 ### Recruitment eligibility check
 
@@ -399,7 +400,7 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; results, findings, and the QR/QRT verdict remain pending.
+The session record discloses execution departures; descriptive [results](results.md) are recorded, while findings, product-response decisions, and the formal QR/QRT verdict remain under review.
 
 ## Schedule
 
@@ -455,7 +456,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 ## Evidence Map
 
-- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions); results remain pending.
+- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and [descriptive results](results.md).
 - The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
@@ -467,4 +468,5 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-Analysis and findings remain pending in [results.md](results.md).
+The [results](results.md) record the descriptive measures, thematic analysis, instrumentation comparison, limitations, and research-question answers.
+The product-response decisions and formal findings/verdict require coordination through #385–#387 before final review.
