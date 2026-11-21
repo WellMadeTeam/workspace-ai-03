@@ -1,15 +1,19 @@
 # Risks
 
-| ID                  | Status | Impact | Likelihood | Risk                                                                                                                                                                                                                                                                                                               |
-|---------------------|--------|--------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [RISK-01](#risk-01) | Open   | High   | High       | Every client polls the board once a second and saves its edits through REST, where the last write to a field wins, so 10 clients editing one board may lose concurrent edits or see changes late, which would fail the TOS-02 test at the Week 7 deadline.                                                         |
-| [RISK-02](#risk-02) | Open   | High   | Medium     | The outside session needs at least 3 people who owe the project nothing to agree on a date and spend a full session on the board, so no session may happen by Week 8, which would leave TOS-03 without its measure and the project goal without its evidence.                                                      |
-| [RISK-03](#risk-03) | Open   | High   | Medium     | The product sends every query through one Groq free-tier key, so a team querying with large selected contexts at once may hit its rate limits, which would show errors instead of responses in the customer demo or the outside session.                                                                           |
-| [RISK-04](#risk-04) | Open   | High   | Low        | The customer brings the product up on his own computer, so a setup step that works only on ours may fail there, which would delay the customer's acceptance of the core flow past the Week 5 deadline of TOS-01.                                                                                                   |
-| [RISK-05](#risk-05) | Open   | High   | Medium     | The usability test needs at least 3 counted participants who are adults outside the team and match the profile, so too few eligible volunteers may agree to a slot in SPRINT-08, which would leave UT-01 below its minimum of three completed sessions and without evidence for the project goal.                  |
-| [RISK-06](#risk-06) | Open   | Medium | Low        | A session counts only when the participant has signed the consent to its capture and to sanitized public results, so a participant who declines or later withdraws may cost that session and its data, which would reduce the counted sessions below three with little time left for a replacement.                |
-| [RISK-07](#risk-07) | Open   | High   | Low        | The consent records, identity mapping, raw notes, and recordings are kept in a private repository and a cloud folder that only granted accounts can open, so an instructor or a member without access may be unable to check them, which would leave the published results without evidence the course can verify. |
-| [RISK-08](#risk-08) | Open   | High   | Medium     | The counted sessions need one facilitator, in-person slots on the university network, and prerequisites that are still open, so the sessions may not all finish within the six days of SPRINT-08, which would leave the study unfinished at the 2026-11-21 deadline for its results.                               |
+| ID | Status | Impact | Likelihood | Risk |
+| --- | --- | --- | --- | --- |
+| [RISK-01](#risk-01) | Open | High | High | Every client polls the board once a second and saves its edits through REST, where the last write to a field wins, so 10 clients editing one board may lose concurrent edits or see changes late, which would fail the TOS-02 test at the Week 7 deadline. |
+| [RISK-02](#risk-02) | Open | High | Medium | The outside session needs at least 3 people who owe the project nothing to agree on a date and spend a full session on the board, so no session may happen by Week 8, which would leave TOS-03 without its measure and the project goal without its evidence. |
+| [RISK-03](#risk-03) | Open | High | Medium | The product sends every query through one Groq free-tier key, so a team querying with large selected contexts at once may hit its rate limits, which would show errors instead of responses in the customer demo or the outside session. |
+| [RISK-04](#risk-04) | Open | High | Low | The customer brings the product up on his own computer, so a setup step that works only on ours may fail there, which would delay the customer's acceptance of the core flow past the Week 5 deadline of TOS-01. |
+| [RISK-05](#risk-05) | Open | High | Medium | The usability test needs at least 3 counted participants who are adults outside the team and match the profile, so too few eligible volunteers may agree to a slot in SPRINT-08, which would leave UT-01 below its minimum of three completed sessions and without evidence for the project goal. |
+| [RISK-06](#risk-06) | Open | Medium | Low | A session counts only when the participant has signed the consent to its capture and to sanitized public results, so a participant who declines or later withdraws may cost that session and its data, which would reduce the counted sessions below three with little time left for a replacement. |
+| [RISK-07](#risk-07) | Open | High | Low | The consent records, identity mapping, raw notes, and recordings are kept in a private repository and a cloud folder that only granted accounts can open, so an instructor or a member without access may be unable to check them, which would leave the published results without evidence the course can verify. |
+| [RISK-08](#risk-08) | Open | High | Medium | The counted sessions need one facilitator, in-person slots on the university network, and prerequisites that are still open, so the sessions may not all finish within the six days of SPRINT-08, which would leave the study unfinished at the 2026-11-21 deadline for its results. |
+| [RISK-09](#risk-09) | Open | High | Medium | The deployment uses provider, proxy, and telemetry credentials while the repository is public, so a member may paste a real secret into a tracked file or review, which would allow unauthorized access and interrupt the service while the credential is replaced. |
+| [RISK-10](#risk-10) | Open | Medium | Medium | The configuration spans repository files and external settings that can change independently, so a change may leave the configuration plan describing an older state, which would mislead the next member or agent and delay the final repository handoff. |
+| [RISK-11](#risk-11) | Open | High | Medium | The product depends on packages and container images maintained outside the team, so an update may fail the build or critical-module tests and leave a dependency that cannot be updated in time, which would delay the release and leave the project dependent on an older version. |
+| [RISK-12](#risk-12) | Open | High | Medium | Staging and production are deployed manually and the container base images use movable tags, so a rebuild or a direct VM edit may make production differ from the state verified on staging, which would leave the released core flow without valid verification. |
 
 ## RISK-01
 
@@ -122,3 +126,59 @@ The counted sessions need one facilitator, in-person slots on the university net
 - **Window:** [SPRINT-08](project-plan.md#sprint-08), from 2026-11-16 up to [MLS-08](project-plan.md#mls-08) on 2026-11-21.
 - **Mitigation:** hold the facilitator's time for the whole session window, fix every counted session's slot at the start of [SPRINT-08](project-plan.md#sprint-08), and run the teammate dry run and the instrumentation verification first, so no session waits for a prerequisite.
 - **Contingency:** postpone the unfinished study to [SPRINT-09](project-plan.md#sprint-09): move its row in the [testing plan](project-plan.md#quality-requirement-testing-plan) to SPRINT-09 with the reason, declare the open window in the Week 8 report, and claim no result or verdict until the sessions are complete.
+
+## RISK-09
+
+The deployment uses provider, proxy, and telemetry credentials while the repository is public, so a member may paste a real secret into a tracked file or review, which would allow unauthorized access and interrupt the service while the credential is replaced.
+
+- **Status:** Open
+- **Impact:** High
+  - A leaked credential could give access to the provider or telemetry data and force a service interruption during the remaining sessions or the final demonstration.
+- **Likelihood:** Medium
+  - The [deployment configuration](deployment.md#configuration) requires several credentials to be entered by hand, while `.gitignore` protects secret files but cannot stop a value pasted into another file or a review.
+- **Trigger:** a secret scan, a reviewer, or a service alert identifies a real credential in a public file, commit, issue, or pull request.
+- **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), during configuration changes, deployment, and final submission.
+- **Mitigation:** keep real values in the password manager and the deployment's ignored environment files, use placeholders in examples and evidence, and review the complete diff for credentials before publishing it.
+- **Contingency:** revoke or rotate the exposed secret immediately, tell the instructor, remove it from public files and git history, and send the instructor a private account of what was exposed, when, and the response, following [the incident response rule](https://github.com/inno-itpd/itpd/blob/main/requirements/repository-requirements.md#sensitive-data-incident-response).
+
+## RISK-10
+
+The configuration spans repository files and external settings that can change independently, so a change may leave the configuration plan describing an older state, which would mislead the next member or agent and delay the final repository handoff.
+
+- **Status:** Open
+- **Impact:** Medium
+  - An inaccurate inventory would make the configuration review and the [SPRINT-09](project-plan.md#sprint-09) handoff unreliable and require another member to rediscover the configuration before changing it.
+- **Likelihood:** Medium
+  - The [runbook](deployment.md#configuration) includes settings outside git, and [Dependabot](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/dependabot.yml) updates dependencies weekly, so reviewing only file changes can miss an inventory change.
+- **Trigger:** a pull request or the weekly review finds that a configuration item's recorded purpose, owner, location, or connections no longer match the repository or its settings.
+- **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), from the configuration plan's creation through the final handoff.
+- **Mitigation:** compare every configuration change with the inventory, update the affected entries in the same pull request when the recorded facts change, and check the plan against the repository at the weekly review.
+- **Contingency:** treat the stale plan as a defect and update `docs/configuration-plan.md` in the pull request that records the configuration change, restoring the affected entries and their connections before accepting that change.
+
+## RISK-11
+
+The product depends on packages and container images maintained outside the team, so an update may fail the build or critical-module tests and leave a dependency that cannot be updated in time, which would delay the release and leave the project dependent on an older version.
+
+- **Status:** Open
+- **Impact:** High
+  - An incompatible dependency can stop the core query flow or the build, preventing the release from reaching staging and the customer.
+- **Likelihood:** Medium
+  - [Dependabot](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/.github/dependabot.yml) proposes weekly updates across npm, pip, actions, and Docker, while the [backend requirements](https://github.com/WellMadeTeam/workspace-ai-03/blob/main/app/backend/requirements.txt) include interdependent packages that must remain compatible.
+- **Trigger:** a dependency update fails a documented build, a critical-module test, or the staging core task, and a compatible update cannot be completed within the sprint.
+- **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), on each dependency update before the release.
+- **Mitigation:** review updates as dependency changes, install from the lockfile and exact requirements, and run the relevant [checks and tests](setup.md#checks-and-tests) and staging verification before accepting an update.
+- **Contingency:** pin the last working version, record why the update cannot be used in the dependency pull request and the affected configuration item, and open a task that removes the need for that dependency.
+
+## RISK-12
+
+Staging and production are deployed manually and the container base images use movable tags, so a rebuild or a direct VM edit may make production differ from the state verified on staging, which would leave the released core flow without valid verification.
+
+- **Status:** Open
+- **Impact:** High
+  - A production failure after staging passed would invalidate confidence in the release and could prevent the customer from completing the core task in the final demonstration.
+- **Likelihood:** Medium
+  - The [runbook](deployment.md#deploy) builds each deployment separately, the Dockerfiles name image tags rather than digests, and environment files are installed outside git, so the same source commit alone does not guarantee identical runtime state.
+- **Trigger:** deployment verification shows a different source commit, image identity, or undocumented configuration change between production and the candidate that passed staging.
+- **Window:** [SPRINT-08](project-plan.md#sprint-08) and [SPRINT-09](project-plan.md#sprint-09), during each staging and production deploy and rollback.
+- **Mitigation:** record the candidate commit and built image identities, compare the two environments while allowing only the [documented environment differences](deployment.md#environments), and verify production through the runbook after each deploy.
+- **Contingency:** deploy the commit that passed staging, reconcile the deployment steps and configuration with the current [runbook](deployment.md#deploy), and redeploy through it rather than patching the VM by hand, repeating staging checks first if rebuilding changed the images.
