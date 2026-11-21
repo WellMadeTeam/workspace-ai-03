@@ -1,34 +1,37 @@
-# UT-01 Results
+# UT-01 Qualitative Record
 
-Three participant sessions ran together as one shared-board team run, `T-01`, on 19 November 2026 in [SPRINT-08](../../project-plan.md#sprint-08).
-The team member confirmed that all three participants completed all three tasks with assistance.
-The [sanitized session records](sessions/README.md#recorded-sessions) supply the observations and questionnaire summaries used below.
-Outcomes and assistance include retrospective clarification; exact task timings were not recorded.
+The currently confirmed counted-session total is one: UT-01 P-01.
+UT-01 P-02 and UT-01 P-03 remain partially unconfirmed for eligibility and are not currently counted.
+The [confirmation summary from #398](sessions/README.md#eligibility-consent-and-capture-confirmation) records prior consent for all three participants, explained telemetry and observer capture with no video, and no withdrawals.
 
-These are descriptive results from three related participant observations and one team, not estimates for a wider population.
-Numbered findings, product decisions, and the formal verdict require coordination through [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385), [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), and [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The minimum of three counted sessions is not met.
+Under [Assignment 8 Part 3](https://github.com/inno-itpd/itpd/blob/main/assignments/assignment-8.md#part-3-write-the-results) and [the shortfall rule](https://github.com/inno-itpd/itpd/blob/main/requirements/usability-testing-requirements.md#the-week-8-execution), UT-01 remains `Planned` and this page records qualitative observations without aggregate statistics or a completed usability-result claim.
+The three observation records and individual questionnaires are retained with their counting status explicit.
 
-## The Results
+## Session count and shortfall
 
-### Sample and exclusions
+The three participants took part together in T-01 on 19 November 2026 during [SPRINT-08](../../project-plan.md#sprint-08).
+They were software-development students using laptops on staging in person on the university network, as reported by the team.
+Task outcomes and assistance include retrospective clarification; exact task timings were not recorded.
 
-| Condition | Participants | Distinct teams | Primary team runs | Team size | Exclusions and missing data |
-| --- | --- | --- | --- | --- | --- |
-| Shared board | 3 | 1 | 1 | 3 | No exclusions reported; SEQ, task durations, tool-switch observations, and observer ease ratings unavailable. |
-| Control | 0 | 0 | 0 | Not applicable | Not recruited; no control observations. |
+| Participant | Eligibility | Prior consent and capture | Withdrawals | Use in this record |
+| --- | --- | --- | --- | --- |
+| [UT-01 P-01](sessions/P-01.md) | All checks confirmed | Consent preceded explained telemetry and observer capture; no video | None reported | One currently confirmed counted session |
+| [UT-01 P-02](sessions/P-02.md) | Partially unconfirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Exploratory; not currently counted |
+| [UT-01 P-03](sessions/P-03.md) | Partially unconfirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Exploratory; not currently counted |
 
-The participants were software-development students using laptops, representing software-team members who brainstorm with an LLM.
-The study used staging in person on the university network, as confirmed by the team for the session task.
-The exact browser and individual prior LLM-use details are not recorded in the public session evidence.
-Eligibility, consent, recording coverage, and any withdrawals are checked against the private records; absence of a reported exclusion is not an independent audit of those records.
+The outstanding individual eligibility checks for P-02 and P-03 are not specified; do not infer which criteria were met or failed.
+The underlying consent, capture, and eligibility records remain private.
+Recruitment did not provide a control group; the customer had agreed it was desirable but optional depending on recruitment.
+No supplementary run took place.
+The shared observed team attempt is not an independent attempt by each participant.
 
-Recruitment was insufficient for a control group, which the customer had agreed was desirable but optional depending on recruitment.
-No opposite-condition supplementary run took place.
-The three participants do not provide three independent team attempts.
+## Observations
 
 ### Team-task results
 
-Each row represents one task attempted by the single team, not an outcome for each participant counted separately.
+Each row describes an observed task attempt by the mixed-eligibility team.
+It is not a qualified team-run denominator or evidence of three counted participant sessions.
 The full scenarios and planned time limits remain in [UT-01](README.md#the-tasks).
 
 | Team run | Task | Outcome | Help given | Elapsed minutes | Sanitized evidence |
@@ -43,7 +46,8 @@ Do not substitute the planned limits, questionnaire timestamps, request latencie
 
 ### Participant-task results
 
-The outcomes below reference the shared team attempt; assistance descriptions are participant-specific where available.
+The outcomes below reference the shared observed team attempt; assistance descriptions are participant-specific where available.
+Only P-01 is currently counted; P-02 and P-03 rows are exploratory observations while eligibility is partially unconfirmed.
 `Not collected` and `Not recorded` are missing data, not numeric zero.
 
 | Participant | Team run | Task | Shared outcome | Assistance | SEQ (1–7) | Tool switches | Observed minutes |
@@ -62,6 +66,9 @@ The outcomes below reference the shared team attempt; assistance descriptions ar
 
 The formula and planned questionnaire are in [surveys.md](surveys.md#sus-scoring).
 All ten numeric answers are present for each respondent; raw answers remain private.
+These are individual questionnaire records, not a three-counted-participant SUS result.
+P-02 and P-03 questionnaire records remain exploratory while eligibility is partially unconfirmed.
+No SUS mean, median, or other aggregate statistic is published.
 The shortened fourth statement differs from the planned wording, so scores must be interpreted with that instrument limitation.
 
 | Participant | Team run | Condition | All ten answers present? | SUS score |
@@ -70,61 +77,20 @@ The shortened fourth statement differs from the planned wording, so scores must 
 | [P-02](sessions/P-02.md#sus-and-post-test) | T-01 | Shared board | Yes | 72.5 |
 | [P-03](sessions/P-03.md#sus-and-post-test) | T-01 | Shared board | Yes | 52.5 |
 
-### Aggregate team measures
+### Missing measures and withheld aggregates
 
-For each task, the denominator is one team run with a reported outcome.
-The main-task numerator `U` is zero unaided runs; denominator `N` is one primary shared-board run.
-There are three distinct participants and no missing reported main-task outcomes.
-Eligibility and capture remain subject to the private-record checks, and the instrumentation departure remains disclosed.
+SEQ was not collected after any task.
+Task durations, participant tool-switch counts and observation durations, and observer ease ratings were not recorded in the supplied material.
+Missing measurements are not zero values and cannot be reconstructed from SUS, post-test comments, questionnaire timestamps, planned task limits, or HTTP request latencies.
 
-| Task | Completed unaided or assisted | Unaided (`U / N` for Task 1) | Outcome counts | Valid team runs | Missing outcome count |
-| --- | --- | --- | --- | --- | --- |
-| Task 1 | 1/1 (100%) | 0/1 (0%) | Unaided 0; Assisted 1; Failed 0 | 1 | 0 |
-| Task 2 | 1/1 (100%) | 0/1 (0%) | Unaided 0; Assisted 1; Failed 0 | 1 | 0 |
-| Task 3 | 1/1 (100%) | 0/1 (0%) | Unaided 0; Assisted 1; Failed 0 | 1 | 0 |
-
-Completion describes the team member's confirmed outcomes, not independently timed completion within the limits.
-An observed Assisted attempt stays in the denominator; it is not removed to improve the unaided rate.
-These percentages describe one observed team per task and are not population success rates or individual completion rates.
-
-### Aggregate questionnaire and observer measures
-
-| Measure | Value | Valid n and unit | Contributing team runs | Missing data |
-| --- | --- | --- | --- | --- |
-| SUS mean, all tasks | 67.5 / 100 | 3 participants | 1 | No missing numeric questionnaires; wording difference disclosed. |
-| SUS median, all tasks | 72.5 / 100 | 3 participants | 1 | No missing numeric questionnaires; wording difference disclosed. |
-| Task 1 median SEQ | Not available | 0 participant responses | 0 with valid SEQ | 3 responses not collected. |
-| Task 2 median SEQ | Not available | 0 participant responses | 0 with valid SEQ | 3 responses not collected. |
-| Task 3 median SEQ | Not available | 0 participant responses | 0 with valid SEQ | 3 responses not collected. |
-| Task 1 observer ease-rating distribution | Not available | 0 recorded observer ratings | 0 with valid ratings | No rating or observer-specific rating count supplied. |
-| Task 2 observer ease-rating distribution | Not available | 0 recorded observer ratings | 0 with valid ratings | No rating or observer-specific rating count supplied. |
-| Task 3 observer ease-rating distribution | Not available | 0 recorded observer ratings | 0 with valid ratings | No rating or observer-specific rating count supplied. |
-
-The SUS mean uses `(77.5 + 72.5 + 52.5) / 3 = 67.5`.
-The median of the ordered scores `52.5, 72.5, 77.5` is `72.5`.
-Questionnaires from the same team are related observations; SUS is not a completion percentage and does not replace SEQ.
-
-### Task timing and tool switches
-
-| Task | Median elapsed minutes | Valid timed runs | Missing timed runs | Switch total, observed participant-minutes, and rate |
-| --- | --- | --- | --- | --- |
-| Task 1 | Not available | 0 | 1 | Not available; 0 runs with complete switch coverage. |
-| Task 2 | Not available | 0 | 1 | Not available; 0 runs with complete switch coverage. |
-| Task 3 | Not available | 0 | 1 | Not available; 0 runs with complete switch coverage. |
-
-No participant switch count or observation duration is supplied, so team totals, rates, and their medians cannot be calculated.
-Missing observation coverage is not interpreted as no switching.
-
-### Condition comparison and supplementary runs
-
-Only the shared-board condition was observed.
-Control outcomes, timings, SEQ, SUS, tool-switch rates, and observer ratings are unavailable (`n=0` participants and team runs).
-The shared-board-minus-control difference is not calculable for any measure.
-There are no supplementary runs to report or include in aggregates.
+Completion percentages, unaided proportions, mean or median SUS, median SEQ, median task times, switch totals/rates, and observer-rating distributions are not published under the fewer-than-three-counted-session rule.
+The individual questionnaires above do not establish a qualified sample for those summaries.
+There is no control comparison, and exploratory observations do not establish a product benefit or a population effect.
 
 ## Thematic analysis
 
-The following themes group evidence from more than one participant within T-01.
+The following exploratory themes organize the observed difficulties within T-01.
+Only P-01 is currently counted; references to P-02 and P-03 describe exploratory evidence, not additional counted sessions.
 The support codes identify related observations in one team, not independent replication across teams.
 Severity assessments are proposed for review in [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385); they are not a record of approved triage or committed fixes.
 
@@ -151,27 +117,25 @@ The conclusion must be reconciled with the finding anchors and approved product 
 
 ### Export scope and observed events
 
-The filtered summary below was calculated from the private staging export using the team's reported collection window.
-Of 152 exported events, 147 fall inside that window and five fall outside it; the five are excluded from these counts.
-The export metadata reports one page with 152 records, but that does not independently establish completeness of the study's capture.
+The private staging export was inspected within the team's reported collection window, excluding records outside that window.
+This qualitative record reports event presence and coverage rather than event-count statistics.
 
-| Event name | Records inside the reported window |
+| Event name | Coverage within the reported window |
 | --- | --- |
-| `ai_block_created` | 28 |
-| `board_opened` | 16 |
-| `connection_created` | 48 |
-| `context_reuse_query_submitted` | 8 |
-| `context_reuse_reply_received` | 7 |
-| `query_failed` | 1 |
-| `query_submitted` | 20 |
-| `reply_received` | 19 |
+| `board_opened` | Present |
+| `ai_block_created` | Present |
+| `connection_created` | Present |
+| `query_submitted` | Present |
+| `reply_received` | Present |
+| `query_failed` | Present |
+| `context_reuse_query_submitted` | Present |
+| `context_reuse_reply_received` | Present |
 
-These are event-occurrence counts in the selected export, not deduplicated queries, participant actions, task outcomes, or a conversion funnel.
-The team reports that events did not carry `source=usability-test`.
+The team reports that events lacked `source=usability-test`.
 The export retains neither `source` nor board/query identifiers, and its group fields are empty.
-Board association therefore relies on the team's private mapping and cannot be verified from retained fields; unrelated activity in the same staging window cannot be ruled out.
-Queries cannot be paired with replies, and the single failure cannot be assigned to a particular context-reuse query or task.
-Do not use these counts as product metrics or assume study events were excluded from product dashboards.
+Board association relies on the team's private mapping and cannot be verified from the retained fields; unrelated activity in the same staging window cannot be ruled out.
+Queries cannot be paired with replies, and a failure cannot be attributed to a particular task or context-reuse query.
+The event names establish only presence in the selected export, not participant attribution, task completion, a conversion funnel, or evidence that study events were excluded from product dashboards.
 
 ### Comparison with task observations
 
@@ -184,58 +148,60 @@ An event's presence is weaker than verified task-level correspondence.
 | Task 2 | Shared assisted completion; planned `context_reuse_query_submitted`, `context_reuse_reply_received`, and `query_failed` when a query fails. | Both context-reuse names and `query_failed` occur within the reported window. | Supports occurrence of context-reuse activity in the selected export; does not identify which answer belonged to another member, pair a query with a reply, or assign the failure to this task. |
 | Task 3 | Shared assisted completion with a substantial discovery hint; planned `query_submitted` and `reply_received`. | Both names occur within the reported window. | These general events do not prove a diagram was rendered or shared; the completion/assistance classification comes from the team member's clarification. |
 
-The observations provide the reported Assisted outcomes and the descriptions of help that telemetry does not record.
+The observations provide the reported Assisted outcomes and descriptions of help that telemetry does not record.
+P-02 and P-03 observations remain exploratory; this comparison does not establish the minimum counted-session sample.
 They do not supply the missing durations, individual switch counts, or detailed artifact end states.
 There is no control telemetry because no control run occurred; this is not an export failure.
 
 ### Observability coverage
 
-The supplied observability export contains 50 HTTP request records from only the final portion of the reported collection window.
-All 50 carry the backend outcome `success`.
-HTTP success is not usability-task success, and it does not contradict the separate analytics `query_failed` event without a correlating query identifier.
-The logs retain request identifiers but no board or participant identifier and no query identifier shared with the analytics export.
-Request latency is not time on task, and this partial log extract cannot establish full-session reliability.
+The supplied request-log extract covers only the final portion of the reported collection window.
+It includes successful backend requests, but HTTP success is not usability-task success.
+Request identifiers do not provide a shared query identifier or a board/participant link to the analytics export.
+The log extract therefore cannot establish complete session coverage, task durations, or the outcome of the separate analytics failure.
 Raw telemetry, private identifiers, and exact collection timestamps remain in the [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) (GitHub sign-in and granted access required).
 
 ## Limitations
 
-- The sample is three software-development students in one team, one shared-board run, and no control or supplementary run.
-  It supports a description of this team's experience, not causal or population claims.
-- The study ran in person on staging on the university network.
-  Laptops were confirmed retrospectively; exact browsers and detailed prior LLM-use familiarity are not recorded in the sanitized evidence.
-- SEQ was omitted after every task, so no median SEQ exists for any task.
-  Task durations, tool-switch counts and observation durations, and observer ease ratings were also unavailable.
-- Task completion and assistance include retrospective confirmation.
-  Detailed end-state artifacts and compliance with the planned time limits are not independently established by the supplied notes or questionnaire.
-- The pre-test was omitted under [DEC-048](../../decisions.md#dec-048).
-  There is no baseline for expectations or detailed familiarity, and no control group with which to compare the shared board.
-- The full pre-session verification was not repeated in SPRINT-08, and session events lacked the required study label.
-  Missing board/query fields, absent task timestamps, and partial request-log coverage limit the instrumentation comparison.
-- Some observations use ambiguous P-02/P-03 or group attribution.
-  They are not counted as independently corroborated by every participant; observer feature ideas are separate from participant feedback.
+- Only P-01 currently meets all confirmed counting requirements; P-02 and P-03 remain exploratory pending full eligibility confirmation.
+  The minimum counted-session sample is not met, and no aggregate statistics or completed usability result are claimed.
+- The observations come from a shared-board team with no control or supplementary run.
+  They support qualitative descriptions, not causal or population conclusions.
+- The participants' software-development student roles and laptop use were confirmed retrospectively.
+  Exact browsers and P-02/P-03's outstanding eligibility checks are not specified in the public evidence.
+- SEQ, task durations, tool switches and observation durations, and observer ease ratings are unavailable.
+  The observed task outcomes and descriptions of help cannot replace those measurements.
+- The team confirmed Assisted completion retrospectively.
+  Detailed end-state artifacts and compliance with task time limits are not independently established by the supplied notes and questionnaires.
+- The pre-test was omitted under [DEC-048](../../decisions.md#dec-048), leaving no expectations or detailed-familiarity baseline.
+- The fourth SUS statement used shortened wording; individual calculated scores retain that instrument limitation and are not aggregated here.
+- Full pre-session verification was not repeated in SPRINT-08, and session events lacked the required study label.
+  Missing board/query fields, absent task timestamps, and partial log coverage limit the instrumentation comparison.
+- Some notes use ambiguous P-02/P-03 or group attribution; observer ideas remain separate from participant feedback.
+  Neither group labels nor related questionnaire records establish independent counted-session support.
 
 ## Conclusion
 
 ### Research questions
 
 1. **Does the shared board reduce tool switching compared with the existing workflow?**
-   This study cannot answer the comparison: there is no control run, and tool switches and observation durations were not recorded.
-   P-02 and P-03 perceived value in shared context and working in one place, but that feedback does not establish a reduction in switching.
+   The qualitative record cannot answer this comparison: there is no control run and no recorded switch counts or observation durations.
+   P-02 and P-03's exploratory feedback about shared context and working together does not establish a reduction in switching.
 2. **What difficulties occur when reusing queries and replies as context?**
-   Connection direction, the effect of a connection, and the limits of AI actions were unclear.
-   All three participants completed the context-reuse task with assistance; copying and expectations that AI would create other blocks added friction.
-   Ambiguous observations are retained as shared feedback rather than attributed to each person independently.
+   The notes describe uncertainty about connection direction and AI capabilities, along with copying friction.
+   The team member reported functionality assistance during the context-reuse task; P-02 and P-03's observations remain exploratory.
 3. **Can participants complete the main task without help, and where is assistance needed?**
-   The observed team completed the main task with assistance, giving `U=0`, `N=1`, and an unaided proportion of `0%` for this run.
-   P-01 needed editing-related technical assistance; all three asked questions about functionality.
-   Across the secondary tasks, assistance included context-reuse explanations and a substantial hint to locate diagram creation.
+   P-01's counted record describes Assisted main-task completion with editing-related technical help and functionality questions.
+   The mixed-eligibility team also received assistance during the other tasks, including a substantial hint for diagram discovery.
+   These observations do not establish the minimum sample for the planned usability result or justify publishing a completion rate.
 
 ### Quality requirement and product response
 
-The [quality requirement testing plan](../../project-plan.md#quality-requirement-testing-plan) currently records QR-06 QRT-01 as `Not verified`.
-The observed Assisted main-task outcome does not satisfy [QR-06's fixed unaided pass bar](../../quality-requirements/qr/QR-06.md#response-measure).
-The formal verdict and threshold update remain with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387); these results do not change the recorded verdict or imply a pass.
+The [quality requirement testing plan](../../project-plan.md#quality-requirement-testing-plan) records QR-06 QRT-01 as `Not verified`.
+The minimum confirmed participant sample for [QR-06](../../quality-requirements/qr/QR-06.md#response-measure) is not met; this record claims neither a pass nor a completed formal verdict.
+The test stays `Planned`, with the shortfall and qualitative evidence explicit.
+The formal testing-plan and scheduling response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
 
-Product-response selection is pending team review in #385 and #386.
-No fix is represented as committed, declined, or deferred without that decision.
-Before final review, link the approved findings and triage here and reconcile the wording with the verdict actually recorded in the testing plan.
+Findings and product-response selection remain pending review through [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385) and [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
+Exploratory requests may inform triage, but no fix is represented as committed, declined, or deferred without a team decision.
+The weekly report must declare the shortfall and claim no completed usability result.
