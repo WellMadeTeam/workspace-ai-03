@@ -5,6 +5,14 @@ repo_url: https://github.com/WellMadeTeam/workspace-ai-03
 
 docs_dir: docs
 
+# Study source material belongs in the private usability-data repository.
+exclude_docs: |
+  usability-tests/usability_test_transcript_sanitized.txt
+  usability-tests/ut-01-events.json
+  usability-tests/ut-01-notes.md
+  usability-tests/ut-01-observability.json
+  usability-tests/ut-01-posttest.csv
+
 theme:
   name: readthedocs
 
@@ -22,6 +30,9 @@ nav:
       - Consent template: usability-tests/ut-01/consent.md
       - Surveys: usability-tests/ut-01/surveys.md
       - Sessions: usability-tests/ut-01/sessions/README.md
+      - P-01: usability-tests/ut-01/sessions/P-01.md
+      - P-02: usability-tests/ut-01/sessions/P-02.md
+      - P-03: usability-tests/ut-01/sessions/P-03.md
       - Results: usability-tests/ut-01/results.md
   - Functional requirements:
       - Index: functional-requirements/README.md

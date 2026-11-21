@@ -32,11 +32,37 @@ The usability requirement is [QR-06](../../quality-requirements/qr/QR-06.md), ch
 
 ### Recruitment target
 
-The analysis plan proposes recruiting six people into two teams of three, one shared-board team and one control team; this allocation awaits review before counted sessions. Obtain at least three completed, counted participant sessions. Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
+The original analysis plan proposed recruiting six people into two teams of three, one shared-board team and one control team.
+The actual allocation is recorded below.
+Obtain at least three completed, counted participant sessions.
+Every counted participant must be 18 or older, match the profile, and be outside the product team; the customer, instructors, and course staff are excluded.
 
 Invite eligible classmates outside the team and people in the team's software-development or software-architecture networks to volunteer.
 Confirm eligibility during recruitment using the checks below; do not publish names or contact details.
 A session that fails to meet the profile is exploratory and is not counted.
+
+### Actual study allocation
+
+Three participants took part as one team using the shared board only.
+Every participant completed all three tasks with assistance, giving three participant sessions and one team run (`T-01`).
+There were not enough volunteers to form a control group.
+The customer agreed that a control group was desirable but optional, depending on recruitment.
+No control or supplementary run took place.
+The comparison and supplementary-run procedures below describe the original proposal and were not carried out.
+The results can describe this team's use of the shared board, but cannot compare it with participants' usual tools or establish whether it reduced tool switching relative to those tools.
+
+### Execution record
+
+The sanitized [session index and shared T-01 task record](sessions/README.md#recorded-sessions) link [P-01](sessions/P-01.md), [P-02](sessions/P-02.md), and [P-03](sessions/P-03.md).
+The notes summarize observations and questionnaires retrospectively, with task outcomes and assistance confirmed by the team member.
+SEQ was omitted after every task.
+Task durations, tool-switch counts and observation durations, and observer ease ratings are not available in the supplied material.
+The fourth SUS statement used shortened wording; the [session limitations](sessions/README.md#measurement-limitations) disclose this difference.
+The team member retrospectively confirmed software-development student roles and laptop use; device details were not captured during the session.
+Individual prior LLM-use details remain unrecorded in the supplied sanitized material; private eligibility confirmations are separate.
+
+The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
+Results, analysis, and the QR/QRT verdict remain pending; the test stays `Planned` until the counted sessions and results are recorded.
 
 ### Recruitment eligibility check
 
@@ -179,6 +205,17 @@ The team-run check is prepared by #338. The pre-session staging verification is 
 - **Follow-up:** Task [#340](https://github.com/WellMadeTeam/workspace-ai-03/issues/340) must verify the staging deployment before the first counted session.
 
 This team run is not a counted participant session.
+
+### Session instrumentation departures
+
+The team reports that pre-session verification was not repeated in SPRINT-08 before the first participant session.
+The session events were not tagged `source=usability-test`, departing from the planned instrumentation and preventing reliance on that tag to exclude them from product metrics.
+The supplied analytics export retains event names and timestamps but no event properties, board identifiers, or query identifiers; its group fields are empty.
+The board association therefore relies on the private run mapping supplied by the team, rather than a retained export field.
+The analytics export includes records before the reported collection window, while the supplied request logs cover only part of that window.
+These exports do not establish participant-level attribution, query/reply pairing, task durations, or unaided completion.
+Raw exports, exact time windows, and the run-to-board mapping remain private.
+The results' instrumentation comparison must retain these coverage limits.
 
 ## Analysis Plan
 
@@ -365,12 +402,15 @@ If a finding becomes a task issue, link that issue from the finding and link the
 
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
-This draft records the analysis methods before the first counted session; the QR decision above remains open and no results or findings are claimed.
+The analysis methods above are retained as the pre-session plan.
+The session record discloses execution departures; results, findings, and the QR/QRT verdict remain pending.
 
 ## Schedule
 
 The session plan requires inviting and screening volunteers after the design review and once the consent and data-handling prerequisites are ready.
-The sessions took place during [SPRINT-08](../../project-plan.md#sprint-08), 16–21 November 2026; the sanitized session notes must record the actual dates.
+The three participant sessions took place on 19 November 2026 during [SPRINT-08](../../project-plan.md#sprint-08) as one shared-board team run, as confirmed retrospectively by the team member.
+The original plan scheduled in-person sessions on the university network during that sprint.
+Questionnaire and telemetry timestamps are retained privately and are not substituted for task timings.
 Refer to [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) for confirmation of the private eligibility checks and final counted-session total.
 Results are due with Submission 8 on 21 November 2026.
 
@@ -422,7 +462,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 ## Evidence Map
 
-- The public repository contains this sanitized test design and, after the sessions, sanitized session notes and results.
+- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions); results remain pending.
 - The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
@@ -433,4 +473,5 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 ## Results
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
-The results will be recorded in [results.md](results.md).
+The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
+Analysis and findings remain pending in [results.md](results.md).
