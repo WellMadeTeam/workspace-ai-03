@@ -5,7 +5,7 @@
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
 The participant sessions took place during SPRINT-08.
-The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility.
+The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility and are not currently counted.
 The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
 
 ## Goal
@@ -72,6 +72,7 @@ The comparison and supplementary procedures below remain the original plan, not 
 The [qualitative record](results.md) declares the shortfall without aggregate statistics or a completed usability result.
 UT-01 remains `Planned`, and QR-06 QRT-01 remains `Not verified` in the [testing plan](../../project-plan.md#quality-requirement-testing-plan).
 [TOS-03](../../threshold-of-success.md#tos-03) is Missed because its existing measure is not established by the available evidence.
+The [findings](results.md#findings) are prepared for triage; product-response decisions remain under review.
 
 ### Recruitment eligibility check
 
@@ -412,8 +413,8 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall.
-Numbered findings and product-response triage remain under review through #385 and #386.
+The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall without aggregates.
+The [numbered findings](results.md#findings) are prepared for triage through #386.
 The [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified, and [TOS-03](../../threshold-of-success.md#tos-03) records the missed measure.
 
 ## Schedule
@@ -473,7 +474,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 ## Evidence Map
 
-- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions); results remain pending.
+- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and the [qualitative shortfall record](results.md).
 - The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
@@ -485,5 +486,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-The [qualitative record](results.md) documents observations, missing measures, instrumentation limitations, and research-question answers.
-UT-01 remains Planned; numbered findings and product-response triage remain under review through #385 and #386.
+The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, research-question answers, and declared shortfall.
+It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
+The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
+Product-response decisions require coordination through #386 before final review.

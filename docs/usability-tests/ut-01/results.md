@@ -7,6 +7,7 @@ The [confirmation summary from #398](sessions/README.md#eligibility-consent-and-
 The minimum of three counted sessions is not met.
 Under [Assignment 8 Part 3](https://github.com/inno-itpd/itpd/blob/main/assignments/assignment-8.md#part-3-write-the-results) and [the shortfall rule](https://github.com/inno-itpd/itpd/blob/main/requirements/usability-testing-requirements.md#the-week-8-execution), UT-01 remains `Planned` and this page records qualitative observations without aggregate statistics or a completed usability-result claim.
 The three observation records and individual questionnaires are retained with their counting status explicit.
+The [numbered findings](#findings) analyze this evidence; product decisions await triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), and the [conclusion](#quality-requirement-and-product-response) states the current testing-plan status.
 
 ## Session count and shortfall
 
@@ -92,28 +93,150 @@ There is no control comparison, and exploratory observations do not establish a 
 The following exploratory themes organize the observed difficulties within T-01.
 Only P-01 is currently counted; references to P-02 and P-03 describe exploratory evidence, not additional counted sessions.
 The support codes identify related observations in one team, not independent replication across teams.
-Severity assessments are proposed for review in [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385); they are not a record of approved triage or committed fixes.
+The [findings](#findings) apply the [planned severity definitions](README.md#qualitative-analysis-and-severity) and link the evidence for each assessment.
+Severity is an analytical assessment for team review, not a record of approved triage or committed fixes.
 
-| Theme | Supporting evidence | Proposed severity and reason |
+| Theme | Supporting evidence | Findings and interpretation |
 | --- | --- | --- |
-| Feature discovery requires guidance | [P-01](sessions/P-01.md#task-results), [P-02](sessions/P-02.md#task-results), and [P-03](sessions/P-03.md#task-results) all needed a substantial hint to locate diagram creation; all tasks involved functionality questions. | Major: a task end state required substantial help to discover a central feature. |
-| AI capabilities and context behavior do not match expectations | [P-02](sessions/P-02.md#connections-and-context) was unsure what connections pass to AI and wanted AI to act beyond its block; [P-03](sessions/P-03.md#ai-capabilities-and-output) expected AI to create text blocks. All three needed assistance on Task 2. | Minor: uncertainty and assistance are recorded, but substantial help attributable specifically to the capability mismatch is not established. |
-| Reading and editing areas create friction | [P-01](sessions/P-01.md#reading-and-reusing-replies) and [P-02](sessions/P-02.md#block-interaction) had a small reply area; P-01 also had preview/edit confusion and P-02 a small message-edit field. | Minor: these observations establish friction; the evidence does not isolate them as the cause of substantial task assistance or lost work. |
+| Feature discovery requires guidance | [P-01](sessions/P-01.md#task-results), [P-02](sessions/P-02.md#task-results), and [P-03](sessions/P-03.md#task-results) all needed a substantial hint to locate diagram creation; all tasks involved functionality questions. | [Finding 1](#finding-1): Major; substantial help was explicitly reported for diagram discovery. |
+| AI capabilities and context behavior do not match expectations | [P-02](sessions/P-02.md#connections-and-context) was unsure what connections pass to AI and wanted AI to act beyond its block; [P-03](sessions/P-03.md#ai-capabilities-and-output) expected AI to create text blocks. All three needed assistance on Task 2. | [Finding 2](#finding-2): Minor; the records establish uncertainty and assistance but not substantial help attributable specifically to the capability mismatch. |
+| Reading and editing areas create friction | [P-01](sessions/P-01.md#reading-and-reusing-replies) and [P-02](sessions/P-02.md#block-interaction) had a small reply area; P-01 also had preview/edit confusion and P-02 a small message-edit field. | [Finding 3](#finding-3) and [Finding 4](#finding-4): Minor; the records establish editing and reading friction without verified loss of work or substantial help caused by each issue. |
 
 The positive feedback also has support from multiple participants: [P-02](sessions/P-02.md#sus-and-post-test) valued context from multiple blocks and convenient block/connection creation, while [P-03](sessions/P-03.md#sus-and-post-test) valued everyone working in one place.
 This is perceived value reported by these participants, not a measured improvement over their usual workflow.
-P-01's Delete-key and undo concerns, and P-03's ownership/status requests, remain attributed observations rather than being represented as recurring themes on their own.
+P-01's Delete-key and undo concerns, and P-03's ownership/status/comment requests, remain attributed observations rather than being represented as recurring themes on their own.
+[Finding 4](#finding-4) also retains participant-specific customization, visualization, output-block, and export requests, and the observer-noted language mismatch, without treating each as a recurring theme.
+[Finding 7](#finding-7) records the explicit onboarding request, and [Finding 8](#finding-8) records connection-type and dragging requests without treating unattributed group feedback as independent participant reports.
 No Critical incident is established by the supplied sanitized notes.
 
-## Findings and product-response coordination
+## Findings
 
-Stable numbered findings and recommendations are handled by [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385).
-[PR #402](https://github.com/WellMadeTeam/workspace-ai-03/pull/402) proposes eight findings, with diagram discovery rated Major and the remaining findings rated Minor.
-Those proposals await reconciliation with this counted-session shortfall and approval through triage; they do not establish a completed test or an approved product response.
-Their triage, planned sprints, and fix-task links are handled by [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
-The team has not yet reviewed the candidate improvements, so this record does not name a committed, declined, or deferred change.
-This is a pending decision, not a decision to make no changes.
-The conclusion must be reconciled with the finding anchors and approved product response before final review of #384.
+These findings describe the single T-01 team run, not independent observations from several teams.
+Severity follows the [definitions fixed in the study plan](README.md#qualitative-analysis-and-severity).
+Recommendations are proposed responses for team review; they are not commitments, approved scope changes, or scheduled fixes.
+A `None` task issue means no product follow-up issue is linked yet; it is not a decision to decline the recommendation.
+Where the original observations lack task boundaries, the task field distinguishes the relevant flow from an established occurrence in a specific task.
+
+### Finding 1
+
+Diagram creation was not discoverable without a substantial hint.
+
+- **Severity:** Major — every participant needed a substantial hint to locate the feature before the team completed the diagram task.
+- **Tasks:** UT-01 Task 3; UT-01 P-01, UT-01 P-02, and UT-01 P-03 in T-01.
+- **Evidence:** The [shared task record](sessions/README.md#t-01-shared-task-record) confirms Assisted completion and the discovery hint for all three participants; [P-01's feedback](sessions/P-01.md#feature-discovery) also identifies the problem and suggests a dedicated control.
+- **Recommendation:** Provide a clearly labelled entry point for diagram creation and explain how a generated diagram can be made available on the board; verify discoverability with an unaided task before accepting the change.
+- **Task issue:** None
+
+The explicit substantial hint supports Major severity.
+The result is one shared team attempt; the three participant records do not make three independent diagram failures.
+The evidence does not establish a rendering defect or the exact time needed to discover the feature.
+
+### Finding 2
+
+Participants were unsure how connections supply context and expected AI actions beyond an AI block's actual capabilities.
+
+- **Severity:** Minor — uncertainty, assistance, and manual-transfer friction were recorded, but the evidence does not establish substantial help or inability to use a central feature caused specifically by this mismatch.
+- **Tasks:** UT-01 Task 2; UT-01 P-01, UT-01 P-02, and UT-01 P-03 received functionality assistance. Specific capability observations are attributed to P-02 and P-03; P-01's copying difficulty and ambiguous P-02/P-03 copying observations have no recorded task boundary.
+- **Evidence:** [P-02](sessions/P-02.md#connections-and-context) was unsure whether a connection would pass content and wanted AI to act beyond its block; [P-03](sessions/P-03.md#ai-capabilities-and-output) expected AI to create text blocks. [P-01](sessions/P-01.md#reading-and-reusing-replies) found copying inconvenient; the [shared observations](sessions/README.md#shared-observations) retain ambiguous P-02/P-03 attribution without duplicating it. The [team-task results](#team-task-results) record Assisted context reuse.
+- **Recommendation:** Explain connection direction and show which blocks supply an AI block's context; make the limits of AI actions explicit and assess a direct reply-to-text transfer action before choosing whether to expand AI capabilities.
+- **Task issue:** None
+
+The earlier thematic draft proposed Major severity from the Assisted context-reuse result.
+The task outcome does not identify the amount or cause of every intervention, so this finding uses Minor until stronger evidence supports a higher severity.
+Participant requests for automatic block creation are expectations, not evidence that such a feature was promised or that the LLM service provider failed.
+
+### Finding 3
+
+Editing and selection controls were not sufficiently clear to participants.
+
+- **Severity:** Minor — preview/edit confusion and selection help were observed, but no substantial intervention attributable to these specific controls or loss of work is established.
+- **Tasks:** UT-01 Task 1; UT-01 P-01 received editing-related technical assistance. UT-01 P-02's Ctrl-selection observation is cross-task; the source does not identify its task.
+- **Evidence:** [P-01](sessions/P-01.md#editing-and-recovery) tried to edit while the side panel was in preview mode and did not recognize the mode; [P-02](sessions/P-02.md#block-interaction) needed help discovering Ctrl-based selection. [P-01's task results](sessions/P-01.md#task-results) confirm editing-related assistance during Task 1 without identifying which individual issue caused it.
+- **Recommendation:** Make the active preview/edit mode and the action to switch modes visible; expose a short selection hint and check that participants can discover both controls without coaching.
+- **Task issue:** None
+
+This does not establish that the preview mode itself was a technical failure.
+The reported Task 1 editing difficulties and the mode observation are related evidence, but the source does not prove that they are the same incident.
+
+### Finding 4
+
+Participants wanted clearer reply presentation, more adaptable output blocks, and ways to organize and export their results.
+
+- **Severity:** Minor — cramped reading/editing areas and presentation difficulties were observed, while customization, output-block, and export requests describe desired improvements; no task failure or substantial intervention attributable to these specific issues is established.
+- **Tasks:** Cross-task observations and post-test feedback from UT-01 P-01, UT-01 P-02, and UT-01 P-03 in the UT-01 Task 1–3 run; reading and reusing replies is relevant to Task 1 and Task 2, but exact observation boundaries were not recorded. Export was a post-test request, not a tested task.
+- **Evidence:** [P-01](sessions/P-01.md#reading-and-reusing-replies) had a small reply area, verbose/unstructured output, broken table formatting, and an English reply despite primarily using Russian; the language mismatch was an observer observation. [P-02](sessions/P-02.md#block-interaction) also had a small reply area and message-edit field; [presentation feedback](sessions/P-02.md#presentation-and-onboarding) requests title-only text blocks, customization, stronger visualization, and export. [P-03's feedback](sessions/P-03.md#collaboration-feedback) and [post-test](sessions/P-03.md#sus-and-post-test) request more specific outputs and dedicated output blocks. The [shared observations](sessions/README.md#shared-observations) also note unused text-block titles without identifying individual participants.
+- **Recommendation:** Review reading/editing space and long-reply/table rendering; investigate reply-language handling separately from rendering. Evaluate title-only and customizable block presentation, dedicated output blocks, visual organization of schedules and ideas, and export of results as separate candidate improvements during triage.
+- **Task issue:** None
+
+Only the cramped reply area has explicit support from both P-01 and P-02.
+Table formatting, verbose output, and the observer-noted language mismatch remain P-01 observations.
+Title-only presentation, customization, visualization, and export are attributed to P-02; more specific outputs and dedicated output blocks are attributed to P-03.
+Unused titles do not by themselves establish why participants avoided them.
+No participant-level reading times or export attempt were recorded.
+This grouping keeps related result-presentation requests visible for triage; it does not imply that all requests have one cause, require one implementation task, or were independently reported by every participant.
+
+### Finding 5
+
+Expected keyboard actions for deletion and recovery did not match P-01's experience.
+
+- **Severity:** Minor — the participant reported a non-working expected Delete action and wanted undo, but no unintended deletion, loss of work, or task failure is established.
+- **Tasks:** Cross-task observation from UT-01 P-01 during the three-task run; the source does not identify a specific task for the keyboard actions.
+- **Evidence:** [P-01's editing and recovery observations](sessions/P-01.md#editing-and-recovery) record that Delete did not work as expected and that the participant wanted Ctrl+Z to restore blocks; [post-test feedback](sessions/P-01.md#sus-and-post-test) repeats the Delete-key request.
+- **Recommendation:** Reproduce the Delete-key behavior with the correct focus and selected-block state, then document or correct the supported shortcut; evaluate undo separately as a requested recovery capability.
+- **Task issue:** None
+
+This is a finding from one participant, not a recurring theme.
+The Delete report is not a confirmed root cause, and the undo request does not prove that data was actually lost.
+
+### Finding 6
+
+Shared activity and the distinction between members and AI were unclear, and participants wanted stronger collaboration support.
+
+- **Severity:** Minor — unclear edit authorship, AI-status feedback, and color interpretation were reported, while comments were requested as an improvement; no conflicting edit, lost work, or inability to complete a task because of these issues is established.
+- **Tasks:** Cross-task observations and post-test feedback from UT-01 P-03 in the UT-01 Task 1–3 run; the shared color interpretation has no individual participant attribution or exact task boundary.
+- **Evidence:** [P-03's collaboration observations](sessions/P-03.md#exploration-and-collaboration) identify unclear edit authorship; [collaboration feedback](sessions/P-03.md#collaboration-feedback) and [post-test feedback](sessions/P-03.md#sus-and-post-test) request ownership indicators, AI generation status, and comments for communication within the team. The [shared observations](sessions/README.md#shared-observations) record that participants interpreted blue as another member rather than AI, without identifying each contributor.
+- **Recommendation:** Evaluate clear labels or icons distinguishing AI from member activity, lightweight authorship/activity and generation-state indicators, and comments for team discussion. Review the need for these capabilities before deciding whether accounts or persistent ownership are necessary.
+- **Task issue:** None
+
+Ownership, generation-status, and comment requests are attributed to P-03; the unattributed group color observation is not counted as an independent report from every participant.
+Comments are a requested capability, not an observed failure of an existing commenting feature.
+The observer's separate generation-status idea is not counted as a second participant request.
+
+### Finding 7
+
+Participants asked for onboarding to explain how to use the board's features.
+
+- **Severity:** Minor — missing onboarding was reported and functionality questions occurred across tasks, but the evidence does not establish that an onboarding omission caused a specific task failure or substantial intervention.
+- **Tasks:** Cross-task feedback from the UT-01 Task 1–3 run; UT-01 P-02 explicitly requested onboarding, and the shared notes also record group feedback without identifying each contributor.
+- **Evidence:** [P-02's presentation and onboarding feedback](sessions/P-02.md#presentation-and-onboarding) explicitly requests onboarding; the [shared observations](sessions/README.md#shared-observations) also report missing onboarding. The [team-task results](#team-task-results) record functionality assistance on all three tasks.
+- **Recommendation:** Evaluate a short introduction to block types, selection, editing modes, context connections, and diagram creation, with guidance available again when needed; verify that it helps participants attempt the existing tasks without facilitator explanations.
+- **Task issue:** None
+
+The group statement does not identify several independent respondents and is not counted as additional independent support beyond P-02.
+The substantial diagram-discovery hint is assessed separately in [Finding 1](#finding-1); onboarding is a proposed response, not an established cause or a proven solution for that difficulty.
+
+### Finding 8
+
+P-02 requested more connection types and connections without arrows; P-01 unsuccessfully tried to reconnect by dragging a connection line.
+
+- **Severity:** Minor — P-01's attempted reconnection did not work as expected and P-02 requested more connection types, but no task failure, lost work, or substantial intervention attributable to these specific interactions is established.
+- **Tasks:** Cross-task observations and post-test feedback from the UT-01 Task 1–3 run; UT-01 P-01 supports the reconnection difficulty and UT-01 P-02 supports the connection-type request. These interactions concern context setup in UT-01 Task 2, but their exact task of occurrence was not recorded.
+- **Evidence:** [P-01's editing and recovery observations](sessions/P-01.md#editing-and-recovery) describe an unsuccessful attempt to reconnect by dragging a connection line; [P-02's post-test](sessions/P-02.md#sus-and-post-test) requests more connection types, and [connection feedback](sessions/P-02.md#connections-and-context) requests connections without arrows. The [shared observations](sessions/README.md#shared-observations) record group concerns about arrow direction. Individual contributors to the group feedback are not identified.
+- **Recommendation:** Clarify which connection types participants intended and what each should mean; evaluate endpoint reconnection in response to P-01's attempt. Consider direction-independent context and moving a connection line independently of its endpoints only as design options to validate with members, separately from arrow appearance. Define the intended context behavior before changing it and show members which content a connection supplies.
+- **Task issue:** None
+
+The requested types and their exact semantics were not recorded, so this finding does not prescribe a new relationship model or assume that every type should pass context.
+P-02's arrowless-connection request concerns appearance; it does not establish a request for direction-independent context.
+The linked notes establish neither direction-independent context nor moving a connection line independently of its endpoints as participant requests.
+Those two ideas are recommendation options requiring validation, not evidence of a defect in the current directional model or an approved change to context semantics.
+
+### Product-response coordination
+
+[Finding 1](#finding-1) is Major; [Finding 2](#finding-2), [Finding 3](#finding-3), [Finding 4](#finding-4), [Finding 5](#finding-5), [Finding 6](#finding-6), [Finding 7](#finding-7), and [Finding 8](#finding-8) are Minor under the recorded severity definitions.
+No Critical finding is supported by the supplied evidence.
+Each recommendation awaits triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), including whether it creates a task, its planned sprint, and the reason for any deferral or rejection.
+The significant Major finding requires follow-up consideration under that task; no product issue or schedule is created by this analysis.
+The [quality requirement and product response](#quality-requirement-and-product-response) section states the current testing-plan status; this analysis does not establish a completed test.
 
 ## Instrumentation Comparison
 
@@ -207,7 +330,7 @@ The planned sprint remains [SPRINT-08](../../project-plan.md#sprint-08); no late
 Even if the outstanding eligibility checks are confirmed, the recorded Assisted main-task outcome cannot satisfy the frozen unaided-completion bar.
 Do not exclude that outcome to improve the measure or treat the three participant records as three team attempts.
 
-Findings and product-response selection remain pending review through [#385](https://github.com/WellMadeTeam/workspace-ai-03/issues/385) and [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
+The [numbered findings](#findings) record severity, evidence, and recommendations; product-response selection remains pending triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
 Exploratory requests may inform triage, but no fix is represented as committed, declined, or deferred without a team decision.
 The Week 08 report must declare this shortfall and claim no completed usability result when its draft is finalized.
 
