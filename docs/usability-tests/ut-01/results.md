@@ -1,15 +1,17 @@
-# UT-01 Qualitative Record
+# UT-01 Results
 
-The currently confirmed counted-session total is one: UT-01 P-01.
-UT-01 P-02 and UT-01 P-03 remain partially unconfirmed for eligibility and are not currently counted.
-The [confirmation summary from #398](sessions/README.md#eligibility-consent-and-capture-confirmation) records prior consent for all three participants, explained telemetry and observer capture with no video, and no withdrawals.
+Three counted participant sessions ran together in one shared-board team run, T-01, on 19 November 2026 during SPRINT-08.
+On 2026-11-22, the team confirmed the remaining eligibility checks for P-02 and P-03; all three participants now have fully confirmed eligibility.
+The [confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) records prior consent for all three participants, explained telemetry and observer capture with no video, and no withdrawals.
 
-The minimum of three counted sessions is not met.
-Under [Assignment 8 Part 3](https://github.com/inno-itpd/itpd/blob/main/assignments/assignment-8.md#part-3-write-the-results) and [the shortfall rule](https://github.com/inno-itpd/itpd/blob/main/requirements/usability-testing-requirements.md#the-week-8-execution), UT-01 remains `Planned` and this page records qualitative observations without aggregate statistics or a completed usability-result claim.
-The three observation records and individual questionnaires are retained with their counting status explicit.
-The [numbered findings](#findings) analyze this evidence; product decisions and the formal testing-plan response remain with [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386) and [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The minimum of three counted participant sessions is met, and UT-01 is `Completed` because the sessions and results are recorded.
+The team outcomes represent one attempt per task; the three participants are not three independent team runs.
+Missing measures and instrumentation departures remain disclosed below.
+The [numbered findings](#findings) analyze this evidence, and the [testing plan](../../project-plan.md#quality-requirement-testing-plan) records the formal verdict.
+The full Sprint Review remains pending: results were unavailable at the meeting because the test was planned to take place afterward.
+The existing [triage](#triage) is retained; these results claim no customer acceptance, completed Sprint Review, or landed product fix.
 
-## Session count and shortfall
+## Session count and allocation
 
 The three participants took part together in T-01 on 19 November 2026 during [SPRINT-08](../../project-plan.md#sprint-08).
 They were software-development students using laptops on staging in person on the university network, as reported by the team.
@@ -17,11 +19,13 @@ Task outcomes and assistance include retrospective clarification; exact task tim
 
 | Participant | Eligibility | Prior consent and capture | Withdrawals | Use in this record |
 | --- | --- | --- | --- | --- |
-| [UT-01 P-01](sessions/P-01.md) | All checks confirmed | Consent preceded explained telemetry and observer capture; no video | None reported | One currently confirmed counted session |
-| [UT-01 P-02](sessions/P-02.md) | Partially unconfirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Exploratory; not currently counted |
-| [UT-01 P-03](sessions/P-03.md) | Partially unconfirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Exploratory; not currently counted |
+| [UT-01 P-01](sessions/P-01.md) | All checks confirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Counted participant session |
+| [UT-01 P-02](sessions/P-02.md) | All checks confirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Counted participant session |
+| [UT-01 P-03](sessions/P-03.md) | All checks confirmed | Consent preceded explained telemetry and observer capture; no video | None reported | Counted participant session |
 
-The outstanding individual eligibility checks for P-02 and P-03 are not specified; do not infer which criteria were met or failed.
+The team's 2026-11-22 follow-up resolves the previously outstanding individual eligibility checks for P-02 and P-03.
+The primary shared-board condition contains three distinct participants, one team, and one run of team size three, with no exclusions or missing task outcomes.
+The control condition contains zero participants and zero runs.
 The underlying consent, capture, and eligibility records remain private.
 Recruitment did not provide a control group; the customer had agreed it was desirable but optional depending on recruitment.
 No supplementary run took place.
@@ -31,8 +35,8 @@ The shared observed team attempt is not an independent attempt by each participa
 
 ### Team-task results
 
-Each row describes an observed task attempt by the mixed-eligibility team.
-It is not a qualified team-run denominator or evidence of three counted participant sessions.
+Each row describes one task attempt by the same eligible three-person team.
+T-01 is the sole primary shared-board run, so the team-run denominator is one for each task.
 The full scenarios and planned time limits remain in [UT-01](README.md#the-tasks).
 
 | Team run | Task | Outcome | Help given | Elapsed minutes | Sanitized evidence |
@@ -42,13 +46,18 @@ The full scenarios and planned time limits remain in [UT-01](README.md#the-tasks
 | T-01 | Task 3: Create and share a diagram | Assisted | All three participants needed a substantial hint to locate the feature. | Not recorded | [Shared task record](sessions/README.md#t-01-shared-task-record) |
 
 All tasks were reported as completed, rather than stopped early.
+For the main task, reported completion is 1/1 team runs (100%, assisted), and unaided completion is 0/1 (0%); Tasks 2 and 3 were also completed with assistance.
+For QR-06, U=0 and N=1, with three distinct counted participants and no missing main-task outcome; the observed assisted outcome cannot meet the fixed 100% unaided bar.
+These are descriptions of one team, not population success rates.
 Detailed end-state descriptions and evidence of completion within the planned time limits are unavailable in the supplied notes and questionnaires.
+On 2026-11-22, the team confirmed a retained board state showing a query that reused selected AI replies as context; the state remains private and was not independently inspected for this update.
+The team did not collect the answer to whether participants needed a messenger.
 Do not substitute the planned limits, questionnaire timestamps, request latencies, or the telemetry collection window for task duration.
 
 ### Participant-task results
 
 The outcomes below reference the shared observed team attempt; assistance descriptions are participant-specific where available.
-Only P-01 is currently counted; P-02 and P-03 rows are exploratory observations while eligibility is partially unconfirmed.
+All three participants are counted; copied shared outcomes do not add independent team attempts.
 `Not collected` and `Not recorded` are missing data, not numeric zero.
 
 | Participant | Team run | Task | Shared outcome | Assistance | SEQ (1–7) | Tool switches | Observed minutes |
@@ -67,9 +76,9 @@ Only P-01 is currently counted; P-02 and P-03 rows are exploratory observations 
 
 The formula and planned questionnaire are in [surveys.md](surveys.md#sus-scoring).
 All ten numeric answers are present for each respondent; raw answers remain private.
-These are individual questionnaire records, not a three-counted-participant SUS result.
-P-02 and P-03 questionnaire records remain exploratory while eligibility is partially unconfirmed.
-No SUS mean, median, or other aggregate statistic is published.
+All three questionnaires belong to counted participants in the shared-board condition.
+The SUS mean is 67.5 and the median is 72.5, with n=3 participants from one team.
+These descriptive scores support no population claim.
 The shortened fourth statement differs from the planned wording, so scores must be interpreted with that instrument limitation.
 
 | Participant | Team run | Condition | All ten answers present? | SUS score |
@@ -78,23 +87,23 @@ The shortened fourth statement differs from the planned wording, so scores must 
 | [P-02](sessions/P-02.md#sus-and-post-test) | T-01 | Shared board | Yes | 72.5 |
 | [P-03](sessions/P-03.md#sus-and-post-test) | T-01 | Shared board | Yes | 52.5 |
 
-### Missing measures and withheld aggregates
+### Missing measures
 
 SEQ was not collected after any task.
 Task durations, participant tool-switch counts and observation durations, and observer ease ratings were not recorded in the supplied material.
 Missing measurements are not zero values and cannot be reconstructed from SUS, post-test comments, questionnaire timestamps, planned task limits, or HTTP request latencies.
 
-Completion percentages, unaided proportions, mean or median SUS, median SEQ, median task times, switch totals/rates, and observer-rating distributions are not published under the fewer-than-three-counted-session rule.
-The individual questionnaires above do not establish a qualified sample for those summaries.
-There is no control comparison, and exploratory observations do not establish a product benefit or a population effect.
+The median main-task time is unavailable (n=0 recorded team durations).
+Median SEQ is unavailable for each of Tasks 1, 2, and 3 (n=0 responses per task).
+Switch totals/rates and observer-rating distributions are unavailable because their underlying observations were not recorded.
+There is no control comparison; one team's observations do not establish a product benefit or a population effect.
 
 ## Thematic analysis
 
-The following exploratory themes organize the observed difficulties within T-01.
-Only P-01 is currently counted; references to P-02 and P-03 describe exploratory evidence, not additional counted sessions.
+The following themes organize the observed difficulties within T-01, using all three counted participant records.
 The support codes identify related observations in one team, not independent replication across teams.
 The [findings](#findings) apply the [planned severity definitions](README.md#qualitative-analysis-and-severity) and link the evidence for each assessment.
-Severity is an analytical assessment for team review, not a record of approved triage or committed fixes.
+The [triage](#triage) retains these severity assessments and records the selected follow-up task and deferrals.
 
 | Theme | Supporting evidence | Findings and interpretation |
 | --- | --- | --- |
@@ -113,8 +122,8 @@ No Critical incident is established by the supplied sanitized notes.
 
 These findings describe the single T-01 team run, not independent observations from several teams.
 Severity follows the [definitions fixed in the study plan](README.md#qualitative-analysis-and-severity).
-Recommendations are proposed responses for team review; they are not commitments, approved scope changes, or scheduled fixes.
-A `None` task issue means no product follow-up issue is linked yet; it is not a decision to decline the recommendation.
+The [triage](#triage), preserved from merged [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406), selects the diagram-discovery fix and records why the remaining recommendations have no new task.
+A `None` task issue means no new implementation task was opened; the recommendation remains available for later review.
 Where the original observations lack task boundaries, the task field distinguishes the relevant flow from an established occurrence in a specific task.
 
 ### Finding 1
@@ -125,7 +134,7 @@ Diagram creation was not discoverable without a substantial hint.
 - **Tasks:** UT-01 Task 3; UT-01 P-01, UT-01 P-02, and UT-01 P-03 in T-01.
 - **Evidence:** The [shared task record](sessions/README.md#t-01-shared-task-record) confirms Assisted completion and the discovery hint for all three participants; [P-01's feedback](sessions/P-01.md#feature-discovery) also identifies the problem and suggests a dedicated control.
 - **Recommendation:** Provide a clearly labelled entry point for diagram creation and explain how a generated diagram can be made available on the board; verify discoverability with an unaided task before accepting the change.
-- **Task issue:** None
+- **Task issue:** [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405), scheduled in SPRINT-08
 
 The explicit substantial hint supports Major severity.
 The result is one shared team attempt; the three participant records do not make three independent diagram failures.
@@ -230,20 +239,46 @@ P-02's arrowless-connection request concerns appearance; it does not establish a
 The linked notes establish neither direction-independent context nor moving a connection line independently of its endpoints as participant requests.
 Those two ideas are recommendation options requiring validation, not evidence of a defect in the current directional model or an approved change to context semantics.
 
-### Product-response coordination
+### Triage
 
-[Finding 1](#finding-1) is Major; [Finding 2](#finding-2), [Finding 3](#finding-3), [Finding 4](#finding-4), [Finding 5](#finding-5), [Finding 6](#finding-6), [Finding 7](#finding-7), and [Finding 8](#finding-8) are Minor under the recorded severity definitions.
-No Critical finding is supported by the supplied evidence.
-Each recommendation awaits triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), including whether it creates a task, its planned sprint, and the reason for any deferral or rejection.
-The significant Major finding requires follow-up consideration under that task; no product issue or schedule is created by this analysis.
-The formal verdict remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+Triaged on 2026-11-21 for [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), using the eight findings in [#402](https://github.com/WellMadeTeam/workspace-ai-03/pull/402).
+The severity assessments above are retained: one Major, seven Minor, and no Critical finding.
+The Major diagram-discovery difficulty takes priority because it required a substantial hint for the shared task.
+No new feature story is selected by this triage.
+
+| Finding | Severity and reason | Task issue or reason for no task | Planned sprint | Disposition or deferral reason |
+| ------- | ------------------- | ------------------------------- | -------------- | ------------------------------ |
+| [Finding 1](#finding-1) | Major: all three participants needed a substantial discovery hint in one team run. | [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405), serving US-08 #44 AC-01 and AC-03, FR-012 and FR-020. | SPRINT-08 | Add a clearly labelled diagram entry point and guidance for putting the rendered picture on the board; require a separate unaided staging attempt before acceptance. |
+| [Finding 2](#finding-2) | Minor: context and capability uncertainty with assistance, without established substantial intervention attributable to this mismatch. | None: the requested capability expansion needs clarification; no confirmed defect in context transfer is established. | Unscheduled; review in SPRINT-09 planning. | Defer implementation behind diagram discovery; review direction/context explanations and reply-to-text transfer separately before expanding AI actions. |
+| [Finding 3](#finding-3) | Minor: preview/edit and selection confusion, without established substantial intervention or lost work. | None: no technical failure established; the exact control changes need review. | Unscheduled; review in SPRINT-09 planning. | Retain visible mode and selection hints as candidates; no implementation commitment this sprint. |
+| [Finding 4](#finding-4) | Minor: cramped areas and presentation friction, without attributable task failure or substantial intervention. | None: several distinct requests need separate scope decisions; export already has backlog story [US-13 #49](https://github.com/WellMadeTeam/workspace-ai-03/issues/49). | Unscheduled; review in SPRINT-09 planning. | Review reading/editing space and table rendering separately from language, customization, output blocks, and export; do not turn the group into one speculative fix. |
+| [Finding 5](#finding-5) | Minor: one participant's Delete expectation and undo request, without established work loss. | None: reproduce Delete with focus and selection state before calling it a defect; recovery already has backlog story [US-15 #202](https://github.com/WellMadeTeam/workspace-ai-03/issues/202). | Unscheduled; review in SPRINT-09 planning. | Defer a shortcut fix pending reproduction; consider undo separately from the reported shortcut. |
+| [Finding 6](#finding-6) | Minor: unclear authorship, AI status, and color meaning, without established conflicting edits or task failure. | None: labels/status and new collaboration features need separate scope decisions; accounts are not established as necessary. | Unscheduled; review in SPRINT-09 planning. | Retain lightweight activity/AI cues and comments for review; no account, ownership, or commenting implementation is selected. |
+| [Finding 7](#finding-7) | Minor: onboarding requested, without an established causal link to task failure. | None: broad onboarding would overlap the focused diagram guidance in #405 without a demonstrated need for that larger scope. | Unscheduled; review in SPRINT-09 planning. | Check the focused guidance first, then review whether broader onboarding is needed; its effectiveness is not yet established. |
+| [Finding 8](#finding-8) | Minor: reconnection friction and connection-type requests, without established task failure or substantial intervention. | None: intended relationship types and context semantics are unspecified. | Unscheduled; review in SPRINT-09 planning. | Clarify line movement, endpoint reconnection, arrow appearance, and context direction separately before selecting work; retain existing context behavior meanwhile. |
+
+The seven `None` entries defer implementation; they do not reject the recommendations or schedule their existing backlog stories.
+No recommendation is recorded as a change the team would never make, so this triage creates no rejection decision in the meeting decision log.
+The original observations and attribution limits continue to apply.
+
+### Fix and release handoff
+
+[#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) is a High-priority Task in SPRINT-08, with `danmaninc` responsible and `hrrrsss` accountable and both assigned, following #386's ownership.
+Its description cites `docs/usability-tests/ut-01/results.md#finding-1` and the findings PR; its Story field names US-08 #44 AC-01 and AC-03, and its Requirements field links FR-012 and FR-020 on main.
+The findings in #402 must merge before acceptance of the fix.
+The task's recheck is new evidence: it must not rewrite the original assisted outcome or imply a new QR-06 verdict.
+
+The [REL-08 plan](../../project-plan.md#rel-08) targets this fix only if its implementation and verification finish before release.
+At sprint close, [#392](https://github.com/WellMadeTeam/workspace-ai-03/issues/392) and [#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) must check the landing state: include a landed fix in REL-08, or move the unfinished task to the SPRINT-09 milestone, retaining its priority, ownership fields, and matching assignees, and record the actual reason in the Week 08 report.
+No fix or recheck has landed as part of this triage.
+The [quality requirement and product response](#quality-requirement-and-product-response) section states the current testing-plan status; the fix does not establish a completed usability test.
 
 ## Instrumentation Comparison
 
 ### Export scope and observed events
 
 The private staging export was inspected within the team's reported collection window, excluding records outside that window.
-This qualitative record reports event presence and coverage rather than event-count statistics.
+This comparison reports event presence and coverage rather than event-count statistics because participant/task attribution cannot be verified from the retained fields.
 
 | Event name | Coverage within the reported window |
 | --- | --- |
@@ -274,7 +309,7 @@ An event's presence is weaker than verified task-level correspondence.
 | Task 3 | Shared assisted completion with a substantial discovery hint; planned `query_submitted` and `reply_received`. | Both names occur within the reported window. | These general events do not prove a diagram was rendered or shared; the completion/assistance classification comes from the team member's clarification. |
 
 The observations provide the reported Assisted outcomes and descriptions of help that telemetry does not record.
-P-02 and P-03 observations remain exploratory; this comparison does not establish the minimum counted-session sample.
+All three participant records count; the eligibility confirmation does not resolve the telemetry-attribution gaps.
 They do not supply the missing durations, individual switch counts, or detailed artifact end states.
 There is no control telemetry because no control run occurred; this is not an export failure.
 
@@ -288,47 +323,52 @@ Raw telemetry, private identifiers, and exact collection timestamps remain in th
 
 ## Limitations
 
-- Only P-01 currently meets all confirmed counting requirements; P-02 and P-03 remain exploratory pending full eligibility confirmation.
-  The minimum counted-session sample is not met, and no aggregate statistics or completed usability result are claimed.
+- Three counted participant sessions meet the minimum sample, but all belong to one shared-board team run.
+  The five-person design target was not reached; the study provides no independent replication across teams.
 - The observations come from a shared-board team with no control or supplementary run.
   They support qualitative descriptions, not causal or population conclusions.
 - The participants' software-development student roles and laptop use were confirmed retrospectively.
-  Exact browsers and P-02/P-03's outstanding eligibility checks are not specified in the public evidence.
+  All recruitment criteria were confirmed by 2026-11-22; exact browsers remain unrecorded.
 - SEQ, task durations, tool switches and observation durations, and observer ease ratings are unavailable.
   The observed task outcomes and descriptions of help cannot replace those measurements.
 - The team confirmed Assisted completion retrospectively.
   Detailed end-state artifacts and compliance with task time limits are not independently established by the supplied notes and questionnaires.
 - The pre-test was omitted under [DEC-048](../../decisions.md#dec-048), leaving no expectations or detailed-familiarity baseline.
-- The fourth SUS statement used shortened wording; individual calculated scores retain that instrument limitation and are not aggregated here.
+- The fourth SUS statement used shortened wording; individual scores and the mean and median retain that instrument limitation.
 - Full pre-session verification was not repeated in SPRINT-08, and session events lacked the required study label.
   Missing board/query fields, absent task timestamps, and partial log coverage limit the instrumentation comparison.
 - Some notes use ambiguous P-02/P-03 or group attribution; observer ideas remain separate from participant feedback.
-  Neither group labels nor related questionnaire records establish independent counted-session support.
+  Neither group labels nor related questionnaire records establish independent team-run support.
+- The required messenger-use answer for TOS-03 was not collected.
+  A retained board state is confirmed by the team but was not independently inspected for this update.
+- The full Sprint Review has not yet taken place; these results do not establish customer acceptance or approved product-response decisions.
 
 ## Conclusion
 
 ### Research questions
 
 1. **Does the shared board reduce tool switching compared with the existing workflow?**
-   The qualitative record cannot answer this comparison: there is no control run and no recorded switch counts or observation durations.
-   P-02 and P-03's exploratory feedback about shared context and working together does not establish a reduction in switching.
+   The results cannot answer this comparison: there is no control run and no recorded switch counts or observation durations.
+   P-02 and P-03's feedback about shared context and working together does not establish a reduction in switching, and the messenger-use answer was not collected.
 2. **What difficulties occur when reusing queries and replies as context?**
    The notes describe uncertainty about connection direction and AI capabilities, along with copying friction.
-   The team member reported functionality assistance during the context-reuse task; P-02 and P-03's observations remain exploratory.
+   The team member reported functionality assistance during the context-reuse task; the three participant notes describe the same team attempt.
 3. **Can participants complete the main task without help, and where is assistance needed?**
-   P-01's counted record describes Assisted main-task completion with editing-related technical help and functionality questions.
-   The mixed-eligibility team also received assistance during the other tasks, including a substantial hint for diagram discovery.
-   These observations do not establish the minimum sample for the planned usability result or justify publishing a completion rate.
+   The only primary team run completed the main task with assistance: 1/1 reported completion and 0/1 unaided completion.
+   P-01 needed editing-related technical help, and all three participants asked functionality questions.
+   The team also received assistance during the other tasks, including a substantial hint for diagram discovery.
+   Missing durations prevent a claim of completion within the planned time limits.
 
 ### Quality requirement and product response
 
-The [quality requirement testing plan](../../project-plan.md#quality-requirement-testing-plan) records QR-06 QRT-01 as `Not verified`.
-The minimum confirmed participant sample for [QR-06](../../quality-requirements/qr/QR-06.md#response-measure) is not met; this record claims neither a pass nor a completed formal verdict.
-The test stays `Planned`, with the shortfall and qualitative evidence explicit.
-The formal testing-plan and scheduling response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The [quality requirement testing plan](../../project-plan.md#quality-requirement-testing-plan) records QR-06 QRT-01 as `Fails`.
+The three-participant minimum is met, but the only primary shared-board run was Assisted, with U=0 and N=1, against [QR-06](../../quality-requirements/qr/QR-06.md#response-measure)'s fixed 100% unaided bar.
+The recorded assistance establishes failure of that bar even though elapsed time is missing; eligibility confirmation does not convert assistance into unaided completion.
+UT-01 is `Completed`, with the execution departures and missing measures explicit.
+[TOS-03](../../threshold-of-success.md#tos-03) is recorded as `Missed` on its evidence measure: the retained context-reuse board state is confirmed, but the required messenger-use answer was not collected.
 
 The [findings](#findings) identify diagram discoverability as Major and context/capability clarity, editing controls, result presentation and reuse, keyboard expectations, collaboration support, onboarding, and connection interactions as Minor.
-Product-response selection remains pending team triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
-Exploratory requests may inform triage, but no recommendation is represented as a committed, declined, or deferred fix without a team decision.
-Before final review, add the approved triage and fix-task links and reconcile the wording with the testing plan.
-The weekly report must declare the shortfall and claim no completed usability result.
+The [triage](#triage) selects diagram discovery in [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and defers the seven Minor recommendations pending review.
+The [fix and release handoff](#fix-and-release-handoff) records the release target and SPRINT-09 fallback; the fix remains open, with no landed implementation or successful recheck claimed.
+The full Sprint Review must cover these results, the failed quality requirement, the threshold evidence gap, approved triage, and next steps.
+The weekly report must disclose the five-person target shortfall, missing measures, instrumentation departures, and the pending review; it must not claim customer acceptance.

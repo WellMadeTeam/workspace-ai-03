@@ -5,7 +5,8 @@
 Three participants completed the tasks together in one shared-board team run, `T-01`, on 19 November 2026 during [SPRINT-08](../../../project-plan.md#sprint-08).
 No control or supplementary run took place.
 Each participant has a sanitized observation record; their shared task outcomes represent one team attempt per task.
-The three records do not establish three counted sessions: only P-01 has fully confirmed eligibility, while P-02 and P-03 remain partially unconfirmed.
+All three participant sessions count following the team's confirmation of the remaining eligibility checks on 2026-11-22.
+They represent one team run, not three independent team attempts.
 
 | Participant | Team run | Condition | Public note |
 | --- | --- | --- | --- |
@@ -15,8 +16,7 @@ The three records do not establish three counted sessions: only P-01 has fully c
 
 ### Eligibility, consent, and capture confirmation
 
-The team reports one fully confirmed eligibility profile (P-01) and two partially unconfirmed profiles (P-02 and P-03).
-The outstanding individual checks for P-02 and P-03 are not specified; do not infer which criteria passed or failed.
+On 2026-11-22, the team confirmed that all three participants meet every UT-01 recruitment eligibility criterion, including the previously outstanding checks for P-02 and P-03.
 All three participants gave consent, and the capture method was explained as telemetry and human observations, with no video.
 The team confirms that consent preceded capture for all three participants and that there were no withdrawals.
 The underlying consent and eligibility records remain private.
@@ -24,13 +24,12 @@ The underlying consent and eligibility records remain private.
 | Participant | Eligibility status | Counted-session status |
 | --- | --- | --- |
 | UT-01 P-01 | All checks confirmed | Confirmed eligibility, prior consent, capture, and no withdrawal. |
-| UT-01 P-02 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
-| UT-01 P-03 | Partially unconfirmed | Not counted while eligibility remains incomplete. |
+| UT-01 P-02 | All checks confirmed | Confirmed eligibility, prior consent, capture, and no withdrawal. |
+| UT-01 P-03 | All checks confirmed | Confirmed eligibility, prior consent, capture, and no withdrawal. |
 
-The currently confirmed counted-session total is one (P-01), using the documented telemetry and observer-capture method.
-P-02 and P-03 remain outside that count while eligibility is partially unconfirmed.
-The minimum of three counted sessions is therefore not met.
-The results work must use the confirmed counted-session total rather than treating all three participants as eligible.
+The confirmed counted-session total is three (P-01, P-02, and P-03), using the documented telemetry and observer-capture method.
+The minimum of three counted sessions is met; no participant was excluded or withdrew.
+This eligibility confirmation does not repair the missing measurements or instrumentation departures described in the [results](../results.md#limitations).
 
 ### T-01 shared task record
 
@@ -65,8 +64,7 @@ SUS scores use the ten recorded numeric answers and the formula in [surveys.md](
 There is one team and no control group, so neither individual questionnaire responses nor repeated task outcomes establish independent team comparisons or a population effect.
 The team member retrospectively confirmed the date, software-development student roles, and laptop use.
 Device details were not captured during the session.
-P-01 has since confirmed all eligibility checks, including the minimum LLM-use and device criteria; exact browser details remain unrecorded.
-P-02 and P-03 have only partial eligibility confirmation.
+All three participants have now confirmed all eligibility checks, including the minimum LLM-use and device criteria; exact browser details remain unrecorded.
 
 ## Session Instructions
 

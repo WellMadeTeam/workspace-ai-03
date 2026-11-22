@@ -152,7 +152,7 @@ A failed verification blocks counted sessions until corrected and rerun; it is d
 Run at least three eligible adult participant sessions, with five as the current design target and the proposed six-person allocation subject to review, on staging in person on the university network before the results are written.
 Require durable consent and capture before each counted session, reset the synthetic seed, keep raw text and filtered telemetry in the private usability-data repository and recordings in the team-owned cloud folder, and publish only sanitized session notes.
 The usability sessions took place during SPRINT-08; the teammate dry run is excluded.
-The final counted-session total is subject to the private eligibility checks awaiting confirmation in [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398).
+On 2026-11-22, the team confirmed the remaining eligibility checks: all three participant sessions count within one shared-board team run; the [session confirmation](usability-tests/ut-01/sessions/README.md#eligibility-consent-and-capture-confirmation) records this update.
 The UT-01 record and index name SPRINT-08 as the run sprint, and the sanitized session notes must supply the session dates and evidence of the prerequisites above.
 
 Analyze the sessions using the frozen analysis plan, publish the results and stable findings, and triage every finding.
@@ -165,6 +165,13 @@ The configuration plan documents the current configuration, and its public evalu
 Configuration implementation is not required by the evaluation.
 Update the glossary and risks, review the usability evidence and next steps with the customer at the Sprint Review, apply same-week feedback, and run the testing-plan rows scheduled for this sprint or declare their reason for moving to SPRINT-09.
 Publish REL-08 after the sprint's changes merge, then record actual velocity, the retrospective, AI usage, and the Week 9 handoff at sprint close.
+
+The [UT-01 results](usability-tests/ut-01/results.md) record three counted participant sessions in one team run, with assisted main-task completion and the QR-06 QRT-01 verdict reflected in the testing plan.
+The full Sprint Review remains pending: the results were not ready at the meeting because testing was planned to take place after it.
+The existing [triage](usability-tests/ut-01/results.md#triage) from merged [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08, serving US-08 AC-01 and AC-03 through FR-012 and FR-020, and defers the seven Minor recommendations.
+No customer acceptance, completed fix, or release is claimed by this update.
+Include #405 in REL-08 only after implementation and verification finish; otherwise move the unfinished task to SPRINT-09 at sprint close and record the actual reason in the weekly report.
+QR-01 QRT-01 still requires its scheduled SPRINT-08 run or an explicit deferral with a reason; the existing failed SPRINT-07 result remains unchanged.
 
 #### REL-08
 
@@ -190,7 +197,7 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Release-commit CI run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/43754420082) and [scope of the recheck](../reports/week-07/README.md#qr-02-qrt-01-2026-11-15) |
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15) |
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15) |
-| [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Not verified | None | [SPRINT-08](#sprint-08) | None |
+| [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results) |
 
 QR-01 is scheduled for another check in SPRINT-08 because the Week 07 run still exceeded the two-second limit for nine query-message reads.
 QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03-scenario-check-2026-11-15), but its requirement defines no QRT, so it has no test row here.

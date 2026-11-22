@@ -19,8 +19,11 @@ Per `CON-03` of the product vision, 10 simultaneous clients edit one board for 3
 
 A team of at least 3 people outside the development team completes one brainstorming session on the board, sending at least one query whose context is responses selected from the board, by the end of Week 8.
 
-- **Status:** Open
+- **Status:** Missed
 - **Measure:** the session's board state, with the team's answer to "did you need a messenger?" recorded as a finding, in the Week 8 report, by the end of Week 8.
+- **Outcome:** [UT-01](usability-tests/ut-01/README.md) records three counted participant sessions in the shared-board run on 2026-11-19; the team confirmed a retained board state showing a query that reused selected AI replies as context on 2026-11-22.
+  The required answer to "did you need a messenger?" was not collected, so the stated evidence measure was not met; the [results and limitations](usability-tests/ut-01/results.md#limitations) establish neither reduced messenger use nor the opposite.
+  The full Sprint Review remains pending.
 
 ## Failure And Success Statements
 
