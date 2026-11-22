@@ -177,6 +177,13 @@ The [release preparation](../reports/week-08/release-preparation.md) records the
 
 #### REL-08
 
+- **Released:** [v0.5.1](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1) on 2026-11-22.
+- **Checked QRs:**
+  - [QR-01](quality-requirements/qr/QR-01.md)
+  - [QR-06](quality-requirements/qr/QR-06.md)
+
+The result and the last check of each test are in the [Quality Requirement Testing Plan](#quality-requirement-testing-plan).
+
 ### SPRINT-09
 
 Provisional: the final repository state and REL-09, the 7-minute presentation deck, and the reflection explain whether the shared board solves the aggregation problem, using the usability results, configuration evaluation, and declared limitations.
