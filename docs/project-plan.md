@@ -171,7 +171,9 @@ The full Sprint Review remains pending: the results were not ready at the meetin
 The existing [triage](usability-tests/ut-01/results.md#triage) from merged [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08, serving US-08 AC-01 and AC-03 through FR-012 and FR-020, and defers the seven Minor recommendations.
 No customer acceptance, completed fix, or release is claimed by this update.
 Include #405 in REL-08 only after implementation and verification finish; otherwise move the unfinished task to SPRINT-09 at sprint close and record the actual reason in the weekly report.
-QR-01 QRT-01 still requires its scheduled SPRINT-08 run or an explicit deferral with a reason; the existing failed SPRINT-07 result remains unchanged.
+The member supplied the [QR-01 QRT-01 closeout output](../reports/week-08/qr-01-qrt-01.md) from 2026-11-22: 12 query-message reads exceeded two seconds and none were missed.
+The result is Fails; the member confirms tested revision `0fa12cffbe3018876a5e39821625ba00aed98083` and staging on the university VM from the university network.
+The [release preparation](../reports/week-08/release-preparation.md) records the candidate scope and remaining tag/publication steps; no release is claimed.
 
 #### REL-08
 
@@ -193,13 +195,14 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 
 | QR | QRT | Status | Checked | Planned for sprint | Evidence |
 | -- | --- | ------ | ------- | ------------------ | -------- |
-| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails | [SPRINT-07](#sprint-07) | [SPRINT-08](#sprint-08) | [Week 07 staging run](../reports/week-07/README.md#qr-01-qrt-01-2026-11-15) |
+| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [Week 08 supplied run](../reports/week-08/qr-01-qrt-01.md) |
 | [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Release-commit CI run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/43754420082) and [scope of the recheck](../reports/week-07/README.md#qr-02-qrt-01-2026-11-15) |
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15) |
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15) |
 | [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results) |
 
-QR-01 is scheduled for another check in SPRINT-08 because the Week 07 run still exceeded the two-second limit for nine query-message reads.
+QR-01 remains Fails after the supplied SPRINT-08 closeout run exceeded the two-second limit for 12 query-message reads.
+Its evidence records member-confirmed provenance and the run after the planned sprint deadline; no later recheck or fix is claimed.
 QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03-scenario-check-2026-11-15), but its requirement defines no QRT, so it has no test row here.
 
 ## Progress Monitoring
