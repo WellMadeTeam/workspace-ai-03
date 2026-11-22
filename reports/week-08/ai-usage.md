@@ -21,6 +21,9 @@
 - Draft the 13 configuration and agent terms and four risks with their fallbacks for #390, and publish [PR #397](https://github.com/WellMadeTeam/workspace-ai-03/pull/397).
   Merge current main, address review feedback, and record the consistency check against the merged inventory and evaluation from #399 and #403.
 
+- Draft the Week 8 meeting script and report for #391 from the member’s brief account, carry forward the Week 7 action points and open questions, and publish [PR #408](https://github.com/WellMadeTeam/workspace-ai-03/pull/408).
+  Revise consent, transcript availability, and action ownership and timing after member clarifications; commit and push the requested changes and mark the PR ready for review.
+
 ## What we did with the output
 
 - Kept the Week 07 sections, added the required disclosure sections, and checked Markdown formatting.
@@ -54,6 +57,11 @@
   Markdown lint, local links, diff checks, and MkDocs build passed with existing build warnings; the 12 initial external URLs and the newly linked evaluation returned HTTP 200 via curl, while full local lychee encountered connection failures.
   The first draft sorted risks by rating; restored identifier order at the member’s request.
   This consistency check made the evidence traceable without treating evaluation proposals or confirmed builds as proof that a risk had occurred.
+- Checked #391 against the course meeting requirements, the issue, the glossary, and the Week 7 report.
+  Kept Markdown acceptance open after the customer-reported rendering bug; incorporated the member’s confirmation of recording and transcript consent, pending receipt, all-member ownership of the SPRINT-08 usability test, and danmaninc’s Markdown fix during SPRINT-09.
+  Removed the script’s reconstruction notice at the member’s request; suggested timeboxes remain distinguished from measured duration, and the report still identifies the script as reconstructed.
+  Markdown lint, local link checks, and diff checks passed; repository-wide external link checking encountered connection failures.
+  The PR records remaining evidence and acceptance gaps rather than claiming all #391 criteria are satisfied.
 
 ## What was not used
 
@@ -64,6 +72,8 @@
   Kept #405’s REL-08 inclusion conditional on completion and verification, with unfinished work to move to SPRINT-09 at sprint close and its actual reason recorded in the report.
 - Removed operating-system details the member could not confirm and unnecessary changes to an existing pre-session verification record.
 - Did not invent missing questionnaire answers, task durations, independent team attempts, participant attribution, or product commitments; retained the merged triage decisions when resolving conflicts.
+- For #391, no meeting recording or transcript was supplied, and no transcript, quotation, usability result, missing action outcome, or decision identifier was generated.
+  The script’s suggested questions and timeboxes are generated structure rather than recovered meeting evidence; missing metadata and unconfirmed follow-ups remain explicit.
 
 ## Usability material supplied to agents
 
