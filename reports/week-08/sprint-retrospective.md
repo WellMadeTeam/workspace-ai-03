@@ -6,11 +6,15 @@ Evidence was rechecked on 22 November against upstream `main`, including the eli
 All three participant sessions now count following confirmation of the remaining eligibility checks; they represent one shared-board team run, not three independent team attempts.
 UT-01 is `Completed`, QR-06 QRT-01 is `Fails` because the main task required assistance, and TOS-03 remains `Missed` because the required messenger-use answer was not collected.
 REL-08 was published as [v0.5.1](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1) on 22 November, after the planned sprint deadline, with documentation, evidence, and dependency updates but no intentional product feature or behavior change.
-SPRINT-08's milestone closed on 22 November after its four remaining open tasks moved to SPRINT-09, preserving their ownership and priority.
+At closure on 22 November, SPRINT-08's four remaining open tasks initially moved to SPRINT-09, preserving their ownership and priority.
+The current handoff is narrower: #393 and #394 subsequently returned to SPRINT-08, and #418 is also assigned there for completion during this sprint's closeout today.
 Publication and closure of #392 do not establish the full results Sprint Review, which remains pending in [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391) because testing followed the customer meeting.
 The member confirmed that [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) was closed in error; it was reopened and carried over because implementation and the unaided staging recheck were unfinished at release.
-[#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) moved because the retrospective and actual-velocity changes still require review and merge; its pull request completes that closeout task.
-[#394](https://github.com/WellMadeTeam/workspace-ai-03/issues/394) moved because the AI disclosure and Week 9 handoff remain unfinished after the release and retrospective; [PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396) is still open.
+[#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) remains a SPRINT-08 closeout task pending correction and merge of [PR #417](https://github.com/WellMadeTeam/workspace-ai-03/pull/417).
+[#394](https://github.com/WellMadeTeam/workspace-ai-03/issues/394) remains in SPRINT-08: its AI disclosure is prepared in [PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396), with checks passing, while the Week 9 handoff depends on the weekly report.
+[#418](https://github.com/WellMadeTeam/workspace-ai-03/issues/418) also remains in SPRINT-08: the report draft in `danmaninc/tubeworm` is uncommitted and still needs its obsolete carry-over statements corrected before publication.
+These three tasks are planned to close today; prepared or unmerged files do not establish completion.
+Only #391 and #405 remain in SPRINT-09, because the full results review and the diagram fix with its unaided staging recheck are unfinished.
 
 ## What Went Well
 
