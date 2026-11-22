@@ -6,7 +6,7 @@
 
 ## What we used them for
 
-- Prepare and update the Week 08 report for #418 from public repository and GitHub evidence, then prepare its commit and pull request.
+- Prepare and update the Week 08 report for #418 from public repository and GitHub evidence, then prepare its commit and pull request and address review corrections to the closeout state, evidence links, and deviations.
   Use sanitized public study records and the public configuration plan/evaluation; no private notes or raw recordings were supplied for this report work.
 
 - Create the AI usage draft for #394, check the course requirements, and open draft PR #396.

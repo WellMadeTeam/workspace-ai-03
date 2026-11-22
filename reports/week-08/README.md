@@ -1,7 +1,7 @@
 # Week 08 report
 
 Workspace for AI collaboration, team `workspace-ai-03` (WellMadeTeam).
-This report covers SPRINT-08, due 21 November 2026, and its late closeout on 22 November, against repository revision `2646af0b509e2190280caee8e9a4138f33dde1c0`.
+This report covers SPRINT-08, due 21 November 2026, and its late closeout on 22 November, against repository revision `3571501984a35da7c4638ffe34639219cb9f7e7c`.
 Teams of software developers and architects need a shared board to preserve and reuse LLM queries and replies instead of passing them through messengers.
 
 ## Summary
@@ -23,11 +23,12 @@ Its main tradeoff is extra link navigation in return for fewer competing descrip
 [REL-08, v0.5.1](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1), was published on 22 November with documentation, usability evidence, configuration records, and dependency updates, with no intentional product feature or behavior change.
 The supplied [QR-01 QRT-01 run](qr-01-qrt-01.md) failed with 12 query-message reads above two seconds and no missed reads.
 The [quality requirement testing plan](../../docs/project-plan.md#quality-requirement-testing-plan) owns the tests that are not `Passes`; neither failed requirement is claimed as release quality.
-The [retrospective task #393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) and [AI usage task #394](https://github.com/WellMadeTeam/workspace-ai-03/issues/394) remain open in SPRINT-09; their Week 08 files are absent from this baseline.
-The [AI disclosure draft #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396) is unmerged and is not a submitted artifact.
+The [AI usage report](ai-usage.md) and [sprint retrospective](sprint-retrospective.md) were completed and merged during the late Week 08 closeout in [PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396) and [PR #417](https://github.com/WellMadeTeam/workspace-ai-03/pull/417), closing #394 and #393 in SPRINT-08.
+The sprint's actual velocity is 0: this was a task sprint with no selected feature stories.
+These artifacts and this report under [#418](https://github.com/WellMadeTeam/workspace-ai-03/issues/418) are Week 08 closeout work, not Week 9 carry-over.
 
 The [meeting report](meeting-report.md#summary) records a demonstration of Markdown support under [US-19](https://github.com/WellMadeTeam/workspace-ai-03/issues/324), during which Customer found a rendering bug; acceptance was not confirmed.
-The full results Sprint Review is pending because testing followed the meeting, and no corresponding Week 08 `DEC-nnn` is recorded there.
+The full results Sprint Review and its decision/action-point record were carried into SPRINT-09 under [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391), because testing followed the meeting; no corresponding Week 08 `DEC-nnn` is recorded there.
 The candidate remains the shared-board query-and-reply flow in [US-01](https://github.com/WellMadeTeam/workspace-ai-03/issues/37) and [US-04](https://github.com/WellMadeTeam/workspace-ai-03/issues/40), with the candidate verdict in [DEC-012](../../docs/decisions.md#dec-012); no candidate story is evidenced as moving out this week.
 
 The [focus metric](../../docs/analytics.md#weekly-boards-completing-a-context-reuse-flow) has no new production value evidenced this week; it needs genuine product-use events outside team and study traffic.
@@ -56,12 +57,13 @@ Partial operating logs do not resolve these gaps; the assistance classifications
 The [eight findings and triage](../../docs/usability-tests/ut-01/results.md#findings) classify diagram discovery as Major and seven findings as Minor, with no Critical finding established.
 [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) serves US-08 AC-01 and AC-03 through FR-012 and FR-020, requiring a visible diagram entry point, guidance, and a separate unaided staging recheck.
 It was excluded from REL-08 and moved to SPRINT-09 because implementation and the successful recheck had not landed.
-The seven Minor recommendations remain unscheduled pending scope review; none is recorded as a change the team would never make.
+Triage of the seven Minor recommendations was completed this week; their scope review is carried into SPRINT-09 planning, without scheduled implementation.
+None is recorded as a change the team would never make.
 
 The [conclusion](../../docs/usability-tests/ut-01/results.md#conclusion) cannot answer whether the board reduces tool switching without control data or switch observations.
 It identifies context/capability uncertainty and copying friction, and shows that the only main-task attempt needed help.
 [QR-06](../../docs/quality-requirements/qr/QR-06.md) and its [QRT-01](../../docs/quality-requirements/qr/QR-06.md#qrt-01) therefore receive `Fails` in the testing plan, checked in SPRINT-08.
-The selected diagram fix remains the product response awaiting implementation and review; no completed fix or customer acceptance is claimed.
+The selected diagram fix and unaided staging recheck are carried into SPRINT-09 under #405; the results review and acceptance follow-up are carried under #391.
 
 ## Configuration management
 
@@ -81,7 +83,7 @@ TOS-02 remains Open at this review; TOS-01 and TOS-03 are already recorded as Mi
 
 [TOS-02](../../docs/threshold-of-success.md#tos-02) remains Open after this review.
 No replacement measure is proposed because the direct synchronization requirement should retain its original bar and deadline; the late [QR-01 run](qr-01-qrt-01.md) supplies failure evidence without establishing timely achievement.
-The maintained record still needs the team's formal settlement of this overdue goal.
+Formal settlement of TOS-02 is carried into the SPRINT-09 threshold-outcome review under [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391); the maintained record remains Open at this snapshot.
 
 ## Week 9 handoff
 
@@ -91,17 +93,22 @@ Do not interpret proposed changes as implemented work.
 
 The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent, mapping, raw notes, and telemetry; it requires granted access.
 The team-owned cloud recordings folder remains the separate capture destination named by the study; its private link and access instructions belong in Moodle.
-The evaluation records member-confirmed baseline access, but this report performs no new private access check; the submission owner must keep both destinations accessible through grading.
+The evaluation records member-confirmed baseline access; continued accessibility through grading is carried into Week 9 submission checks, rather than claimed as a new private-access test here.
 The counted run used telemetry and observer capture without video, so no video recording is claimed.
 
 [REL-08 is v0.5.1](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1), published on 22 November; the [released changelog](../../CHANGELOG.md#051---2026-11-22) and [REL-08 block](../../docs/project-plan.md#rel-08) record it.
-The current report baseline is `2646af0b509e2190280caee8e9a4138f33dde1c0`; Week 9 must identify its eventual final submission commit and REL-09 tag rather than reuse this baseline as the final state.
-The deck and reflection should cite the assisted task outcomes, failed QR-06, missing messenger-use evidence for TOS-03, synchronization failure, configuration tradeoffs, and actual release scope.
+The current report baseline is `3571501984a35da7c4638ffe34639219cb9f7e7c`.
+The final repository state and submission commit, REL-09, the 7-minute deck, and the reflection are carried into [SPRINT-09](../../docs/project-plan.md#sprint-09).
+Their evidence is the assisted task outcomes, failed QR-06, missing messenger-use evidence for TOS-03, synchronization failure, configuration tradeoffs, and actual release scope.
 
-The [SPRINT-09 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9) carries [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405), [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391), [#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393), and [#394](https://github.com/WellMadeTeam/workspace-ai-03/issues/394).
-These retain the diagram fix and recheck, full results Sprint Review, retrospective and actual velocity, and complete AI disclosure and handoff respectively.
+The [AI usage report](ai-usage.md), [sprint retrospective](sprint-retrospective.md), and actual velocity of 0 were completed in Week 08 closeout through merged PRs #396 and #417, closing #394 and #393 in SPRINT-08.
+Only [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391) and [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) remain scheduled carry-over tasks in the [SPRINT-09 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9).
+Task #391 carries the full results Sprint Review, threshold-outcome review, unconfirmed Week 7 action points and open questions, decision recording, and receipt/publication of the permitted transcript; testing followed the original meeting, whose brief account could not establish those outcomes.
+Task #405 carries diagram-discovery implementation and the unaided staging recheck, which did not finish for REL-08.
 The [meeting action points](meeting-report.md#action-points) also carry the Markdown rendering fix into Week 9.
-Unselected feature stories remain subject to SPRINT-09 planning.
+Review of the seven Minor findings, unselected feature stories, and the [retrospective actions](sprint-retrospective.md#actions) is carried into SPRINT-09 planning; this does not schedule speculative implementation.
+Production focus-metric measurement and synchronization follow-up are carried into the Week 9 evidence review; this week's study and failed latency run establish neither a production value nor a repaired requirement.
+Missing Week 08 measurements remain study limitations, not tasks to reconstruct in Week 9.
 
 ## Coverage
 
@@ -117,13 +124,13 @@ Unselected feature stories remain subject to SPRINT-09 planning.
 | Glossary | [docs/glossary.md](../../docs/glossary.md) |
 | Risk register | [docs/risks.md](../../docs/risks.md) |
 | REL-08 | [docs/project-plan.md#rel-08](../../docs/project-plan.md#rel-08), [v0.5.1 tag and release body](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1), [CHANGELOG.md#051---2026-11-22](../../CHANGELOG.md#051---2026-11-22) |
-| Sprint retrospective | `reports/week-08/sprint-retrospective.md` is absent; [task #393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) remains open in SPRINT-09. |
-| AI usage | `reports/week-08/ai-usage.md` is absent; [draft PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396) is unmerged and [task #394](https://github.com/WellMadeTeam/workspace-ai-03/issues/394) remains open. Codex prepared this report from public repository artifacts and GitHub evidence, including sanitized study notes and the public configuration plan/evaluation; no private notes or raw recordings were supplied for this report. This assistance must be added to the complete disclosure. |
+| Sprint retrospective | [reports/week-08/sprint-retrospective.md](sprint-retrospective.md), merged with actual velocity 0 in [PR #417](https://github.com/WellMadeTeam/workspace-ai-03/pull/417), closing #393 during Week 08 closeout. |
+| AI usage | [reports/week-08/ai-usage.md](ai-usage.md), merged in [PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396), closing #394 during Week 08 closeout; this PR adds disclosure of the report work. |
 | Week 7 action points | [reports/week-08/meeting-report.md#previous-action-points](meeting-report.md#previous-action-points) |
 | Week 7 open questions | [reports/week-08/meeting-report.md#previous-open-questions](meeting-report.md#previous-open-questions) |
-| Sprint Review | [reports/week-08/meeting-report.md](meeting-report.md); the account does not establish the required results review. |
+| Sprint Review | [reports/week-08/meeting-report.md](meeting-report.md) was completed this week from the brief account; the full results review is carried into SPRINT-09 under #391. |
 | Meeting script | [reports/week-08/meeting-script.md](meeting-script.md) |
-| Meeting transcript | Not yet received from Customer; publication permission is recorded, but `reports/week-08/meeting-transcript.md` is absent. |
+| Meeting transcript | Receipt and publication of the permitted transcript are carried into SPRINT-09 under #391 because Customer had not supplied it; no `reports/week-08/meeting-transcript.md` is present. |
 | Week 9 handoff | [reports/week-08/README.md#week-9-handoff](#week-9-handoff) |
 
 ## Contribution
@@ -141,11 +148,14 @@ Merged evidence includes [sessions #398](https://github.com/WellMadeTeam/workspa
 The [configuration plan #399](https://github.com/WellMadeTeam/workspace-ai-03/pull/399) and [evaluation #403](https://github.com/WellMadeTeam/workspace-ai-03/pull/403) are merged; #403 closed [task #389](https://github.com/WellMadeTeam/workspace-ai-03/issues/389).
 There is no merged diagram-fix PR or unaided recheck; [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) remains open.
 [Latency evidence #412](https://github.com/WellMadeTeam/workspace-ai-03/pull/412), [the changelog #415](https://github.com/WellMadeTeam/workspace-ai-03/pull/415), and [REL-08 record #416](https://github.com/WellMadeTeam/workspace-ai-03/pull/416) establish the late release closeout.
-The [SPRINT-08 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8) is closed; the open tasks listed in the handoff have moved to SPRINT-09.
+The [SPRINT-08 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8) is closed.
+Four tasks initially moved out at closure, but #393 and #394 subsequently returned to SPRINT-08, where #418 also belongs.
+Merged [PR #396](https://github.com/WellMadeTeam/workspace-ai-03/pull/396) completed the AI usage report and closed #394; merged [PR #417](https://github.com/WellMadeTeam/workspace-ai-03/pull/417) completed the retrospective and actual velocity of 0 and closed #393.
+Only #391 and #405 remain scheduled in SPRINT-09.
 
-The latest successful runs inspected on `main` at `2646af0` are the [link check](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45032020915), [Markdown check](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45032020937), [actionlint](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45032020903), and [product-code checks](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45032020946).
+The latest successful runs inspected on `main` at `3571501` are the [link check](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45034664456), [Markdown check](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45034664428), [actionlint](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45034664440), and [product-code checks](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/45034664394).
 They verify that baseline, rather than this new report before merge.
-For this report, Markdown lint passed across 123 files, offline link checking with fragments passed with 1,447 successful checks and zero errors, and the whitespace check passed.
+For this report, Markdown lint and offline link checking with fragments passed, and the whitespace check passed.
 The full external-link check and a network-enabled retry for this report failed on connection errors, including GitHub URLs verified separately through the authenticated API; no successful local external-link check is claimed.
 
 ## Deviations
@@ -156,10 +166,14 @@ The full external-link check and a network-enabled retry for this report failed 
   The [results limitations](../../docs/usability-tests/ut-01/results.md#limitations) retain these departures; telemetry cannot establish study exclusion from product metrics.
 - The messenger-use answer required by TOS-03 was not collected; its maintained verdict is Missed, despite member-confirmed context-reuse board state.
 - The full results Sprint Review was not held before release because the results followed the meeting; [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391) moved to SPRINT-09 for that review and remaining action-point evidence.
-  The meeting account has no verified date or duration, no corresponding new decision identifier, and only one post-Week-08 action point rather than the required two; the transcript has not yet been received.
+  The meeting account has no verified date or duration, no corresponding new decision identifier, and only one post-Week-08 action point rather than the required two; evidence reconciliation and the unsupplied transcript are carried into SPRINT-09 under #391.
 - The selected diagram-discovery fix [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) did not land or pass its unaided staging recheck, was excluded from REL-08, and moved to SPRINT-09 on 22 November.
 - The QR-01 run and REL-08 publication occurred on 22 November after the 21 November deadline; QR-01 and QR-06 remain failed, and no new QR-02, QR-04, or QR-05 run is evidenced this week.
-- TOS-02 remains Open past its Week 7 deadline; its formal settlement is not established by the current maintained record.
+- Closeout continued after the deadline: the AI disclosure, retrospective, and actual velocity of 0 were completed and merged on 22 November in PRs #396 and #417.
+  #393 and #394 are completed Week 08 work, and this report under #418 also belongs to Week 08 closeout; none is carried into Week 9.
+- TOS-02 remains Open past its Week 7 deadline; formal settlement is carried into SPRINT-09's threshold-outcome review under #391.
+- The report task [#418](https://github.com/WellMadeTeam/workspace-ai-03/issues/418) was created through the API using the Task form fields and explicit Task type because the Orca browser failed to load the required form with `ERR_INVALID_HANDLE`.
+  It was initially scheduled in SPRINT-09, then reassigned to SPRINT-08 for this week's late report closeout; only #391 and #405 remain scheduled carry-over tasks.
 
 ## Privacy
 
