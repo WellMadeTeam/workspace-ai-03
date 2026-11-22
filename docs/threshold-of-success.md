@@ -21,9 +21,9 @@ A team of at least 3 people outside the development team completes one brainstor
 
 - **Status:** Missed
 - **Measure:** the session's board state, with the team's answer to "did you need a messenger?" recorded as a finding, in the Week 8 report, by the end of Week 8.
-- **Outcome:** [UT-01](usability-tests/ut-01/README.md) records one shared-board team run and assisted context reuse, but the [qualitative record](usability-tests/ut-01/results.md#threshold-of-success) does not establish the session's board state or the team's answer about needing a messenger.
-  The member confirms that no further evidence is available and that the Week 8 measure was missed.
-  This does not mean that no brainstorming occurred or establish a QR-06 pass or failure.
+- **Outcome:** [UT-01](usability-tests/ut-01/README.md) records three counted participant sessions in the shared-board run on 2026-11-19; the team confirmed a retained board state showing a query that reused selected AI replies as context on 2026-11-22.
+  The required answer to "did you need a messenger?" was not collected, so the stated evidence measure was not met; the [results and limitations](usability-tests/ut-01/results.md#limitations) establish neither reduced messenger use nor the opposite.
+  The full Sprint Review remains pending.
 
 ## Failure And Success Statements
 

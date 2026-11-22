@@ -1,11 +1,11 @@
 # UT-01: Brainstorm with an LLM on a shared board
 
-- **Status:** Planned
+- **Status:** Completed
 - **Design sprint:** [SPRINT-07](../../project-plan.md#sprint-07)
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
 The participant sessions took place during SPRINT-08.
-The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility and are not currently counted.
+The team confirmed the remaining eligibility checks on 2026-11-22, establishing three counted participant sessions in one team run; see the [confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation).
 The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
 
 ## Goal
@@ -45,7 +45,7 @@ A session that fails to meet the profile is exploratory and is not counted.
 
 Three participants took part as one team using the shared board only.
 Every participant completed all three tasks with assistance, giving three participant observation records from one team run (`T-01`).
-These records do not establish three counted sessions: P-01 has confirmed all eligibility checks, while P-02 and P-03 are partially unconfirmed.
+All three participant sessions count following the team's eligibility confirmation on 2026-11-22; their shared outcomes represent one team run.
 There were not enough volunteers to form a control group.
 The customer agreed that a control group was desirable but optional, depending on recruitment.
 No control or supplementary run took place.
@@ -60,19 +60,16 @@ SEQ was omitted after every task.
 Task durations, tool-switch counts and observation durations, and observer ease ratings are not available in the supplied material.
 The fourth SUS statement used shortened wording; the [session limitations](sessions/README.md#measurement-limitations) disclose this difference.
 The team member retrospectively confirmed software-development student roles and laptop use; device details were not captured during the session.
-P-01 has confirmed all recruitment eligibility checks, including the minimum prior LLM-use criterion.
-Eligibility for P-02 and P-03 remains partially unconfirmed; the outstanding checks are not specified in this update.
+All three participants have confirmed every recruitment eligibility check, including the minimum prior LLM-use and device criteria, as reported by the team on 2026-11-22.
 All three gave consent to explained telemetry and observer capture, with no video.
 The team confirms that consent preceded capture for all three participants and that there were no withdrawals.
-The currently confirmed counted-session total is one (P-01); P-02 and P-03 are not counted while eligibility remains partially unconfirmed.
-The minimum of three counted sessions is not met, so the results must follow the qualitative shortfall reporting rule rather than publish aggregates for three counted participants.
+The confirmed counted-session total is three (P-01, P-02, and P-03), meeting the required minimum.
+Available aggregates describe these participants and their single team run; missing measures remain explicit.
 The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
-The [qualitative record](results.md) declares the shortfall without aggregate statistics or a completed usability result.
-UT-01 remains `Planned`, and QR-06 QRT-01 remains `Not verified` in the [testing plan](../../project-plan.md#quality-requirement-testing-plan).
-[TOS-03](../../threshold-of-success.md#tos-03) is Missed because its existing measure is not established by the available evidence.
-The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and verification remain pending.
+The test is `Completed`, and [results.md](results.md) contains the recorded outcomes, available aggregates, and execution limitations.
+The [testing plan](../../project-plan.md#quality-requirement-testing-plan) records QR-06 QRT-01 as `Fails`; the [triage](results.md#triage) selects #405 and defers the seven Minor recommendations, while implementation and the full Sprint Review remain pending.
 
 ### Recruitment eligibility check
 
@@ -391,7 +388,7 @@ Describe the findings as evidence from these sessions, not estimates for a wider
 
 ### Results, findings, and triage
 
-[results.md](results.md) is the run-week qualitative record; the current counted-session shortfall prevents aggregate statistics or a completed usability result.
+[results.md](results.md) is the run-week record of the analyzed sessions, available aggregates, findings, and limitations.
 Each finding uses the template below and a stable `#finding-n` anchor:
 
 ```markdown
@@ -413,9 +410,9 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall without aggregates.
-The [numbered findings](results.md#findings) and their [triage](results.md#triage) are recorded; implementation remains separate work.
-The [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified, and [TOS-03](../../threshold-of-success.md#tos-03) records the missed measure.
+The session record discloses execution departures; the [results](results.md) summarize three counted participant sessions in one team run, including the findings and available aggregates.
+The full Sprint Review remains pending: results were unavailable at the meeting because testing was planned to follow it.
+The [triage](results.md#triage) selects the existing diagram-discovery task #405 for SPRINT-08; implementation and the full Sprint Review remain pending.
 
 ## Schedule
 
@@ -423,7 +420,7 @@ The session plan requires inviting and screening volunteers after the design rev
 The three participant sessions took place on 19 November 2026 during [SPRINT-08](../../project-plan.md#sprint-08) as one shared-board team run, as confirmed retrospectively by the team member.
 The original plan scheduled in-person sessions on the university network during that sprint.
 Questionnaire and telemetry timestamps are retained privately and are not substituted for task timings.
-Refer to [PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) for confirmation of the private eligibility checks and final counted-session total.
+The [confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) records the team's 2026-11-22 follow-up confirming eligibility for all three counted participants.
 Results are due with Submission 8 on 21 November 2026.
 
 Assign `P-01`, `P-02`, and subsequent codes in the order sessions are scheduled. Never reuse a code. If a participant withdraws or a session cannot count, retire that code and assign a replacement the next free code; the identity mapping stays private.
@@ -474,7 +471,7 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 ## Evidence Map
 
-- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and the [qualitative shortfall record](results.md).
+- The public repository contains this sanitized test design and the [sanitized session notes](sessions/README.md#recorded-sessions) and the [results](results.md).
 - The [private usability-data repository](https://github.com/WellMadeTeam/workspace-ai-03-usability-data) holds consent records, identity mapping, raw notes, working analysis, and the filtered telemetry export; GitHub sign-in and granted team/instructor access are required.
 - The team-owned cloud folder holds session-capture data and is shared with instructors; its link and access instructions stay in the private repository and Moodle submission.
 - The public consent template is [`consent.md`](consent.md); completed consent records remain private.
@@ -486,8 +483,8 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, research-question answers, and declared shortfall.
-It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
+The [results](results.md) contain the per-participant observations, team-task completion summary, SUS mean and median, themes, instrumentation comparison, and limitations.
+The sessions and results are recorded, so the test is `Completed`; this status does not imply a passed quality requirement or a completed Sprint Review.
 The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
-The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
-Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified.
+The [testing plan](../../project-plan.md#quality-requirement-testing-plan) records the QR-06 QRT-01 verdict.
+The [triage](results.md#triage) and [fix handoff](results.md#fix-and-release-handoff) preserve #386's selected task #405 and Minor-finding deferrals before the pending full Sprint Review.
