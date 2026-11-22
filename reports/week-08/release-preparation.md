@@ -5,6 +5,7 @@
 ## Candidate scope
 
 The proposed version is `v0.5.1`, a maintenance increment after `v0.5.0`; confirm that the version remains unused when tagging.
+The [planning rules](https://github.com/inno-itpd/itpd/blob/main/requirements/planning-requirements.md#releases) leave the tag numbering to the team under SemVer; `REL-08` does not require `v0.6.0`.
 The release commit will be the final reviewed commit on `main` after [#410](https://github.com/WellMadeTeam/workspace-ai-03/pull/410) and the stacked evidence PR merge.
 Do not tag either feature branch or substitute the merge commit for the actual tested revision in the evidence.
 
@@ -18,7 +19,7 @@ Routine dependency updates are not presented as user-visible feature or defect f
 
 ## Quality evidence and limitations
 
-- [QR-01 QRT-01](qr-01-qrt-01.md): the supplied output fails with 12 query-message reads over two seconds, zero missed reads, and a 2,129 ms maximum; tested SHA and staging/network confirmation remain pending.
+- [QR-01 QRT-01](qr-01-qrt-01.md): the supplied output fails with 12 query-message reads over two seconds, zero missed reads, and a 2,129 ms maximum; the member confirms tested SHA `0fa12cffbe3018876a5e39821625ba00aed98083` and staging on the university VM from the university network.
 - [QR-06 QRT-01](../../docs/usability-tests/ut-01/results.md#team-task-results): fails the fixed unaided bar; three counted participants supplied one assisted team attempt.
 - [TOS-03](../../docs/threshold-of-success.md#tos-03): remains Missed because the messenger-use answer was not collected, although a retained context-reuse board state is member-confirmed.
 - The full results Sprint Review remains pending; the [meeting report](meeting-report.md) does not establish that review or customer acceptance.
@@ -32,7 +33,8 @@ A failed requirement remains visible and is not a release quality claim.
 
 ## Before tagging
 
-1. Confirm the exact tested SHA and required staging/network conditions in the latency evidence.
+1. Preserve the member-confirmed tested SHA and staging/network conditions in the latency evidence.
+   The tested application/script revision is `0fa12cffbe3018876a5e39821625ba00aed98083`; the final release SHA will also include subsequent documentation merges.
 2. Review and merge #410, then retarget and merge the stacked evidence PR into `main` after its task criteria and required repository checks are satisfied.
 3. Inspect the final candidate diff, including dependency inputs and any subsequently merged product change.
    Confirm that the tested application and script match that candidate; rerun an affected test if product changes invalidate its evidence.

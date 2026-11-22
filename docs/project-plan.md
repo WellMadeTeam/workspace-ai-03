@@ -172,7 +172,7 @@ The existing [triage](usability-tests/ut-01/results.md#triage) from merged [PR #
 No customer acceptance, completed fix, or release is claimed by this update.
 Include #405 in REL-08 only after implementation and verification finish; otherwise move the unfinished task to SPRINT-09 at sprint close and record the actual reason in the weekly report.
 The member supplied the [QR-01 QRT-01 closeout output](../reports/week-08/qr-01-qrt-01.md) from 2026-11-22: 12 query-message reads exceeded two seconds and none were missed.
-The supplied result is Fails; tested revision and required staging/network conditions await confirmation.
+The result is Fails; the member confirms tested revision `0fa12cffbe3018876a5e39821625ba00aed98083` and staging on the university VM from the university network.
 The [release preparation](../reports/week-08/release-preparation.md) records the candidate scope and remaining tag/publication steps; no release is claimed.
 
 #### REL-08
@@ -202,7 +202,7 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results) |
 
 QR-01 remains Fails after the supplied SPRINT-08 closeout run exceeded the two-second limit for 12 query-message reads.
-Its evidence records the pending provenance confirmation and the run after the planned sprint deadline; no later recheck or fix is claimed.
+Its evidence records member-confirmed provenance and the run after the planned sprint deadline; no later recheck or fix is claimed.
 QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03-scenario-check-2026-11-15), but its requirement defines no QRT, so it has no test row here.
 
 ## Progress Monitoring

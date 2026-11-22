@@ -6,8 +6,8 @@ The member supplied the following output for the [QR-01 QRT-01](../../docs/quali
 Codex transcribed and interpreted the supplied output; it did not execute the deployed test.
 
 - **Started:** 2026-11-22 16:03:56 MSK (UTC+03:00).
-- **Tested commit:** Awaiting member confirmation; the suggested staging revision was `0fa12cffbe3018876a5e39821625ba00aed98083`, which is not yet confirmed as the tested revision.
-- **Environment:** Awaiting confirmation that the target was staging on the university VM and the runner was on the university network.
+- **Tested commit:** `0fa12cffbe3018876a5e39821625ba00aed98083`; the member confirms this was the deployed and tested revision.
+- **Environment:** Staging on the university VM, tested from a machine on the university network, as confirmed by the member.
 - **Procedure:** The documented command is `python scripts/check_sync_latency.py "$STAGING_URL"`; the deployment address remains private.
 - **Parameters reported:** 10 members, 1,800 seconds, a five-second change interval, and a two-second threshold.
 
@@ -39,5 +39,5 @@ This check measures visibility of the submitted query message, not the LLM servi
 The output does not establish the root cause or a completed fix.
 
 The [testing plan](../../docs/project-plan.md#quality-requirement-testing-plan) retains the failed requirement rather than dropping it or claiming a pass.
-The exact revision and environment must be confirmed before this evidence is treated as a fully documented deployed check or the release is tagged.
+The member confirmed the exact tested revision and required staging/network conditions on 2026-11-22; this record attributes the deployed check to the member rather than to Codex.
 The run occurred on 22 November, after SPRINT-08's planned 21 November deadline; it is recorded as sprint-closeout evidence without claiming on-time completion.
