@@ -140,6 +140,7 @@ The team establishes whether the shared board helps representative participants 
 - **Due:** 2026-11-21
 - **Sprint Backlog:** [the issues scheduled into SPRINT-08](https://github.com/WellMadeTeam/workspace-ai-03/milestone/8)
 - **Planned Velocity:** 0
+- **Actual Velocity:** 0; this was a task sprint with no selected feature stories, and the unfinished results review and diagram fix moved to SPRINT-09 for the reasons in the [retrospective](../reports/week-08/sprint-retrospective.md).
 
 This is a task sprint: no feature user stories are selected, so the hand-computed total of selected stories' points is 0.
 Markdown acceptance and image generation return to the unscheduled product backlog alongside the other refined feature stories, with their estimates retained and no milestone, ownership values, or assignees until a later sprint is planned.
@@ -169,11 +170,14 @@ Publish REL-08 after the sprint's changes merge, then record actual velocity, th
 The [UT-01 results](usability-tests/ut-01/results.md) record three counted participant sessions in one team run, with assisted main-task completion and the QR-06 QRT-01 verdict reflected in the testing plan.
 The full Sprint Review remains pending: the results were not ready at the meeting because testing was planned to take place after it.
 The existing [triage](usability-tests/ut-01/results.md#triage) from merged [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08, serving US-08 AC-01 and AC-03 through FR-012 and FR-020, and defers the seven Minor recommendations.
-No customer acceptance, completed fix, or release is claimed by this update.
-Include #405 in REL-08 only after implementation and verification finish; otherwise move the unfinished task to SPRINT-09 at sprint close and record the actual reason in the weekly report.
+No customer acceptance or completed fix is claimed.
+The unfinished diagram-discovery fix moved to SPRINT-09 because implementation and its unaided staging recheck were not completed for REL-08.
 The member supplied the [QR-01 QRT-01 closeout output](../reports/week-08/qr-01-qrt-01.md) from 2026-11-22: 12 query-message reads exceeded two seconds and none were missed.
 The result is Fails; the member confirms tested revision `0fa12cffbe3018876a5e39821625ba00aed98083` and staging on the university VM from the university network.
-The [release preparation](../reports/week-08/release-preparation.md) records the candidate scope and remaining tag/publication steps; no release is claimed.
+The [release preparation](../reports/week-08/release-preparation.md) preserves the pre-publication handoff; REL-08 was subsequently published as v0.5.1 below.
+SPRINT-08's GitHub milestone closed on 2026-11-22 after four remaining open tasks initially moved to SPRINT-09, retaining ownership and priority.
+The retrospective and AI disclosure tasks subsequently returned to SPRINT-08 alongside the Week 08 report task, for completion during this sprint's closeout on 22 November.
+Only the unfinished results review and diagram fix remain carried into SPRINT-09; the [retrospective](../reports/week-08/sprint-retrospective.md) distinguishes that current handoff from the closure snapshot.
 
 #### REL-08
 
@@ -191,7 +195,8 @@ Provisional: the final repository state and REL-09, the 7-minute presentation de
 - **Due:** 2026-11-28
 - **Sprint Backlog:** [the SPRINT-09 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9)
 
-The existing milestone is linked for the handoff; no feature story is scheduled in advance.
+The milestone carries the unfinished SPRINT-08 results review and diagram fix; the Week 08 retrospective, AI disclosure, and report remain in SPRINT-08 for closeout.
+No feature story is scheduled in advance.
 Refined stories remain in the product backlog until SPRINT-09 planning selects them against the final-delivery work and any deferred usability fixes or unverified tests.
 
 #### REL-09
