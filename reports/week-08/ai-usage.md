@@ -30,6 +30,7 @@
   Create dedicated documentation tasks, prepare stacked PRs, resolve overlaps with merged records, and retarget the PR after its base merged.
 - Prepare the v0.5.1 changelog and upgrade note for member review, publish the protected tag and [GitHub Release](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1) after approval, and open [PR #415](https://github.com/WellMadeTeam/workspace-ai-03/pull/415) for the changelog and [PR #416](https://github.com/WellMadeTeam/workspace-ai-03/pull/416) for REL-08.
   Retarget #416 to main after #415 merged, preserving the required post-tag record order.
+- Prepare the retrospective and sprint closure in [PR #417](https://github.com/WellMadeTeam/workspace-ai-03/pull/417), record actual velocity of 0, and carry unfinished tasks into SPRINT-09.
 
 ## What we did with the output
 
@@ -39,7 +40,7 @@
   Corrected an incompatible GitHub option identifier and verified the update; member review remains required.
 - Checked usability drafts against the course rules, sanitized notes and questionnaires, and member confirmations of assistance, eligibility, consent timing, capture, and withdrawals.
   This helped organize the evidence and expose missing measures: SEQ and task times were left unavailable rather than reconstructed.
-- Initially corrected a completed-test interpretation and aggregates when only P-01 had fully confirmed eligibility: P-02 and P-03 were then exploratory, and UT-01 stayed Planned with a qualitative shortfall record.
+- On 2026-11-21, record an intermediate shortfall in #407 when only P-01 had fully confirmed eligibility: P-02 and P-03 were then exploratory, and UT-01 stayed Planned with a qualitative shortfall record.
   At that point QR-06 was Not verified and TOS-03 was Missed against its existing measure; the later PART-11 confirmations below supersede the eligibility and board-state gaps.
   For #387, distinguish the missing TOS-03 board-state and messenger-answer evidence from the observed assisted brainstorming; retain Checked and Evidence as None on the Not verified row.
   Markdown lint, MkDocs, diff checks, and 156 local links and anchors passed before the initial push; MkDocs retained warnings, and lychee was unavailable locally.
@@ -70,7 +71,8 @@
   Markdown lint, local link checks, and diff checks passed; repository-wide external link checking encountered connection failures.
   The PR records remaining evidence and acceptance gaps rather than claiming all #391 criteria are satisfied.
 
-- For PART-11, use the member's later eligibility confirmation to count three participant sessions in one team run, mark UT-01 Completed, publish SUS mean 67.5 and median 72.5 with n=3, and record QR-06 QRT-01 Fails because the single main-task attempt was Assisted.
+- On 2026-11-22, supersede that intermediate shortfall through #410 using the member's eligibility confirmation: three counted participants in one team run, UT-01 Completed, and QR-06 QRT-01 Fails because the single main-task attempt was Assisted.
+  Publish SUS mean 67.5 and median 72.5 with n=3.
   Keep missing timings, SEQ, tool-switch measurements, instrumentation departures, and the pending full Sprint Review explicit.
   The member confirmed a retained context-reuse board state but no collected messenger-use answer, so TOS-03 remains Missed on its stated evidence measure.
 - Preserve the supplied latency output: 12 query-message reads over two seconds, maximum 2,129 ms, zero missed/failed reads, and zero socket failures.
@@ -83,6 +85,8 @@
   Local full-network Lychee runs failed on widespread external connection errors, so they were not reported as green; the release commit's seven GitHub checks, including links, product checks, and documentation deployment, were verified green before tagging.
   GitHub GraphQL retargeting failed once; the REST API succeeded, and Codex verified each resulting base and file scope.
   API field updates initially rejected numeric option identifiers; using option names succeeded and the task metadata was verified.
+- For #417, check carried-action outcomes and carry-over reasons against public evidence, verify issue assignments and milestone closure, and retain the unfinished results review and diagram fix.
+  Markdown lint, offline links, MkDocs, and whitespace checks passed; external link checks encountered connection failures.
 
 ## What was not used
 
