@@ -7,12 +7,12 @@
 - **Attended:** Customer, danmaninc, AntonChulakov, hrrrsss
 - **Presented:** the Markdown feature; the usability test was discussed again
 - **Dashboards, results, and quality tests shown:** not established by the available account
-- **Recording permission:** answer not available
-- **Transcript publication permission:** answer not available
-- **Private transcript sharing permission:** answer not available
-- **Transcript:** None available; the team did not request the meeting recording and transcript from Customer in time
+- **Recording permission:** permitted
+- **Transcript publication permission:** permitted
+- **Private transcript sharing permission:** not applicable; transcript publication is permitted
+- **Transcript:** not yet received from Customer; consent for the recording and transcript is confirmed
 - **Script:** [meeting-script.md](meeting-script.md), reconstructed from the brief account
-- **Evidence limitation:** this concise report uses the team's account supplied for [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391); it cannot be expanded or corrected against the unavailable recording and transcript
+- **Evidence limitation:** this concise report uses the team's account supplied for [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391); the recording and transcript have not yet been received, so they are not available to verify further details
 - **Review coverage:** the account confirms a Markdown demonstration and the plan to run the usability test during SPRINT-08; it does not establish the results review required by #391
 
 ## Previous action points
@@ -43,7 +43,7 @@ An unconfirmed outcome below does not close the action or establish that the wor
 
 - Customer found a Markdown rendering bug during the demonstration, so full implementation and customer acceptance were not confirmed.
 - The team revisited the usability test and confirmed that it would take place during SPRINT-08.
-- The recording and transcript were not requested from Customer in time, so the report remains limited to this brief account.
+- Consent for the recording and transcript is confirmed, but neither has been received from Customer yet, so the report remains limited to this brief account.
 
 ## Decisions
 
@@ -55,6 +55,7 @@ An unconfirmed outcome below does not close the action or establish that the wor
 | Action | Owner | Due |
 | --- | --- | --- |
 | Conduct the usability test | Not supplied | During SPRINT-08 (Week 8) |
+| Fix the Markdown rendering bug found by Customer during the demonstration | Not supplied | Not supplied |
 
 The account supplies no agreed owner or deadline for resolving the Markdown rendering bug, and no two action points after Week 8 as required by #391.
 The unconfirmed Week 7 actions above remain open; new due weeks cannot be attributed to this meeting without further evidence.
