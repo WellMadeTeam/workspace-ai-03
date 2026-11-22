@@ -5,7 +5,7 @@
 - **Run sprint:** [SPRINT-08](../../project-plan.md#sprint-08)
 
 The participant sessions took place during SPRINT-08.
-The [confirmation in PR #398](https://github.com/WellMadeTeam/workspace-ai-03/pull/398) establishes one currently counted session (P-01); P-02 and P-03 remain partially unconfirmed for eligibility and are not currently counted.
+The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) establishes one currently counted session, P-01; P-02 and P-03 remain partially unconfirmed for eligibility and are not currently counted.
 The sanitized session notes must record their dates and evidence; the run sprint does not establish eligibility, a completed analysis, or a QR/QRT verdict.
 
 ## Goal
@@ -69,9 +69,10 @@ The minimum of three counted sessions is not met, so the results must follow the
 The [session confirmation summary](sessions/README.md#eligibility-consent-and-capture-confirmation) distinguishes eligibility from consent and capture; underlying records remain private.
 
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
-Only one counted session is currently confirmed, below the required minimum of three.
-The test stays `Planned`, and [results.md](results.md) contains the qualitative shortfall record without aggregate statistics or a completed usability-result claim.
-The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and the formal testing-plan response remain pending.
+The [qualitative record](results.md) declares the shortfall without aggregate statistics or a completed usability result.
+UT-01 remains `Planned`, and QR-06 QRT-01 remains `Not verified` in the [testing plan](../../project-plan.md#quality-requirement-testing-plan).
+[TOS-03](../../threshold-of-success.md#tos-03) is Missed because its existing measure is not established by the available evidence.
+The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and verification remain pending.
 
 ### Recruitment eligibility check
 
@@ -390,7 +391,7 @@ Describe the findings as evidence from these sessions, not estimates for a wider
 
 ### Results, findings, and triage
 
-`results.md` is the run-week record; leave its result fields empty until sessions have been analyzed.
+[results.md](results.md) is the run-week qualitative record; the current counted-session shortfall prevents aggregate statistics or a completed usability result.
 Each finding uses the template below and a stable `#finding-n` anchor:
 
 ```markdown
@@ -412,7 +413,9 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, with [findings](results.md#findings) and their [triage](results.md#triage) recorded; implementation and the formal testing-plan response remain separate work.
+The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall without aggregates.
+The [numbered findings](results.md#findings) and their [triage](results.md#triage) are recorded; implementation remains separate work.
+The [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified, and [TOS-03](../../threshold-of-success.md#tos-03) records the missed measure.
 
 ## Schedule
 
@@ -483,8 +486,8 @@ Publish only sanitized session notes and aggregate results; keep identities, acc
 
 Results and findings are due in SPRINT-08 and are not recorded during the design week.
 The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded.
-The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, and declared shortfall.
+The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, research-question answers, and declared shortfall.
 It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
 The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
 The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
-Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the formal testing-plan response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified.

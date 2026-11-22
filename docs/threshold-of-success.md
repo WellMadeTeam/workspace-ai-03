@@ -19,8 +19,11 @@ Per `CON-03` of the product vision, 10 simultaneous clients edit one board for 3
 
 A team of at least 3 people outside the development team completes one brainstorming session on the board, sending at least one query whose context is responses selected from the board, by the end of Week 8.
 
-- **Status:** Open
+- **Status:** Missed
 - **Measure:** the session's board state, with the team's answer to "did you need a messenger?" recorded as a finding, in the Week 8 report, by the end of Week 8.
+- **Outcome:** [UT-01](usability-tests/ut-01/README.md) records one shared-board team run and assisted context reuse, but the [qualitative record](usability-tests/ut-01/results.md#threshold-of-success) does not establish the session's board state or the team's answer about needing a messenger.
+  The member confirms that no further evidence is available and that the Week 8 measure was missed.
+  This does not mean that no brainstorming occurred or establish a QR-06 pass or failure.
 
 ## Failure And Success Statements
 

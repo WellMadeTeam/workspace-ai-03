@@ -7,7 +7,7 @@ The [confirmation summary from #398](sessions/README.md#eligibility-consent-and-
 The minimum of three counted sessions is not met.
 Under [Assignment 8 Part 3](https://github.com/inno-itpd/itpd/blob/main/assignments/assignment-8.md#part-3-write-the-results) and [the shortfall rule](https://github.com/inno-itpd/itpd/blob/main/requirements/usability-testing-requirements.md#the-week-8-execution), UT-01 remains `Planned` and this page records qualitative observations without aggregate statistics or a completed usability-result claim.
 The three observation records and individual questionnaires are retained with their counting status explicit.
-The [numbered findings](#findings) analyze this evidence; product decisions and the formal testing-plan response remain with [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386) and [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The [numbered findings](#findings) analyze this evidence; product decisions await triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), and the [conclusion](#quality-requirement-and-product-response) states the current testing-plan status.
 
 ## Session count and shortfall
 
@@ -262,7 +262,7 @@ The task's recheck is new evidence: it must not rewrite the original assisted ou
 The [REL-08 plan](../../project-plan.md#rel-08) targets this fix only if its implementation and verification finish before release.
 At sprint close, [#392](https://github.com/WellMadeTeam/workspace-ai-03/issues/392) and [#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) must check the landing state: include a landed fix in REL-08, or move the unfinished task to the SPRINT-09 milestone, retaining its priority, ownership fields, and matching assignees, and record the actual reason in the Week 08 report.
 No fix or recheck has landed as part of this triage.
-The formal usability verdict remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The [quality requirement and product response](#quality-requirement-and-product-response) section states the current testing-plan status; the fix does not establish a completed usability test.
 
 ## Instrumentation Comparison
 
@@ -351,9 +351,19 @@ Raw telemetry, private identifiers, and exact collection timestamps remain in th
 The [quality requirement testing plan](../../project-plan.md#quality-requirement-testing-plan) records QR-06 QRT-01 as `Not verified`.
 The minimum confirmed participant sample for [QR-06](../../quality-requirements/qr/QR-06.md#response-measure) is not met; this record claims neither a pass nor a completed formal verdict.
 The test stays `Planned`, with the shortfall and qualitative evidence explicit.
-The formal testing-plan and scheduling response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+The row retains `Checked: None` and `Evidence: None`, as required for `Not verified`; this is a shortfall assessment, not a completed QRT check.
+The planned sprint remains [SPRINT-08](../../project-plan.md#sprint-08); no later execution is scheduled by this record.
+Even if the outstanding eligibility checks are confirmed, the recorded Assisted main-task outcome cannot satisfy the frozen unaided-completion bar.
+Do not exclude that outcome to improve the measure or treat the three participant records as three team attempts.
 
 The [findings](#findings) identify diagram discoverability as Major and context/capability clarity, editing controls, result presentation and reuse, keyboard expectations, collaboration support, onboarding, and connection interactions as Minor.
 The [triage](#triage) selects diagram discovery in [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and defers the seven Minor recommendations pending review.
-The [fix and release handoff](#fix-and-release-handoff) records the REL-08 target and SPRINT-09 fallback; implementation, verification, and the formal testing-plan response remain separate work.
-The weekly report must declare the shortfall and claim no completed usability result.
+The [fix and release handoff](#fix-and-release-handoff) records the REL-08 target and SPRINT-09 fallback; implementation and verification remain separate work.
+The Week 08 report must declare this shortfall and claim no completed usability result when its draft is finalized.
+
+### Threshold of success
+
+[TOS-03](../../threshold-of-success.md#tos-03) is `Missed`.
+T-01 took place and the team reported assisted completion of the context-reuse task, but the supplied sanitized record does not establish the session's board state or the team's answer to “did you need a messenger?”.
+The member confirms that no further evidence is available and that the Week 8 measure was missed.
+This settles the threshold against its existing measure; it does not assert that no brainstorming occurred, that a messenger was used, or that QR-06 received a completed failure verdict.
