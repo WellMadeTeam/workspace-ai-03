@@ -372,3 +372,10 @@ The [triage](#triage) selects diagram discovery in [#405](https://github.com/Wel
 The [fix and release handoff](#fix-and-release-handoff) records the release target and SPRINT-09 fallback; the fix remains open, with no landed implementation or successful recheck claimed.
 The full Sprint Review must cover these results, the failed quality requirement, the threshold evidence gap, approved triage, and next steps.
 The weekly report must disclose the five-person target shortfall, missing measures, instrumentation departures, and the pending review; it must not claim customer acceptance.
+
+### Threshold of success
+
+[TOS-03](../../threshold-of-success.md#tos-03) remains `Missed` on its existing evidence measure.
+The team's 2026-11-22 confirmation establishes three counted participants and a retained board state showing context reuse, resolving those earlier evidence gaps.
+The answer to “did you need a messenger?” was not collected, so the measure remains unmet.
+This does not establish whether a messenger was needed or whether the board reduced tool switching.

@@ -388,7 +388,7 @@ Describe the findings as evidence from these sessions, not estimates for a wider
 
 ### Results, findings, and triage
 
-`results.md` is the run-week record; leave its result fields empty until sessions have been analyzed.
+[results.md](results.md) is the run-week record of the analyzed sessions, available aggregates, findings, and limitations.
 Each finding uses the template below and a stable `#finding-n` anchor:
 
 ```markdown
