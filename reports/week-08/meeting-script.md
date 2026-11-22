@@ -4,7 +4,6 @@
 
 Our problem-space sentence: teams of software developers and architects lose context when sharing LLM queries and results via fragmented tools like Telegram, and need a unified space to aggregate and build upon these interactions.
 
-This script is reconstructed from the team's brief account for [#391](https://github.com/WellMadeTeam/workspace-ai-03/issues/391); it is not evidence of preparation before the meeting or of the exact questions asked.
 The agenda and timeboxes below describe a suggested 30-minute structure, not the meeting's measured duration.
 The team had Markdown support to demonstrate and a usability test to revisit.
 Target: check whether the demonstrated Markdown behavior is ready for acceptance and confirm the usability test's execution during SPRINT-08.
