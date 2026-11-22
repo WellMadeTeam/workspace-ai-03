@@ -54,10 +54,10 @@ An unconfirmed outcome below does not close the action or establish that the wor
 
 | Action | Owner | Due |
 | --- | --- | --- |
-| Conduct the usability test | Not supplied | During SPRINT-08 (Week 8) |
-| Fix the Markdown rendering bug found by Customer during the demonstration | Not supplied | Not supplied |
+| Conduct the usability test | All members | During SPRINT-08 (Week 8) |
+| Fix the Markdown rendering bug found by Customer during the demonstration | danmaninc | During SPRINT-09 (Week 9) |
 
-The account supplies no agreed owner or deadline for resolving the Markdown rendering bug, and no two action points after Week 8 as required by #391.
+One action point after Week 8 is recorded; #391 requires at least two.
 The unconfirmed Week 7 actions above remain open; new due weeks cannot be attributed to this meeting without further evidence.
 
 ## Open questions
@@ -66,7 +66,7 @@ The unconfirmed Week 7 actions above remain open; new due weeks cannot be attrib
 | --- | --- | --- |
 | Which three kinds of diagrams does the customer use most? | Diagram support and the usability test's task. | danmaninc, carried from Week 7; no new due week recorded |
 | Should the control group be included if recruitment numbers are low? | The usability test's structure. | danmaninc, carried from Week 7; no answer recorded |
-| What reproduces the Markdown rendering bug Customer found? | The fix and evidence needed before US-19 can be accepted. | Owner and due week not recorded |
+| What reproduces the Markdown rendering bug Customer found? | The fix and evidence needed before US-19 can be accepted. | danmaninc, during SPRINT-09 (Week 9) |
 
 ## Disagreements
 
