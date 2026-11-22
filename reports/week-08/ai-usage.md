@@ -6,6 +6,9 @@
 
 ## What we used them for
 
+- Prepare and update the Week 08 report for #418 from public repository and GitHub evidence, then prepare its commit and pull request and address review corrections to the closeout state, evidence links, and deviations.
+  Use sanitized public study records and the public configuration plan/evaluation; no private notes or raw recordings were supplied for this report work.
+
 - Create the AI usage draft for #394, check the course requirements, and open draft PR #396.
 - Plan SPRINT-08 for #382 without feature stories, refine the backlog, update GitHub scheduling and UT-01, and prepare [PR #395](https://github.com/WellMadeTeam/workspace-ai-03/pull/395).
 - Prepare UT-01 consent and session-note templates, structure and translate sanitized notes, draft three participant records and one shared team-run record, and document telemetry fields for #383.
