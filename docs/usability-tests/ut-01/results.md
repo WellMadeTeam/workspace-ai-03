@@ -113,8 +113,8 @@ No Critical incident is established by the supplied sanitized notes.
 
 These findings describe the single T-01 team run, not independent observations from several teams.
 Severity follows the [definitions fixed in the study plan](README.md#qualitative-analysis-and-severity).
-Recommendations are proposed responses for team review; they are not commitments, approved scope changes, or scheduled fixes.
-A `None` task issue means no product follow-up issue is linked yet; it is not a decision to decline the recommendation.
+The [triage](#triage) selects the diagram-discovery fix and records why the remaining recommendations have no new task.
+A `None` task issue means no new implementation task was opened; the recommendation remains available for later review.
 Where the original observations lack task boundaries, the task field distinguishes the relevant flow from an established occurrence in a specific task.
 
 ### Finding 1
@@ -125,7 +125,7 @@ Diagram creation was not discoverable without a substantial hint.
 - **Tasks:** UT-01 Task 3; UT-01 P-01, UT-01 P-02, and UT-01 P-03 in T-01.
 - **Evidence:** The [shared task record](sessions/README.md#t-01-shared-task-record) confirms Assisted completion and the discovery hint for all three participants; [P-01's feedback](sessions/P-01.md#feature-discovery) also identifies the problem and suggests a dedicated control.
 - **Recommendation:** Provide a clearly labelled entry point for diagram creation and explain how a generated diagram can be made available on the board; verify discoverability with an unaided task before accepting the change.
-- **Task issue:** None
+- **Task issue:** [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405), scheduled in SPRINT-08
 
 The explicit substantial hint supports Major severity.
 The result is one shared team attempt; the three participant records do not make three independent diagram failures.
@@ -230,13 +230,39 @@ P-02's arrowless-connection request concerns appearance; it does not establish a
 The linked notes establish neither direction-independent context nor moving a connection line independently of its endpoints as participant requests.
 Those two ideas are recommendation options requiring validation, not evidence of a defect in the current directional model or an approved change to context semantics.
 
-### Product-response coordination
+### Triage
 
-[Finding 1](#finding-1) is Major; [Finding 2](#finding-2), [Finding 3](#finding-3), [Finding 4](#finding-4), [Finding 5](#finding-5), [Finding 6](#finding-6), [Finding 7](#finding-7), and [Finding 8](#finding-8) are Minor under the recorded severity definitions.
-No Critical finding is supported by the supplied evidence.
-Each recommendation awaits triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), including whether it creates a task, its planned sprint, and the reason for any deferral or rejection.
-The significant Major finding requires follow-up consideration under that task; no product issue or schedule is created by this analysis.
-The formal verdict remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
+Triaged on 2026-11-21 for [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386), using the eight findings in [#402](https://github.com/WellMadeTeam/workspace-ai-03/pull/402).
+The severity assessments above are retained: one Major, seven Minor, and no Critical finding.
+The Major diagram-discovery difficulty takes priority because it required a substantial hint for the shared task.
+No new feature story is selected by this triage.
+
+| Finding | Severity and reason | Task issue or reason for no task | Planned sprint | Disposition or deferral reason |
+| ------- | ------------------- | ------------------------------- | -------------- | ------------------------------ |
+| [Finding 1](#finding-1) | Major: all three participants needed a substantial discovery hint in one team run. | [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405), serving US-08 #44 AC-01 and AC-03, FR-012 and FR-020. | SPRINT-08 | Add a clearly labelled diagram entry point and guidance for putting the rendered picture on the board; require a separate unaided staging attempt before acceptance. |
+| [Finding 2](#finding-2) | Minor: context and capability uncertainty with assistance, without established substantial intervention attributable to this mismatch. | None: the requested capability expansion needs clarification; no confirmed defect in context transfer is established. | Unscheduled; review in SPRINT-09 planning. | Defer implementation behind diagram discovery; review direction/context explanations and reply-to-text transfer separately before expanding AI actions. |
+| [Finding 3](#finding-3) | Minor: preview/edit and selection confusion, without established substantial intervention or lost work. | None: no technical failure established; the exact control changes need review. | Unscheduled; review in SPRINT-09 planning. | Retain visible mode and selection hints as candidates; no implementation commitment this sprint. |
+| [Finding 4](#finding-4) | Minor: cramped areas and presentation friction, without attributable task failure or substantial intervention. | None: several distinct requests need separate scope decisions; export already has backlog story [US-13 #49](https://github.com/WellMadeTeam/workspace-ai-03/issues/49). | Unscheduled; review in SPRINT-09 planning. | Review reading/editing space and table rendering separately from language, customization, output blocks, and export; do not turn the group into one speculative fix. |
+| [Finding 5](#finding-5) | Minor: one participant's Delete expectation and undo request, without established work loss. | None: reproduce Delete with focus and selection state before calling it a defect; recovery already has backlog story [US-15 #202](https://github.com/WellMadeTeam/workspace-ai-03/issues/202). | Unscheduled; review in SPRINT-09 planning. | Defer a shortcut fix pending reproduction; consider undo separately from the reported shortcut. |
+| [Finding 6](#finding-6) | Minor: unclear authorship, AI status, and color meaning, without established conflicting edits or task failure. | None: labels/status and new collaboration features need separate scope decisions; accounts are not established as necessary. | Unscheduled; review in SPRINT-09 planning. | Retain lightweight activity/AI cues and comments for review; no account, ownership, or commenting implementation is selected. |
+| [Finding 7](#finding-7) | Minor: onboarding requested, without an established causal link to task failure. | None: broad onboarding would overlap the focused diagram guidance in #405 without a demonstrated need for that larger scope. | Unscheduled; review in SPRINT-09 planning. | Check the focused guidance first, then review whether broader onboarding is needed; its effectiveness is not yet established. |
+| [Finding 8](#finding-8) | Minor: reconnection friction and connection-type requests, without established task failure or substantial intervention. | None: intended relationship types and context semantics are unspecified. | Unscheduled; review in SPRINT-09 planning. | Clarify line movement, endpoint reconnection, arrow appearance, and context direction separately before selecting work; retain existing context behavior meanwhile. |
+
+The seven `None` entries defer implementation; they do not reject the recommendations or schedule their existing backlog stories.
+No recommendation is recorded as a change the team would never make, so this triage creates no rejection decision in the meeting decision log.
+The original observations and attribution limits continue to apply.
+
+### Fix and release handoff
+
+[#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) is a High-priority Task in SPRINT-08, with `danmaninc` responsible and `hrrrsss` accountable and both assigned, following #386's ownership.
+Its description cites `docs/usability-tests/ut-01/results.md#finding-1` and the findings PR; its Story field names US-08 #44 AC-01 and AC-03, and its Requirements field links FR-012 and FR-020 on main.
+The findings in #402 must merge before acceptance of the fix.
+The task's recheck is new evidence: it must not rewrite the original assisted outcome or imply a new QR-06 verdict.
+
+The [REL-08 plan](../../project-plan.md#rel-08) targets this fix only if its implementation and verification finish before release.
+At sprint close, [#392](https://github.com/WellMadeTeam/workspace-ai-03/issues/392) and [#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) must check the landing state: include a landed fix in REL-08, or move the unfinished task to the SPRINT-09 milestone, retaining its priority, ownership fields, and matching assignees, and record the actual reason in the Week 08 report.
+No fix or recheck has landed as part of this triage.
+The formal usability verdict remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
 
 ## Instrumentation Comparison
 
@@ -328,7 +354,6 @@ The test stays `Planned`, with the shortfall and qualitative evidence explicit.
 The formal testing-plan and scheduling response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
 
 The [findings](#findings) identify diagram discoverability as Major and context/capability clarity, editing controls, result presentation and reuse, keyboard expectations, collaboration support, onboarding, and connection interactions as Minor.
-Product-response selection remains pending team triage in [#386](https://github.com/WellMadeTeam/workspace-ai-03/issues/386).
-Exploratory requests may inform triage, but no recommendation is represented as a committed, declined, or deferred fix without a team decision.
-Before final review, add the approved triage and fix-task links and reconcile the wording with the testing plan.
+The [triage](#triage) selects diagram discovery in [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and defers the seven Minor recommendations pending review.
+The [fix and release handoff](#fix-and-release-handoff) records the REL-08 target and SPRINT-09 fallback; implementation, verification, and the formal testing-plan response remain separate work.
 The weekly report must declare the shortfall and claim no completed usability result.

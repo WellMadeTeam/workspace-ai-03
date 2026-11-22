@@ -71,7 +71,7 @@ The [session confirmation summary](sessions/README.md#eligibility-consent-and-ca
 The comparison and supplementary procedures below remain the original plan, not a claim that those runs occurred.
 Only one counted session is currently confirmed, below the required minimum of three.
 The test stays `Planned`, and [results.md](results.md) contains the qualitative shortfall record without aggregate statistics or a completed usability-result claim.
-The [findings](results.md#findings) are prepared for triage; product-response decisions and the formal testing-plan response remain under review.
+The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and the formal testing-plan response remain pending.
 
 ### Recruitment eligibility check
 
@@ -412,7 +412,7 @@ If a finding becomes a task issue, link that issue from the finding and link the
 The public and private artifact locations are defined in [Evidence Map](#evidence-map).
 
 The analysis methods above are retained as the pre-session plan.
-The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, with [findings](results.md#findings) prepared for triage; product-response decisions and the formal testing-plan response remain under review.
+The session record discloses execution departures; the [qualitative record](results.md) declares the counted-session shortfall without aggregates, with [findings](results.md#findings) and their [triage](results.md#triage) recorded; implementation and the formal testing-plan response remain separate work.
 
 ## Schedule
 
@@ -486,4 +486,5 @@ The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded
 The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, and declared shortfall.
 It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
 The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
-Product-response decisions and the formal testing-plan response require coordination through #386 and #387 before final review.
+The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
+Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the formal testing-plan response remains with [#387](https://github.com/WellMadeTeam/workspace-ai-03/issues/387).
