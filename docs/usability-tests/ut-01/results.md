@@ -11,7 +11,7 @@ The [numbered findings](#findings) analyze this evidence, and the [testing plan]
 The full Sprint Review remains pending: results were unavailable at the meeting because the test was planned to take place afterward.
 The existing [triage](#triage) is retained; these results claim no customer acceptance, completed Sprint Review, or landed product fix.
 
-## Session count and allocation
+## Session count and shortfall
 
 The three participants took part together in T-01 on 19 November 2026 during [SPRINT-08](../../project-plan.md#sprint-08).
 They were software-development students using laptops on staging in person on the university network, as reported by the team.
@@ -26,6 +26,7 @@ Task outcomes and assistance include retrospective clarification; exact task tim
 The team's 2026-11-22 follow-up resolves the previously outstanding individual eligibility checks for P-02 and P-03.
 The primary shared-board condition contains three distinct participants, one team, and one run of team size three, with no exclusions or missing task outcomes.
 The control condition contains zero participants and zero runs.
+The minimum of three counted sessions is met; the five-person design target remains unmet.
 The underlying consent, capture, and eligibility records remain private.
 Recruitment did not provide a control group; the customer had agreed it was desirable but optional depending on recruitment.
 No supplementary run took place.
