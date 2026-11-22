@@ -11,6 +11,8 @@
 - Prepare UT-01 consent and session-note templates, structure and translate sanitized notes, draft three participant records and one shared team-run record, and document telemetry fields for #383.
 - Draft the qualitative record for #384, group observations and requests into eight findings for #385, and prepare the shortfall and threshold assessment for #387.
   Update PRs #398, #400, #402, and #407 after member clarifications and review; resolve conflicts with merged findings and triage.
+- Triage the eight findings from #402 for #386, create and schedule the Major diagram-discovery task #405 in SPRINT-08, and prepare [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406).
+  Record individual reasons for deferring the seven Minor findings, update the release handoff, check merge readiness, and reconcile the branch with the merged eligibility corrections.
 - Read the repository and public-safe GitHub settings, prepare the 26-item configuration inventory for #388, and publish [PR #399](https://github.com/WellMadeTeam/workspace-ai-03/pull/399).
 - Draft the goal-based configuration evaluation for #389 and publish [PR #403](https://github.com/WellMadeTeam/workspace-ai-03/pull/403).
   Ask the member about unjudged items one at a time, incorporate baseline confirmations, and retain unresolved points.
@@ -31,6 +33,13 @@
   Moved those ideas to design options requiring validation and retained only documented observations as evidence.
 - Rechecked Markdown, local links and anchors, finding fields, and the documentation build after review fixes and conflict resolution.
   These checks passed; existing MkDocs warnings remain, and external link checking was left to CI where lychee was unavailable locally.
+- Checked the triage against the course rules, #386 acceptance criteria, #402 findings, and the existing story criteria and functional requirements.
+  Verified all eight stable finding anchors and dispositions and #405’s Task type, High priority, SPRINT-08 milestone, ownership fields, and matching assignees.
+  The member accepted the triage; only the Major finding became a new task, while the Minor requests remain recorded for review without scheduled implementation.
+- Markdown lint, local links, diff checks, and MkDocs build passed for #406, with existing build warnings.
+  Local networked lychee failed on connection errors; the initial PR subsequently passed all five CI checks, including links.
+  After #402 merged, retargeting exposed conflicts with its eligibility corrections; preserved the one-counted-session shortfall and Planned status, reapplied the triage, and reran local checks.
+  The updated PR was left ready for review, awaiting fresh CI and independent approval rather than treated as merged.
 - Compared the inventory and evaluation with Assignment 8, the course rules, repository files, and settings; checked the required fields, heading order, local links, and coverage of all 26 items across seven local goals.
   Markdown lint and offline link checks passed; the inventory documentation build passed with existing warnings, and curl returned HTTP 200 for its 49 external URLs and the evaluation's nine external URLs.
   Networked lychee encountered connection failures, so its result was not reported as a passing external-link check.
@@ -46,6 +55,8 @@
 - No generated weekly findings or Week 9 handoff were added.
 - Configuration recommendations were left as proposals; no proposed runtime, workflow, branch-rule, or instruction change was enacted.
   No new build, deployment, restore, or telemetry test was performed by the agent, and no private configuration value was included in the inventory or evaluation.
+- The triage did not implement or verify a product fix, change the formal usability verdict, or create a task for every request.
+  Kept #405’s REL-08 inclusion conditional on completion and verification, with unfinished work to move to SPRINT-09 at sprint close and its actual reason recorded in the report.
 - Removed operating-system details the member could not confirm and unnecessary changes to an existing pre-session verification record.
 - Did not invent missing questionnaire answers, task durations, independent team attempts, participant attribution, or product commitments; retained the merged triage decisions when resolving conflicts.
 
