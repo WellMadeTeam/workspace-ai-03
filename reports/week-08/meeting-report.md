@@ -37,7 +37,7 @@ An unconfirmed outcome below does not close the action or establish that the wor
 | Question | Answer | Decision |
 | --- | --- | --- |
 | [Week 7](../week-07/meeting-report.md#open-questions): "Which three kinds of diagrams does the customer use most?" | No answer recoverable from the available account; remains open. | None recorded |
-| [Week 7](../week-07/meeting-report.md#open-questions): "Should the control group be included if recruitment numbers are low?" | No answer recoverable from the available account; remains open. | None recorded |
+| [Week 7](../week-07/meeting-report.md#open-questions): "Should the control group be included if recruitment numbers are low?" | Answered in the [UT-01 results record](../../docs/usability-tests/ut-01/results.md#session-count-and-shortfall): Customer had agreed the control group was desirable but optional depending on recruitment, and recruitment did not provide one. This outcome is recorded separately from this meeting's brief account, which does not establish when that agreement was made or whether it was discussed here. | No corresponding decision reference recorded |
 
 ## Summary
 
@@ -65,7 +65,6 @@ The unconfirmed Week 7 actions above remain open; new due weeks cannot be attrib
 | Question | What it would change | Follow-up |
 | --- | --- | --- |
 | Which three kinds of diagrams does the customer use most? | Diagram support and the usability test's task. | danmaninc, carried from Week 7; no new due week recorded |
-| Should the control group be included if recruitment numbers are low? | The usability test's structure. | danmaninc, carried from Week 7; no answer recorded |
 | What reproduces the Markdown rendering bug Customer found? | The fix and evidence needed before US-19 can be accepted. | danmaninc, during SPRINT-09 (Week 9) |
 
 ## Disagreements
