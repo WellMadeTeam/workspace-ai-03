@@ -11,6 +11,8 @@
 - Prepare UT-01 consent and session-note templates, structure and translate sanitized notes, draft three participant records and one shared team-run record, and document telemetry fields for #383.
 - Draft the qualitative record for #384, group observations and requests into eight findings for #385, and prepare the shortfall and threshold assessment for #387.
   Update PRs #398, #400, #402, and #407 after member clarifications and review; resolve conflicts with merged findings and triage.
+  For #387, prepare an implementation plan, check the assignment rules and dependency PRs, and publish [PR #407](https://github.com/WellMadeTeam/workspace-ai-03/pull/407) on a separate branch.
+  At the member’s request, exclude the report draft, AI-usage draft, and implementation plan from that commit.
 - Triage the eight findings from #402 for #386, create and schedule the Major diagram-discovery task #405 in SPRINT-08, and prepare [PR #406](https://github.com/WellMadeTeam/workspace-ai-03/pull/406).
   Record individual reasons for deferring the seven Minor findings, update the release handoff, check merge readiness, and reconcile the branch with the merged eligibility corrections.
 - Read the repository and public-safe GitHub settings, prepare the 26-item configuration inventory for #388, and publish [PR #399](https://github.com/WellMadeTeam/workspace-ai-03/pull/399).
@@ -29,6 +31,9 @@
   This helped organize the evidence and expose missing measures: SEQ and task times were left unavailable rather than reconstructed.
 - Corrected an earlier completed-test interpretation and aggregates after eligibility clarification: only P-01 is currently counted, P-02 and P-03 remain exploratory, and UT-01 stays Planned with a qualitative shortfall record.
   QR-06 remains Not verified; TOS-03 is Missed against its existing measure, following the member's confirmation that no further evidence is available.
+  For #387, distinguish the missing TOS-03 board-state and messenger-answer evidence from the observed assisted brainstorming; retain Checked and Evidence as None on the Not verified row.
+  Markdown lint, MkDocs, diff checks, and 156 local links and anchors passed before the initial push; MkDocs retained warnings, and lychee was unavailable locally.
+  Remove links to the excluded report draft so the committed documentation does not depend on an uncommitted file.
 - Review identified unsupported attribution of direction-independent context and independent connection-line movement to participants.
   Moved those ideas to design options requiring validation and retained only documented observations as evidence.
 - Rechecked Markdown, local links and anchors, finding fields, and the documentation build after review fixes and conflict resolution.
@@ -65,6 +70,7 @@
 - Sprint planning used public design material and the user's participant-count clarification.
 - The usability work supplied sanitized notes (`ut-01-notes.md`), sanitized SUS and post-test responses (`ut-01-posttest.csv`), filtered event and observability exports, and member clarifications.
   The agent used these to prepare session records, qualitative analysis, findings, and telemetry documentation; participant-level source records and exports remain private.
+- The #387 preparation used public sanitized session records, public issue and PR text, and the member’s threshold confirmation; no raw participant material or private telemetry was supplied for that task.
 - No recordings or participant identity mapping were supplied for this work.
 
 ## Public, sanitized configuration plan or evaluation supplied to agents
