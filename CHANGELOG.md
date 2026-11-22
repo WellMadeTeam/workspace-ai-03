@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [0.5.1](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1) - 2026-11-22
+
+No notable product changes.
+
 ## [0.5.0](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.0) - 2026-11-15
 
 ### Added
