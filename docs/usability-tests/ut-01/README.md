@@ -72,7 +72,7 @@ The comparison and supplementary procedures below remain the original plan, not 
 The [qualitative record](results.md) declares the shortfall without aggregate statistics or a completed usability result.
 UT-01 remains `Planned`, and QR-06 QRT-01 remains `Not verified` in the [testing plan](../../project-plan.md#quality-requirement-testing-plan).
 [TOS-03](../../threshold-of-success.md#tos-03) is Missed because its existing measure is not established by the available evidence.
-The [findings](results.md#findings) are prepared for triage; product-response decisions remain under review.
+The [triage](results.md#triage) selects the Major diagram-discovery fix and defers the Minor recommendations; implementation and verification remain pending.
 
 ### Recruitment eligibility check
 
@@ -414,7 +414,7 @@ The public and private artifact locations are defined in [Evidence Map](#evidenc
 
 The analysis methods above are retained as the pre-session plan.
 The session record discloses execution departures; the [qualitative record](results.md) documents observations and the shortfall without aggregates.
-The [numbered findings](results.md#findings) are prepared for triage through #386.
+The [numbered findings](results.md#findings) and their [triage](results.md#triage) are recorded; implementation remains separate work.
 The [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified, and [TOS-03](../../threshold-of-success.md#tos-03) records the missed measure.
 
 ## Schedule
@@ -489,4 +489,5 @@ The [sanitized session notes](sessions/README.md#recorded-sessions) are recorded
 The [qualitative record](results.md) contains the per-participant observations, exploratory themes, instrumentation comparison, limitations, research-question answers, and declared shortfall.
 It publishes no aggregate statistics or completed usability-result claim, and the test remains `Planned`.
 The [numbered findings](results.md#findings) record severity, evidence, and proposed recommendations.
-Product-response decisions require coordination through #386 before final review.
+The [triage](results.md#triage) selects [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) for SPRINT-08 and records the reasons for deferring the seven Minor recommendations.
+Implementation follows the [fix and release handoff](results.md#fix-and-release-handoff); the [testing plan](../../project-plan.md#quality-requirement-testing-plan) retains QR-06 QRT-01 as Not verified.

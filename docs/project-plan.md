@@ -168,6 +168,14 @@ Publish REL-08 after the sprint's changes merge, then record actual velocity, th
 
 #### REL-08
 
+Planned usability fix: [#405](https://github.com/WellMadeTeam/workspace-ai-03/issues/405) makes diagram creation discoverable, addressing [UT-01 Finding 1](usability-tests/ut-01/results.md#finding-1), the study's Major finding.
+The task serves existing US-08 AC-01 and AC-03 through FR-012 and FR-020; no new feature story or story points are selected.
+The [triage](usability-tests/ut-01/results.md#triage) records the seven Minor findings and why they have no new task or implementation sprint.
+
+This is a release target, not a claim that the fix has landed.
+The release owner in [#392](https://github.com/WellMadeTeam/workspace-ai-03/issues/392) includes #405 only after its implementation merges and its verification passes.
+At sprint close, [#393](https://github.com/WellMadeTeam/workspace-ai-03/issues/393) moves it to SPRINT-09 if unfinished, retains its priority, ownership fields, and matching assignees, and records the actual reason in the Week 08 report.
+
 ### SPRINT-09
 
 Provisional: the final repository state and REL-09, the 7-minute presentation deck, and the reflection explain whether the shared board solves the aggregation problem, using the usability results, configuration evaluation, and declared limitations.
