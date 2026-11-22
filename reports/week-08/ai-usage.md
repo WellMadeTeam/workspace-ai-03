@@ -24,6 +24,13 @@
 - Draft the Week 8 meeting script and report for #391 from the member’s brief account, carry forward the Week 7 action points and open questions, and publish [PR #408](https://github.com/WellMadeTeam/workspace-ai-03/pull/408).
   Revise consent, transcript availability, and action ownership and timing after member clarifications; commit and push the requested changes and mark the PR ready for review.
 
+- Explain #392's PART-11 artifact and release sequence, verify the course's versioning rules, and prepare [PR #410](https://github.com/WellMadeTeam/workspace-ai-03/pull/410) after the member confirmed eligibility for all three participants.
+  Reconcile the session notes, UT-01 record/index, results, testing plan, and threshold outcome with the approved triage.
+- Interpret the member-run QR-01 QRT-01 output and prepare [PR #412](https://github.com/WellMadeTeam/workspace-ai-03/pull/412) with the dated evidence and release preparation.
+  Create dedicated documentation tasks, prepare stacked PRs, resolve overlaps with merged records, and retarget the PR after its base merged.
+- Prepare the v0.5.1 changelog and upgrade note for member review, publish the protected tag and [GitHub Release](https://github.com/WellMadeTeam/workspace-ai-03/releases/tag/v0.5.1) after approval, and open [PR #415](https://github.com/WellMadeTeam/workspace-ai-03/pull/415) for the changelog and [PR #416](https://github.com/WellMadeTeam/workspace-ai-03/pull/416) for REL-08.
+  Retarget #416 to main after #415 merged, preserving the required post-tag record order.
+
 ## What we did with the output
 
 - Kept the Week 07 sections, added the required disclosure sections, and checked Markdown formatting.
@@ -32,8 +39,8 @@
   Corrected an incompatible GitHub option identifier and verified the update; member review remains required.
 - Checked usability drafts against the course rules, sanitized notes and questionnaires, and member confirmations of assistance, eligibility, consent timing, capture, and withdrawals.
   This helped organize the evidence and expose missing measures: SEQ and task times were left unavailable rather than reconstructed.
-- Corrected an earlier completed-test interpretation and aggregates after eligibility clarification: only P-01 is currently counted, P-02 and P-03 remain exploratory, and UT-01 stays Planned with a qualitative shortfall record.
-  QR-06 remains Not verified; TOS-03 is Missed against its existing measure, following the member's confirmation that no further evidence is available.
+- Initially corrected a completed-test interpretation and aggregates when only P-01 had fully confirmed eligibility: P-02 and P-03 were then exploratory, and UT-01 stayed Planned with a qualitative shortfall record.
+  At that point QR-06 was Not verified and TOS-03 was Missed against its existing measure; the later PART-11 confirmations below supersede the eligibility and board-state gaps.
   For #387, distinguish the missing TOS-03 board-state and messenger-answer evidence from the observed assisted brainstorming; retain Checked and Evidence as None on the Not verified row.
   Markdown lint, MkDocs, diff checks, and 156 local links and anchors passed before the initial push; MkDocs retained warnings, and lychee was unavailable locally.
   Remove links to the excluded report draft so the committed documentation does not depend on an uncommitted file.
@@ -46,7 +53,7 @@
   The member accepted the triage; only the Major finding became a new task, while the Minor requests remain recorded for review without scheduled implementation.
 - Markdown lint, local links, diff checks, and MkDocs build passed for #406, with existing build warnings.
   Local networked lychee failed on connection errors; the initial PR subsequently passed all five CI checks, including links.
-  After #402 merged, retargeting exposed conflicts with its eligibility corrections; preserved the one-counted-session shortfall and Planned status, reapplied the triage, and reran local checks.
+  After #402 merged, retargeting exposed conflicts with its eligibility corrections; preserved the then-current one-counted-session shortfall and Planned status, reapplied the triage, and reran local checks.
   The updated PR was left ready for review, awaiting fresh CI and independent approval rather than treated as merged.
 - Compared the inventory and evaluation with Assignment 8, the course rules, repository files, and settings; checked the required fields, heading order, local links, and coverage of all 26 items across seven local goals.
   Markdown lint and offline link checks passed; the inventory documentation build passed with existing warnings, and curl returned HTTP 200 for its 49 external URLs and the evaluation's nine external URLs.
@@ -63,6 +70,20 @@
   Markdown lint, local link checks, and diff checks passed; repository-wide external link checking encountered connection failures.
   The PR records remaining evidence and acceptance gaps rather than claiming all #391 criteria are satisfied.
 
+- For PART-11, use the member's later eligibility confirmation to count three participant sessions in one team run, mark UT-01 Completed, publish SUS mean 67.5 and median 72.5 with n=3, and record QR-06 QRT-01 Fails because the single main-task attempt was Assisted.
+  Keep missing timings, SEQ, tool-switch measurements, instrumentation departures, and the pending full Sprint Review explicit.
+  The member confirmed a retained context-reuse board state but no collected messenger-use answer, so TOS-03 remains Missed on its stated evidence measure.
+- Preserve the supplied latency output: 12 query-message reads over two seconds, maximum 2,129 ms, zero missed/failed reads, and zero socket failures.
+  The member confirmed tested SHA `0fa12cffbe3018876a5e39821625ba00aed98083` and university-VM staging from the university network before the PR was marked ready.
+  Codex did not execute that deployed test; the evidence attributes the run to the member and omits the generated board identifier from the public record.
+- Check the final release candidate against the tested application and scripts, the merged PRs since v0.5.0, the course rules, SemVer, and the active tag rules.
+  This exposed routine dependency changes, so the release was described as maintenance rather than strictly documentation-only; the rules leave the version number to the team and do not require v0.6.0.
+  The member approved the exact changelog and release-note wording before Codex tagged `fdab519c243828aeacaad0d29fbbed593b71c853` as v0.5.1 and published the GitHub Release.
+- Markdown lint, local links/anchors, whitespace checks, and documentation builds passed for the PART-11 documentation; existing MkDocs warnings remained.
+  Local full-network Lychee runs failed on widespread external connection errors, so they were not reported as green; the release commit's seven GitHub checks, including links, product checks, and documentation deployment, were verified green before tagging.
+  GitHub GraphQL retargeting failed once; the REST API succeeded, and Codex verified each resulting base and file scope.
+  API field updates initially rejected numeric option identifiers; using option names succeeded and the task metadata was verified.
+
 ## What was not used
 
 - No generated weekly findings or Week 9 handoff were added.
@@ -75,12 +96,17 @@
 - For #391, no meeting recording or transcript was supplied, and no transcript, quotation, usability result, missing action outcome, or decision identifier was generated.
   The script’s suggested questions and timeboxes are generated structure rather than recovered meeting evidence; missing metadata and unconfirmed follow-ups remain explicit.
 
+- For PART-11, no additional participant session, deployed performance test, product fix, or workaround was generated or claimed by the agent.
+  The initial shortfall interpretation was replaced only after member confirmation; assisted outcomes were not rewritten into unaided success and three participants were not counted as three independent team attempts.
+  The full results Sprint Review, final weekly report, unfinished task disposition, and sprint milestone closure were not fabricated or represented as completed by release publication.
+
 ## Usability material supplied to agents
 
 - Sprint planning used public design material and the user's participant-count clarification.
 - The usability work supplied sanitized notes (`ut-01-notes.md`), sanitized SUS and post-test responses (`ut-01-posttest.csv`), filtered event and observability exports, and member clarifications.
   The agent used these to prepare session records, qualitative analysis, findings, and telemetry documentation; participant-level source records and exports remain private.
 - The #387 preparation used public sanitized session records, public issue and PR text, and the member’s threshold confirmation; no raw participant material or private telemetry was supplied for that task.
+- PART-11 used public sanitized records, issue/PR text, member confirmations, and aggregate script output from the member-run latency check; no raw participant notes, consent records, identity mapping, or private telemetry were supplied for that release work.
 - No recordings or participant identity mapping were supplied for this work.
 
 ## Public, sanitized configuration plan or evaluation supplied to agents
