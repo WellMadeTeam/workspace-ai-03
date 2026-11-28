@@ -190,14 +190,32 @@ The result and the last check of each test are in the [Quality Requirement Testi
 
 ### SPRINT-09
 
-Provisional: the final repository state and REL-09, the 7-minute presentation deck, and the reflection explain whether the shared board solves the aggregation problem, using the usability results, configuration evaluation, and declared limitations.
+The customer can check the shared board's main journeys after small fixes, with acceptance-test results and handoff expectations recorded for REL-09.
 
-- **Due:** 2026-11-28
-- **Sprint Backlog:** [the SPRINT-09 milestone](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9)
+- **Due:** 2026-11-29
+- **Sprint Backlog:** [the issues scheduled into SPRINT-09](https://github.com/WellMadeTeam/workspace-ai-03/milestone/9)
+- **Planned Velocity:** 0
 
-The milestone carries the unfinished SPRINT-08 results review and diagram fix; the Week 08 retrospective, AI disclosure, and report remain in SPRINT-08 for closeout.
-No feature story is scheduled in advance.
-Refined stories remain in the product backlog until SPRINT-09 planning selects them against the final-delivery work and any deferred usability fixes or unverified tests.
+This task sprint selects no feature stories, so planned story points total 0.
+Fix the customer-reported Markdown defect, the carried diagram-discovery issue, and small reproducible interaction defects from UT-01.
+Complete the carried results review; keep its ownership and the diagram task's ownership unchanged.
+Larger feature requests remain in the product backlog.
+Prepare and rehearse the 7-minute presentation deck for the separate private submission.
+
+Define UAT-01–UAT-03 before the review, covering shared-board queries, context reuse, and diagram sharing.
+Prepare the meeting script, deploy the candidate to the university VM, and run the tests with the customer.
+The in-person review was provisionally planned for 27 November; confirm its actual date and outcomes, with 29 November the deadline.
+Leave time afterward for rework, release, and reporting.
+Record each test's runner, build, result, and decision; record any missing review or test explicitly.
+
+Recheck QR-02, QR-04, and QR-05, review open threshold goals, and record handoff expectations and remaining gaps.
+QR-01 has no planned fix or recheck this sprint; report its existing failure alongside QR-06.
+A targeted diagram recheck does not replace the original usability results.
+
+After review and rework, publish REL-09 and record checked QRs and UATs.
+Complete the Week 9 report, retrospective, AI usage, and private submission from merged evidence.
+Address carried process actions in the retrospective.
+At close, record actual velocity, return unfinished issues to the unscheduled backlog, clear ownership and assignees, and retain priorities.
 
 #### REL-09
 
@@ -205,13 +223,15 @@ Refined stories remain in the product backlog until SPRINT-09 planning selects t
 
 Each row is one test, in the order of [the quality requirements index](quality-requirements/README.md); the test itself is defined in its requirement's file.
 
-| QR | QRT | Status | Checked | Planned for sprint | Evidence |
-| -- | --- | ------ | ------- | ------------------ | -------- |
-| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [Week 08 supplied run](../reports/week-08/qr-01-qrt-01.md) |
-| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Release-commit CI run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/43754420082) and [scope of the recheck](../reports/week-07/README.md#qr-02-qrt-01-2026-11-15) |
-| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15) |
-| [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-07](#sprint-07) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15) |
-| [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results) |
+
+| QR                                        | QRT                                                     | Status | Checked                 | Planned for sprint      | Evidence                                                                                                                                                                           |
+| ----------------------------------------- | ------------------------------------------------------- | ------ | ----------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails  | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [Week 08 supplied run](../reports/week-08/qr-01-qrt-01.md)                                                                                                                         |
+| [QR-02](quality-requirements/qr/QR-02.md) | [QR-02 QRT-01](quality-requirements/qr/QR-02.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-09](#sprint-09) | [Release-commit CI run](https://github.com/WellMadeTeam/workspace-ai-03/actions/runs/43754420082) and [scope of the recheck](../reports/week-07/README.md#qr-02-qrt-01-2026-11-15) |
+| [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-09](#sprint-09) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15)                                                                                             |
+| [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-09](#sprint-09) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15)                                                                                    |
+| [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails  | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results)                                                                                                                |
+
 
 QR-01 remains Fails after the supplied SPRINT-08 closeout run exceeded the two-second limit for 12 query-message reads.
 Its evidence records member-confirmed provenance and the run after the planned sprint deadline; no later recheck or fix is claimed.
@@ -222,3 +242,4 @@ QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03
 - **Review:** the team's weekly review, Tuesday at 19:30, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
 - **Checked by:** the accountable member of each scheduled issue reports its state, and the team walks the sprint backlog against the sprint's goal.
 - **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/1/views/3) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
+
