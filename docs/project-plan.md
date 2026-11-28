@@ -223,7 +223,6 @@ At close, record actual velocity, return unfinished issues to the unscheduled ba
 
 Each row is one test, in the order of [the quality requirements index](quality-requirements/README.md); the test itself is defined in its requirement's file.
 
-
 | QR                                        | QRT                                                     | Status | Checked                 | Planned for sprint      | Evidence                                                                                                                                                                           |
 | ----------------------------------------- | ------------------------------------------------------- | ------ | ----------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [QR-01](quality-requirements/qr/QR-01.md) | [QR-01 QRT-01](quality-requirements/qr/QR-01.md#qrt-01) | Fails  | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [Week 08 supplied run](../reports/week-08/qr-01-qrt-01.md)                                                                                                                         |
@@ -231,7 +230,6 @@ Each row is one test, in the order of [the quality requirements index](quality-r
 | [QR-04](quality-requirements/qr/QR-04.md) | [QR-04 QRT-01](quality-requirements/qr/QR-04.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-09](#sprint-09) | [Week 07 setup run on `0f9ccbb`](../reports/week-07/README.md#qr-04-qrt-01-2026-11-15)                                                                                             |
 | [QR-05](quality-requirements/qr/QR-05.md) | [QR-05 QRT-01](quality-requirements/qr/QR-05.md#qrt-01) | Passes | [SPRINT-07](#sprint-07) | [SPRINT-09](#sprint-09) | [Week 07 log output and dashboard checks](../reports/week-07/README.md#qr-05-qrt-01-2026-11-15)                                                                                    |
 | [QR-06](quality-requirements/qr/QR-06.md) | [QR-06 QRT-01](quality-requirements/qr/QR-06.md#qrt-01) | Fails  | [SPRINT-08](#sprint-08) | [SPRINT-08](#sprint-08) | [UT-01 results](usability-tests/ut-01/results.md#team-task-results)                                                                                                                |
-
 
 QR-01 remains Fails after the supplied SPRINT-08 closeout run exceeded the two-second limit for 12 query-message reads.
 Its evidence records member-confirmed provenance and the run after the planned sprint deadline; no later recheck or fix is claimed.
@@ -242,4 +240,3 @@ QR-03 has a [member-confirmed scenario check](../reports/week-07/README.md#qr-03
 - **Review:** the team's weekly review, Tuesday at 19:30, before the customer meeting; it reviews [threshold-of-success.md](threshold-of-success.md) and [risks.md](risks.md).
 - **Checked by:** the accountable member of each scheduled issue reports its state, and the team walks the sprint backlog against the sprint's goal.
 - **Visible at:** the [project's table view](https://github.com/orgs/WellMadeTeam/projects/1/views/3) and the sprints' [GitHub milestones](https://github.com/WellMadeTeam/workspace-ai-03/milestones).
-
